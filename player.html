@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <title>Walk Through Cities Around The World - Virtual Vacation</title>
+    <meta name="description" content="This website lets you walk around cities around the world. Choose a preset one, or be adventurous and randomize it!">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+
+  <body>
+    <style>
+      body {
+        background-color: black;
+        transition: all 0.9s ease-in-out;
+        overflow-y: hidden;
+      }
+      * {
+        margin: 0 0 0 0;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      #player {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        margin-top: -2%;
+        /*margin-left: -2%;*/
+      }
+      .navbar {
+        min-height: 20px;
+      }
+      nav {
+        opacity: 1;
+      }
+      .btn-custom {
+        background-color: white;
+        color: black;
+        font-weight: bold;
+      }
+/*      #player {
+        opacity: 0;
+      }*/
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+
+<!--     <nav id="navbar_things" class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
+<div class="container"> <a class="navbar-brand d-flex align-items-center" href="#">
+<svg width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+<g>
+<path d="M511.981,118.509c-0.135-2.956-1.892-5.726-4.565-7.04l-159.24-79.62c-3.776-1.887-8.363-0.64-10.664,2.898 L229.916,200.282l-55.413-85.891c-0.796-1.235-1.945-2.264-3.259-2.922l-159.24-79.62C6.582,29.138,0,33.218,0,39.268v79.621 c0,4.581,3.712,8.294,8.294,8.294c4.581,0,8.294-3.712,8.294-.294V52.687l142.652,71.326v335.32L16.587,388.008V154.277 c0-4.581-3.712-8.294-8.294-8.294c-4.581,0-8.294,3.712-8.294,8.294v238.857c0,3.142,1.775,6.013,4.585,7.418l159.24,79.62  c5.427,2.714,12.003-1.375,12.003-7.418V318.087l324.17,162.085c5.427,2.714,12.003-1.375,12.003-7.418V118.888 C512,118.76,511.987,118.636,511.981,118.509z M175.827,299.541v-152.5l145.239,225.12L175.827,299.541z M495.413,459.335
+l-139.34-69.671l108.576-186.993c2.299-3.961,0.952-9.037-3.009-11.337c-3.96-2.298-9.036-0.953-11.337,3.009L344.094,377.258
+L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,9.037,3.009,11.337  c3.958,2.297,9.035,0.953,11.337-3.009l15.354-26.443V459.335z" fill="#000" />
+</g>
+</g>
+</svg>
+<span class="ml-3 font-weight-bold">VIRTUAL VACATION</apan>
+</a> <a href="https://virtualvacation.us/vacation" class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+<span>Go Back &#8629; </span>
+<span>Random <i class="fa fa-random" aria-hidden="true"></i></span> -->
+
+</a>
+<nav class="navbar navbar-expand-lg fixed-top" style="color: white; background-color: black;">
+  <a class="navbar-brand" href="#" style="font-weight: bold; text-decoration: none; color: inherit;"><i class="fa fa-random" aria-hidden="true"></i> Stay<span style="color: red;">Cation</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Back &#8629;<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://paulmcburneyreal.typeform.com/to/GOW6yyjm">Contact <i class="fa fa-envelope" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="video-source-text">Video Source <i class="fa fa-camera" aria-hidden="true"></i></a>
+      </li>
+<!--       <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li> -->
+    </ul>
+  </div>
+<span class="navbar-text">
+      <a class="btn btn-custom btn-sm" href="#" id="randomize-id">Randomize <i class="fa fa-random" aria-hidden="true"></i></a>
+    </span>
+
+</nav>
+
+<div class="collapse navbar-collapse" id="navbar4">
+<ul class="navbar-nav mr-auto pl-lg-4">
+<li class="nav-item px-lg-2 active"> <a class="nav-link" href="https://virtualvacation.us/vacation"> <span class="d-inline-block d-lg-none icon-width"><i class="fas fa-home"></i></span>Go Back &#8629;</a> </li>
+
+</div>
+</div>
+</nav> -->
+
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <center><div id="player" style="overflow: hidden;"></div></center>
+
+    <script>
+      const queryString = window.location.search
+      console.log(queryString)
+      var queryWithout = queryString.substr(1);
+      console.log(queryWithout)
+      var youtube_link = "https://www.youtube.com/watch?v=" + queryWithout
+      document.getElementById("video-source-text").href = youtube_link
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      if (queryWithout == "") {
+        queryWithout = "BOa0zQBRs_M"
+      }
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('player', {
+            width: screen.width,
+            height: screen.height,
+            videoId: queryWithout,
+            playerVars: {
+              modestbranding: 1,
+              rel: 0,
+              start: 30,
+              modestbranding: 1
+            },
+            // playerVars: {
+            //   mute: 1, 
+            //   autoplay: 1,
+            //   loop: 1,
+            //   autohide: 1,
+            //   modestbranding: 1,
+            //   showinfo: 0,
+            //   controls: 0,
+            //   fs: 0,
+            //   start: 20,
+            //   disablekb: 1
+            // },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+          event.target.playVideo();
+        }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        function wait_sec() {
+          document.getElementById("player").style.opacity = "1";
+        }
+        var done = false;
+        function onPlayerStateChange(event) {
+          if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+          }
+          // setTimeout(document.getElementById("player").style.opacity = '1', 3000)          
+          // document.getElementById("player").style.opacity = "1";
+        }
+        function stopVideo() {
+          player.playVideo();
+        }
+        // function audioPlay() {
+        //   player.unMute();
+        // }
+        // function audioOff() {
+        //   player.mute();
+        // }
+      
+    </script>
+    <script>
+      document.getElementById("player").style.height = screen.height;
+      document.getElementById("player").style.width = screen.width;
+      $(document).ready(function () {
+      if ($(window).width() > 991){
+      $('.navbar-light .d-menu').hover(function () {
+              $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+          }, function () {
+              $(this).find('.sm-menu').first().stop(true, true).delay(120).slideUp(100);
+          });
+          }
+      });
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        console.log('jokes on u u aint a mobile')
+        document.getElementsByClassName("vid-source").innerHTML = "Credit"
+        document.getElementById("player").style.marginLeft = "0%"
+      } else {
+        document.getElementById("player").style.height = '110vh'
+
+      }
+      // setTimeout(function() {player.playVideo()}, 3000)
+    </script>
+    <script>
+    function randomizer() {
+      var location_lst = ["rsdRc4eS_yA", "N9S4DycnXiA", "eZe4Q_58UTU", "rXUK8Q2w4_c", "wa12902YOnc", "2uQ58Xwx1V4", "QpepXSfYEBk", "axqSGXU5qIw", "co6L9jw_Wno", "HACqXE2hw50", "E07rTPgIvn0", "G-v-UKEJ4E4", "aZ-31-p3saU", "xEangf-PZ4Q", "_TRnsRHFsws", "mlS89Cd176M", "sXPjAjir0jw", "4MGnF2i0dLc", "-TpzsS1Ld9k", "IXby_PTXBvI", "e-mtLuMAUDs", "bMZSyRngr4o", "Sd9BcwNEEQw", "JB0A8Me8EKk", "4-cwk3DZP3w", "yh6L1IrhB6U", "bMIgcHbqTZY", "qztRJrWt-Es", "XZVBoSteNYA", "9puDiItvJKE", "9puDiItvJKE", "9puDiItvJKE", "OzquNT_xjio", "FxRyNuaSeCg", "FxRyNuaSeCg", "AHuXzPMZLR0", "DuP0tzCubWQ", "DuP0tzCubWQ", "i6V7jc6bXP0", "i6V7jc6bXP0", "i6V7jc6bXP0", "DuP0tzCubWQ", "DuP0tzCubWQ", "7JsOhtl_zG4", "3raVUTPAd", "3raVUTPAd", "GxI1q6a0r9Y", "GxI1q6a0r9Y", "m-IA0KJ8xF8", "GxI1q6a0r9Y", "C796Mh7kMM8", "1QiqPKZeAyc", "Ky9uxm6JgBY", "uhR4wZNi048", "CxXjIv7rDig", "PBLFHJhc6ZY", "E2sSvVCRI4s", "rvoQ9fLXf", "HizG46xbyrw", "E2sSvVCRI4s", "E2sSvVCRI4s", "h56ype66dcw", "xhfY2U11-GI", "TFTJN4XIsQQ", "OzquNT_xjio", "qztRJrWt-Es", "djJ4N-Y7hZc", "djJ4N-Y7hZc", "djJ4N-Y7hZc", "63ARQhtaUPs"];
+      const randomLocation = location_lst[Math.floor(Math.random() * location_lst.length)];
+      document.getElementById("randomize-id").href = "https://virtualvacation.us/travel-walk?" + randomLocation
+    }
+    randomizer()
+    </script>
+
+    <style>
+
+    </style>
+  </body>
+</html>
