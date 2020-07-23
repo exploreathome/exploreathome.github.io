@@ -60,6 +60,19 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      .white-text {
+        display: none;
+        font-size: 8px;
+      }
+      @media (max-width: 900px) {
+        .white-text {
+          display: block;
+          font-weight: bold;
+          position: fixed;
+          bottom: -1.5%;
+          left: 1.5%;
+        }
+      }
     </style>
 
 <!--     <nav id="navbar_things" class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
@@ -115,6 +128,7 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
 </nav> -->
 
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <p style="color: white;" class="white-text" id="title-of-vid"></p>
     <center><div id="player"></div></center>
 
     <script>
@@ -226,6 +240,17 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
       document.getElementById("randomize-id").href = "https://virtualvacation.us/travel-walk?" + randomLocation
     }
     randomizer()
+    var url = 'https://www.youtube.com/watch?v=' + queryWithout;
+
+    $.getJSON('https://noembed.com/embed',
+        {format: 'json', url: url}, function (data) {
+        var vid_title = data.title
+        console.log(vid_title)
+        document.getElementById("title-of-vid").innerHTML = vid_title
+        if (document.getElementById('title-of-vid').innerHTML == "undefined") {
+          document.getElementById("title-of-vid").innerHTML = "New York City Walking Tour 🇺🇸"
+        }
+    });
     </script>
 
     <style>

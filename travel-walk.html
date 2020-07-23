@@ -9,7 +9,6 @@
     <meta name="description" content="Take a virtual vacation around the world!">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <meta name="robots" content="noindex">
@@ -61,7 +60,7 @@
       }
       .white-text {
         display: none;
-        font-size: 7px;
+        font-size: 8px;
       }
       @media (max-width: 900px) {
         .white-text {
@@ -72,6 +71,7 @@
           left: 1.5%;
         }
       }
+
 /*      #player {
         opacity: 0;
       }*/
@@ -127,7 +127,7 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
 
 </div>
 </div>
-</nav> -->
+</nav>
 
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <p style="color: white;" class="white-text" id="title-of-vid"></p>
@@ -256,7 +256,7 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
         console.log(vid_title)
         document.getElementById("title-of-vid").innerHTML = vid_title
         if (document.getElementById('title-of-vid').innerHTML == "undefined") {
-          document.getElementById("title-of-vid").innerHTML = "Tokyo: Shibuya Crossing 🇯🇵"
+          document.getElementById("title-of-vid").innerHTML = "New York City Walking Tour 🇺🇸"
         }
     });
     </script>
