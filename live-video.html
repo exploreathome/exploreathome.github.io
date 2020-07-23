@@ -52,7 +52,7 @@
       a:hover {
         color: inherit;
       }
-      .white-text {
+      /*.white-text {
         display: none;
         font-size: 13px;
       }
@@ -63,6 +63,30 @@
           position: fixed;
           bottom: -1.5%;
           left: 1.5%;
+        }
+      }*/
+      .white-text {
+        /*display: none;*/
+          display: block;
+          font-weight: bold;
+          position: fixed;
+          bottom: -1.5%;
+          left: 0.7%;
+          font-size: 8px;
+          opacity: 0.82;
+      }
+/*      .white-text {
+        display: none;
+        font-size: 8px;
+      }*/
+      @media (max-width: 900px) {
+        .white-text {
+          display: block;
+          font-weight: bold;
+          position: fixed;
+          bottom: -1.5%;
+          left: 1.5%;
+          opacity: 1;
         }
       }
 /*      #player {
