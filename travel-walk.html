@@ -59,6 +59,19 @@
       a:hover {
         color: inherit;
       }
+      .white-text {
+        display: none;
+        font-size: 7px;
+      }
+      @media (max-width: 900px) {
+        .white-text {
+          display: block;
+          font-weight: bold;
+          position: fixed;
+          bottom: -1.5%;
+          left: 1.5%;
+        }
+      }
 /*      #player {
         opacity: 0;
       }*/
@@ -117,6 +130,7 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
 </nav> -->
 
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <p style="color: white;" class="white-text" id="title-of-vid"></p>
     <div id="player"></div>
 
     <script>
@@ -234,6 +248,17 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         document.getElementById("player").style.marginLeft = "0%"
       }
+    var url = 'https://www.youtube.com/watch?v=' + queryWithout;
+
+    $.getJSON('https://noembed.com/embed',
+        {format: 'json', url: url}, function (data) {
+        var vid_title = data.title
+        console.log(vid_title)
+        document.getElementById("title-of-vid").innerHTML = vid_title
+        if (document.getElementById('title-of-vid').innerHTML == "undefined") {
+          document.getElementById("title-of-vid").innerHTML = "Tokyo: Shibuya Crossing 🇯🇵"
+        }
+    });
     </script>
     <style>
 
