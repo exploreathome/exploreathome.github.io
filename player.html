@@ -261,7 +261,7 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
         {format: 'json', url: url}, function (data) {
         var vid_title = data.title
         console.log(vid_title)
-        document.getElementById("title-of-vid").innerHTML = vid_title
+        document.getElementById("title-of-vid").innerHTML = vid_title + " 📸"
         if (document.getElementById('title-of-vid').innerHTML == "undefined") {
           document.getElementById("title-of-vid").innerHTML = "New York City Walking Tour 🇺🇸"
         }
