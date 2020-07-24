@@ -82,7 +82,7 @@
           position: fixed;
           bottom: -1.5%;
           left: 0.7%;
-          font-size: 8px;
+          font-size: 12px;
           opacity: 0.82;
       }
 /*      .white-text {
@@ -97,6 +97,7 @@
           bottom: -1.5%;
           left: 1.5%;
           opacity: 1;
+          font-size: 8.5px;
         }
       }
 /*      #player {
@@ -283,8 +284,8 @@ L239.77,215.555L347.383,49.998l144.717,72.359l-26.387,45.446c-2.299,3.961-0.952,
         {format: 'json', url: url}, function (data) {
         var vid_title = data.title
         console.log(vid_title)
-        document.getElementById("title-of-vid").innerHTML = vid_title
-        if (document.getElementById('title-of-vid').innerHTML == "undefined") {
+        document.getElementById("title-of-vid").innerHTML = vid_title + " 📸"
+        if (document.getElementById('title-of-vid').innerHTML == "undefined 📸") {
           document.getElementById("title-of-vid").innerHTML = "Tokyo: Shibuya Crossing 🇯🇵"
         }
     });
