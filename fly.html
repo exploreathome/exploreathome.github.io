@@ -1236,7 +1236,7 @@ queryWithout = "TseEGOmBL_o"
         console.log(secs)
         input_id = input_id.substring(0,11);
         console.log(input_id)
-        player.loadVideoById({'videoId': input_id, 'startSeconds': secs});
+        player.loadVideoById({'videoId': input_id, 'startSeconds': secs, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
         
         var duration = player.getDuration();
         document.getElementById('vid-bac').style.display = "block";
