@@ -1367,7 +1367,7 @@ queryWithout = "TseEGOmBL_o"
       }
       function loadVideoWithId(input_id) {
         console.log(input_id)
-        player.loadVideoById(input_id);
+        player.loadVideoById(input_id, 'startSeconds': 30);
         document.getElementById('vid-bac').style.display = "block";
         player.unMute();
         history.pushState(null, null, location.href);
