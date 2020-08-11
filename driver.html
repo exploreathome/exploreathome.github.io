@@ -1235,10 +1235,14 @@ queryWithout = "TseEGOmBL_o"
         player = new YT.Player('player', {
           videoId: 'M7lc1UVf-VE',
           playerVars: {
+            playsinline: 1,
             modestbranding: 1,
             rel: 0,
             start: 40,
-            modestbranding: 1
+            controls: 0,
+            modestbranding: 1,
+            showinfo: 0,
+            loop: 1
           },
           events: {
             'onReady': onPlayerReady,
