@@ -401,7 +401,7 @@ a:hover {
 
 <ul class="cards">
   <li class="cards__item" onclick="loadVideoWithId('zca688Ecwpk')">
-      <a onclick="loadVideoWithId('zca688Ecwpk')" style="text-decoration: none;">
+      <a onclick="loadVideoWithId('XMWuHFM6lJI')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/berlin.jpeg"></div>
@@ -1366,17 +1366,28 @@ queryWithout = "TseEGOmBL_o"
         player.stopVideo();
       }
       function loadVideoWithId(input_id) {
+        // var secs = input_id.slice(input_id.length - 6)
+        // console.log(secs)
+        // input_id = input_id.substring(0,11);
         console.log(input_id)
-        player.loadVideoById(input_id, 'startSeconds': 30);
+        player.loadVideoById({'videoId': input_id, 'startSeconds': 30, 'playsinline': 1});
+        
+        var duration = player.getDuration();
         document.getElementById('vid-bac').style.display = "block";
         player.unMute();
         history.pushState(null, null, location.href);
+        // player.seekTo(50, true)
     window.onpopstate = function () {
         history.go(0);
         // location.reload();
         console.log('went')
+    };
+        // window.history.pushState('', null, './');
+        //   $(window).on('popstate', function() {
+        //    location.reload(true);
+        // });
+        // history.pushState(null, null, 'https://twitter.com/hello');
       }
-    }
 
 $(window).load(function(){
 
