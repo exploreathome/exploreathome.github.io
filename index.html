@@ -3,14 +3,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name=”viewport” content=”width=device-width, initial-scale=1″>
-    <title>Virtual Vacation - Walk Around & View Live Footage of Famous Cities/Monuments</title>
-    <meta name="description" content="Virtual Vacation lets users view live footage and walk through cities and countries around the world..">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>virtualvacation.us - Explore The World From Home</title>
+    <meta name="description" content="Explore the world/globe from home with virtualvacation.us! View live footage from different cities, or even take a guessing quiz!">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="jquery.lazy.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -18,579 +22,1068 @@
     <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
     <link rel="manifest" href="static/site.webmanifest">
-    <meta property="og:title" content="Virtual Vacation - Walk Around & View Live Footage of Famous Cities/Monuments" />
-    <meta property="og:image" content="https://virtualvacation.us/static/unsplash4.jpg" />
+    <meta property="og:title" content="virtualvacation.us - Explore the World from Home" />
+    <meta property="og:image" content="https://virtualvacation.us/static/guess.jpg" />
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+    <meta property="og:title" content="virtualvacation.us - Explore the World from Home" />
+    <meta property="og:image" content="https://virtualvacation.us/static/beachimage.jpg" />
+<!--     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script> -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-153516768-4');
-</script>
-
-
 </head>
 
-<body>
-
 <style>
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
-  background-color: white;
-  color: black;
+  margin:0;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+/*#i-am-lazy {
+  display: none;
+}
+
+#i-am-lazy-2 {
+  display: none;
+}*/
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-#monument {
-  background-image: url('static/cleanmonuments.png');
-  background-color: blue;
-  border:1.3px solid #000;
-}
-@media (min-width: 1025px) {
-
-  header:before,
-  header:after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    width: 50%;
-    border-bottom: 20px solid white;  
-  }
-}
-.fromhome:hover, .fromhome:active {
-  opacity: 0.5;
+.wasf {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
 }
 
-.w3-container {
-  width: 50%;
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
 }
-#footer-tag {
-  background-color: lightgrey;
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
 }
-.middle-nav {
-  display: none;
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
 }
-/*#del-on-mobile {
-  font-size: 10px;
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
 }
-#random-emoji {
-  font-size: 10px;
-}*/
-@media (max-width: 1025px) {
-  .w3-container {
-    width: 100%;
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
   }
-  .middle-nav {
-    display: block;
+  100% { 
+    transform: translate3d(85px,0,0);
   }
 }
-.btn-custom {
-  background-color: black;
-  color: white;
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .wasf {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
 }
-a:hover {
-  color: inherit;
-}
-a:link {
-  color: inherit;
-}
-@media screen and (max-width: 365px) {
-    .vid-source {
-      display:none
-    }
+@media (max-width: 400px) {
+  #randomize-id {
+    display: none;
+  }
 }
 </style>
 
-<!-- FEFEFE -->
-<nav id="only-navbar" class="navbar navbar-custom fixed-top" style="background-color: #fefefe; color: black;">
-  <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-suitcase" aria-hidden="true"></i></span></a>
-    <!-- <a href="#" style="text-decoration: none;" class="middle-nav">Contact <i class="fa fa-envelope" aria-hidden="true"></i> -->
-    <div onclick="window.location = 'https://paulmcburneyreal.typeform.com/to/G7Q0S3Ab'" style="text-decoration: none;"><span id="contact-form"><a href="https://paulmcburneyreal.typeform.com/to/GOW6yyjm">Contact <i class="fa fa-envelope" aria-hidden="true"> </i>  </a><a href="https://virtualvacation.us/player?2uQ58Xwx1V4">|</span><span id="del-on-mobile"> Random <i class="fa fa-random" aria-hidden="true" id="random-emoji"></i></span></a>
 
-</div>
-
-<!--   <div class="dropdown">
-  <a class="btn" href="#"><span class="nav-bar-icon"><i class='fa fa-bars'></i></span></a>
-    <div class="dropdown-content">
-      <a href="https://virtualvacation.us/">HOME</a>
-      <a href="https://virtualvacation.us/coronavirus">NEW</a>
-      <a href="https://twitter.com/paul_mcb">CONTACT</a>
-      <a href="https://www.buymeacoffee.com/IWolfy" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important; border-radius: 10px;" ></a>
-    </div>
-  </div> -->
-
-
-</nav>
-<center> 
-<header id="head" style="text-align: center;">
-    <div class="header-text" style="transform: skew(-0.1deg) rotate(0.1deg);
-  -webkit-transform: skew(-0.1deg) rotate(0.1deg);
-  -moz-transform: skew(-0.1deg) rotate(0.1deg);">
-  <div class="from-home">
-    <div class="title-front"> Vacation <br><p id="from-tag"> FROM <i class="fa fa-home"></i>
-    </div>
- </p></div>
-    <p> Go on a "vacation" by walking around and viewing LIVE footage of cities around the world.</p>
-    <center><div id="big-sightsee" onLoad="pageScroll()" onclick="scrollDown()"> Begin Sightseeing </div></center>
-    </div>
-  </header>
-  </center>
-  <div class="w3-container" style="float: left; margin-bottom: 4%;">
-
-<h2 class="inner-div-text" style="font-size: 32px; margin-top: 3%;">Binural Walkaround <i class="fa fa-user" aria-hidden="true"></i> </h2>
-
-<p class="inner-div-text">Click text to view monuments from around the world. Disclaimer! We do not claim ownership of this footage, go follow the original creators!</p>
-
-<button onclick="myFunction('Demo1')" class="w3-button w3-block w3-black w3-left-align"><span style="color: inherit;">Walkable</span> Monument(s) <span style="color: red;"></span><span style="float: right;">+</span></button>
-  <a href="https://virtualvacation.us/">
-<!-- 📌 -->
-<div id="Demo1" class="w3-hide w3-animate-zoom">
-    <div onclick="window.location ='https://virtualvacation.us/player?0fL2r6FbEzs'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?0fL2r6FbEzs">Pyongyang, North Korea 🇰🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=0fL2r6FbEzs" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-
- <div onclick="window.location ='https://virtualvacation.us/player?N9S4DycnXiA'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?N9S4DycnXiA">Snowy Manhattan, NY 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=N9S4DycnXiA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?eZe4Q_58UTU'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?eZe4Q_58UTU">Rainy Manhattan, NY 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=eZe4Q_58UTU" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-   <div onclick="window.location ='https://virtualvacation.us/player?rsdRc4eS_yA'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?rsdRc4eS_yA">Times Square, NY 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=rsdRc4eS_yA&t=11s" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<!--  <div onclick="window.location ='https://virtualvacation.us/player?0fL2r6FbEzs'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?rXUK8Q2w4_c">Rome, Italy 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=rXUK8Q2w4_c" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div> -->
- <div onclick="window.location ='https://virtualvacation.us/player?Et7O5-CzJZg'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?Et7O5-CzJZg">Tokyo, Japan (Rainy) 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Et7O5-CzJZg" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?xhfY2U11-GI'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?xhfY2U11-GI">Shibuya Crossing, Tokyo 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=xhfY2U11-GI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?wa12902YOnc'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?wa12902YOnc">Shinjuku, Japan 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=wa12902YOnc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?Xatom1dkYE4'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?Xatom1dkYE4">Madrid, Spain 🇪🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Xatom1dkYE4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-       <div onclick="window.location ='https://virtualvacation.us/player?E2sSvVCRI4s'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?E2sSvVCRI4s">London Rainy/Night 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=E2sSvVCRI4s" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?2uQ58Xwx1V4'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?2uQ58Xwx1V4">Shanghai, China 🇨🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=2uQ58Xwx1V4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?QpepXSfYEBk'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?QpepXSfYEBk">Washington DC 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=QpepXSfYEBk" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?jSRRaMSRZOE'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?jSRRaMSRZOE">Atlanta, Georgia 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=jSRRaMSRZOE" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?axqSGXU5qIw'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?axqSGXU5qIw">Ibiza, Spain 🇪🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=axqSGXU5qIw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?co6L9jw_Wno'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?co6L9jw_Wno">Tel Aviv, Israel 🇮🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=co6L9jw_Wno" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?HACqXE2hw50'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?HACqXE2hw50">Jerusalem, Israel 🇮🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=HACqXE2hw50" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?E07rTPgIvn0'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?E07rTPgIvn0">Amsterdam, NE 🇳🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=E07rTPgIvn0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?G-v-UKEJ4E4'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?G-v-UKEJ4E4">Paris, France 🇫🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=G-v-UKEJ4E4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?aZ-31-p3saU'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?aZ-31-p3saU">Eiffel Tower 🇫🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=aZ-31-p3saU" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?xEangf-PZ4Q'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?xEangf-PZ4Q">Cannes, France 🇫🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=xEangf-PZ4Q" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?_TRnsRHFsws'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?_TRnsRHFsws">Paris Trainstation 🇫🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=_TRnsRHFsws" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?mlS89Cd176M'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?mlS89Cd176M">Munich Germany 🇩🇪</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=mlS89Cd176M" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?sXPjAjir0jw'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?sXPjAjir0jw">Montreal, Canada 🇨🇦</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=sXPjAjir0jw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?4MGnF2i0dLc'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?4MGnF2i0dLc">Golden Gate Bridge 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=4MGnF2i0dLc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?-TpzsS1Ld9k'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?-TpzsS1Ld9k">Salesforce Tower 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=-TpzsS1Ld9k" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-   <div onclick="window.location ='https://virtualvacation.us/player?IXby_PTXBvI'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?IXby_PTXBvI">Hollywood, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=IXby_PTXBvI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?e-mtLuMAUDs'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?e-mtLuMAUDs">Venice Beach 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=e-mtLuMAUDs" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-   <div onclick="window.location ='https://virtualvacation.us/player?bMZSyRngr4o'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?bMZSyRngr4o">Santa Monica Pier 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=bMZSyRngr4o" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-    <div onclick="window.location ='https://virtualvacation.us/player?Sd9BcwNEEQw'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?Sd9BcwNEEQw">Los Angeles, CA 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Sd9BcwNEEQw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?JB0A8Me8EKk'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?JB0A8Me8EKk">Boston, Massachusetts 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=JB0A8Me8EKk" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-     <div onclick="window.location ='https://virtualvacation.us/player?4-cwk3DZP3w'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?4-cwk3DZP3w">Stanford University 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=4-cwk3DZP3w" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-     <div onclick="window.location ='https://virtualvacation.us/player?yh6L1IrhB6U'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?yh6L1IrhB6U">Harvard University 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=yh6L1IrhB6U" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?bMIgcHbqTZY'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?bMIgcHbqTZY">St Maarten Jet Beach 🇸🇽</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=bMIgcHbqTZY" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?qztRJrWt-Es'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?qztRJrWt-Es">Beijing, China 🇨🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=qztRJrWt-Es" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?XZVBoSteNYA'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?XZVBoSteNYA">Old Delhi, India 🇮🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=XZVBoSteNYA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?9puDiItvJKE'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?9puDiItvJKE">New Delhi, India 🇮🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=9puDiItvJKE" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?OzquNT_xjio'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?OzquNT_xjio">Mexico City, ME 🇲🇽</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=OzquNT_xjio" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?FxRyNuaSeCg'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?FxRyNuaSeCg">Acropolis, Greece 🇬🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=FxRyNuaSeCg" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?AHuXzPMZLR0'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?AHuXzPMZLR0">Athens, Greece 🇬🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=AHuXzPMZLR0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?DuP0tzCubWQ'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?DuP0tzCubWQ">Reykjadalur, Iceland 🇮🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=DuP0tzCubWQ" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?i6V7jc6bXP0'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?i6V7jc6bXP0">Reykjavik, Iceland 🇮🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=i6V7jc6bXP0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?DuP0tzCubWQ'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?DuP0tzCubWQ">Chicago, Illinois 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=DuP0tzCubWQ" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?NiInPRbZsw8'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?NiInPRbZsw8">Toronda, Canada 🇨🇦</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=NiInPRbZsw8" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?7JsOhtl_zG4'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?7JsOhtl_zG4">Central Park, New York 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=7JsOhtl_zG4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location ='https://virtualvacation.us/player?3raVUTPAd'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?3raVUTPAd-w">San Fran Baker Beach 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=3raVUTPAd-w" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-   <div onclick="window.location ='https://virtualvacation.us/player?GxI1q6a0r9Y'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?GxI1q6a0r9Y">Damascus, Syria 🇸🇾</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=GxI1q6a0r9Y" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?m-IA0KJ8xF8'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?m-IA0KJ8xF8">Alsancak, Turkey 🇹🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=m-IA0KJ8xF8" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-   <div onclick="window.location ='https://virtualvacation.us/player?GxI1q6a0r9Y'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?GxI1q6a0r9Y">Najaf, Iraq 🇮🇶</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=GxI1q6a0r9Y" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?C796Mh7kMM8'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?C796Mh7kMM8">Istanbul, Turkey 🇹🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=C796Mh7kMM8" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-    <div onclick="window.location ='https://virtualvacation.us/player?l90cdtR8sIY'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?l90cdtR8sIY">Madrid, Spain 🇪🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=l90cdtR8sIY" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-     <div onclick="window.location ='https://virtualvacation.us/player?1QiqPKZeAyc'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?1QiqPKZeAyc">Tuscany, Italy 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=1QiqPKZeAyc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-      <div onclick="window.location ='https://virtualvacation.us/player?Ky9uxm6JgBY'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?Ky9uxm6JgBY">Florence, Italy 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Ky9uxm6JgBY" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?uhR4wZNi048'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?uhR4wZNi048">Trastevere, Italy 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=uhR4wZNi048" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-       <div onclick="window.location ='https://virtualvacation.us/player?CxXjIv7rDig'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?CxXjIv7rDig">Moscow Square, Russia 🇷🇺</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=CxXjIv7rDig" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-       <div onclick="window.location ='https://virtualvacation.us/player?PBLFHJhc6ZY'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?PBLFHJhc6ZY">St Petersburg, Russia 🇷🇺</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=PBLFHJhc6ZY" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-       <div onclick="window.location ='https://virtualvacation.us/player?E2sSvVCRI4s'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?E2sSvVCRI4s">London Rainy/Night, UK 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=E2sSvVCRI4s" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?rvoQ9fLXf-Y'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?rvoQ9fLXf-Y">Birmingham, UK 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=rvoQ9fLXf-Y" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-       <div onclick="window.location ='https://virtualvacation.us/player?HizG46xbyrw'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?HizG46xbyrw">London Eye, UK 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=HizG46xbyrw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?p3IkHgjeA5Y'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?p3IkHgjeA5Y">Brighton, UK 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=p3IkHgjeA5Y" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?h56ype66dcw'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?h56ype66dcw">Hastings, UK 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=h56ype66dcw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?F2FV4NATDvE'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?F2FV4NATDvE">Tokyo, Japan 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=F2FV4NATDvE" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-        <div onclick="window.location ='https://virtualvacation.us/player?MXwBUPf0YyM'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?MXwBUPf0YyM">Edinburgh, Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=MXwBUPf0YyM" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-          <div onclick="window.location ='https://virtualvacation.us/player?TFTJN4XIsQQ'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?TFTJN4XIsQQ">Miami, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=TFTJN4XIsQQ" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-           <div onclick="window.location ='https://virtualvacation.us/player?djJ4N-Y7hZc'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?djJ4N-Y7hZc">Disneyland, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=djJ4N-Y7hZc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-           <div onclick="window.location ='https://virtualvacation.us/player?DxP8fc2XYb4'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?DxP8fc2XYb4">Bangkok, Thailand 🇹🇭</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=DxP8fc2XYb4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-            <div onclick="window.location ='https://virtualvacation.us/player?w007cst8Imw'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?w007cst8Imw">Manila, Phillipines 🇵🇭</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=w007cst8Imw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-           <div onclick="window.location ='https://virtualvacation.us/player?MxzOykG9MQg'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?MxzOykG9MQg">Hanoi, Vietnam 🇻🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=MxzOykG9MQg" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-           <div onclick="window.location ='https://virtualvacation.us/player?qRr4wRkDr9M'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?qRr4wRkDr9M">Dili, Timor Leste 🇹🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=qRr4wRkDr9M" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?2MGlVMHT-x4'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?2MGlVMHT-x4">Seoul, South Korea 🇰🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=2MGlVMHT-x4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?IuRM0S-8pGE'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?IuRM0S-8pGE">Busan, South Korea 🇰🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=IuRM0S-8pGE" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?EbHQrBBgIQM'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?EbHQrBBgIQM">Tegucigalpa, Honduras 🇭🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=EbHQrBBgIQM" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?63ARQhtaUPs'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?63ARQhtaUPs">Havana, Cuba 🇨🇺</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=63ARQhtaUPs" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?tNYmD-otcGc'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?tNYmD-otcGc">Rio De Janeiro, Brazil 🇧🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=tNYmD-otcGc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?SaDjNMF7hzo'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?SaDjNMF7hzo">Buenos Aires, Argentina 🇦🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=SaDjNMF7hzo" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
- <div onclick="window.location ='https://virtualvacation.us/player?GM0qIriKT8U'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?GM0qIriKT8U">Falklands, Argentina 🇦🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=GM0qIriKT8U" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?Cgdf9xGf46Q'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?Cgdf9xGf46Q">Montevideo, Uruguay 🇺🇾</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Cgdf9xGf46Q" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location ='https://virtualvacation.us/player?ufEsGBVTnO0'" class="w3-button w3-block w3-left-align">📌
- <a href="https://virtualvacation.us/player?ufEsGBVTnO0">Antartica & Penguins 🇦🇶</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=ufEsGBVTnO0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  </div>
-
-</div>
-</a>
-<div class="w3-container" style="float: right; cursor: margin-bottom: 4%;">
-
-<h2 class="inner-div-text" style="font-size: 32px; margin-top: 3%;">Live Cam/Footage <i class="fa fa-camera"></i></h2>
-<p class="inner-div-text">Click text to view monuments from around the world. Disclaimer! We do not claim ownership of this footage, go follow the original creators!</p>
-
-<button onclick="myFunction('Demo2')" class="w3-button w3-block w3-black w3-left-align">Viewable Monument(s) <span style="color: red;">LIVE</span><span style="float: right;">+</span></button>
-<div id="Demo2" class="w3-hide w3-animate-zoom" style="">
-  <div onclick="window.location = 'https://virtualvacation.us/live?VYsHV7WPyFw'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?VYsHV7WPyFw"><span style="color: red;">VIRAL:</span> Times Square, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=VYsHV7WPyFw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<!--   <div onclick="window.location = 'https://virtualvacation.us/live?VYsHV7WPyFw'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?wUOLcfnUKz0"><span style="color: red;">VIRAL:</span> Tokyo, Japan 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=wUOLcfnUKz0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div> -->
-<div onclick="window.location = 'https://virtualvacation.us/live?wUOLcfnUKz0'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?wUOLcfnUKz0"><span style="color: red;">VIRAL:</span> Tokyo, Japan 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=wUOLcfnUKz0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?3mfWO1CwxpI'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?3mfWO1CwxpI"><span style="color: red;">VIRAL:</span> Tokyo Highway 🇯🇵</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=3mfWO1CwxpI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-  <div onclick="window.location = 'https://virtualvacation.us/live?HpZAez2oYsA'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?HpZAez2oYsA"><span style="color: red;">VIRAL:</span> Venice, Italy 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=HpZAez2oYsA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?1EiC9bvVGnk'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?1EiC9bvVGnk"><span style="color: red;">VIRAL:</span> Jackson Hole, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=1EiC9bvVGnk" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?zku4K7-U1P0'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?zku4K7-U1P0"><span style="color: red;">VIRAL:</span> French Beach 🇫🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=zku4K7-U1P0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?1ZNCtDLUKHw'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?1ZNCtDLUKHw"><span style="color: red;">VIRAL:</span> Las Vegas, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=1ZNCtDLUKHw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?m6wk49_EtPc'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?m6wk49_EtPc"><span style="color: red;">VIRAL: </span>Amsterdam, NE 🇳🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=m6wk49_EtPc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?17Deeq8N2e4'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?17Deeq8N2e4"><span style="color: red;">VIRAL:</span> Lamai, Thailand 🇹🇭</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=17Deeq8N2e4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?wnNrd-VjLsQ'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?wnNrd-VjLsQ"><span style="color: red;">VIRAL: </span>Hawiian Beach 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=wnNrd-VjLsQ" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?4qyZLflp-sI'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?4qyZLflp-sI">📌 Times Square 1560 BR 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=4qyZLflp-sI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?GEZy1rcNQWE'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?GEZy1rcNQWE">📌 Galveston Texas 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=GEZy1rcNQWE" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?KGuCGd726RA'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?KGuCGd726RA">📌 Brooklyn Bridge NYC 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=KGuCGd726RA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?1ZNCtDLUKHw'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?1ZNCtDLUKHw">📌 Las Vegas 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=1ZNCtDLUKHw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?IcWTPFnqOLo'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?IcWTPFnqOLo">📌 Katmai National Park, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=IcWTPFnqOLo" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?HpZAez2oYsA'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?HpZAez2oYsA">📌 Venice Italy River Cam 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=HpZAez2oYsA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?WjOGhNDX51M'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?WjOGhNDX51M">📌 Venice Italy Street Cam 🇮🇹</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=WjOGhNDX51M" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?m6wk49_EtPc'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?m6wk49_EtPc">📌 Amsterdam Cam #1  🇳🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=m6wk49_EtPc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?KGEekP1102g'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?KGEekP1102g">📌 Amsterdam Cam #2 🇳🇱</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=KGEekP1102g" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?ZuoL3P2dgmg'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?ZuoL3P2dgmg">📌 Houston Texas 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=ZuoL3P2dgmg" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?ZDdvss1v-0Q'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?ZDdvss1v-0Q">📌 Boston Massachusetts🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=ZDdvss1v-0Q" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?TyElel0QjCI'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?TyElel0QjCI">📌 Lausanne, Switzerland 🇨🇭</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=TyElel0QjCI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?O9JmP0Zwz1s'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?O9JmP0Zwz1s">📌 York Station, England 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=O9JmP0Zwz1s" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?ZHgXfhiDIIM'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?ZHgXfhiDIIM">📌 Bergen Line, Norway 🇳🇴</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=ZHgXfhiDIIM" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?MXqKk4WEhsE'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?MXqKk4WEhsE">📌 Playa del Ingles, Canary 🇮🇨</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=MXqKk4WEhsE" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?5Y07kM2RgKM'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?5Y07kM2RgKM">📌 Dublin, Ireland 🇮🇪</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=5Y07kM2RgKM" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?srlpC5tmhYs'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?srlpC5tmhYs">📌 Bryant Park, New York 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=srlpC5tmhYs" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?hMYIc5ZPJL4'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?hMYIc5ZPJL4">📌 City of Auburn, AL 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=hMYIc5ZPJL4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?6NztDtxqbLI'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?6NztDtxqbLI">📌 Boston Charles River 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=6NztDtxqbLI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?6wCltcAg5M0'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?6wCltcAg5M0">📌 Marine City Michigan 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=6wCltcAg5M0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?AAYiFaPV8G4'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?AAYiFaPV8G4">📌 Port Huron Michigan 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=AAYiFaPV8G4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?y0iKpoQbcbg'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?y0iKpoQbcbg">📌 San Francisco Beach 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=y0iKpoQbcbg" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?XNNwWz9U9ZA'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?XNNwWz9U9ZA">📌 Castro Street, San Fran 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=XNNwWz9U9ZA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?INR-B7FwhS8'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?INR-B7FwhS8">📌 Taipei, Taiwan 🇹🇼</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=INR-B7FwhS8" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?z_mlibCfgFI'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?z_mlibCfgFI">📌 Daxi, Taiwan 🇹🇼</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=z_mlibCfgFI" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?Y_TLxje5Qw4'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?Y_TLxje5Qw4">📌 Downtown Telluride 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Y_TLxje5Qw4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?zXqx56hlpd4'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?zXqx56hlpd4">📌 San Juan Capistriano, CA 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=zXqx56hlpd4" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?p6Fl4bsgig0'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?p6Fl4bsgig0">📌 Chengdu Panda Zoo 🇨🇳</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=p6Fl4bsgig0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?CLS2Uxxr8xk'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?CLS2Uxxr8xk">📌 Kansas City Zoo 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=CLS2Uxxr8xk" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?wNcwiMcbiWg'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?wNcwiMcbiWg">📌 Monterey Bay Shark Tank 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=CLS2Uxxr8xk" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?RdlucAM3VFc'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?RdlucAM3VFc">📌 St Bruno Chicago 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=RdlucAM3VFc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?JpC8YQGEayg'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?JpC8YQGEayg">📌 Sharp Park Beach, CA 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=JpC8YQGEayg" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?B9Zz9z92TKQ'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?B9Zz9z92TKQ">📌 Ft Madison, Iowa 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=B9Zz9z92TKQ" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?KRkZGOp1jq0'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?KRkZGOp1jq0">📌 Ashland, Virginia 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=KRkZGOp1jq0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?zku4K7-U1P0'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?zku4K7-U1P0">📌 South of France Beach 🇫🇷</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=zku4K7-U1P0" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?sKQJEL-xjjc'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?sKQJEL-xjjc">📌 United Kingdom Beach 🇬🇧</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=sKQJEL-xjjc" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?-hS2qY67lSM'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?-hS2qY67lSM">📌 Biloxi Massachusetts, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=-hS2qY67lSM" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?n75FGJAuyEA'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?n75FGJAuyEA">📌 Shelter Island Ferry 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=n75FGJAuyEA" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?5sxWGeHL66Q'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?5sxWGeHL66Q">📌 Emerald Beach Resort 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=5sxWGeHL66Q" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?iUNFXHjQQrk'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?iUNFXHjQQrk">📌 San Diego, US 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=iUNFXHjQQrk" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?6i0yI_pfg7k'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?6i0yI_pfg7k">📌 Hawaii Coast 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=6i0yI_pfg7k" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?Ws2y9dvvMgY'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?Ws2y9dvvMgY">📌 South Haven 🇺🇸</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=Ws2y9dvvMgY" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-<div onclick="window.location = 'https://virtualvacation.us/live?EpvIAopAYbw'" class="w3-button w3-block w3-left-align"><a href="https://virtualvacation.us/live?EpvIAopAYbw">📌 Melbourne, Australia 🇦🇺</a><span style="float: right;"><a href="https://www.youtube.com/watch?v=EpvIAopAYbw" class="vid-source" id="video-credit-source">Source <i class="fa fa-camera"></i></a></span></div>
-
-  </div>
-</div>
-<div>
-
-</div>
-<!-- <p style="position: fixed; bottom: 0; text-align: center;">Hello</p> -->
 <script>
-function scrollDown() {
-  window.scrollBy(0, 500); // Scroll 100px downwards
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+    history.pushState(null, null, document.URL);
+});
+</script>
+
+
+
+
+<body id="confetti">
+<nav class="navbar navbar-expand-md navbar-dark navbar-thin bg-dark">
+      <a class="navbar-brand back-mybtn" href="https://virtualvacation.us/">VirtualVacation   <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></a>
+<!--       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="https://virtualvacation.us/explore">Explore <i class="fa fa-plane" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="https://virtualvacation.us/guess">Guess <i class="fa fa-question-circle" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
+          </li>
+
+<!--           <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li> -->
+        </ul>
+<!--         <ul class="nav navbar-nav ml-auto">
+
+        </ul> -->
+<!--         <form class="form-inline my-2 my-md-0">
+          <input class="form-control" type="text" placeholder="Search">
+        </form> -->
+<!--                   <li class="nav-item form-inline my-2 my-md-0">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+      </div>
+    </nav>
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
+html {
+  background-color: #fff;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.mybtn {
+  background-color: white;
+  border: 1px solid #cccccc;
+  color: #696969;
+  padding: 0.5rem;
+  /*text-transform: lowercase;*/
+}
+.mybtn--block {
+  display: block;
+  width: 100%;
+}
+.xcards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  /*background: url(static/map.jpg);*/
+  /*margin-top: 4em;*/
+  padding: 0;
+}
+.xcards__item {
+  display: flex;
+  padding: 1rem;
+}
+@media (min-width: 40rem) {
+  .xcards__item {
+    width: 50%;
   }
 }
-</script>
-<style>
-/** {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-}*/
+@media (min-width: 56rem) {
+  .xcards__item {
+    width: 25%;
+  }
+}
+#ycard {
+  width: 25%;
+}
+@media (min-width: 40rem) {
+  #ycard {
+    width: 25%;
+  }
+}
+@media (min-width: 56rem) {
+  #ycard {
+    width: 25%;
+  }
+}
 
-/*input,
-textarea,
-button,
-select, img, span,
-a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-   outline: 0;
-}*/
+@media (max-width: 1025px) {
+  #ycard {
+    width: 100%;
+  }
+}
 
-header {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('static/unsplash3.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
+.xcard {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.9s ease-in-out;
+  overflow: hidden;
+  min-height: 40vh;
+}
+.xcard:hover {
+  transform: scale(1.01);
+}
+.xcard:hover .xcard__image {
+  filter: contrast(75%);
+}
+.xcard__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+.xcard__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(95%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+.xcard__image::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+@media (min-width: 40rem) {
+  .xcard__image::before {
+    padding-top: 75.6%;
+  }
+}
+.xcard__image--home {
+  background-image: url(static/homes.jpeg);
+}
+.xcard__image--flowers {
+  background-image: url(static/live.jpg);
+}
+.xcard__image--river  {
+  background-image: url(static/driving-vertical.jpeg);
+}
+.xcard__image--record {
+  background-image: url(static/goldengatebridge_cali.jpeg);
+}
+.xcard__image--fence {
+  background-image: url(static/walker.jpeg);
 }
 
-
-.header-text {
-  width: 30%;
-  text-align: center;
+.xcard__image--walker {
+  background-image: url(static/walker.jpeg);
 }
 
-header .title-front {
-  margin-bottom: 10px;
-  font-family: League Spartan, sans-serif;
-  font-weight: 500;
-  font-size: 45px;
-  color: white;
+.xcard__title {
+  color: #696969;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-#from-tag {
-  font-size: 60px;
-  letter-spacing: 0.5px;
+.xcard__text {
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
 }
 
-header p {
-  margin-bottom: 20px;
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  color: white;
-  font-size: 18px;
-}
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-header #big-sightsee {
-  text-align: center;
-  border: 2px solid white;
-  color: white;
-  font-family: 'Arial', Segoe UI, calibri, serif;
-  padding: 10px;
-  font-size: 18px;
-  width: 170px;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-header #big-sightsee:hover, #big-sightsee:active {
-  opacity: 0.5;
-  transform: skew(-1deg) rotate(1deg);
-  -webkit-transform: skew(-1deg) rotate(1deg);
-  -moz-transform: skew(-1deg) rotate(1deg);
-  transition: all 0.21959s ease-in-out;
-  /*color: black;*/
-}
-header .from-home:hover, .from-home:active {
-  transform: skew(-5deg) rotate(5deg);
-  -webkit-transform: skew(-5deg) rotate(5deg);
-  -moz-transform: skew(-5deg) rotate(5deg);
-  transition: all 1s ease-in-out;
-}
 @media screen and (max-width: 676px) {
   .header-text {
     width: 95%;
     text-align: center;
   }
 }
-@media (min-width: 950px) {
-  header:before {
-    left: 0;
-    border-right: 20px solid transparent;
-  }
 
-  header:after {
-    right: 0;
-    border-left: 20px solid transparent;
+@media screen and (max-width: 800px) {
+  .xcards {
   }
 }
-@media screen and (max-width: 601px) {
-  #from-tag {
-    font-size: 45px;
+.footer-tag {
+  bottom: 0;
+  background-color: #cccccc;
+  width: 100%;
+  height: 5vh;
+  vertical-align: middle;
+  margin-top: 1em;
+  /*padding-top: 1%;*/
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+/*.xcards__item:hover {
+  margin-top: -1em;
+  transition: 0.3s ease;
+}*/
+.xcard__image--fence {
+  background-image: url(static/walking.jpg);
+}
+</style>
+<div class="content">
+
+<!-- <h1 style="font-size: 18px; margin-top: 3%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-user" aria-hidden="true"></i> Select a city to fly over:</h1> -->
+<!-- ShareThis BEGIN -->
+<!-- <div class="sharethis-inline-share-buttons"></div> -->
+<!-- ShareThis END -->
+<!-- <p style="margin-left: 5%; margin-right: 5%;">Don't want fly around? Click here to <a href="https://virtualvacation.us/explore" style="color: darkblue;">drive, walk or view it LIVE!</a></p> -->
+<div class="welcome">
+    <div class="container-fluid">
+      <div class="row bg">
+        <div class="col-md-12">
+          <div class="content bg-dark">
+            <h4 style="color: white; font-weight: bold;">Welcome to</h2>
+            <h1><h4 style="color: white; font-weight: bold;"><span class="back-mybtn">virtual vacation <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i> </span></h4></h1>
+            <p style="color: #f2f2f2;">The website that lets you experience the world from home! <i class="fa fa-plane" aria-hidden="true"></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<ul class="xcards">
+<a href="https://virtualvacation.us/walk">
+<li class="xcards__item" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/walkingicon.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Walking Tour 👤</div>
+        <p class="xcard__text">Walk Around 100+ Cities Around The Globe! Admire the beautiful scenery and street sounds. Click below to begin.</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<a href="https://virtualvacation.us/driver">
+<li class="xcards__item" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/caricon.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Driving Tour 🚗</div>
+        <p class="xcard__text">Drive around and view the scenery from 100+ cities around the globe. Admire the beautiful sights!</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<a href="https://virtualvacation.us/guess">
+<li class="xcards__item" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/beachvacation.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">City Guesser ❓</div>
+        <p class="xcard__text">Walk around & admire the scenery of 1000+ cities around the world. Use your surroundings to predict your location!</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<a href="https://virtualvacation.us/explore">
+  <li class="xcards__item" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/sanfranciscopalm.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Travel Hub 🌍</div>
+        <p class="xcard__text">Explore the world by walking, driving, flying, and viewing live footage of different locations around the world.</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<!-- </div> -->
+
+</ul>
+
+<!-- ShareThis BEGIN -->
+<div class="sharethis-inline-share-buttons"></div>
+<!-- ShareThis END -->
+
+<ul class="xcards" style="margin-top: 1%">
+  <a href="https://virtualvacation.us/livecam">
+  <li class="xcards__item" id="ycard" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/livecamicon.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Live Cam 📸</div>
+        <p class="xcard__text">View LIVE Footage from different cities around the world. Enjoy!</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<a href="https://virtualvacation.us/fly">
+<li class="xcards__item" id="ycard" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/aircrafticon.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Flying Tour ✈️</div>
+        <p class="xcard__text">Enjoy the view from above for over 80+ cities from around the globe/world.</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<a href="https://virtualvacation.us/monument">
+  <li class="xcards__item" id="ycard" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/monumenticon.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Monuments 🏛️</div>
+        <p class="xcard__text">Explore different famous & not famous monuments from around the world.</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<a href="https://virtualvacation.us/explore">
+  <li class="xcards__item" id="ycard" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/allicon.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">Explorer 🌐</div>
+        <p class="xcard__text">Walk, Drive, Fly & View Live Footage of 400+ Cities around the World!</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Begin!</a>
+      </div>
+    </div>
+  </li>
+</a>
+<!-- </div> -->
+
+</ul>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="border-radius: 10px; margin-left: 5%; margin-right: 5%;">
+      <div class="col-md-5 p-lg-5 mx-auto my-5" style="">
+
+        <h3 class="display-4 font-weight-normal">Guessing Game <i class="fa fa-question-circle" aria-hidden="true" style="color: darkblue;"></i></h3>
+        <p class="lead font-weight-normal">Can you recognize where a city is just my walking around it? If so, give this game a go!</p>
+        <a class="btn btn-primary btn-outline-secondary" href="https://virtualvacation.us/guess" style="color: #f2f2f2;"> Guessing Time! <i class="fa fa-street-view" aria-hidden="true"></i></a>
+      </div>
+      <hr>
+
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+
+        <h3 class="display-4 font-weight-normal">Support Us <i class="fa fa-users" aria-hidden="true" style="color: darkblue;"></i></h3>
+        <p class="lead font-weight-normal">Want to help Virtual Vacation out? Give us a share and give others the gift of travel!</p>
+        <div class="sharethis-inline-share-buttons"></div>
+
+        <!-- <a class="btn btn-primary btn-outline-secondary" href="#" style="color: #f2f2f2;" Random Location <i class="fa fa-street-view" aria-hidden="true"></i></a> -->
+      </div>
+      <div class="product-device box-shadow d-none d-md-block"></div>
+      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    </div>
+
+    <footer class="container py-5 bg-light">
+      <div class="row">
+<!--         <div class="col-12 col-md">
+          <i class="fa fa-street-view" aria-hidden="true" style="font-size: 35px;"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+          <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+        </div> -->
+                <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Inspired By <i class="fa fa-camera" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://www.geoguessr.com/">GeoGuessr</a></li>
+            <li><a class="text-muted" href="https://www.w3schools.com/w3css/w3css_cards.asp">W3 CSS Cards</a></li>
+            <li><a class="text-muted" href="https://codepen.io/mirandalwashburn/pen/MWawdxr">Modern Travel Cards</a></li>
+            <li><a class="text-muted" href="http://pursued.nemesys.hu/">Pursued Maps</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">New Releases <i class="fa fa-street-view" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://virtualvacation.us/explore">Easy Expedition <i class="fa fa-globe" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/walk">Walking Tour <i class="fa fa-users" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Footage Tour <i class="fa fa-camera" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Share Us <i class="fa fa-share-square-o" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&text=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvirtualvacation.us%2Fguess">Facebook <i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&media=https%3A%2F%2Fvirtualvacation.us%2Fstatic%2Funsplash1.jpg&description=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Pinterest <i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvirtualvacation.us%2Fguess&title=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">LinkedIn <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+<!--         <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Business</a></li>
+            <li><a class="text-muted" href="#">Education</a></li>
+            <li><a class="text-muted" href="#">Government</a></li>
+            <li><a class="text-muted" href="#">Gaming</a></li>
+          </ul>
+        </div> -->
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">About <i class="fa fa-info" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://twitter.com/paul_mcb">Paul McBurney Jr</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Our Mission</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Privacy</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <style>
+      </style>
+              <small style="color: #8c8c8c;">virtualvacation.us &copy; 2020</small>
+              <small style="color: #8c8c8c;" id="hoverablething"><br>By <a class="text-muted" href="https://twitter.com/paul_mcb">Paul McBurney Jr</a></small>
+
+    </footer>
+
+<!-- <div class="footer-tag"> -->
+<!-- <p style="margin-bottom: -100%;">virutalvacation.us &copy; 2020</p> -->
+<!-- </div> -->
+</div>
+<!--Content ends-->
+<!-- <footer>
+Hi
+</footer> -->
+<style>
+* {
+  box-sizing: border-box;
+}
+.video-background {
+  background: #000;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /*z-index: -99;*/
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
   }
-  header .title-front {
-    font-size: 30px;
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
   }
-  header p {
-    font-size: 15px;
-    width: 85%;
-    display: block;
-    margin: auto;
-    margin-bottom: 20px;
-  }
-  header #big-sightsee {
-    font-size: 16px;
+}
+@media all and (max-width: 600px) {
+  .vid-info {
     width: 50%;
+    padding: 0.5rem;
   }
+  .vid-info h1 {
+    margin-bottom: 0.2rem;
+  }
+}
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
+}
+.back-mybtn {
+/*  position: fixed;
+  top: 0.4%;
+  left: 0.5%;*/
+  color: white;
+  font-weight: bold;
+  text-shadow: -2px -2px 0 rgba(204, 0, 0, 1),
+               2px -2px 0 rgba(204, 0, 0, 1),
+               -2px 2px 0 rgba(204, 0, 0, 1),
+               2px 2px 0 rgba(204, 0, 0, 1),
+               -3px 0 0 rgba(204, 0, 0, 1),
+               3px 0 0 rgba(204, 0, 0, 1),
+               0 -3px 0 rgba(204, 0, 0, 1),
+               0 3px 0 rgba(204, 0, 0, 1);
+  text-transform: uppercase;
 }
 
-@media screen and (max-width: 460px) {
-  #from-tag {
-    font-size: 35px;
-  }
-  header .title-front {
-    font-size: 28px;
-  }
+
+.forward-mybtn {
+  opacity: 0.885;
+  position: fixed;
+  bottom: 0%;
+  /*width: 60%;*/
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+      right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
 }
-/*Hero Image*/
+.forward-mybtn:hover {
+  transform: scale(1.02);
+  opacity: 1;
+}
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal-backdrop .fade .in {
+  opacity: 0.5 !important;
+}
+
+
+.modal-backdrop.fade {
+    opacity: 0.5 !important;
+}
+.modal-header {
+    padding-top: 0.2rem;
+    padding-bottom: 0.3rem;
+}
+.modal-footer {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.modal-body {
+  padding: 0 0 0 0;
+}
+#mapid {
+  height: 415px;
+  /*width: 100%;*/
+  /*z-index: 9000000;*/
+}
+.w3-button {
+  border-radius: 4.3px;
+}
+.w3-button:hover {
+  background-color: inherit;
+}
+#future-c {
+  display: none;
+}
+#f-c {
+  display: none;
+}
+#secondary-button {
+  display: none;
+}
 
 </style>
-<script>
-var count1 = 0
-function changeImg() {
-  console.log("Function Run")
-  if (count1 == 2) {
-    document.getElementById("head").style.backgroundImage = "url('static/unsplash1.jpg')"
-    count1 = 3
-  } else if (count1 == 1) {
-    document.getElementById("head").style.backgroundImage = "url('static/unsplash3.jpg')"
-    count1 = 2
-  } else if (count1 == 0) {
-    document.getElementById("head").style.backgroundImage = "url('static/unsplash8.jpg')"
-    count1 = 1
-  } else if (count1 == 3) {
-    document.getElementById("head").style.backgroundImage = "url('static/unsplash9.jpg')"
-    count1 = 0
-  }
-  setTimeout(changeImg, 5000);
-}
-changeImg()
-function pageScroll() {
-  window.scrollBy(0, 10); // horizontal and vertical scroll increments
-  scrolldelay = setTimeout('pageScroll()', 100); // scrolls every 100 milliseconds
-  if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-    clearTimeout(scrolldelay);
-    scrolldelay = setTimeout('PageUp()', 2000);
-  }
+    <!-- <input type="hidden" id="refresh" value="no"> -->
+    
+  <script src="confetti.js"></script>
+  <script>confetti.start(1000)</script>
+</body>
+<style>
 
+.container{
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
-if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) { 
-  console.log('If is true')
-  document.getElementById("contact-form").style.display = "none";
-  document.getElementById("del-on-mobile").style.display = "block";
 
+.nav{
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(255,255,255,.05);
+    transition: height .5s ease;
 }
-function PageUp() {
-  window.scrollTo(0, 0);
-  setTimeout(function() {
-    pageScroll()
-  }, 600);
+
+.nav a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.nav .logo{
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.nav-list{
+    list-style: none;
+    display: flex;
+    margin-right: auto;
+    margin-left: 4rem;
+}
+
+.nav-link{
+    margin: 0 2rem;
+    position: relative;
+}
+
+.nav-link::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s ease;
+}
+
+.nav-link:hover::after{
+    transform: scaleX(1);
+}
+
+#nav-cta{
+    display: inline-block;
+    background-color: #fff;
+    color: #313131;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    transition: background-color .5s ease;
+}
+
+#nav-cta:hover{
+    background-color: #d3d3d3;
+}
+
+
+/*Apply styles after scroll*/
+.scrolling-active{
+    background-color: #fff;
+    box-shadow: 0 3px 1rem rgba(0,0,0,.1);
+}
+
+.scrolling-active .nav{
+    height: 6.6rem;
+}
+
+.scrolling-active .nav a{
+    color: #313131;
+}
+
+.scrolling-active #nav-cta{
+    background-color: #313131;
+    color: #fff;
+}
+
+.scrolling-active #nav-cta:hover{
+    background-color: #151515;
+}
+
+.scrolling-active .nav-link::after{
+    background-color: #313131;
+}
+
+/*Apply styles after scroll end*/
+
+
+/* Hero Demo Content*/
+.hero{
+    width: 100%;
+    height: 100vh;
+    background: url("mountain-large.jpg") center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero::after{
+    content: '';
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+}
+
+.demo-content{
+    width: 100%;
+    height: 200vh;
+    background-color: #fff;
+}
+/* Hero end*/
+</style>
+<script type="text/javascript">
+function isIpadPro() {
+    var ratio = window.devicePixelRatio || 1;
+    var screen = {
+        width : window.screen.width * ratio,
+        height : window.screen.height * ratio
+    };
+    return (screen.width === 2048 && screen.height === 2732) || (screen.width === 2732 && screen.height === 2048) || (screen.width === 1536 && screen.height === 2048) || (screen.width === 2048 && screen.height === 1536);
+}
+if (isIpadPro()) {
+  document.getElementsByClassName('xcards__item')[0].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[1].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[2].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[3].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[4].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[5].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[6].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[7].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[8].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[9].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[10].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[11].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[12].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[13].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[14].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[15].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[16].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[17].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[18].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[19].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[20].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[21].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[21].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[23].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[24].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[25].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[26].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[27].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[28].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[29].style.width = "50%"
+  // document.getElementsByClassName('xcards__item')[30].style.width = "50%"
+
+  document.getElementsByClassName('xcard__image')[0].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[1].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[2].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[3].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[4].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[5].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[6].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[7].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[8].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[9].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[10].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[11].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[12].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[13].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[14].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[15].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[16].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[17].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[18].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[19].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[20].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[21].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[21].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[23].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[24].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[25].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[26].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[27].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[28].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[29].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[30].style.paddingTop = "100%"
+}
+if (navigator.userAgent.match(/iPad/i))
+{
+  document.getElementsByClassName('xcards__item')[0].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[1].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[2].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[3].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[4].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[5].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[6].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[7].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[8].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[9].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[10].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[11].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[12].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[13].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[14].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[15].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[16].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[17].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[18].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[19].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[20].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[21].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[21].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[23].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[24].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[25].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[26].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[27].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[28].style.width = "50%"
+  document.getElementsByClassName('xcards__item')[29].style.width = "50%"
+  // document.getElementsByClassName('xcards__item')[30].style.width = "50%"
+
+  document.getElementsByClassName('xcard__image')[0].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[1].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[2].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[3].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[4].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[5].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[6].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[7].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[8].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[9].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[10].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[11].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[12].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[13].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[14].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[15].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[16].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[17].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[18].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[19].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[20].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[21].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[21].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[23].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[24].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[25].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[26].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[27].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[28].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[29].style.paddingTop = "100%"
+  document.getElementsByClassName('xcard__image')[30].style.paddingTop = "100%"
 }
 
 </script>
-</div>
-</div>
-</header>
-</center>
-</span>
-</div>
-</nav>
 
-</body>
+
+<script src="https://afarkas.github.io/lazysizes/plugins/bgset/ls.bgset.min.js"></script>
+  <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js"></script>
+<!-- <script src="https://static.jsbin.com/js/render/edit.js?4.1.8"></script> -->
+<style>
+#contents {
+  /*position: relative;*/
+  transition: .3s;
+  margin-left: 290px;
+  background-color: #2a2b3d;
+}
+
+
+/* End side navigation bar  */
+/* Start welcome */
+
+.welcome {
+  color: #CCC;
+
+}
+.welcome .content {
+  /*background-color: #313348;*/
+  padding: 15px;
+  /*padding-bottom: 0px;*/
+  margin-top: 1%;
+/*background: rgb(34,48,55);*/
+/*background: linear-gradient(0deg, rgba(34,48,55,1) 0%, rgba(26,26,26,1) 80%);*/
+border-radius: 5px;
+}
+@media only screen and (max-device-width: 800px) {
+.welcome .content {
+  /*background-color: #313348;*/
+  /*padding: 15px;*/
+  max-height: 175px;
+  margin-top: 3.5%;
+/*background: rgb(34,48,55);*/
+/*background: linear-gradient(0deg, rgba(34,48,55,1) 0%, rgba(26,26,26,1) 80%);*/
+border-radius: 5px;
+}
+}
+
+.welcome h2 {
+  font-family: Calibri;
+  font-weight: 100;
+  margin-top: 0
+}
+.welcome .calibri {
+  font-family: Calibri;
+  font-weight: 100;
+  margin-top: 0
+}
+.welcome p {
+  color: #999;
+}
+
+
+
+
+</style>
+  <script src="confetti.js"></script>
 
 </html>
