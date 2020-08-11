@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <title>Easygoing Expedition - Walk, Drive & Fly Around Cities From 100+ Countries</title>
+    <meta name="description" content="Easygoing Expedition lets you sightsee and travel the world virtually from your own home.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <meta property="og:title" content="Virtual Vacation - Walk Around & View Live Footage of Famous Cities/Monuments" />
+    <meta property="og:image" content="https://virtualvacation.us/static/unsplash4.jpg" />
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+</head>
+
+<style>
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+body {
+  margin:0;
+
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+
+.p-lato {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+.header {
+  position:relative;
+  text-align:center;
+  /*background: url(static/car.jpg);*/
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:50vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.notflex { /*Flexbox for containers*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+@media screen and (max-width: 370px) {
+  #suitcase {
+    display: none;
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+  #contact-form {
+    display: none;  
+  }
+}
+@media (max-width: 400px) {
+  .shrink-on-mobile {
+    font-size: 26px;
+  }
+}
+@media (max-width: 375px) {
+  .shrink-on-mobile {
+    font-size: 23px;
+  }
+}
+@media (max-width: 400px) {
+  #randomize-id {
+    display: none;
+  }
+}
+</style>
+
+
+
+
+
+
+
+<body>
+<nav id="only-navbar" class="navbar navbar-custom" style="background-color: #fefefe; color: black;">
+  <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-globe" aria-hidden="true"></i></span></a>
+    <a href="https://virtualvacation.us/" id="randomize-id" style="cursor: pointer;"><span id="del-on-mobile"> Home <i class="fa fa-home" aria-hidden="true"></i>
+
+</span></a>
+
+</span>
+
+<!--   <div class="dropdown">
+  <a class="btn" href="#"><span class="nav-bar-icon"><i class='fa fa-bars'></i></span></a>
+    <div class="dropdown-content">
+      <a href="https://virtualvacation.us/">HOME</a>
+      <a href="https://virtualvacation.us/coronavirus">NEW</a>
+      <a href="https://twitter.com/paul_mcb">CONTACT</a>
+      <a href="https://www.buymeacoffee.com/IWolfy" target="_blank"><img loading="lazy" src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important; border-radius: 10px;" ></a>
+    </div>
+  </div> -->
+
+
+</nav>
+
+<div class="header">
+
+<!--Content before waves-->
+<div class="inner-header flex">
+<!--Just the logo.. Don't mind this-->
+<!-- <svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
+<path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+<g><path fill="#fff"
+d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
+C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
+c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7    c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2  c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z" />
+</g>
+</svg> -->
+<h1 class="shrink-on-mobile"> Easygoing Expedition <i class="fa fa-suitcase" aria-hidden="true" id="suitcase"></i></h1>
+
+</div>
+
+<!--Waves Container-->
+<div>
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.9)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
+<!--Waves end-->
+
+</div>
+<!--Header ends-->
+
+<!--Content starts-->
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  background-color: #fff;
+}
+/*body {
+  color: #999999;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 1rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+}*/
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.btn {
+  background-color: white;
+  border: 1px solid #cccccc;
+  color: #696969;
+  padding: 0.5rem;
+  /*text-transform: lowercase;*/
+}
+.btn--block {
+  display: block;
+  width: 100%;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cards__item {
+  display: flex;
+  padding: 1rem;
+}
+@media (min-width: 40rem) {
+  .cards__item {
+    width: 50%;
+  }
+}
+@media (min-width: 56rem) {
+  .cards__item {
+    width: 33.3333333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.card:hover .card__image {
+  filter: contrast(100%);
+}
+.card:hover {
+  transform: scale(1.01);
+}
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+.card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+.card__image::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+@media (min-width: 40rem) {
+  .card__image::before {
+    padding-top: 66.6%;
+  }
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card__image--flowers {
+  background-image: url(static/livecamicon.jpg);
+}
+.card__image--river {
+  background-image: url(static/caricon.jpg)
+  /*background-image: url(static/car.jpg);*/
+}
+.card__image--record {
+  background-image: url(static/aircrafticon.jpg);
+}
+.card__image--fence {
+  background-image: url(static/walkingicon.jpg);
+}
+.card__image--pov {
+  background-image: url(static/caricon.jpg);
+}
+.card__image--taj {
+  background-image: url(static/monumenticon.jpg);
+}
+.card__image--train {
+  background-image: url(static/guess.jpg);
+}
+.card__title {
+  color: #696969;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.card__text {
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+@media screen and (max-width: 676px) {
+  .header-text {
+    width: 95%;
+    text-align: center;
+  }
+}
+.footer-tag {
+  bottom: 0;
+  background-color: #cccccc;
+  width: 100%;
+  height: 5vh;
+  vertical-align: middle;
+  /*padding-top: 1%;*/
+}
+/*.cards__item:hover {
+  margin-top: -1em;
+  transition: 0.3s ease;
+}*/
+
+</style>
+<div class="content">
+<h1 style="font-size: 18px; margin-top: 3.5%">How do you like to explore? <i class="fa fa-suitcase" aria-hidden="true" id=""></i></h1>
+
+<p style="margin-left: 5%; margin-right: 5%;">Select a mode of travel or choose <a style="color: darkblue; cursor: pointer;" id="randomer">a randomly generated</a> one.</a></p>
+
+<ul class="cards">
+  
+  <li class="cards__item" onclick="window.location = 'https://virtualvacation.us/driver'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--river"></div>
+      <div class="card__content">
+        <div class="card__title">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></div>
+        <p class="card__text">Take a Sunday Drive in the city of your choice! As you take in the scenery, try to think admire the cultures of each location. See how the leadership and culture directly corelate into the prosperity of their people and lands.</p>
+        <a href="https://virtualvacation.us/driver" class="btn btn--block card__btn">Begin Driving</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/walk'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--fence"></div>
+      <div class="card__content">
+        <div class="card__title">Walking Tour <i class="fa fa-user" aria-hidden="true"></i></div>
+        <p class="card__text">Take a stroll in over 50 cities around the worold! As you watch, admire and celebrate the differences of each culture. While taking in the sceneary, be reminded of how each nations culture and leadership affects the well being of the people.</p>
+        <a href="https://virtualvacation.us/walk" class="btn btn--block card__btn">Begin Walking</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/fly'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--record"></div>
+      <div class="card__content">
+        <div class="card__title">Airplane Flight <i class="fa fa-plane" aria-hidden="true"></i></div>
+        <p class="card__text">View the city of your choice from above and enjoy a magnificent sightseeing adventure. As you watch, think of the differences in culture, wealth, and prosperity in each country you view from above. Each skyline tells it's own story.</p>
+        <a href="https://virtualvacation.us/fly" class="btn btn--block card__btn">Begin Flying</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/livecam'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--flowers"></div>
+      <div class="card__content">
+        <div class="card__title">LIVE Footage and Camera <i class="fa fa-camera" aria-hidden="true"></i></div>
+        <p class="card__text">Click the box to view live footage from around the world. While viewing, you'll be able to see the true face and culture of people around the world. Have fun and admire the scenery!</p>
+        <a href="https://virtualvacation.us/livecam" class="btn btn--block card__btn">Watch in Realtime</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/monument'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--taj"></div>
+      <div class="card__content">
+        <div class="card__title">Monument Traveller <i class="fa fa-bank" aria-hidden="true"></i></div>
+        <p class="card__text">Take a walk in some of the worlds most famous monuments. Forget about the hassle of the city, just jump straight into the sightseeing. Maybe visit after quarantine ends?</p>
+        <a href="https://virtualvacation.us/driver" class="btn btn--block card__btn">Begin Walking</a>
+      </div>
+    </div>
+  </li>
+<!-- <li class="cards__item" onclick="window.location = 'https://virtualvacation.us/driver-pov'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--pov"></div>
+      <div class="card__content">
+        <div class="card__title">Driving POV <i class="fa fa-car" aria-hidden="true"></i></div>
+        <p class="card__text">Experience what it's like to take a drive in cities around the world. You'll be able to view the drivers hands and steering wheel. Recognize how some countries drive on the left side of the road, while others drive on the right.</p>
+        <a href="https://virtualvacation.us/walk" class="btn btn--block card__btn">Begin Driving</a>
+      </div>
+    </div>
+  </li> -->
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/guess'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--train"></div>
+      <div class="card__content">
+        <div class="card__title">City Guesser <i class="fa fa-random" aria-hidden="true"></i></div>
+        <p class="card__text">View unidentified footage from a random city around the world! Click a location on the map to guess where you think you are! Click below to begin playing the "game!"</p>
+        <a href="https://virtualvacation.us/guess" class="btn btn--block card__btn">Begin Guessing</a>
+      </div>
+    </div>
+  </li>
+
+</ul>
+
+<h1 style="font-size: 18px; margin-top: 1.2%; margin-bottom: 1.7%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-user" aria-hidden="true"></i> Help others see the world from home by sharing our website: <i class="fa fa-share-square" aria-hidden="true"></i>
+</h1>
+<!-- ShareThis BEGIN -->
+<div class="sharethis-inline-share-buttons" style="margin-left: 2%; margin-right: 2%; margin-top: 1%:"></div>
+<!-- ShareThis END -->
+<!-- <p class="p-lato" style="margin-bottom: -1%;"><a href="https://virtualvacation.us/">virtualvacation.us</a> &copy; 2020</p> -->
+<!-- <h1 style="font-size: 18px; margin-top: 3%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-user" aria-hidden="true"></i> Select a city to view LIVE:</h1>
+ --><div style="padding: 1% 1% 1% 1%;">
+        <!-- <button class="btn card__btn" style="margin-bottom: 3%; margin-left: 3%; margin-right: 3%; width: 70%;">Open Bulk Selector</button> -->
+</div>
+<hr>
+<footer class="container py-5">
+      <div class="row">
+<!--         <div class="col-12 col-md">
+          <i class="fa fa-street-view" aria-hidden="true" style="font-size: 35px;"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+          <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+        </div> -->
+                <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Inspired By <i class="fa fa-camera" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://www.geoguessr.com/">GeoGuessr</a></li>
+            <li><a class="text-muted" href="https://www.w3schools.com/w3css/w3css_cards.asp">W3 CSS Cards</a></li>
+            <li><a class="text-muted" href="https://codepen.io/mirandalwashburn/pen/MWawdxr">Modern Travel Cards</a></li>
+            <li><a class="text-muted" href="http://pursued.nemesys.hu/">Pursued Maps</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">New Releases <i class="fa fa-street-view" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://virtualvacation.us/guess">City Guesser <i class="fa fa-globe" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/walk">Walking Tour <i class="fa fa-users" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Cams <i class="fa fa-camera" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Share Us <i class="fa fa-share-square-o" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&text=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvirtualvacation.us%2Fguess">Facebook <i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&media=https%3A%2F%2Fvirtualvacation.us%2Fstatic%2Funsplash1.jpg&description=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Pinterest <i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvirtualvacation.us%2Fguess&title=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">LinkedIn <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+<!--         <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Business</a></li>
+            <li><a class="text-muted" href="#">Education</a></li>
+            <li><a class="text-muted" href="#">Government</a></li>
+            <li><a class="text-muted" href="#">Gaming</a></li>
+          </ul>
+        </div> -->
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">About <i class="fa fa-info" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://twitter.com/paul_mcb">Paul McBurney</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Our Mission</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Privacy</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+              <small style="color: #8c8c8c;">virtualvacation.us &copy; 2020</small>
+              <small style="color: #8c8c8c;"><br>By Paul McBurney Jr</small>
+
+    </footer>
+
+</div>
+
+<!--Content ends-->
+<!-- <footer>
+Hi
+</footer> -->
+    <style>
+
+    </style>
+    <script>
+        var randomLocationArr = [
+          "https://virtualvacation.us/walk",
+          "https://virtualvacation.us/driver",
+          "https://virtualvacation.us/monument",
+          "https://virtualvacation.us/walk",
+          "https://virtualvacation.us/driver",
+          "https://virtualvacation.us/fly",
+        ];
+
+        var randomMode = randomLocationArr[Math.floor(Math.random()*randomLocationArr.length)];
+        document.getElementById("randomer").href = randomMode
+    </script>
+  <script src="confetti.js"></script>
+  <script>confetti.start(750)</script>
+</body>
+
+</html>
