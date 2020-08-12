@@ -1487,7 +1487,7 @@ queryWithout = "TseEGOmBL_o"
         console.log(usa_lat_lon.length)
         var random_num = Math.floor(Math.random() * length) + 1
         // ran num selector abc
-        // random_num = 107
+        random_num = 107
         random_vid_id = usa_lst[random_num];
         random_lat_lon = usa_lat_lon[random_num]
         console.log(random_vid_id)
@@ -1861,7 +1861,7 @@ function makeaguess() {
     console.log(distance_between)
     //You can just keep adding markers
     guess_text = "<b>Cool!</b> You are <b>" + String(distance_between) + "</b> miles out!"
-    guess_text = "<b>Spot On!</b> You are correct!"
+    guess_text = "<b>Spot On!</b> Within 1 mile! 👍"
     //From documentation http://leafletjs.com/reference.html#polyline
     // create a red polyline from an arrays of LatLng points
     // var polyline = L.polyline(latlngs, {color: 'black', dashArray: '5,10'}).addTo(map);
