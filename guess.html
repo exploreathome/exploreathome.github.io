@@ -1699,7 +1699,7 @@ function invalidateSizeFunc(userinput) {
       map.remove();
     }
     document.getElementById('main-button').style.display='none'
-  map = L.map('mapid', {minZoom: 2}).setView([42.35, -71.08], 3);
+  map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
   // map.options.maxZoom = 3;
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: '',
@@ -1828,6 +1828,7 @@ function makeaguess() {
     var group = L.featureGroup(markerArray).addTo(map);
     map.fitBounds(group.getBounds(), {padding: [1000, 1000]});
     map.fitBounds(group.getBounds().pad(0.5));
+    map.fitBounds(group.getBounds(), {padding: L.point(20, 20)})
     var latlngs = Array();
 
     //Get latlng from first marker
