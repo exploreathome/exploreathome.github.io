@@ -381,6 +381,9 @@ a:hover {
 .card__image--fence {
   background-image: url(static/walking.jpg);
 }
+.card:hover {
+  transform: scale(1.02);
+}
 </style>
 <div class="content">
 
@@ -514,12 +517,12 @@ a:hover {
       </div>
     </div>
   </li>
-<li class="cards__item" onclick="loadVideoWithId('ODMWiKvk8E0?start=000005')" style="cursor: pointer;">
+<li class="cards__item" onclick="loadVideoWithId('z1obnaqPgMA?start=000211')" style="cursor: pointer;">
     <div class="card">
-      <div class="card__image lazyload" data-bgset="static/mumbai.jpeg"></div>
+      <div class="card__image lazyload" data-bgset="static/tokyo_live.jpeg"></div>
       <div class="card__content">
-        <div class="card__title">Mumbai 🇮🇳</div>
-        <p class="card__text">Mumbai is one of the largest cities in the world and in India! Come visit Mumbai and see what its all about. Click now.</p>
+        <div class="card__title">Tokyo 🇯🇵</div>
+        <p class="card__text">Tokyo is one of the most populous cities in the world! It is also the capital of Japan and ranks 1st ahead of Osaka.</p>
         <a class="btn btn--block card__btn">Go Drive</a>
       </div>
     </div>
@@ -554,6 +557,16 @@ a:hover {
       </div>
     </div>
   </li>
+<li class="cards__item" onclick="loadVideoWithId('V8nBZbbJePs?start=000030')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/hk.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Hong Kong 🇭🇰</div>
+        <p class="card__text">Hong Kong is one of the biggest cities in terms of population. Many say that Hong Kong already looks cyberpunk!</p>
+        <a class="btn btn--block card__btn">Go Drive</a>
+      </div>
+    </div>
+  </li>
 <li class="cards__item" onclick="loadVideoWithId('a5fk6HCvKdA?start=000003')" style="cursor: pointer;">
     <div class="card">
       <div class="card__image lazyload" data-bgset="static/burj.jpeg"></div>
@@ -564,22 +577,12 @@ a:hover {
       </div>
     </div>
   </li>
-<li class="cards__item" onclick="loadVideoWithId('z1obnaqPgMA?start=000211')" style="cursor: pointer;">
+<li class="cards__item" onclick="loadVideoWithId('ODMWiKvk8E0?start=000005')" style="cursor: pointer;">
     <div class="card">
-      <div class="card__image lazyload" data-bgset="static/tokyo.jpeg"></div>
+      <div class="card__image lazyload" data-bgset="static/mumbai.jpeg"></div>
       <div class="card__content">
-        <div class="card__title">Tokyo 🇯🇵</div>
-        <p class="card__text">Tokyo is one of the most populous cities in the world! It is also the capital of Japan and ranks 1st ahead of Osaka.</p>
-        <a class="btn btn--block card__btn">Go Drive</a>
-      </div>
-    </div>
-  </li>
-<li class="cards__item" onclick="loadVideoWithId('V8nBZbbJePs?start=000030')" style="cursor: pointer;">
-    <div class="card">
-      <div class="card__image lazyload" data-bgset="static/hk.jpeg"></div>
-      <div class="card__content">
-        <div class="card__title">Hong Kong 🇭🇰</div>
-        <p class="card__text">Hong Kong is one of the biggest cities in terms of population. Many say that Hong Kong already looks cyberpunk!</p>
+        <div class="card__title">Mumbai 🇮🇳</div>
+        <p class="card__text">Mumbai is one of the largest cities in the world and in India! Come visit Mumbai and see what its all about. Click now.</p>
         <a class="btn btn--block card__btn">Go Drive</a>
       </div>
     </div>
@@ -747,7 +750,7 @@ a:hover {
       <div class="card__image card__image--record"></div>
       <div class="card__content">
         <div class="card__title">Airplane Flight <i class="fa fa-plane" aria-hidden="true"></i></div>
-        <p class="card__text">View the city of your choice from above and enjoy a magnificent sightseeing adventure. As you watch, think of the differences in culture, wealth, and prosperity in each country you view from above. Each skyline tells it's own story.</p>
+        <p class="card__text">View the city of your choice from above and enjoy a magnificent sightseeing adventure. As you watch, think of the differences in culture, wealth, and prosperity in each country you view from above. </p>
         <a href="https://virtualvacation.us/fly" class="btn btn--block card__btn">Begin Flying</a>
       </div>
     </div>
@@ -871,6 +874,9 @@ Hi
   }
   .vid-info h1 {
     margin-bottom: 0.2rem;
+  }
+  .video-foreground, .video-background iframe {
+    transform: scale(1.1);
   }
 }
 @media all and (max-width: 500px) {
