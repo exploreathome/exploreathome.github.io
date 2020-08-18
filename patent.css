@@ -1,0 +1,373 @@
+html {
+	/*scroll-behavior: smooth;*/
+	font-family: 'Bebas Neue', cursive;
+  	height: 100%;
+}
+
+body {
+	font-family: 'Bebas Neue', cursive;
+	height: 100%;
+}
+nav {
+	text-shadow:
+        0.02em 0 white,
+        0 0.02em white,
+        -0.02em 0 white,
+        0 -0.02em white;
+}
+
+
+.nav-link {
+	font-size: 26.5px;
+}
+
+.smaller-nav-link {
+	font-size: 26.5px;
+}
+
+.website-branding {
+	font-size: 26.5px;
+}
+
+a:hover {
+  transform: scale(1.02);
+}
+
+
+@keyframes upanddown {
+	45% {
+    	transform: translateY(-20%);
+  	}
+  	100% {
+    	transform: translateY(0);
+  	}
+}
+.main-tag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  min-height: 350px;
+	background: rgb(10,51,68);
+	background: linear-gradient(90deg, rgba(10,51,68,1) 0%, rgba(26,40,42,1) 50%, rgba(18,74,96,1) 100%);
+  height: 70vh;
+}
+
+@media only screen and (max-device-width: 500px) {
+	.main-tag {
+		height: 65vh;
+	}
+}
+
+.main-child {
+	text-align: center;
+	color: white;
+	text-shadow:
+        0.02em 0 black,
+        0 0.02em black,
+        -0.02em 0 black,
+        0 -0.02em black;
+  margin-top: 5em;
+}
+
+.title-tag-h1 {
+	font-size: 60px;
+}
+.secondary-tag-p {
+	font-size: 26.5px;
+}
+
+.secondary-tag-h1 {
+	margin-bottom: 1.7%;
+	font-size: 42px;
+}
+
+.div--information {
+	margin-top: 2%;
+}
+
+.text-center {
+	text-align: center;
+}
+@media only screen and (max-width: 600px) {
+	.title-tag-h1 {
+		font-size: 500px;
+	}
+	.secondary-tag-p {
+		font-size: 35px;
+	}
+}
+
+.scroll-indicator {
+	animation: upanddown 1.5s ease infinite;
+}
+
+.btn-read-more:hover {
+	color: white;
+	text-decoration: none;
+}
+.btn-learn-more:hover {
+	color: white;
+	text-decoration: none;
+}
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  margin: 1.5% 0;
+  margin-top: -0%;
+  color: white;
+  font-weight: normal;
+  font-size: 20px;
+  background: #007ece;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 2px;
+  padding: 0.6em 0.6em 0.6em 0.6em;
+}
+.btn:hover {
+	transform: scale(1.05);
+}
+.inner--icon {
+	font-size: 90px;
+}
+
+.inner--text {
+	margin-top: -1em;
+}
+
+.grid {
+  display: flex;                       
+  flex-wrap: wrap;                     
+  justify-content: space-around; 
+}
+/*TRBL*/
+.grid-item {
+  flex: 0 0 32%;                      
+  height: 24em;
+  margin-bottom: 5px;
+  background: #f2f2f2;
+  border: 2px solid #1a282a;
+  border-radius: 5px;
+  padding: 0% 2% 2% 2%;
+}
+
+@media (max-width: 1000px){
+	.grid-item {
+		height: 28.5em;
+	}
+  .del-on-mobile { 
+    display: none;
+  }
+  #toast-n {
+  font-family: 'Roboto';
+  position: fixed;
+  max-width: 700px;
+  min-width: 200px;
+  background: rgba(236, 240, 241, 1);
+  border: 2px solid black;
+  padding: 1em;
+  bottom: 0;
+  margin-left: 0;
+  border-radius: 5px;
+  z-index: 100000;
+  bottom: 0;
+  left: 0;
+  transform: scale(1.9);
+  transform-origin: bottom left;
+  }
+  .btn-learn-more {
+    font-size: 28px;
+  }
+  #main-logo {
+    display: none;
+  }
+  .nav-link {
+    font-size: 41px;
+    margin-left: 13px;
+    margin-right: 13px;
+  }
+  .card-title {
+    font-size: 29px;
+    color: black;
+  }
+  .card-text {
+    font-size: 26px;
+  }
+}
+
+/**/
+
+#container--
+{
+width:800px;
+margin:0 auto;
+/*background: blue;*/
+}
+
+#box--
+{
+width:100%;
+/*height:200px;*/
+text-align:left;
+}
+
+.information--header {
+	font-family: 'Roboto';
+	font-size: 35px;
+	color: #007ece;
+	font-weight: bold;
+}
+.information--text {
+  /*text-align: justify;*/
+  font-family: 'Roboto';
+  font-size: 18px;
+}
+.learnmore--link {
+	color: #007ece;
+}
+.learnmore--link:hover {
+	color: #007ece;
+}
+.full-image {
+	width: 100%;
+	border-radius: 5px;
+	margin-top: 4em;
+	margin-bottom: 4em;
+	border: 4px solid darkgrey;
+}
+@media (max-width: 1000px){
+	.information--header {
+		font-size: 50px;
+	}
+	.information--text {
+	  font-size: 30px;
+	}
+	.title-tag-h1 {
+		font-size: 115px;
+	}
+	.secondary-tag-p {
+		font-size: 32px;
+	}
+}
+/*.ending--container {
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
+}*/
+/*..ending--container-tag {
+	width: 100%;
+	height: 6vh;
+	margin-top: 3em;
+	background-color: #cccccc;
+	vertical-align: middle;
+}*/
+/*.information--text:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+
+}*/
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 900px;
+}
+.ending--container {
+  font-family: 'Roboto';
+  margin-top: 7em;
+  background: #2d2b2a;
+  color: white;
+  padding: 2em 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.ending--container ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ending--container ul li {
+  display: inline-block;
+}
+.ending--container ul li a {
+  display: block;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-top: 0.5em;
+  font-size: 1em;
+  text-decoration: none;
+  color: white;
+  opacity: 0.7;
+}
+.ending--container ul li a:hover {
+  transform: scale(1.05);
+  color: #cccccc;
+}
+.ending--h2 {
+	color: white;
+}
+
+#toast-n {
+  font-family: 'Roboto';
+  position: fixed;
+  max-width: 350px;
+  min-width: 200px;
+  background: rgba(236, 240, 241, 1);
+  border: 2px solid black;
+  padding: 1em;
+  bottom: 0;
+  margin-left: 0;
+  border-radius: 5px;
+  z-index: 100000;
+}
+
+
+
+#toast-n .toast-n-child {
+  color: #464646;
+  right: 8px;
+  top: 0px;
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+@media all and (max-width: 900px) {
+	#google-translate-element {
+		width: 500px;
+    transform: scale(2.05);
+	}
+}
+.carousel-inner {
+    border: 4px solid darkgrey;
+    border-radius: 5px;
+}
+
+/*.caroimage {
+  opacity: 1;
+}
+.caroimage {
+  filter: brightness(98%);
+}
+.caroimage:hover {
+  filter: brightness(50%);
+}*/
+.carolol:hover .caroimage {
+  filter: brightness(50%);
+  z-index: -10;
+}
+/*#google_translate_element{width:300px;float:right;text-align:right;display:block}*/
+.goog-te-banner-frame.skiptranslate { display: none !important;} 
+body { top: 0px !important; }
+#goog-gt-tt{display: none !important; top: 0px !important; } 
+.goog-tooltip skiptranslate{display: none !important; top: 0px !important; } 
+.activity-root { display: hide !important;} 
+.status-message { display: hide !important;}
+.started-activity-container { display: hide !important;}
