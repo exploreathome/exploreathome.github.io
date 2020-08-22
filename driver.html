@@ -26,6 +26,7 @@
     <meta property="og:title" content="Virtual Driving Tour" />
     <meta property="og:image" content="https://virtualvacation.us/static/beachimagelogo.png" />
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
 <script>
@@ -169,10 +170,14 @@ p {
 
 
 <script>
-// history.pushState(null, null, document.URL);
-// window.addEventListener('popstate', function () {
-//     history.pushState(null, null, document.URL);
-// });
+// history.pushState(null, null, 'https://twitter.com/hello');
+
+
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+    history.pushState(null, null, document.URL);
+});
+
 </script>
 
 
@@ -497,7 +502,7 @@ a:hover {
       </div>
     </div>
   </li>
-<li class="cards__item" onclick="loadVideoWithId('AHt2RoA9W7U?start=000032')" style="cursor: pointer;">
+<li class="cards__item" onclick="loadVideoWithId('d4tXAY-y5Ag?start=001365')" style="cursor: pointer;">
     <div class="card">
       <div class="card__image lazyload" data-bgset="static/berlin.jpeg"></div>
       <div class="card__content">
