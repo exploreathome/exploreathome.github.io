@@ -880,9 +880,6 @@ Hi
         0 -0.13em rgba(1, 96, 116, 1);
     text-transform: uppercase;  }
 }
-#main-button2 {
-  display: none;
-}
 </style>
     <!-- <input type="hidden" id="refresh" value="no"> -->
     <div class="video-background" id="vid-bac" style="z-index: 100000000;">
@@ -912,19 +909,18 @@ Hi
         <!-- onclick="history.go(0);" -->
         <center>
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
-      <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none';" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fa fa-map-marker"></i></a></p>
       <!-- The Modal -->
   <div id="id01" class="w3-modal" style="">
  <div class="w3-modal-content w3-card-4 w3-animate-zoom">
   
   <header class="w3-container w3-blue" id="o-c"> 
-   <span onclick="removebtnkeepmap()" 
+   <span onclick="removebtn()" 
    class="w3-button w3-blue w3-display-topright" id="x-out">&times;</span>
    <h4 id="map-prompter">Click Map To Guess <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></h4>
   </header>
   <header class="w3-container w3-blue" id="f-c"> 
-   <span onclick="removebtnkeepmap()" 
+   <span onclick="removebtn()" 
    class="w3-button w3-blue w3-display-topright">&times;</span>
    <h4 id="map-prompter">Click Map To Guess <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></h4>
   </header>
@@ -948,7 +944,7 @@ Hi
    <a class="w3-button w3-right w3-green w3-border" 
    onclick="makeaguess()" style="margin-left: 1em;" id="guess-button-id">Guess</a>
    <a class="w3-button w3-left w3-red w3-border" 
-   onclick="removebtnkeepmap()" style="" id="close-button-id">Close</a>
+   onclick="removebtn()" style="" id="close-button-id">Close</a>
   </div>
   <div class="w3-container w3-light-grey w3-padding" id="future-c">
    <a class="w3-button w3-right w3-green w3-border" 
@@ -981,7 +977,7 @@ Hi
     </div>
   </div> -->
     </center>
-          <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.go(0); document.getElementById('main-button2').style.display='none'" style="cursor: pointer;">Go Back <i class="fa fa-arrow-left"></i></a></p>
+          <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.go(0);" style="cursor: pointer;">Go Back <i class="fa fa-arrow-left"></i></a></p>
 
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
@@ -1810,8 +1806,6 @@ function continueGame() {
 
 var markerArray;
 function makeaguess() {
-  document.getElementById("main-button2").style.display = "none"
-  document.getElementById("main-button").style.display = "block"
   console.log(globallat)
   console.log(globallon)
   console.log('-')
@@ -1983,14 +1977,6 @@ function removebtn() {
   document.getElementById('id01').style.display='none'
   document.getElementById('main-button').style.display='block'
   document.getElementById('main-button').onclick = "showIt"
-  // Currently making fix because map not saving after x'ing it out
-}
-
-function removebtnkeepmap() {
-  document.getElementById('id01').style.display='none'
-  document.getElementById('main-button').style.display='none'
-  document.getElementById('main-button').onclick = "showIt"
-  document.getElementById('main-button2').style.display='block'
 }
 
 function distance_func(lat1, lon1, lat2, lon2, unit) {
