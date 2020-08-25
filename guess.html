@@ -207,6 +207,7 @@ p {
 
 
 <script>
+enableScroll()
 // history.pushState(null, null, document.URL);
 // window.addEventListener('popstate', function () {
 //     history.pushState(null, null, document.URL);
@@ -1414,6 +1415,7 @@ queryWithout = "TseEGOmBL_o"
       var ranint;
       
       function loadVideoWithId(input_id) {
+        disableScroll()
         ranint = 40
         // var secs = input_id.slice(input_id.length - 6)
         // console.log(secs)
@@ -1978,6 +1980,22 @@ function showIt() {
   console.log('showitran')
   document.getElementById('id01').style.display='block'
 }
+
+
+function disableScroll() { 
+    // Get the current page scroll position 
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop; 
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
+  
+        // if any scroll is attempted, set this to the previous value 
+        window.onscroll = function() { 
+            window.scrollTo(scrollLeft, scrollTop); 
+        }; 
+} 
+  
+function enableScroll() { 
+    window.onscroll = function() {}; 
+} 
 
 function removebtn() {
   document.getElementById('id01').style.display='none'
