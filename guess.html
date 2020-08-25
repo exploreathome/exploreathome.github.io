@@ -2009,6 +2009,7 @@ function removebtnkeepmap() {
   document.getElementById('main-button').style.display='none'
   document.getElementById('main-button').onclick = "showIt"
   document.getElementById('main-button2').style.display='block'
+  setTimeout(function(){ map.invalidateSize()}, 500);
 }
 
 function distance_func(lat1, lon1, lat2, lon2, unit) {
