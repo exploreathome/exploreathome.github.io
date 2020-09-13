@@ -1751,10 +1751,7 @@ function invalidateSizeFunc(userinput) {
 //     // worldCopyJump: false,
 //     accessToken: 'your.mapbox.access.token'
 // }).addTo(map);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2l0eWd1ZXNzZXJhZG1pbiIsImEiOiJja2VraXlhd3QwMW5rMnNwaWN1YjA3cWY0In0.cXY9zN5AfmkcWxKcmdfzVA', {
-    tileSize: 512,
-    id: 'mapbox/outdoors-v11',
-    zoomOffset: -1,
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
   // map.fitWorld();
