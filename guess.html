@@ -1007,21 +1007,21 @@ position: fixed;
 <div id="id02" class="w3-modal" style="z-index: 100000">
     <div class="w3-modal-content w3-animate-top w3-card-4">
       <header class="w3-container w3-blue"> 
-        <span onclick="document.getElementById('id02').style.display='none'" 
+        <span onclick="document.getElementById('id02').style.display='none'; document.getElementById('main-button').style.display = 'block';" 
         class="w3-button w3-display-topright">&times;</span>
         <h4 style="font-weight: bold;">We made a huge mistake... <i class="fa fa-frown-o" aria-hidden="true"></i></h4>
       </header>
       <div class="w3-container" style="text-align: left; margin-top: 5px;">
-        <p>On September 18th, Paul, the creator of City Guesser was hit with a <b><u>$1428.40 bill</u></b> for exceeding a Mapbox server limit. This occured after the site recieved an <b>influx of users</b> resulting in an excess of <b>3 million map</b> requests.</p>
+        <p>On September 17th, Paul, the creator of City Guesser was hit with a <b><u>$1428.40 bill</u></b> for exceeding a Mapbox server limit. This occured after the site recieved an <b>influx of users</b> resulting in an excess of <b>3 million map</b> requests.</p>
         <span>
         <img src="static/gfm4.png" class="w3-border" style="width: 50%; float: left;">
         <img src="static/gfm3.png" class="w3-border" style="width: 50%; float: left;">
       </span>
-      <p style="margin-top: 5px; text-align: left;">City Guesser does <b>not</b> display advertising, and as a result takes in <b>zero</b> revenue. Help keep City Guesser free by resolving these <b>debts</b>. As the sole creator of City Guesser, it means everything to me. <a style="color: limegreen;" href="https://www.gofundme.com/f/help-keep-city-guesser-afloat"><u>GoFundMe</u> ></a><br><i>Contact: paulmcburneyjr@gmail.com</i></p>
+      <p style="margin-top: 5px; text-align: left;">City Guesser does <b>not</b> display advertising, and as a result takes in <b>zero</b> revenue. Help me & keep City Guesser free by resolving these <b>debts</b>. As the sole creator of City Guesser, it means everything to me. <a style="color: limegreen;" href="https://www.gofundme.com/f/help-keep-city-guesser-afloat"><u>GoFundMe</u> ></a><br><i>Contact: paulmcburneyjr@gmail.com</i></p>
       </div>
       <footer class="w3-container w3-light-grey w3-padding">
         <a class="w3-button w3-left w3-red w3-border" 
-   onclick="document.getElementById('id02').style.display='none';" style="" id="close-button-id">Sorry</a>
+   onclick="document.getElementById('id02').style.display='none'; document.getElementById('main-button').style.display = 'block';" style="" id="close-button-id">Sorry</a>
    <a class="w3-button w3-right w3-green w3-border" 
    onclick="window.location = 'https://www.gofundme.com/f/help-keep-city-guesser-afloat';" style="" id="close-button-id">Donate</a>
       </footer>
@@ -1029,6 +1029,8 @@ position: fixed;
   </div>
 <script>
 document.getElementById("id02").style.display = "block"
+document.getElementById("main-button").style.display="none"
+
 </script>
 <!--   <div class="modal fade" id="myModal" style="z-index: 900000000000000000000000000;" onload="map.invalidateSize()">
     <div class="modal-dialog">
@@ -1864,6 +1866,10 @@ function toast2() {
 }
 var game_counter = 0;
 function continueGame() {
+  if (game_counter == 3) {
+    document.getElementById("id02").style.display = "block"
+    document.getElementById("main-button").style.display="none"
+  }
   game_counter = game_counter + 1;
   loadVideoWithId(stored_input_id)
   document.getElementById("id01").style.display = "none";
