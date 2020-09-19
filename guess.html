@@ -1869,10 +1869,6 @@ function toast2() {
 }
 var game_counter = 0;
 function continueGame() {
-  if (game_counter == 3) {
-    document.getElementById("id02").style.display = "block"
-    document.getElementById("main-button").style.display="none"
-  }
   game_counter = game_counter + 1;
   loadVideoWithId(stored_input_id)
   document.getElementById("id01").style.display = "none";
@@ -1884,6 +1880,14 @@ function continueGame() {
 
   document.getElementById('map-prompter').innerHTML = "Click Map To Guess <i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;'></i>"
   document.getElementById("x-out").style.display = "block";
+  if (game_counter == 4) {
+    document.getElementById("id02").style.display = "block"
+    document.getElementById("main-button").style.display="none"
+  }
+  if (game_counter == 10) {
+    document.getElementById("id02").style.display = "block"
+    document.getElementById("main-button").style.display="none"
+  }
   // toast2()
 } 
 
