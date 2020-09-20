@@ -1033,6 +1033,15 @@ Hi
                    0 -3px 0 rgba(1, 96, 116, 1),
                    0 3px 0 rgba(1, 96, 116, 1);*/
     text-transform: uppercase;  }
+  #info-forward-guess {
+    display: none;
+  }
+}
+#id02 {
+  display: none;
+}
+#back-button {
+  display: none;
 }
 </style>
     <div class="video-background" id="vid-bac" style="z-index: 100000000;">
@@ -1059,7 +1068,32 @@ Hi
                 <a href="#" id="nav-cta">Book now</a>
             </nav>
         </div> -->
-      <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.back();" style="cursor: pointer;">Go Back <i class="fa fa-arrow-left"></i></a></p>
+      <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="document.getElementById('id02').style.display = 'block'; document.getElementById('back-button-old').style.display = 'none'; document.getElementById('back-button').style.display='block';" style="cursor: pointer;" id="back-button-old">Go Back <i class="fa fa-arrow-left"></i></a></p>
+      <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.back()" style="cursor: pointer;" id="back-button">Go Back <i class="fa fa-arrow-left"></i></a></p>
+      <div id="id02" class="w3-modal" style="z-index: 100000;">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue"> 
+        <span onclick="document.getElementById('id02').style.display='none'; document.getElementById('main-button').style.display = 'block';" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h5 style="font-weight: bold;">Before you go... <i class="fa fa-frown-o" aria-hidden="true"></i></h5>
+      </header>
+      <div class="w3-container" style="text-align: left; margin-top: 5px; font-size: 13.5px;">
+        <p>On September 17th, Paul, the creator of virtualvacation.us was hit with a <b><u>$1428.40 bill</u></b> for exceeding a Mapbox server limit, regarding the City Guesser game/section of the website. This occured after the site recieved an <b>influx of users</b> after a YouTuber talked about us, resulting in an excess of <b>3 million</b> requests.</p>
+        <span>
+        <img src="static/gfm4.png" class="w3-border" style="width: 50%; float: left;">
+        <img src="static/gfm3.png" class="w3-border" style="width: 50%; float: left;">
+      </span>
+      <p style="margin-top: 5px; text-align: left; font-size: 13.5px;">We do <b>not</b> display advertising, and as a result take in <b>zero</b> revenue. I can't pay. Keep virtualvacation.us and its services free by <b>supporting us</b> financially. It means everything to me. <a style="color: limegreen;" href="https://www.gofundme.com/f/help-keep-city-guesser-afloat"><u>GoFundMe</u> ></a></p>
+      <p style="font-size: 11px;" id="info-forward-guess"><i class="fa fa-info" aria-hidden="true"></i><b>nfo:</b> City Guesser is a game within the Virtual Vacation website. <a href="https://virtualvacation.us/guess" style="color: limegreen;">Play it here.</a></p>
+      </div>
+      <footer class="w3-container w3-light-grey w3-padding">
+        <a class="w3-button w3-left w3-red w3-border" 
+   onclick="history.back();" style="" id="close-button-id">Go Back <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+   <a class="w3-button w3-right w3-green w3-border" 
+   onclick="window.location = 'https://www.gofundme.com/f/help-keep-city-guesser-afloat';" style="" id="close-button-id">Donate</a>
+      </footer>
+    </div>
+  </div>
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
