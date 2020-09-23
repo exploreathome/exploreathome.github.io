@@ -539,7 +539,7 @@ a:hover {
     </div>
   </li>
 
-<li class="xcards__item" id="ycard" onclick="loadVideoWithId('chi')" style="cursor: pointer;">
+<!-- <li class="xcards__item" id="ycard" onclick="loadVideoWithId('chi')" style="cursor: pointer;">
     <div class="xcard">
       <div class="xcard__image lazyload" data-bgset="static/chinaemoji.jpg"></div>
       <div class="xcard__content">
@@ -548,8 +548,17 @@ a:hover {
         <a class="mybtn mybtn--block xcard__mybtn">Guess!</a>
       </div>
     </div>
+  </li> -->
+<li class="xcards__item" id="ycard" onclick="loadVideoWithId('ukn')" style="cursor: pointer;">
+    <div class="xcard">
+      <div class="xcard__image lazyload" data-bgset="static/unionjack.jpg"></div>
+      <div class="xcard__content">
+        <div class="xcard__title">England 🇬🇧</div>
+        <p class="xcard__text">Explore the depths of England and take a wild guess! Wales and Scotland are included.</p>
+        <a class="mybtn mybtn--block xcard__mybtn">Guess!</a>
+      </div>
+    </div>
   </li>
-
 <li class="xcards__item" id="ycard" onclick="loadVideoWithId('fra')" style="cursor: pointer;">
     <div class="xcard">
       <div class="xcard__image lazyload" data-bgset="static/frenchflag.jpg"></div>
@@ -1544,13 +1553,17 @@ queryWithout = "TseEGOmBL_o"
           ranint = 60
           usa_lst = ["6qGiXY1SB68?start=000019", "6qGiXY1SB68?start=000019", "6qGiXY1SB68?start=000112", "6qGiXY1SB68?start=000942", "vHr4qSQ-5XU?start=000020", "vHr4qSQ-5XU?start=000423", "2PqkuJMbHaw?start=000049", "MKcBBVimth0?start=001312", "_dWyKj7I9JM?start=000020", "Et7O5-CzJZg?start=000030", "wa12902YOnc?start=000013", "vA9GWzLLmxg?start=000005", "VYVKQ2OIzh0?start=000001", "VYVKQ2OIzh0?start=003965", "rAeN7TdGq4o?start=000009", "cHjKckxsOCs?start=000315", "cHjKckxsOCs?start=005400", "re-wjNxH4Jw?start=000295", "TGFPQhPuayE?start=000065", "e1J6DYeJFas?start=000008", "PE-P-nCSxHc?start=000734", "MRsTpmecPzg?start=000015", "LA4_2H_qBp4?start=000008", "9UMn6CVizOw?start=000007", "xFPEt9omvrU?start=000048", "xFPEt9omvrU?start=000260"]
           usa_lat_lon = [[35.659111, 139.700394], [35.659111, 139.700394], [35.659458, 139.700552], [35.659937, 139.701672], [35.698048, 139.707406], [35.693908, 139.704671], [35.698619, 139.772663], [35.669152, 139.696320], [35.659614, 139.700431], [35.695583, 139.702698], [35.692659, 139.699582], [34.662975, 135.502283], [34.733561, 135.500193], [34.734830, 135.501719], [34.995893, 135.781507], [38.252057, 140.855769], [38.258976, 140.883444], [35.906912, 139.482416], [35.641952, 139.702048], [35.170512, 136.880456], [34.297297, 132.318128], [32.813273, 130.704237], [32.746753, 129.879483], [34.395828, 132.453814], [43.055377, 141.353386], [43.057038, 141.351138]]
+        } else if (input_id == "ukn") {
+          ranint = 21
+          usa_lst = ["f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000213", "EAV0Gl6vJsw?start=000113", "FSIbzC6qGyU?start=000010", "zIqAI8WJhi0?start=000001", "zIqAI8WJhi0?start=001046", "CJyhMaH5WRs?start=000036", "DAVd95WXCoA?start=000004", "jKJ2zDSYns8?start=000016", "jKJ2zDSYns8?start=001794", "G0fWvIxy88A?start=000589", "p-Ld8dhWKxA?start=000057", "zxbaZVPybuc?start=000012", "rvoQ9fLXf-Y?start=000008", "aX3solS4LIc?start=000016", "klGjMHwCbs4?start=000008", "E5AnaDiy2C8?start=000015", "utohtmBGLqg?start=000052", "abIHlI083CU?start=000008", "abIHlI083CU?start=002899", "rvoQ9fLXf-Y?start=001647", "E5AnaDiy2C8?start=001525", "aX3solS4LIc?start=001830", "LhODRz8W2vI?start=000044", "p-Ld8dhWKxA?start=001644", "Ok9KlSp7ouo?start=000017", "_xqSPG7xFJA?start=000001", "tCqeAUFRc_k?start=000002"]
+          usa_lat_lon = [[51.514223, -0.151348], [51.514223, -0.151348], [51.514609, -0.147300], [51.515256, -0.141923], [51.512714, -0.123622], [53.481890, -2.246513], [53.482138, -2.244276], [53.481121, -2.237945], [51.510125, -0.134590], [53.406509, -2.983006], [53.402120, -2.989976], [53.961462, -1.082405], [53.744167, -0.339499], [50.910312, -1.404739], [52.477067, -1.892532], [51.458471, -2.593007], [52.205088, 0.118993], [51.481007, -3.185849], [55.856354, -4.257498], [50.823676, -0.143565], [50.820779, -0.144928], [52.477550, -1.897276], [51.483559, -3.174913], [51.454934, -2.593103], [51.068747, -1.795757], [53.742757, -0.337896], [53.798282, -1.538016], [53.191376, -2.885437], [53.342174, -1.778868]]
         }
         var length = usa_lst.length - 1;
         console.log(usa_lst.length)
         console.log(usa_lat_lon.length)
         var random_num = Math.floor(Math.random() * length) + 1
         // ran num selector abc
-        // random_num = 458
+        // random_num = 24
         random_vid_id = usa_lst[random_num];
         random_lat_lon = usa_lat_lon[random_num]
         console.log(random_vid_id)
