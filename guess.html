@@ -235,9 +235,12 @@ p {
           <li class="nav-item active" id="homeitem">
             <a class="nav-link" href="https://virtualvacation.us/">Home <i class="fa fa-home" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active" id="startitem">
-            <a class="nav-link" onclick="loadVideoWithId('wor')">Start <i class="fa fa-phone" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="https://ko-fi.com/cityguesser">Donate <i class="fa fa-coffee" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
+          <!-- <li class="nav-item active" id="startitem">
+            <a class="nav-link" onclick="loadVideoWithId('wor')">Start <i class="fa fa-phone" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li> -->
           <li class="nav-item active" id="gobackitem">
             <a class="nav-link" href="https://virtualvacation.us/guess">Go Back <i class="fa fa-caret-square-o-left" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
           </li>
@@ -870,6 +873,27 @@ Hi
         0 -0.13em rgba(1, 96, 116, 1);
   text-transform: uppercase;
 }
+.back-btn2 {
+  position: fixed;
+  top: 0.4%;
+  right: 0.5%;
+  color: white;
+  font-weight: bold;
+  /*text-shadow: -2px -2px 0 rgba(1, 96, 116, 1),
+               2px -2px 0 rgba(1, 96, 116, 1),
+               -2px 2px 0 rgba(1, 96, 116, 1),
+               2px 2px 0 rgba(1, 96, 116, 1),
+               -3px 0 0 rgba(1, 96, 116, 1),
+               3px 0 0 rgba(1, 96, 116, 1),
+               0 -3px 0 rgba(1, 96, 116, 1),
+               0 3px 0 rgba(1, 96, 116, 1);*/
+  text-shadow:
+        0.13em 0 rgba(1, 96, 116, 1),
+        0 0.13em rgba(1, 96, 116, 1),
+        -0.13em 0 rgba(1, 96, 116, 1),
+        0 -0.13em rgba(1, 96, 116, 1);
+  text-transform: uppercase;
+}
 @media screen and (max-width: 676px) {
   .back-btn {
     position: fixed;
@@ -892,7 +916,29 @@ Hi
         -0.13em 0 rgba(1, 96, 116, 1),
         0 -0.13em rgba(1, 96, 116, 1);
     text-transform: uppercase;  }
+  .back-btn2 {
+    position: fixed;
+    font-weight: bold;
+    top: 0;
+    right: 1.2%;
+    color: white;
+    font-size: 10px;
+/*    text-shadow: -2px -2px 0 rgba(1, 96, 116, 1),
+                   2px -2px 0 rgba(1, 96, 116, 1),
+                   -2px 2px 0 rgba(1, 96, 116, 1),
+                   2px 2px 0 rgba(1, 96, 116, 1),
+                   -3px 0 0 rgba(1, 96, 116, 1),
+                   3px 0 0 rgba(1, 96, 116, 1),
+                   0 -3px 0 rgba(1, 96, 116, 1),
+                   0 3px 0 rgba(1, 96, 116, 1);*/
+    text-shadow:
+        0.13em 0 rgba(1, 96, 116, 1),
+        0 0.13em rgba(1, 96, 116, 1),
+        -0.13em 0 rgba(1, 96, 116, 1),
+        0 -0.13em rgba(1, 96, 116, 1);
+    text-transform: uppercase;  }
 }
+
 #main-button2 {
   display: none;
 }
@@ -995,7 +1041,7 @@ Hi
   </div> -->
     </center>
           <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.go(0); document.getElementById('main-button2').style.display='none'" style="cursor: pointer;">Go Back <i class="fa fa-arrow-left"></i></a></p>
-
+          <p class="back-btn2" style="z-index: 900000000000000000000000000"><a href="https://ko-fi.com/cityguesser" style="cursor: pointer;">Donate <i class="fa fa-coffee"></i></a></p>
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
