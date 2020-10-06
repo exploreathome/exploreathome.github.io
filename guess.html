@@ -643,9 +643,12 @@ a:hover {
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="border-radius: 10px; margin-left: 5%; margin-right: 5%;">
       <div class="col-md-5 p-lg-5 mx-auto my-5 shadowbox">
 
-        <h3 class="display-4 font-weight-normal">No Moving ❌</h3>
-        <p class="lead font-weight-normal">Instead of choosing a country, just be sent to a random location around the world! One catch, you can't move.</p>
-        <a class="btn btn-primary btn-outline-secondary" style="color: #f2f2f2;" onclick="loadVideoWithId('nmo')">Random Location <i class="fa fa-street-view" aria-hidden="true"></i></a>
+        <h3 class="display-4 font-weight-normal">Challenges <i class="fa fa-wheelchair-alt" aria-hidden="true"></i></h3>
+        <p class="lead font-weight-normal">Instead of choosing a country, just be sent to a random location around the world! One catch, it's really challening.</p>
+        <a class="btn btn-primary btn-outline-secondary" style="color: #f2f2f2; margin-top: 5px;" onclick="loadVideoWithId('nmo')">No Moving Challenge<i class="fa fa-street-view" aria-hidden="true" style="margin-left: 5px;"></i></a>
+        <button type="button" class="btn btn-primary btn-outline-secondary" onclick="document.getElementById('id02').style.display='block'" style="color: #f2f2f2; margin-top: 5px;">
+  Time Limit Challenge <i class="fa fa-clock-o" aria-hidden="true" style="margin-left: 5px;"></i></button>
+
       </div>
       <div class="product-device box-shadow d-none d-md-block"></div>
       <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
@@ -1057,6 +1060,88 @@ Hi
 
 }
 </style>
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue"> 
+        <span onclick="document.getElementById('id02').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h3>Time Challenge <i class="fa fa-clock-o" aria-hidden="true" style="margin-left: 5px;"></i></h3>
+      </header>
+      <div class="w3-container">
+        <p style="font-size: 16px;" class="w3-margin-top">Video will stop playing after this many seconds: <i class="fa fa-arrow-down" aria-hidden="true" style="margin-left: 5px;"></i></p>
+        <input class="w3-input w3-border" id="opt-form-seconds" type="number" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, 3);" placeholder="Enter Time in Seconds" value="100">
+        <p style="font-size: 16px;" class="w3-margin-top">Select the mode you want to play. <i class="fa fa-television" aria-hidden="true" style="margin-left: 5px;"></i></p>
+<select class="w3-select w3-border w3-margin-bottom" name="option-form" id="opt-form">
+<!--   <option value="wor" disabled selected>Click me!</option>
+ -->  <option value="wor" selected>Worldwide 🌎</option>
+  <option value="usa">USA 🇺🇸</option>
+  <option value="eur">Europe 🇪🇺</option>
+  <option value="mon">Monuments 🏛️</option>
+  <option value="can">Canada 🇨🇦</option>
+  <option value="rus">Russia 🇷🇺</option>
+  <option value="ukn">UK 🇬🇧</option>
+  <option value="fra">France 🇫🇷</option>
+  <option value="jap">Japan 🇯🇵</option>
+  <option value="ind">India 🇮🇳</option>
+  <option value="bra">Brazil 🇧🇷</option>
+  <option value="aus">Australia 🇦🇺</option>
+  <option value="arg">Argentina 🇦🇷</option>
+  <option value="nmo">No Moving ❌</option>
+  <option value="asi">Asia 🌏</option>
+
+</select>
+<!--         <div class="w3-left">
+        <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+        <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option2" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+        <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option3" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+</div> -->
+<!--  <div class="w3-left" style="margin-left: 1em;">
+        <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+        <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option2" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+        <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option3" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+</div> -->
+      </div>
+      <footer class="w3-container w3-light-grey w3-padding">
+        <button class="w3-button w3-left w3-red w3-border" style="border-radius: 1px;" onclick="document.getElementById('id02').style.display = 'none';">Close</button>
+        <button class="w3-button w3-right w3-green w3-border" style="border-radius: 1px;" onclick="timeChallengeSubmission()">Begin Challenge</button>
+      </footer>
+    </div>
+  </div>
+<div id="controls-360" class="360-degree">
+<center><span id="100-decrement">
+100
+</span></center>
+</div>
 <div id="loading-toast">
   <div class="progress">
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">Loading Video...</div>
@@ -1563,65 +1648,31 @@ queryWithout = "TseEGOmBL_o"
           usa_lst = ["f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000213", "EAV0Gl6vJsw?start=000113", "FSIbzC6qGyU?start=000010", "zIqAI8WJhi0?start=000001", "zIqAI8WJhi0?start=001046", "CJyhMaH5WRs?start=000036", "DAVd95WXCoA?start=000004", "jKJ2zDSYns8?start=000016", "jKJ2zDSYns8?start=001794", "G0fWvIxy88A?start=000589", "p-Ld8dhWKxA?start=000057", "zxbaZVPybuc?start=000012", "rvoQ9fLXf-Y?start=000008", "aX3solS4LIc?start=000016", "klGjMHwCbs4?start=000008", "E5AnaDiy2C8?start=000015", "utohtmBGLqg?start=000052", "abIHlI083CU?start=000008", "abIHlI083CU?start=002899", "rvoQ9fLXf-Y?start=001647", "E5AnaDiy2C8?start=001525", "aX3solS4LIc?start=001830", "LhODRz8W2vI?start=000044", "p-Ld8dhWKxA?start=001644", "Ok9KlSp7ouo?start=000017", "_xqSPG7xFJA?start=000001", "tCqeAUFRc_k?start=000002", "s14Q7cT5_KI?start=000007", "mlG5mZueln8?start=000010", "lYSsP5WgVWI?start=000001", "u_KU5B3JS2A?start=000001", "S0S17xIEqD8?start=000001", "2fRYpyDZ-Ck?start=000001", "cfbgfL8ShHU?start=000001"]
           usa_lat_lon = [[51.514223, -0.151348], [51.514223, -0.151348], [51.514609, -0.147300], [51.515256, -0.141923], [51.512714, -0.123622], [53.481890, -2.246513], [53.482138, -2.244276], [53.481121, -2.237945], [51.510125, -0.134590], [53.406509, -2.983006], [53.402120, -2.989976], [53.961462, -1.082405], [53.744167, -0.339499], [50.910312, -1.404739], [52.477067, -1.892532], [51.458471, -2.593007], [52.205088, 0.118993], [51.481007, -3.185849], [55.856354, -4.257498], [50.823676, -0.143565], [50.820779, -0.144928], [52.477550, -1.897276], [51.483559, -3.174913], [51.454934, -2.593103], [51.068747, -1.795757], [53.742757, -0.337896], [53.798282, -1.538016], [53.191376, -2.885437], [53.342174, -1.778868], [53.125761, -2.075282], [53.111095, -2.021443], [53.026100, -0.597654], [53.022445, -0.583874], [53.109786, -1.564628], [53.200954, -1.869341], [53.078287, -0.813248]]
         } else if (input_id == "nmo") {
-          usa_lst = ["9KBx0keOg5s?start=000060", "9KBx0keOg5s?start=000060", "UZn1MrjL4pE?start=000017", "FiVoaD1tdVw?start=000021", "ILBDMisz5K8?start=000009", "M9cJMXmQ_ZU?start=000019", "Ll1xRGhd3YU?start=000141", "4lYfSW5Pr-U?start=000009", "fz5H7ObqXj4?start=000060", "-SG5kkMqPNE?start=000018", "2H3jSgTbugc?start=000017", "SKjpx43BEEc?start=000023", "yr2vLq0B-vs?start=000029", "BE1A-kb0X2o?start=000049", "jSQHDY5D7Tc?start=000151", "NpTLbHu8m08?start=000001", "4Yg9QUiPAHg?start=000010", "ZpoyRpZ70m4?start=003780", "O2WBotXOIZs?start=000060", "xDHGMlYSRME?start=000020", "WGHYQG0KgiQ?start=000060", "O7XsXDUp9Ko?start=000059", "he-VxB01QKw?start=000004", "qVi2Otx28Kc?start=000010", "6cmEWXJuBTk?start=000054", "Ls1UZ_8dG44?start=000018", "PB6qyS63_e8?start=000004", "uVwb9psE_9o?start=000060", "L0yOgsmElpg?start=000060", "9x_qosfdo9Q?start=000060", "tyBpKdxfbEA?start=000060", "qjLzFSFfOpA?start=000001", "5hjAf57y1P4?start=000840", "S8DH9QqVvqo?start=000020", "cR3MEbdyFwU?start=000060", "8u6DXanmX_8?start=000060", "jJ2uuHcHCjA?start=000060", "Ntm9BDWtqS8?start=000060"]
-          usa_lat_lon = [[40.710984, -74.005342], [40.710984, -74.005342], [33.848173, -84.359893], [34.050574, -118.259088], [35.545296, 139.767977], [34.048267, -118.251388], [37.514228, 126.955201], [37.563040, 126.982019], [47.593699, -122.318519], [35.292078, 25.441844], [-22.949418, -43.179281], [-22.987815, -43.224238], [37.761562, -122.434956], [48.844106, 2.291601], [51.510053, -0.134973], [25.197331, 55.274294], [37.808868, -122.471736], [47.611365, -122.349986], [43.707152, -79.397850], [59.322728, 18.069156], [-22.958755, -43.173122], [18.273143, 109.479341], [50.070693, 19.921358], [40.771134, -74.016140], [35.697511, 139.610369], [48.863344, 2.293766], [52.362285, 4.898789], [37.587041, 127.004241], [49.278982, -123.147815], [49.277920, -123.142815], [49.331001, -123.266513], [13.741014, 100.562151], [45.485842, -73.816819], [52.457897, 5.033325], [31.242849, 121.482060], [21.277214, -157.825723], [21.277349, -157.830905], [49.575235, 25.645600]]
+          usa_lst = ["9KBx0keOg5s?start=000060", "9KBx0keOg5s?start=000060", "UZn1MrjL4pE?start=000017", "FiVoaD1tdVw?start=000021", "ILBDMisz5K8?start=000009", "M9cJMXmQ_ZU?start=000019", "Ll1xRGhd3YU?start=000141", "4lYfSW5Pr-U?start=000009", "fz5H7ObqXj4?start=000060", "-SG5kkMqPNE?start=000018", "2H3jSgTbugc?start=000017", "SKjpx43BEEc?start=000023", "yr2vLq0B-vs?start=000029", "BE1A-kb0X2o?start=000049", "jSQHDY5D7Tc?start=000151", "NpTLbHu8m08?start=000001", "4Yg9QUiPAHg?start=000010", "ZpoyRpZ70m4?start=003780", "O2WBotXOIZs?start=000060", "xDHGMlYSRME?start=000020", "WGHYQG0KgiQ?start=000060", "O7XsXDUp9Ko?start=000059", "he-VxB01QKw?start=000004", "qVi2Otx28Kc?start=000010", "6cmEWXJuBTk?start=000054", "Ls1UZ_8dG44?start=000018", "PB6qyS63_e8?start=000004", "uVwb9psE_9o?start=000060", "L0yOgsmElpg?start=000060", "9x_qosfdo9Q?start=000060", "tyBpKdxfbEA?start=000060", "qjLzFSFfOpA?start=000001", "5hjAf57y1P4?start=000840", "S8DH9QqVvqo?start=000020", "cR3MEbdyFwU?start=000060", "8u6DXanmX_8?start=000060", "jJ2uuHcHCjA?start=000060", "Ntm9BDWtqS8?start=000060", "c0GlCjZbVzk?start=000126", "hSIYGZhRGd4?start=000014", "8AZ24XEbV_8?start=001020"]
+          usa_lat_lon = [[40.710984, -74.005342], [40.710984, -74.005342], [33.848173, -84.359893], [34.050574, -118.259088], [35.545296, 139.767977], [34.048267, -118.251388], [37.514228, 126.955201], [37.563040, 126.982019], [47.593699, -122.318519], [35.292078, 25.441844], [-22.949418, -43.179281], [-22.987815, -43.224238], [37.761562, -122.434956], [48.844106, 2.291601], [51.510053, -0.134973], [25.197331, 55.274294], [37.808868, -122.471736], [47.611365, -122.349986], [43.707152, -79.397850], [59.322728, 18.069156], [-22.958755, -43.173122], [18.273143, 109.479341], [50.070693, 19.921358], [40.771134, -74.016140], [35.697511, 139.610369], [48.863344, 2.293766], [52.362285, 4.898789], [37.587041, 127.004241], [49.278982, -123.147815], [49.277920, -123.142815], [49.331001, -123.266513], [13.741014, 100.562151], [45.485842, -73.816819], [52.457897, 5.033325], [31.242849, 121.482060], [21.277214, -157.825723], [21.277349, -157.830905], [49.575235, 25.645600], [29.424318, -98.488337], [40.781854, -73.967622], [51.503435, -0.072609]]
         }
         var length = usa_lst.length - 1;
-        console.log(usa_lst.length)
-        console.log(usa_lat_lon.length)
         var random_num = Math.floor(Math.random() * length) + 1
         // ran num selector abc
         // random_num = 30
         random_vid_id = usa_lst[random_num];
         random_lat_lon = usa_lat_lon[random_num]
-        console.log(random_vid_id)
-        console.log(random_lat_lon)
-        console.log(random_num)
-        console.log('RANDOM VID ID below')
-        console.log(random_vid_id)
-        console.log('INPUT-ID below')
-        console.log(input_id)
         secs = random_vid_id.slice(input_id.length - 9)
-        console.log('AFTER SLICE')
-        console.log(secs)
         input_id = random_vid_id.substring(0,11);
         if( id_lst.indexOf(input_id) > -1 ) {
-            console.log(input_id)
-            console.log('LIST ON LIST LIST ON LIST')
             var length = usa_lst.length - 1;
-            console.log(usa_lst.length)
-            console.log(usa_lat_lon.length)
             var random_num = Math.floor(Math.random() * length) + 1
             random_vid_id = usa_lst[random_num];
             random_lat_lon = usa_lat_lon[random_num]
-            console.log(random_vid_id)
-            console.log(random_lat_lon)
-            console.log(random_num)
-            console.log('input id')
             secs = random_vid_id.slice(input_id.length + 7)
-            console.log('AFTER SLICE')
-            console.log(secs)
             input_id = random_vid_id.substring(0,11);
         }
-        console.log(input_id)
         id_lst.push(input_id)
-        console.log(secs)
-        console.log('_+_+_+_+_+_+_')
-        console.log('ranint below:')
-        console.log(ranint)
         random_number_minmax = minmaxrandom(0, ranint)
-        console.log('Before Parseint:')
-        console.log(secs)
         secs = parseInt(secs)
-        console.log('After Parseint:')
-        console.log(secs)
         random_number_minmax = parseInt(random_number_minmax)
         secs += random_number_minmax
-        console.log(random_number_minmax)
-        console.log(secs)
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
-        console.log('SECONDS:')
-        console.log(secs)
         document.getElementById('vid-bac').style.display = "block";
         var duration = player.getDuration();
           // document.getElementById('loading-toast').style.display = "block";
@@ -1739,7 +1790,29 @@ border-radius: 5px;
 .welcome p {
   color: #999;
 }
-
+#id02 {
+  display: none;
+}
+#controls-360 {
+    display: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0%;
+    background: rgba(1, 2, 1, 0.42);
+    padding: 0px;
+    padding-left: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-right: 20px;
+    font-size: 28px;
+    opacity: 0.81213;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+    border: white 1px;
+}
 
 
 
@@ -1803,10 +1876,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     globallon = e.latlng.lng
     // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
 });
-
 function addMarkerFunc(latit, longi) {
-  console.log(latit)
-  console.log(longi)
   var marker = L.marker([latit, longi]).addTo(map);
 }
 
@@ -1819,13 +1889,7 @@ function intoBounds() {
 
 
 }
-function toast2() {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-          document.getElementById('loading-toast-2').style.display = "block";
-          $("#loading-toast").delay(7000).fadeOut(300);
-          console.log('RAN')
-        }
-}
+
 function continueGame() {
   loadVideoWithId(stored_input_id)
   document.getElementById("id01").style.display = "none";
@@ -1837,24 +1901,21 @@ function continueGame() {
 
   document.getElementById('map-prompter').innerHTML = "Click Map To Guess <i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;'></i>"
   document.getElementById("x-out").style.display = "block";
-  // toast2()
+  if (timeLimit == 1) {
+    clearInterval(continuedecrement);
+    timeChallengeSubmission()
+  }
 } 
 
 var markerArray;
 function makeaguess() {
   document.getElementById("main-button2").style.display = "none"
   // document.getElementById("main-button").style.display = "block"
-  console.log(globallat)
-  console.log(globallon)
-  console.log('-')
   // console.log(random_lat_lon)  
   random_lat = random_lat_lon[0]
   random_lon = random_lat_lon[1]
-  console.log(random_lat)
-  console.log(random_lon)
   distance_between = distance_func(random_lat, random_lon, globallat, globallon, "M")
   distance_between = Math.round( distance_between );
-  console.log(distance_between)
   markerArray = [];
   document.getElementById("x-out").style.display = "none";
   // var checkmark_marker = L.icon({
@@ -1926,10 +1987,14 @@ function makeaguess() {
       document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
       console.log('confetti started')
       guess_text = "<b>Excellent!</b> You are<b> " + String(distance_between) + "</b> mile out!"
-      } else if (distance_between <= 5) {
+      var sounds = new Audio('static/cheering.wav');
+      sounds.play();
+      } else if (distance_between <= 10) {
         guess_text = "<b>Nice!</b> Only <b> " + String(distance_between) + "</b> miles out!"
-        confetti.start(1700)
+        confetti.start(2000)
       document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        var sounds = new Audio('static/cheering.wav');
+        sounds.play();
       }
       document.getElementById("map-prompter").innerHTML = guess_text
   } else {
@@ -1980,9 +2045,6 @@ function makeaguess() {
     // setTimeout(function(){ document.getElementById("guess-button-id").onclick = continueGame()}, 500);
     document.getElementById("original-c").style.display = "none"
     document.getElementById("future-c").style.display = "block"
-    console.log('lats:')
-    console.log(globallat)
-    console.log(globallon)
     // var marker_lat_lon = L.marker([
     //     parseFloat(item[globallat])
     //     parsefloat(item[globallon])
@@ -1998,6 +2060,9 @@ function makeaguess() {
   document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
   console.log('confetti started')
   }
+  if (timeLimit == 1) {
+    clearInterval(continuedecrement);
+  }
 }
 
 
@@ -2007,7 +2072,6 @@ function makeaguess() {
 
 
 function showIt() {
-  console.log('showitran')
   document.getElementById('id01').style.display='block'
 }
 
@@ -2061,6 +2125,26 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
     if (unit=="N") { dist = dist * 0.8684 }
     return dist;
   }
+}
+var timeLimit;
+var continuedecrement;
+function timeChallengeSubmission() {
+  document.getElementById("player").style.opacity = "1"
+  timeLimit = 1
+  document.getElementById("controls-360").style.display = "block"
+  var oneint = document.getElementById("opt-form-seconds").value
+  continuedecrement = setInterval(function() {
+  document.getElementById("100-decrement").textContent = oneint;
+  oneint = oneint -1;
+  if (oneint == -1) {
+    // document.getElementById("x-out").style.display = "none"
+    clearInterval(continuedecrement);
+    document.getElementById("player").style.opacity = "0.01"
+    var sound2 = new Audio('static/airhorn.mp3');
+    sound2.play();
+  }
+  }, 1000);
+  loadVideoWithId(document.getElementById("opt-form").value)
 }
 </script>
 </html>
