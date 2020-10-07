@@ -1990,11 +1990,11 @@ function makeaguess() {
       var sounds = new Audio('static/cheering.wav');
       sounds.play();
       } else if (distance_between <= 10) {
+        var sounds = new Audio('static/cheering.wav');
+        sounds.play();
         guess_text = "<b>Nice!</b> Only <b> " + String(distance_between) + "</b> miles out!"
         confetti.start(2000)
       document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-        var sounds = new Audio('static/cheering.wav');
-        sounds.play();
       }
       document.getElementById("map-prompter").innerHTML = guess_text
   } else {
