@@ -1909,6 +1909,8 @@ function continueGame() {
 
 var markerArray;
 function makeaguess() {
+  var ding = new Audio('static/correct3.mp3');
+  ding.play();
   document.getElementById("main-button2").style.display = "none"
   // document.getElementById("main-button").style.display = "block"
   // console.log(random_lat_lon)  
