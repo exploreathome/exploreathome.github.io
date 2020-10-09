@@ -1916,6 +1916,13 @@ function makeaguess() {
   random_lon = random_lat_lon[1]
   distance_between = distance_func(random_lat, random_lon, globallat, globallon, "M")
   distance_between = Math.round( distance_between );
+  if (distance_between < 300) {
+    var ding = new Audio('static/correct.mp3');
+    ding.play();
+  } else {
+    var ding = new Audio('static/wrong.mp3')
+    ding.play();
+  }
   markerArray = [];
   document.getElementById("x-out").style.display = "none";
   // var checkmark_marker = L.icon({
