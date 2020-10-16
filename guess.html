@@ -1139,7 +1139,7 @@ Hi
   </div>
 <div id="controls-360" class="360-degree">
 <center><span id="100-decrement">
-100
+Loading..
 </span></center>
 </div>
 <div id="loading-toast">
@@ -1424,35 +1424,7 @@ if (navigator.userAgent.match(/iPad/i))
   document.getElementsByClassName('xcard__image')[30].style.paddingTop = "100%"
 }
 // Do something for iPad only.
-function randomizer() {
-      var location_lst = ['MFJ2CD1hNyU?start=000000',
-'mvMGcq1Y7SE?start=000266',
-'yJ1tszfGYo0&start=002568',
-'NDuAeBm62X0?start=000081',
-'lTtbtFMrXkk?start=000211',
-'AOVFMPGqYm8?start=000244',
-'NI7J7D-UOl4?start=000074',
-'5-2sa7GLyt4?start=000092',
-'pKMgpQvWiPA?start=000140',
-'uzuAHJKwQN4?start=000179',
-'EBHbQs9igVs?start=000135',
-'keJe-Wy8njk?start=000105',
-'uXkPUJ38TrI?start=000068',
-'nZ2I7rel2dc?start=000062',
-'nZ2I7rel2dc?start=000062',
-'C90OyIJGopg?start=000219',
-'DUBbQix1cMs?start=000439',
-'zzvTjgQ_TQs?start=000000',
-'ZP5XT86qQX0?start=000277',
-'jfRJmfW_oAg?start=001380',
-'UUMaJS-nvE8?start=000447',
-'odXbTZHb6Bg?start=000379',
-'APxygtsXmg0?start=000197',
-'odXbTZHb6Bg?start=000379',
-'7Up6ONw3CfQ?start=000174'];
-      const randomLocation = location_lst[Math.floor(Math.random() * location_lst.length)];
-      loadVideoWithId(randomLocation)
-    }
+
 function minmaxrandom(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -1499,10 +1471,20 @@ queryWithout = "TseEGOmBL_o"
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        // if (event.data == YT.PlayerState.PLAYING && !done) {
-        //   setTimeout(stopVideo, 6000);
-        //   done = true;
-        // }
+        if (event.data == YT.PlayerState.PLAYING && submissionVerify == 1) {
+          var oneint = document.getElementById("opt-form-seconds").value
+          continuedecrement = setInterval(function() {
+          document.getElementById("100-decrement").textContent = oneint;
+          oneint = oneint -1;
+          if (oneint == -1) {
+            // document.getElementById("x-out").style.display = "none"
+            clearInterval(continuedecrement);
+            document.getElementById("player").style.opacity = "0.01"
+            var sound2 = new Audio('static/airhorn.mp3');
+            sound2.play();
+          }
+          }, 1000);
+        }
       }
       function stopVideo() {
         player.stopVideo();
@@ -2140,22 +2122,12 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
 }
 var timeLimit;
 var continuedecrement;
+var submissionVerify = 0;
 function timeChallengeSubmission() {
+  submissionVerify = 1;
   document.getElementById("player").style.opacity = "1"
   timeLimit = 1
   document.getElementById("controls-360").style.display = "block"
-  var oneint = document.getElementById("opt-form-seconds").value
-  continuedecrement = setInterval(function() {
-  document.getElementById("100-decrement").textContent = oneint;
-  oneint = oneint -1;
-  if (oneint == -1) {
-    // document.getElementById("x-out").style.display = "none"
-    clearInterval(continuedecrement);
-    document.getElementById("player").style.opacity = "0.01"
-    var sound2 = new Audio('static/airhorn.mp3');
-    sound2.play();
-  }
-  }, 1000);
   loadVideoWithId(document.getElementById("opt-form").value)
 }
 </script>
