@@ -1472,11 +1472,11 @@ queryWithout = "TseEGOmBL_o"
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && submissionVerify == 1) {
-          var oneint = document.getElementById("opt-form-seconds").value - 1
-          document.getElementById("100-decrement").textContent = parseInt(oneint) + 1;
-          continuedecrement = setInterval(function() {
+          var oneint = document.getElementById("opt-form-seconds").value
           document.getElementById("100-decrement").textContent = oneint;
+          continuedecrement = setInterval(function() {
           oneint = oneint -1;
+          document.getElementById("100-decrement").textContent = oneint;
           if (oneint == -1) {
             // document.getElementById("x-out").style.display = "none"
             clearInterval(continuedecrement);
