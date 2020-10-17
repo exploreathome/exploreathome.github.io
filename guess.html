@@ -1477,7 +1477,7 @@ queryWithout = "TseEGOmBL_o"
           continuedecrement = setInterval(function() {
           oneint = oneint -1;
           document.getElementById("100-decrement").textContent = oneint;
-          if (oneint == -1) {
+          if (oneint == 0) {
             // document.getElementById("x-out").style.display = "none"
             clearInterval(continuedecrement);
             document.getElementById("player").style.opacity = "0.01"
@@ -2126,10 +2126,10 @@ var continuedecrement;
 var submissionVerify = 0;
 function timeChallengeSubmission() {
   submissionVerify = 1;
-  document.getElementById("player").style.opacity = "1"
   timeLimit = 1
   document.getElementById("controls-360").style.display = "block"
   loadVideoWithId(document.getElementById("opt-form").value)
+  document.getElementById("player").style.opacity = "1"
 }
 </script>
 </html>
