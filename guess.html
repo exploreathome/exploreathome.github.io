@@ -1647,7 +1647,7 @@ queryWithout = "TseEGOmBL_o"
           var random_num = Math.floor(Math.random() * length) + 1
           random_vid_id = usa_lst[random_num];
           random_lat_lon = usa_lat_lon[random_num]
-          secs = random_vid_id.slice(input_id.length + 7)
+          secs = random_vid_id.slice("nyc".length - 9)
         }
         input_id = random_vid_id.substring(0,11);
         id_lst.push(input_id)
