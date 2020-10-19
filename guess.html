@@ -1471,7 +1471,7 @@ queryWithout = "TseEGOmBL_o"
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && submissionVerify == 1) {
+        if (submissionVerify == 1 && event.data == YT.PlayerState.PLAYING) {
           var oneint = document.getElementById("opt-form-seconds").value
           document.getElementById("100-decrement").textContent = oneint;
           continuedecrement = setInterval(function() {
@@ -1485,6 +1485,7 @@ queryWithout = "TseEGOmBL_o"
             sound2.play();
           }
           }, 1000);
+          submissionVerify = 3
         }
       }
       function stopVideo() {
