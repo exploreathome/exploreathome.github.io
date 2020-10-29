@@ -1964,8 +1964,10 @@ function continueGame() {
     clearInterval(continuedecrement);
     timeChallengeSubmission()
   }
+  if (deviceChecker == false) {
   document.getElementById("new-back-btn3").style.display = "block";
   document.getElementById("new-back-btn4").style.display = "none";
+  }
 } 
 
 var markerArray;
@@ -2209,5 +2211,7 @@ function timeChallengeSubmission() {
   loadVideoWithId(document.getElementById("opt-form").value)
   document.getElementById("player").style.opacity = "1"
 }
+
+var deviceChecker = window.matchMedia("only screen and (max-width: 800px)").matches;
 </script>
 </html>
