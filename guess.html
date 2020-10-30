@@ -865,8 +865,9 @@ Hi
 #new-back-btn {
   cursor: pointer;
   position: fixed;
-  top: 0.8%;
-  left: 0.5%;
+  top: 6px;
+  left: 6px;
+  width: 46px;
   color: white;
   font-weight: bold;
     background: rgba(1, 2, 1, 0.6);
@@ -909,8 +910,9 @@ Hi
 #new-back-btn2 {
   cursor: pointer;
   position: fixed;
-  top: 0.8%;
-  right: 0.5%;
+  top: 6px;
+  right: 6px;
+  width: 46px;
   color: white;
   font-weight: bold;
     background: rgba(1, 2, 1, 0.6);
@@ -929,8 +931,9 @@ Hi
 #new-back-btn3 {
   cursor: pointer;
   position: fixed;
-  top: 5.2%;
-  right: 0.5%;
+  top: 38px;
+  right: 6px;
+  width: 46px;
   color: white;
   font-weight: bold;
     background: rgba(1, 2, 1, 0.6);
@@ -946,11 +949,65 @@ Hi
     z-index: 500000000;
     border: white 1px;
 }
+#new-back-btn5 {
+  display: none;
+  position: fixed;
+  top: 38px;
+  left: 6px;
+  color: white;
+  font-weight: bold;
+    background: rgba(38, 38, 38, 1);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+}
+
+#new-back-btn6 {
+  cursor: pointer;
+  position: fixed;
+  top: 38px;
+  left: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+    border: white 1px;
+}
+
+#new-back-btn6:hover~#new-back-btn5 {
+  display: block;
+}
+#new-back-btn5:hover {
+  display: block;
+}
+
+#volumeEditor {
+  cursor: pointer;
+}
 @media screen and (max-width: 800px) {
   #new-back-btn3 {
     display: none;
   }
   #new-back-btn2 {
+    display: none;
+  }
+  #new-back-btn6 {
     display: none;
   }
 }
@@ -1126,6 +1183,8 @@ Hi
 <p id="new-back-btn3" onclick="player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';" class="back-btn-animation" style="z-index: 900000000000000000000000000;" title="Pause Video"><a style="cursor: pointer;"><i class="fa fa-pause" aria-hidden="true"></i>
 <p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 900000000000000000000000000;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
 </a></p>
+<p id="new-back-btn6" style="z-index: 900000000000000000000000000;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
+<p id="new-back-btn5" style="z-index: 900000000000000000000000000;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
@@ -1724,17 +1783,12 @@ queryWithout = "TseEGOmBL_o"
         secs = parseInt(secs)
         random_number_minmax = parseInt(random_number_minmax)
         secs += random_number_minmax
+        cvol = player.getVolume();
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
         document.getElementById('vid-bac').style.display = "block";
-        var duration = player.getDuration();
-          // document.getElementById('loading-toast').style.display = "block";
-        // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        //   document.getElementById('loading-toast').style.display = "block";
-        //   $("#loading-toast").delay(7000).fadeOut(300);
-        //   document.getElementById('loading-toast-2').style.display = "block";
-        //   $("#loading-toast-2").delay(7000).fadeOut(300);
-        // }
         player.unMute();
+        player.setVolume(cvol)
+        document.getElementById("volumeEditor").value = cvol;
         if (localStorage.getItem("already_played") !== null) {
           localStorage.setItem('already_played', localStorage.getItem('already_played') + " " + random_vid_id);
         } else {
