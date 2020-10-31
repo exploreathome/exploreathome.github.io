@@ -929,6 +929,7 @@ Hi
     border: white 1px;
 }
 #new-back-btn3 {
+  display: none;
   cursor: pointer;
   position: fixed;
   top: 38px;
@@ -1109,8 +1110,8 @@ Hi
         </div> -->
         <!-- onclick="history.go(0);" -->
         <center>
-      <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); if(deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
-      <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
+      <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
+      <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fa fa-map-marker"></i></a></p>
       <!-- The Modal -->
   <div id="id01" class="w3-modal" style="">
@@ -2019,10 +2020,10 @@ function continueGame() {
     clearInterval(continuedecrement);
     timeChallengeSubmission()
   }
-  if (deviceChecker == false) {
-  document.getElementById("new-back-btn3").style.display = "block";
-  document.getElementById("new-back-btn4").style.display = "none";
-  }
+  // if (deviceChecker == false) {
+  // document.getElementById("new-back-btn3").style.display = "block";
+  // document.getElementById("new-back-btn4").style.display = "none";
+  // }
 } 
 
 var markerArray;
@@ -2233,11 +2234,11 @@ function removebtnkeepmap() {
   document.getElementById('main-button').style.display='none'
   document.getElementById('main-button').onclick = "showIt"
   document.getElementById('main-button2').style.display='block'
-  if(deviceChecker == false) {
-    player.playVideo();
-    document.getElementById("new-back-btn4").style.display = "none";
-    document.getElementById("new-back-btn3").style.display = "block";
-  }
+  // if(deviceChecker == false) {
+  //   player.playVideo();
+  //   document.getElementById("new-back-btn4").style.display = "none";
+  //   document.getElementById("new-back-btn3").style.display = "block";
+  // }
 }
 
 function distance_func(lat1, lon1, lat2, lon2, unit) {
