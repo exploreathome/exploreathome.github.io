@@ -947,7 +947,7 @@ Hi
     vertical-align: center;
     margin: auto;
     color: white;
-    z-index: 500000000;
+    z-index: 1;
     border: white 1px;
 }
 #new-back-btn5 {
@@ -1115,7 +1115,7 @@ Hi
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fa fa-map-marker"></i></a></p>
       <!-- The Modal -->
-  <div id="id01" class="w3-modal" style="">
+  <div id="id01" class="w3-modal" style="position: fixed; z-index: 2;">
  <div class="w3-modal-content w3-card-4 w3-animate-zoom">
   
   <header class="w3-container w3-blue" id="o-c"> 
@@ -1182,12 +1182,12 @@ Hi
   </div> -->
     </center>
           <p id="new-back-btn" onclick="history.go(0); document.getElementById('main-button2').style.display='none'" class="back-btn-animation" style="z-index: 900000000000000000000000000"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
-<p id="new-back-btn2" onclick="player.loadVideoById({'videoId': random_vid_id.substring(0,11), 'startSeconds': secs, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});" class="back-btn-animation" style="z-index: 900000000000000000000000000;" title="Restart Video"><a style="cursor: pointer;"><i class="fa fa-refresh"></i></a></p>
-<p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > secs) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(secs)}" class="back-btn-animation" style="z-index: 900000000000000000000000000;" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
-<p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 900000000000000000000000000;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
+<p id="new-back-btn2" onclick="player.loadVideoById({'videoId': random_vid_id.substring(0,11), 'startSeconds': secs, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fa fa-refresh"></i></a></p>
+<p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > secs) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(secs)}" class="back-btn-animation" style="" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
+<p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 1;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
 </a></p>
-<p id="new-back-btn6" style="z-index: 900000000000000000000000000;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
-<p id="new-back-btn5" style="z-index: 900000000000000000000000000;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
+<p id="new-back-btn6" style="z-index: 1;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
+<p id="new-back-btn5" style="z-index: 1;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
