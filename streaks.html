@@ -358,6 +358,20 @@ h5 {
   #lightweight-id {
     display: none;
   }
+  #time-btn {
+    display: none;
+  }
+  #accuracy-btn {
+    display: none;
+  }
+  #onemi-btn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  #none-btn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
 }
 @media screen and (max-width: 1200px) {
   /*#c-streak {*/
@@ -526,7 +540,7 @@ h5 {
       <p id="card-txt">How many countries can you get in a row? Test your knowledge with the newest videos.</p><br>
       <!-- <p class="w3-right" id="time-limit-tag">Time Limit?</p> -->
   <div class="btn-group w3-center">
-    <button class="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: not-allowed; outline: none;">Time:</button>
+    <button class="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: not-allowed; outline: none;" id="time-btn">Time:</button>
     <button class="button" id="none-btn" style="outline: none;" onclick="button_work('none-btn')">None</button>
     <button class="button" id="60s-btn" style="outline: none;" onclick="button_work('60s-btn')">60s</button>
     <button class="button" id="120s-btn" style="outline: none;" onclick="button_work('120s-btn')">120s</button>
@@ -545,7 +559,7 @@ h5 {
       <img src="static/accuracy.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
       <p id="card-txt">Test your accuracy and map skills with Radius Streak. Select your own difficulty, and try your best.</p><br>
         <div class="btn-group w3-center">
-    <button class="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: not-allowed;">Accuracy:</button>
+    <button class="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: not-allowed;" id="accuracy-btn">Accuracy:</button>
     <button class="button" id="onemi-btn" style="outline: none;" onclick="button_work2('onemi-btn')">1mi</button>
     <button class="button" id="fivemi-btn" style="outline: none;" onclick="button_work2('fivemi-btn')">5mi</button>
     <button class="button" id="tenmi-btn" style="outline: none;" onclick="button_work2('tenmi-btn')">10mi</button>
@@ -1344,7 +1358,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
     vertical-align: center;
     /*margin: auto;*/
     color: white;
-    z-index: 100;
+    z-index: 1;
     border: white 1px;
   margin: 0 auto;
   text-align: center;
