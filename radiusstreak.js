@@ -227,10 +227,10 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
   }
 }
 }
-document.getElementById("vp1").innerHTML = localStorage.getItem("country_video_plays")
+// document.getElementById("vp1").innerHTML = localStorage.getItem("country_video_plays")
 document.getElementById("cg1").innerHTML = localStorage.getItem("country_correct_guesses")
 document.getElementById("hs1").innerHTML = localStorage.getItem("sovereignt-streak-hs")
-document.getElementById("vp2").innerHTML = localStorage.getItem("accuracy_video_plays")
+// document.getElementById("vp2").innerHTML = localStorage.getItem("accuracy_video_plays")
 document.getElementById("cg2").innerHTML = localStorage.getItem("accuracy_correct_guesses")
 document.getElementById("hs2").innerHTML = localStorage.getItem("radius-streak-hs")
 player.playVideo();
