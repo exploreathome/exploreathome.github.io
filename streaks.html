@@ -1867,7 +1867,7 @@ function beginchallenge() {
   console.log('RECURSION HAPPENING')
   beginchallenge()
   });
-  // localStorage.setItem("country_video_plays", parseInt(localStorage.getItem("country_video_plays")) + 1);
+  localStorage.setItem("country_video_plays", parseInt(localStorage.getItem("country_video_plays")) + 1);
     if(which_selected == "accuracy") {
     document.getElementById("new-back-btn-time").style.display = "none";
   }
