@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/> -->
+  <title>Streaks Challenge - City Guesser</title>
+  <meta name="description" content="Choose between several streak challenges. Put your geography to the test, and see how many in a row you can get.">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="jquery.lazy.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/mdb.min.css" rel="stylesheet">
+    <link rel="manifest" href="static/site.webmanifest">
+    <meta property="og:title" content="Streaks Challenge - City Guesser" />
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153516768-4');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body id="confetti">
+<style>
+html {
+  height: 100%;
+  margin: 0;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: #fffcfc;
+}
+.nav{
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(255,255,255,.05);
+    transition: height .5s ease;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.nav .logo{
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.nav-list{
+    list-style: none;
+    display: flex;
+    margin-right: auto;
+    margin-left: 4rem;
+}
+
+.nav-link{
+    margin: 0 2rem;
+    position: relative;
+}
+
+.nav-link::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s ease;
+}
+
+.nav-link:hover::after{
+    transform: scaleX(1);
+}
+
+#nav-cta{
+    display: inline-block;
+    background-color: #fff;
+    color: #313131;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    transition: background-color .5s ease;
+}
+
+#nav-cta:hover{
+    background-color: #d3d3d3;
+}
+
+
+/*Apply styles after scroll*/
+.scrolling-active{
+    background-color: #fff;
+    box-shadow: 0 3px 1rem rgba(0,0,0,.1);
+}
+
+.scrolling-active .nav{
+    height: 6.6rem;
+}
+
+.scrolling-active .nav a{
+    color: #313131;
+}
+
+.scrolling-active #nav-cta{
+    background-color: #313131;
+    color: #fff;
+}
+
+.scrolling-active #nav-cta:hover{
+    background-color: #151515;
+}
+
+.scrolling-active .nav-link::after{
+    background-color: #313131;
+}
+
+.background-img {
+  background-image: url("static/neighborhood1.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+  /*background: rgba(0.42);*/
+  /*filter: grayscale(100%);*/
+  background-size: cover;
+  -webkit-filter: blur(5px);
+}
+#streaks-main {
+  position: absolute;
+  top: 270px;
+  left: 50%;
+  width: 58%;
+  background: #fcfcfc;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  /*border-top: 5px solid blue;*/
+}
+.back-mybtn {
+/*  position: fixed;
+  top: 0.4%;
+  left: 0.5%;*/
+  color: white;
+  font-weight: bold;
+  text-shadow: -2px -2px 0 rgba(204, 0, 0, 1),
+               2px -2px 0 rgba(204, 0, 0, 1),
+               -2px 2px 0 rgba(204, 0, 0, 1),
+               2px 2px 0 rgba(204, 0, 0, 1),
+               -3px 0 0 rgba(204, 0, 0, 1),
+               3px 0 0 rgba(204, 0, 0, 1),
+               0 -3px 0 rgba(204, 0, 0, 1),
+               0 3px 0 rgba(204, 0, 0, 1);
+  text-transform: uppercase;
+}
+h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 1;
+}
+.lightweight {
+  /*font-weight: 100px;*/
+  /*font-style: normal;*/
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+#bottom-half {
+  width: 100%;
+  height: 50px;
+  /*line-height: 45px;*/
+  background: #e6e6e6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#green-play-button {
+  width: 150px;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 30px;
+  background: #56830b;
+  font-family: 'Work Sans', sans-serif;
+  cursor: pointer;
+
+  /*padding-top: 5px;*/
+  /*padding-bottom:;*/
+  /*margin-top: 20px;*/
+  /*line-height: 45px;*/
+  /*background: #56830b;*/
+  /*vertical-align: center;*/
+  /*height: 50%;*/
+}
+#c-streak {
+  width: 100%;
+  /*height: 130px;*/
+  /*border: 0.5px solid lightgrey;*/
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /*height: 300px;*/
+}
+#c-streak-img {
+  float: left;
+  /*background-image: url("static/usaguess.png");*/
+    /*background-position: center;*/
+  /*background-repeat: no-repeat;*/
+  height: 160px;
+  width: 160px;
+}
+#c-streak-text {
+  float: left;
+}
+.guess-img {
+  width: 100%;
+  height: 100%;
+}
+.cardw3 {
+  flex: 0 49%;
+  width: 49%;
+  height: 100%;
+  /*height: 100px;*/
+  /*margin-bottom: 2%;*/
+}
+#card-txt {
+  font-size: 13.5px;
+  font-family: 'Montserrat', sans-serif;
+}
+h5 {
+  /*font-family: 'Montserrat', sans-serif;*/
+}
+#time-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#time-selector-cld {
+  flex: 0 32%;
+  height: 100px;
+  margin-bottom: 2%; /* (100-32*3)/2 */
+  font-size: 10px;
+}
+.btn-group .button {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+.btn-group {
+  margin-top: -63px;
+  font-size: 13px;
+}
+#time-limit-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+#none-btn {
+  background: #008000;
+}
+#fivemi-btn {
+  background-color: #008000;
+}
+#main-hr {
+  width: 70%;
+  margin-bottom: 25px;
+}
+.w3-custom {
+  background: #646464;
+  color: white;
+  outline: none;
+}
+@media screen and (max-width: 800px) {
+  #streaks-main {
+    width: 100%;
+    top: 374px;
+  }
+  #main-hr {
+    width: 100%;
+  }
+  .cardw3 {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    flex: 0 100%;
+  }
+  #accuracy-card {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #main-hr {
+    width: 82%;
+  }
+  #streaks-main {
+    width: 90%;
+  }
+  .cardw3 {
+    height: 100%;
+  }
+}
+
+#authentication-prompt {
+  display: none;
+}
+#authentication-prompt2 {
+  display: none;
+}
+#authentication-prompt3 {
+  display: none;
+}
+#authentication-prompt4 {
+  display: none;
+}
+#authentication-prompt5 {
+  display: none;
+}
+</style>
+<nav class="navbar navbar-expand-md navbar-dark navbar-thin bg-dark" id="diff">
+      <a class="navbar-brand back-mybtn" href="https://virtualvacation.us/guess" id="cityguesser1">City Guesser   <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></a>
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav ml-auto">
+<!--           <span id="authentication-prompt5">
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="https://ko-fi.com/cityguesser">Support <i class="fa fa-coffee" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+          <span> -->
+          <!-- <span id="authentication-prompt"> -->
+          <span id="authentication-prompt">
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="#myModal" data-toggle="modal">Log In <i class="fa fa-sign-in" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+          </span>
+          <span id="authentication-prompt2">
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="#myModal2" data-toggle="modal">Sign Up <i class="fa fa-user-plus" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+          </span>
+          <!-- </span> -->
+          <!-- <span id="logout-prompt"> -->
+          <div id="authentication-prompt3" style="cursor: pointer;">
+          <li class="nav-item active" id="homeitem logout-prompt">
+            <a class="nav-link" onclick="signout()">Log Out <i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+          </div>
+          <!-- </span> -->
+        </ul>
+      </div>
+    </nav>
+<!-- <div class="background-img"></div> -->
+<div id="streaks-main">
+<center>
+<h1>Streaks Challenge</h1>
+<p class="lightweight">Choose a mode to attempt below:</p>
+<p></p>
+<div id="main-hr">
+<hr style="margin-top: -1px;">
+  <div id="c-streak">
+    <!-- <div id="c-streak-img"> -->
+
+      <!-- <img src="static/usaguess.png" class="guess-img"> -->
+    <!-- </div> -->
+    <!-- <div id="c-streak-text"> -->
+
+
+    <!-- </div> -->
+    <div class="w3-card-4 cardw3" style="border-radius: 10px;" id="country-card">
+    <header class="w3-container w3-light-grey">
+      <h5>Country Streak</h5>
+    </header>
+    <div class="w3-container" style="margin-top: 8px;">
+      <!-- <p>1 new friend request</p> -->
+      <!-- <hr> -->
+      <img src="static/realimg.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <p id="card-txt">How many countries can you get in a row? To keep your score, log-in at the navigation bar.</p><br>
+      <!-- <p class="w3-right" id="time-limit-tag">Time Limit?</p> -->
+  <div class="btn-group w3-center">
+    <button class="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: not-allowed; outline: none;">Time:</button>
+    <button class="button" id="none-btn" style="outline: none;" onclick="button_work('none-btn')">None</button>
+    <button class="button" id="60s-btn" style="outline: none;" onclick="button_work('60s-btn')">60s</button>
+    <button class="button" id="120s-btn" style="outline: none;" onclick="button_work('120s-btn')">120s</button>
+    <button class="button" id="300s-btn" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; outline: none;" onclick="button_work('300s-btn')">300s</button>
+  </div>
+    </div>
+    <button class="w3-button w3-block w3-custom" style="margin-top: -22px; outline: none;" onclick="selectorfunc('country')" id="country-select">+ Select</button>
+  </div>
+    <div class="w3-card-4 cardw3" style="width:49%; border-radius: 10px; cursor: not-allowed;" id="accuracy-card">
+    <header class="w3-container w3-light-grey">
+      <h5>Coming Soon!</h5>
+    </header>
+    <div class="w3-container" style="margin-top: 8px;">
+      <!-- <p>1 new friend request</p> -->
+      <!-- <hr> -->
+      <img src="static/accuracy.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <p id="card-txt">Test your accuracy and map skills with Radius Streak. Select your own difficulty, and try your best.</p><br>
+        <div class="btn-group w3-center">
+    <button class="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: not-allowed;">Accuracy:</button>
+    <button class="button" id="onemi-btn" style="outline: none;" onclick="button_work2('onemi-btn')">1mi</button>
+    <button class="button" id="fivemi-btn" style="outline: none;" onclick="button_work2('fivemi-btn')">5mi</button>
+    <button class="button" id="tenmi-btn" style="outline: none;" onclick="button_work2('tenmi-btn')">10mi</button>
+    <button class="button" id="twentymi-btn" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; outline: none;" onclick="button_work2('twentymi-btn')">20mi</button>
+  </div>
+    </div>
+    <button class="w3-button w3-block w3-custom" style="margin-top: -22px; outline: none;" id="accuracy-select" onclick="">+ Select</button>
+    <!-- selectorfunc("accuracy") -->
+  </div>
+  </div>
+</div>
+</center>
+<div id="bottom-half">
+<center>
+<p class="btn-primary" id="green-play-button" onclick="beginchallenge()">Start Playing</p>
+</center>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+var radius_streak = 5
+var country_streak = 0
+// var country_time = 0
+function button_work(user_inp) {
+  if (user_inp=="300s-btn") {
+    document.getElementById("300s-btn").style.background = "#008000"
+    document.getElementById("none-btn").style.background = "#54ac54"
+    document.getElementById("120s-btn").style.background = "#54ac54"
+    document.getElementById("60s-btn").style.background = "#54ac54"
+    country_streak = 300
+  } else if (user_inp=="none-btn") {
+    document.getElementById("300s-btn").style.background = "#54ac54"
+    document.getElementById("none-btn").style.background = "#008000"
+    document.getElementById("120s-btn").style.background = "#54ac54"
+    document.getElementById("60s-btn").style.background = "#54ac54"
+    country_streak = 0
+  } else if (user_inp=="120s-btn") {
+    document.getElementById("300s-btn").style.background = "#54ac54"
+    document.getElementById("none-btn").style.background = "#54ac54"
+    document.getElementById("120s-btn").style.background = "#008000"
+    document.getElementById("60s-btn").style.background = "#54ac54"
+    country_streak = 120
+  } else if (user_inp=="60s-btn") { 
+    document.getElementById("300s-btn").style.background = "#54ac54"
+    document.getElementById("none-btn").style.background = "#54ac54"
+    document.getElementById("120s-btn").style.background = "#54ac54"
+    document.getElementById("60s-btn").style.background = "#008000"
+    country_streak = 60
+  }
+}
+function button_work2(user_inp) {
+  if (user_inp=="onemi-btn") {
+    document.getElementById("onemi-btn").style.background = "#008000"
+    document.getElementById("fivemi-btn").style.background = "#54ac54"
+    document.getElementById("tenmi-btn").style.background = "#54ac54"
+    document.getElementById("twentymi-btn").style.background = "#54ac54"
+    radius_streak = 1
+  } else if (user_inp=="fivemi-btn") {
+    document.getElementById("onemi-btn").style.background = "#54ac54"
+    document.getElementById("fivemi-btn").style.background = "#008000"
+    document.getElementById("tenmi-btn").style.background = "#54ac54"
+    document.getElementById("twentymi-btn").style.background = "#54ac54"
+    radius_streak = 5
+  } else if (user_inp=="tenmi-btn") {
+    document.getElementById("onemi-btn").style.background = "#54ac54"
+    document.getElementById("fivemi-btn").style.background = "#54ac54"
+    document.getElementById("tenmi-btn").style.background = "#008000"
+    document.getElementById("twentymi-btn").style.background = "#54ac54"
+    radius_streak = 10
+  } else if (user_inp=="twentymi-btn") { 
+    document.getElementById("onemi-btn").style.background = "#54ac54"
+    document.getElementById("fivemi-btn").style.background = "#54ac54"
+    document.getElementById("tenmi-btn").style.background = "#54ac54"
+    document.getElementById("twentymi-btn").style.background = "#008000"
+    radius_streak = 20
+  }
+}
+var which_selected;
+function selectorfunc(user_inp) {
+  if (user_inp == "country") {
+    document.getElementById("country-select").style.background = "#56830b";
+    document.getElementById("accuracy-select").style.background = "#646464";
+    document.getElementById("country-select").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Selected"
+    document.getElementById("accuracy-select").innerHTML = "+ Select"
+    which_selected = "country"
+  } 
+  if (user_inp == "accuracy") {
+    document.getElementById("accuracy-select").style.background = "#56830b";
+    document.getElementById("country-select").style.background = "#646464";
+    document.getElementById("accuracy-select").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Selected"
+    document.getElementById("country-select").innerHTML = "+ Select"
+    which_selected = "accuracy"
+  }
+}
+
+</script>
+<style>
+* {
+  box-sizing: border-box;
+}
+.video-background {
+  background: #000;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /*z-index: -99;*/
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: 0.5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: 0.2rem;
+  }
+  .video-foreground, .video-background iframe {
+    transform: scale(1.1);
+  }
+
+}
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
+}
+.back-mybtn {
+  color: white;
+  font-weight: bold;
+  text-shadow: -2px -2px 0 rgba(204, 0, 0, 1),
+               2px -2px 0 rgba(204, 0, 0, 1),
+               -2px 2px 0 rgba(204, 0, 0, 1),
+               2px 2px 0 rgba(204, 0, 0, 1),
+               -3px 0 0 rgba(204, 0, 0, 1),
+               3px 0 0 rgba(204, 0, 0, 1),
+               0 -3px 0 rgba(204, 0, 0, 1),
+               0 3px 0 rgba(204, 0, 0, 1);
+  text-transform: uppercase;
+}
+
+
+.forward-mybtn {
+  opacity: 0.885;
+  position: fixed;
+  bottom: 0%;
+  /*width: 60%;*/
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+      right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+.forward-mybtn:hover {
+  transform: scale(1.02);
+  opacity: 1;
+}
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal-backdrop .fade .in {
+  opacity: 0.5 !important;
+}
+
+
+.modal-backdrop.fade {
+    opacity: 0.5 !important;
+}
+.modal-header {
+    padding-top: 0.2rem;
+    padding-bottom: 0.3rem;
+}
+.modal-footer {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.modal-body {
+  padding: 0 0 0 0;
+}
+#mapid {
+  height: 60vh;
+  /*width: 100%;*/
+  /*z-index: 9000000;*/
+}
+.w3-button {
+  border-radius: 4.3px;
+}
+.w3-button:hover {
+  background-color: inherit;
+}
+#future-c {
+  display: none;
+}
+#present-z {
+  display: none;
+}
+#f-c {
+  display: none;
+}
+#secondary-button {
+  display: none;
+}
+
+#main-button2 {
+  display: none;
+}
+
+#new-back-btn {
+  cursor: pointer;
+  position: fixed;
+  top: 6px;
+  left: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+    border: white 1px;
+}
+
+#new-back-btn2 {
+  cursor: pointer;
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+    border: white 1px;
+}
+#new-back-btn3 {
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  top: 38px;
+  right: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 1;
+    border: white 1px;
+}
+#new-back-btn-time {
+  /*display: none;*/
+  cursor: not-allowed;
+  position: fixed;
+  top: 6px;
+  text-align: center;
+  line-height: 59px;
+  right: 59px;
+  width: 74px;
+  height: 59px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    /*margin: auto;*/
+    color: white;
+    z-index: 100;
+    border: white 1px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+}  
+/*line-height: 90px;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+#countdown {
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+#new-back-btn5 {
+  display: none;
+  position: fixed;
+  top: 38px;
+  left: 6px;
+  color: white;
+  font-weight: bold;
+    background: rgba(38, 38, 38, 1);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+}
+
+#new-back-btn6 {
+  cursor: pointer;
+  position: fixed;
+  top: 38px;
+  left: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+    border: white 1px;
+}
+
+#new-back-btn6:hover~#new-back-btn5 {
+  display: block;
+}
+#new-back-btn5:hover {
+  display: block;
+}
+
+#volumeEditor {
+  cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+  #new-back-btn3 {
+    display: block;
+  }
+  #new-back-btn2 {
+    display: block;
+  }
+  #new-back-btn6 {
+    display: none;
+  }
+}
+#new-back-btn4 {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 38px;
+  right: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+    border: white 1px;
+}
+
+.back-btn-animation:hover:before, .back-btn-animation:focus:before, .back-btn-animation:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  background: rgba(2, 117, 216, 1);
+  border-radius: 5px;
+}
+
+
+.back-btn-animation:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(2, 117, 216, 1);
+  border-radius: 5px;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transition-duration: 0.3s;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+}
+.back-btn-animation:hover, .back-btn-animation:focus, .back-btn-animation:active {
+  background: rgba(2, 117, 216, 1);
+  border-radius: 5px;
+  color: white;
+}
+
+.back-btn-animation {
+  position: relative;
+  display: inline-block;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition-property: color;
+  vertical-align: middle;
+  -webkit-transition-property: color;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+}
+#vid-bac {
+  display: none;
+}
+#video-background {
+  opacity: 0;
+}
+
+#spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 120px;
+    height: 120px;
+    border-radius: 7px;
+    background: #e6e6e6;
+    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
+    display: none;
+}
+#svg-spinner {
+  height: 80px;
+  width: 80px;
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+}
+#spinner2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 120px;
+    height: 120px;
+    border-radius: 7px;
+    background: #e6e6e6;
+    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
+    z-index: 200;
+    display: none;
+}
+#svg-spinner2 {
+  height: 45px;
+  width: 45px;
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+}
+#spinner3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 120px;
+    height: 120px;
+    border-radius: 7px;
+    background: #e6e6e6;
+    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
+    z-index: 200;
+    display: none;
+}
+#svg-spinner3 {
+  height: 45px;
+  width: 45px;
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+}
+#spinner4 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 120px;
+    height: 120px;
+    border-radius: 7px;
+    background: #e6e6e6;
+    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
+    z-index: 200;
+    display: none;
+}
+#svg-spinner4 {
+  height: 45px;
+  width: 45px;
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+}
+#scorekeeper {
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  top: -5px;
+  background: rgba(1, 2, 1, 0.72);  
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.32);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  cursor: pointer;
+
+}
+
+#actualscore {
+    position: fixed;
+    top: 72%;
+    font-size: 26px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: white;
+}
+#scorekeeper2 {
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  top: -5px;
+  background: rgba(1, 2, 1, 0.72);  
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.32);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  cursor: pointer;
+
+}
+
+#actualscore2 {
+    position: fixed;
+    top: 72%;
+    font-size: 26px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: white;
+}
+</style>
+<script type="text/javascript" src="countries.js"></script>
+<script type="text/javascript" src="geolocator.js"></script>
+<script src="confetti.js"></script>
+<script>
+if (localStorage.getItem("sovereignt-streak") === null) {
+  localStorage.setItem("sovereignt-streak", 0);
+}
+if (localStorage.getItem("radius-streak") === null) {
+  localStorage.setItem("radius-streak", 0);
+}
+var radius_str = localStorage.getItem("radius-streak");
+var country_str = localStorage.getItem("sovereignt-streak");
+      var counter_upper = 0;
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: 'Fe78ODqrhXQ',
+          playerVars: {
+            modestbranding: 1,
+            rel: 0,
+            start: 40,
+            playsinline: 1,
+            controls: 0,
+            modestbranding: 1,
+            showinfo: 0,
+            loop: 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        player.playVideo();
+        console.log('playing')
+      }
+      var done = false;
+      var started_playing = 0;
+      var downloadTimer;
+      function onPlayerStateChange(event) {
+        if(event.data == YT.PlayerState.PLAYING && started_playing == 0) {
+          started_playing = 1;
+          if(country_streak == 0) {
+              document.getElementById("new-back-btn-time").style.display = "none";
+            } else {
+              document.getElementById("new-back-btn-time").style.display = "block";
+              var timeleft = parseInt(country_streak);
+              document.getElementById("countdown").innerHTML = timeleft + 's';
+                            // document.getElementById("countdown").innerHTML = '123s';
+              timeleft -= 1;
+              downloadTimer = setInterval(function(){
+                if(timeleft <= 0){
+                  clearInterval(downloadTimer);
+                  document.getElementById("countdown").innerHTML = "0s";
+                  document.getElementById("countdown").style.color = "white";
+                  document.getElementById("player").style.opacity = "0";
+                  player.pauseVideo();
+                } else {
+                  document.getElementById("countdown").innerHTML = timeleft + 's';
+                }
+                if(timeleft <= 10) {
+                  document.getElementById("countdown").style.color = "red";
+                }
+                timeleft -= 1;
+              }, 1000);
+            }
+        }
+        if (event.data === 0) {
+          document.getElementById("player").style.opacity = "0";
+        }
+      }
+var videoids;
+var videolocations;
+videoids = ["WruNXhtEbdM?start=000113","WruNXhtEbdM?start=000113", "UtcZHutaI4g?start=000300", "K92ipWWn2Hs?start=000001", "ymuN7-3MklE?start=000000","zd6BYcjNMYw?start=000303", "YcjA-aig2Rk?start=000029", "U5I0o2JTtug?start=000077", "I8YGf7d7GsA?start=000056", "fgbFdV7yL_o?start=000007", "Fhg8tvyJbAo?start=000039", "4xgbnavlloM?start=000040", "7NpUMxETJa8?start=000268", "JB0A8Me8EKk?start=000001", "QpepXSfYEBk?start=000011", "ww-LFK1-GRg?start=000002", "AXgg0GSp2oE?start=000030", "2sXWZaGG7RM?start=000010", "ZovWiY9xJME?start=000018", "mUfVm5IQXBw?start=000030", "3AL8Egrtyz4?start=000040", "GkypZ2RMNMc?start=000020", "Nj5caHcD-_E?start=000020", "jCcyiF2Uxl4?start=000020", "pWD_6BlMWLA?start=000020", "RIQ35VH6Dh0?start=000015", "oW2fFqhhM74?start=000013", "GjIkrB4lpc8?start=000013", "DSMWWvA_aYw?start=000148", "0XQauZHzVx4?start=000045", "c0GlCjZbVzk?start=000042", "iNUoL1K-VY4?start=000012", "NDED6BcBr-s?start=000021", "VRmh2gGeBiE?start=000037", "rpR463QSL_I?start=000009", "3N0oVxBrGuU?start=000001", "jSRRaMSRZOE?start=000060", "dQcRSXgfjis?start=000005", "3WLRRAJdpnE?start=000021", "3WLRRAJdpnE?start=000380", "8fRVUzNEOrM?start=000025", "hamFV1rwJxo?start=000244", "hamFV1rwJxo?start=000021", "HZAiu2B9yA0?start=000060", "uLUriQM4NN0?start=000010", "Ze94WzmmFY0?start=000004", "Ze94WzmmFY0?start=000170", "TEQCi6LU-4g?start=000021", "TEQCi6LU-4g?start=000661", "B84UXGFVl6E?start=000035", "B84UXGFVl6E?start=000710", "B84UXGFVl6E?start=000241", "N6KWvkqVgEI?start=000071", "N6KWvkqVgEI?start=000216", "N6KWvkqVgEI?start=000421", "4qX4xZS6Wj0?start=000009", "4qX4xZS6Wj0?start=000341", "4qX4xZS6Wj0?start=000641", "VBXXBnpO4TM?start=000024", "SsymLcBMi3s?start=000060", "vsiGQpDbbz8?start=000017", "vsiGQpDbbz8?start=000508", "tTUwmi0olXI?start=000020", "tTUwmi0olXI?start=000233", "Jf3MrsUej98?start=000028", "I0Gq41AjiBc?start=000001", "181Tfbzs84k?start=000009", "181Tfbzs84k?start=000500", "gR7TsoSbaXk?start=000034", "gR7TsoSbaXk?start=000400", "yHCpq9ls_As?start=000060", "yHCpq9ls_As?start=000400", "mGyc_dr_JWk?start=000005", "Md7UC97MbNA?start=000060", "Uey_mvR3kSI?start=000013", "iWvr7ySTjvY?start=000095", "f4gCduK2lH8?start=000014", "Vc5PnKohfas?start=000015", "oN2WYWHoul0?start=000015", "zt4sWtdOthU?start=000020", "hHA47enXuQc?start=000016", "rny9bLHRN4Y?start=000019", "t-PbhlgkakI?start=000009", "rANRmPPPxGU?start=000001", "rANRmPPPxGU?start=000400", "rANRmPPPxGU?start=000999", "1o5dfinDZS4?start=000001", "1o5dfinDZS4?start=000130", "vWD8H8iXBXE?start=000004", "vWD8H8iXBXE?start=000330", "7JsOhtl_zG4?start=000060", "7JsOhtl_zG4?start=000350", "AAd6JwWNfvo?start=000020", "4WcMFwU6EpE?start=000012", "PkuPVxZnZUs?start=000120", "q30k45IlYVQ?start=000231", "_D5ljSxYC6o?start=000010", "_D5ljSxYC6o?start=000500", "g3ZySpbllTQ?start=000005", "Fhg8tvyJbAo?start=000004", "Fhg8tvyJbAo?start=002780", "SCudGb7z0OE?start=000068", "qG2J8pdjr8c?start=000058", "zd6BYcjNMYw?start=000303", "GtdW4dGUA0w?start=000168", "YcjA-aig2Rk?start=000029", "bJlUA-lnvYg?start=000379", "aBOsIVU9mms?start=000824", "VtzDzVGSMLU?start=000204", "9hDEJK-zzUk?start=000022", "KBJ88IKlG9Y?start=000011", "gXY64MidsdE?start=000008", "fP0GLP6xKKk?start=001123", "U5I0o2JTtug?start=000077", "2mgyttfGvwY?start=000024", "7NpUMxETJa8?start=000268", "tsnk3ruKUsY?start=000001", "I8YGf7d7GsA?start=000056", "fgbFdV7yL_o?start=000007", "yB5HFvXchfM?start=000545", "CP5Q5JG2jU8?start=000015", "WXIfF7TN1QQ?start=000120", "qwNoxabhgdw?start=000001", "K92ipWWn2Hs?start=000001", "UtcZHutaI4g?start=000300", "4WnO4IzHQrE?start=001290", "ymuN7-3MklE?start=000000", "386mNqfWMnA?start=000000", "GSCbzHvrmjE?start=000032", "XWPUsUw-iec?start=000007", "6t8AF1B2jpU?start=000130", "KDGg6OHNkbs?start=000363", "2M7Avt39oF4?start=000005", "_dWyKj7I9JM?start=000016", "FxRyNuaSeCg?start=000009", "xgyd8l7GHvE?start=001434", "SQSSF15gJcw?start=000050", "DYnWMG2cisA?start=000571", "iOs4hOsee7Y?start=000001", "NjsioVyB6Z8?start=002754", "NjsioVyB6Z8?start=003468", "NjsioVyB6Z8?start=004128", "Ww8Kp_CP-BE?start=002545", "sXPjAjir0jw?start=000040", "4jnyy3G3WIA?start=000042", "fgbFdV7yL_o?start=000007", "1gklwia9xqo?start=000013", "-2JBgaigpGI?start=000022", "-2JBgaigpGI?start=000200", "-2JBgaigpGI?start=000743", "olMr5JeJK5U?start=000010", "olMr5JeJK5U?start=000066", "30oX9ZNj598?start=000150", "sMR8_58AKpE?start=000100", "yxE80teWF6Y?start=000026", "qTX17aDA0-w?start=000110", "AVPXerDGNmI?start=000119", "AVPXerDGNmI?start=000119", "AVPXerDGNmI?start=000554", "29kP4uqeFPc?start=000114", "29kP4uqeFPc?start=000300", "fjBy03Obnt8?start=000112", "vwavVE93Xc4?start=000018", "lKVVCWRevro?start=000120", "QhYZ21kKEZ8?start=000014", "Y8Z7WHFZAN0?start=000035", "tDkvbCpr1so?start=000010", "fok_zZduebo?start=000028", "_Dbm3l-bp_g?start=000008", "PBLFHJhc6ZY?start=000100", "PBLFHJhc6ZY?start=000011", "PBLFHJhc6ZY?start=000430", "aSyipwo0BzA?start=000015", "aSyipwo0BzA?start=000300", "j1ziJ2aHdxI?start=000028", "wi_3WwCvzo8?start=000013", "CxXjIv7rDig?start=000040", "DYStlL3c-8o?start=000022", "DYStlL3c-8o?start=000300", "jb16zvCeTWc?start=000065", "jb16zvCeTWc?start=001863", "L9scS-zQDBY?start=000024", "L9scS-zQDBY?start=000300", "996_ylB-hEQ?start=000016", "j9XeBcaR5I8?start=000014", "qaEfELDAW5c?start=000030", "qaEfELDAW5c?start=000110", "UNIus5K5drA?start=000052", "IDIWc6CR7OU?start=000040", "iIeNQ6xzBIU?start=000035", "MolMMaSPzwI?start=000019", "SKjpx43BEEc?start=000023", "Qurzbqxv9Cc?start=000084", "Nqk9oAHv-NE?start=000047", "RRBi1Qcn-JA?start=000001", "RRBi1Qcn-JA?start=000100", "kTAWZS1CdXQ?start=000014", "kTAWZS1CdXQ?start=000180", "kDJruOu5gtU?start=000300", "kDJruOu5gtU?start=000522", "ALMhsxhjaxg?start=000075", "pvWNQjFUJiA?start=000011", "x5Trk4PsXr0?start=000009", "7VOHFV9Pl9M?start=000030", "QWJhHkPsatI?start=000014", "QWJhHkPsatI?start=000199", "aE6BBlB4r_Y?start=000005", "aE6BBlB4r_Y?start=000223", "45hEgiWEE9U?start=000740", "8nPL9YBWV0o?start=000009", "_ikmrMAHb5A?start=000002", "8nPL9YBWV0o?start=000733", "8uke7MX6YIs?start=000001", "1w5eAshOono?start=000020", "zSHq0rF0sz8?start=000031", "OjcCdyQcvDE?start=000001", "iif1sA9jhXY?start=000050", "iif1sA9jhXY?start=000272", "HKJirwJbD7M?start=000008", "HKJirwJbD7M?start=000133", "HKJirwJbD7M?start=000723", "HKJirwJbD7M?start=000988", "-et8xSXaru0?start=000670", "SXNyCg0b2m4?start=000011", "o_VHQ5K3TIc?start=000007", "o_VHQ5K3TIc?start=000120", "g0pqnDcHB1I?start=000004", "g0pqnDcHB1I?strat=000060", "ds_ohFc1B_o?start=000020", "gL_1uyPm3Ss?start=000032", "0kxamr4yuuA?start=000001", "vCo9SZHc2gA?start=000022", "EbRit-8oJJM?start=000035", "tR3nebf674k?start=000003", "Gt-GtC3cZek?start=000002", "SQnjX0CPEuA?start=000550", "lLeyKbGtjLM?start=000021", "lLeyKbGtjLM?start=000120", "lLeyKbGtjLM?start=000634", "lLeyKbGtjLM?start=001065", "lLeyKbGtjLM?start=001500", "F8Jp4NgRuNM?start=000035", "TQkbDZ-dtzI?strat=000021", "MZi63CeHqzY?start=000057", "MZi63CeHqzY?start=000180", "MZi63CeHqzY?start=000240", "SaDjNMF7hzo?start=000032", "SaDjNMF7hzo?start=000140", "SaDjNMF7hzo?start=000188", "SaDjNMF7hzo?start=000437", "SaDjNMF7hzo?start=000188", "LBQv-Wi__Uk?start=000007", "LBQv-Wi__Uk?start=000192", "LBQv-Wi__Uk?start=000427", "LBQv-Wi__Uk?start=000769", "3jmfPf_lSvw?start=000023", "3jmfPf_lSvw?start=000075", "4FToKQQvBto?start=000017", "SrQfVrgthp4?start=000051", "SrQfVrgthp4?start=000698", "JvbzmkR5t90?start=000102", "JvbzmkR5t90?start=000225", "JvbzmkR5t90?start=000556", "nJiDPoJX6aA?start=000398", "kXtWSjg098I?start=000017", "tWnqrdjaTk4?start=000170", "Ut84Anle7Pc?start=000011", "eTFjzTvogxg?start=000025", "eTFjzTvogxg?start=001087", "Huf3QpHTSyk?start=000021", "3SS4iXpMVfk?start=000029", "_dRjY9gMcxE?start=000023", "AWMpvQhFKzA?start=000020", "xEangf-PZ4Q?start=000015", "xEangf-PZ4Q?start=000066", "xEangf-PZ4Q?start=000130", "cIX92xMXhaE?start=000035", "TEs1YGWfrqA?start=000012", "uN821ZtlYMo?start=000029", "gehm5IhtHtk?start=000036", "l9srE3GavW4?start=000001", "l9srE3GavW4?start=000311", "BLtiVbpVEn0?start=000010", "BLtiVbpVEn0?start=000067", "hA8Ke2upJqA?start=000051", "arSCDQUFa0s?start=000001", "Y1QPjQ2I2uY?start=000019", "8SW_nFrfg-I?start=000056", "XZVBoSteNYA?start=000001", "XZVBoSteNYA?start=000060", "ldWLai0BtmE?start=000011", "OmgARbYAAvQ?start=000002", "0MiA-5upvEA?start=000003", "PUrlmfnysZ8?start=000001", "PUrlmfnysZ8?start=000120", "XRU9omrRV64?start=000001", "VxetycIW22A?start=000005", "VxetycIW22A?start=001000", "VxetycIW22A?start=001725", "VxetycIW22A?start=003555", "APynX3LRinY?start=000027", "APynX3LRinY?start=000099", "BD_nlE9uiDE?start=000001", "BD_nlE9uiDE?start=000100", "KzbVYTr04eQ?start=000004", "10xER_E1kek?start=000005", "dJOnsOy3j9I?start=000002", "JqruO5UEkrI?start=000005", "JqruO5UEkrI?start=000120", "17IajJTlFEU?start=000005", "17IajJTlFEU?start=000685", "eE3x-ZgaU3s?start=000002", "eE3x-ZgaU3s?start=000585", "QsyoLAWWQ9Q?start=000002", "qztRJrWt-Es?start=000030", "2uQ58Xwx1V4?start=000014", "82WxDwYB9aE?start=000014", "82WxDwYB9aE?start=000120", "O3Q0Frnxonw?start=000008", "O3Q0Frnxonw?start=000059", "O3Q0Frnxonw?start=002436", "WXIfF7TN1QQ?start=000120", "5LArhIB_rVM?start=000001", "5LArhIB_rVM?start=000174", "BZ95vp8zCoA?start=000001", "bpY4aDOK-0E?start=000019", "bpY4aDOK-0E?start=000120", "U3069EeP8Ms?start=000003", "U3069EeP8Ms?start=000100", "HzPHcK2dZ3Y?start=000018", "HzPHcK2dZ3Y?start=000136", "z1WC2_K1Bd8?start=000002", "z1WC2_K1Bd8?start=000132", "NpiP5Wu7Rsc?start=000002", "lYaGhFtJFsI?start=000002", "c8KFNAwlim0?start=000015", "zHh_ezLp7_E?start=000005", "3kI4ja3-oXM?start=000005", "0xC77KW2vW8?start=000003", "RUS16cEgeNQ?start=000002", "6qGiXY1SB68?start=000019", "6qGiXY1SB68?start=000112", "6qGiXY1SB68?start=000942", "vHr4qSQ-5XU?start=000020", "vHr4qSQ-5XU?start=000423", "2PqkuJMbHaw?start=000049", "MKcBBVimth0?start=001312", "_dWyKj7I9JM?start=000020", "Et7O5-CzJZg?start=000030", "wa12902YOnc?start=000013", "vA9GWzLLmxg?start=000005", "VYVKQ2OIzh0?start=000001", "VYVKQ2OIzh0?start=003965", "rAeN7TdGq4o?start=000009", "cHjKckxsOCs?start=000315", "cHjKckxsOCs?start=005400", "re-wjNxH4Jw?start=000295", "TGFPQhPuayE?start=000065", "e1J6DYeJFas?start=000008", "PE-P-nCSxHc?start=000734", "MRsTpmecPzg?start=000015", "LA4_2H_qBp4?start=000008", "9UMn6CVizOw?start=000007", "xFPEt9omvrU?start=000048", "xFPEt9omvrU?start=000260", "uZocEYAyUSs?start=000005", "uZocEYAyUSs?start=003698", "DxP8fc2XYb4?start=000035", "3qIzs9PQLxk?start=000014", "NyLF8nHIquM?start=000031", "NyLF8nHIquM?start=000031", "w7CTOkNWemc?start=000019", "aBOsIVU9mms?start=000824", "N77GSxYd2jM?start=000060", "xYNCfN3TLBs?start=000037", "GSCbzHvrmjE?start=000032", "zca688Ecwpk?start=000313", "mlS89Cd176M?start=000021", "gXIWNZFq-H0?start=000001", "BTAJP0aDud0?start=000084", "DmmEKbLOzTg?start=000055", "liQQ6NHZsXQ?start=000030", "Jr9x-RB4E1U?start=000016", "gMllzBuAbBg?start=000010", "WmKNcI4atpA?start=000005", "y9NZL6CmUyc?start=000007", "rOhHgHm2dFc?start=000005", "_3t_BI97Z2s?start=000001", "oiZgqkyBUXw?start=000003", "h_nTvenH1Gs?start=000005", "oER__tVuOPU?start=000018", "6-mxZGFvBpo?start=000020", "xrRFKEdtQIc?start=000034", "LhODRz8W2vI?start=000013", "NwNmbb1viic?start=000009", "ez1KCblQ6iM?start=000008", "giHQmVbOuYo?start=000025", "E07rTPgIvn0?start=000001", "OHMk5ah8xfU?start=000014", "Qu6GBZTWJEs?start=000051", "ncIVCU5M6cc?start=000018", "X4CY6EVQ_1E?start=000030", "aVh_jTIP2cE?start=000018", "GS9eri4tYx8?start=000048", "gJ66mod4ouY?start=000001", "uJAhx-Ha--A?start=000004", "PZYPYZWfNg4?start=000003", "F5HZQ6P_YsQ?start=000072", "qeM7cxGLg8Y?start=000019", "IygYryXJ0MI?start=000035", "IYfzyG88xMY?start=000100", "OD7meugDRjY?start=000012", "Qsz5m1nl4jM?start=001202", "I7OHMNjWfqw?start=000015", "TN6yafK9u7Q?start=000020", "UQ7rxNfdmkw?start=000010", "GYBeBWkqZ0M?start=000030", "djJ4N-Y7hZc?start=000002", "d1p4Y4N6dYo?start=000005", "4-cwk3DZP3w?start=000261", "74fvGvcqUhs?start=000011", "W_TbkruGZRc?start=000013", "q2uaQww6T3w?start=000030", "eb2_uTiIJ7c?start=000040", "PGYJvzFtn0M?start=000001", "RSa1s-grI9A?start=000009", "R7lirHnNy84?start=000010", "jGPm3l9qkJQ?start=000001", "bdDtsRh_C1g?start=000002", "4lOzYUlhJEw?start=000031", "DT6g6VPvQ6Q?start=000024", "DZ_4CiyHUpY?start=000020", "o1DJjWHc1ZE?start=000033", "z1S3pHGjhpg?start=000115", "EvaOoKBLxjE?start=000160", "6eqRZzs8SKQ?start=000080", "f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000213", "EAV0Gl6vJsw?start=000113", "FSIbzC6qGyU?start=000010", "zIqAI8WJhi0?start=000001", "zIqAI8WJhi0?start=001046", "CJyhMaH5WRs?start=000036", "DAVd95WXCoA?start=000004", "jKJ2zDSYns8?start=000016", "jKJ2zDSYns8?start=001794", "G0fWvIxy88A?start=000589", "p-Ld8dhWKxA?start=000057", "zxbaZVPybuc?start=000012", "rvoQ9fLXf-Y?start=000008", "aX3solS4LIc?start=000016", "klGjMHwCbs4?start=000008", "E5AnaDiy2C8?start=000015", "utohtmBGLqg?start=000052", "abIHlI083CU?start=000008", "abIHlI083CU?start=002899", "rvoQ9fLXf-Y?start=001647", "E5AnaDiy2C8?start=001525", "aX3solS4LIc?start=001830", "LhODRz8W2vI?start=000044", "p-Ld8dhWKxA?start=001644", "Ok9KlSp7ouo?start=000017", "_xqSPG7xFJA?start=000001", "tCqeAUFRc_k?start=000002", "s14Q7cT5_KI?start=000007", "mlG5mZueln8?start=000010", "lYSsP5WgVWI?start=000001", "u_KU5B3JS2A?start=000001", "S0S17xIEqD8?start=000001", "2fRYpyDZ-Ck?start=000001", "cfbgfL8ShHU?start=000001", "EYi0kkjgW_k?start=000180", "YUhyiKAQCZ4?start=000548", "CXgfscXlEC0?start=000065", "ZhY5DaVE4jc?start=000492", "us5Red50s_Q?start=000393", "fosm2yp_aJA?start=000845", "kYbesfOO4bE?start=000010", "mz97fPJfFvM?start=000008", "EYp8AcMxrTA?start=000050", "eXQwfsvCzeA?start=000055", "M2Xqdk_gA8w?start=000012", "rfxNHhOYze8?start=000003", "nWQ8QlLrb3U?start=000001", "sZ42BwugrRU?start=000093", "6ntswWEhVLg?start=000001", "67cvBK9haa8?start=000643", "rlGAuh3tNlY?start=000020", "ZVMJMdE_Xcc?start=000001", "f-GlXgqzMsU?start=000287", "Cdb46yUYSWE?start=000205", "63ARQhtaUPs?start=000045", "IRPMleRa-cA?start=000034", "Xly3YJImi2A?start=000040", "xEPIde0qhg0?start=000023", "lrdvh-DfBW0?start=000020", "u3ayPmL2KN4?start=000017", "hRu9tCDVEXQ?start=000006", "14JALDJKYko?start=000070", "rXCVThalXsk?start=000002", "XCDyHduQWiI?start=000003", "KOniYvMausM?start=000017", "N1cI697GXt0?start=000002", "x5_Pr0p-0tI?start=000001", "Z0F6NcfcRdU?start=001970", "0WWbsRg7FBw?start=000004", "ehRReaALV5M?start=000010", "v8RTsev_2rQ?start=000021", "JTXO-6spfQg?start=000001", "dk8dU1BSp6Q?start=000002", "pfkoZMLfkoA?start=000379", "1ToDl0_20lw?start=000070", "b4_K4sO8Jx4?start=000350", "pXRWvuxsnGk?start=000028", "LvY6DkRQhBg?start=000170", "GhpG7oFqguI?start=000025", "9qN2afIuFs8?start=000001", "aUJl46bEWYo?start=000023", "aUJl46bEWYo?start=002970", "yLTycPjm0nk?start=000022", "yLTycPjm0nk?start=002385", "Drk63kz4dLs?start=000007", "82EpisOdQYQ?start=000001", "ZzvG-JKjvto?start=000150", "5ZRotN7rNUQ?start=000080", "8CIkhCwu7U4?start=000044", "CISUVZ8siGA?start=000228", "C1Zyz1KZhBM?start=000225", "j3YvPb38uqI?start=000004", "mA9lYWyXMYU?start=000001", "-22fZhqIRQc?start=000001", "BU4uRJccNAI?start=000005", "2Q3DPbEZXCQ?start=000010", "RyeWwaLdnDQ?start=000010", "hCFT2HkBRnI?start=001645", "P26yiJwSZh4?start=000020", "zrvaZusWypI?start=000440", "pmAATS8P5wU?start=000020", "pmAATS8P5wU?start=001489", "rg2ydsx1ML0?start=000388", "jcnu9Q5Dm2A?start=001440", "9m3fojdkPjM?start=000010", "ObW7tOqbPzc?start=000010", "CI0aq-lFEOI?start=000018", "-PAoZ6fFoUs?start=000015", "V_Yl5Fwujqs?start=000010", "ZiIa1wLuABY?start=000010", "ZiIa1wLuABY?start=000897", "ZiIa1wLuABY?start=001815", "cFb-MpZa5OI?start=000018", "cFb-MpZa5OI?start=001131", "FniQ_pNBmyI?start=000600", "s_ioyCRkMPo?start=001140", "eK00Pt_HAOo?start=000852", "aVh_jTIP2cE?start=001622", "WXYW_cjDT-4?start=000008", "rOhHgHm2dFc?start=001556", "k9yu6MIyONc?start=000330", "dLmeq6hU-5E?start=000006", "dLmeq6hU-5E?start=001724", "giHQmVbOuYo?start=001831", "PgXUyeqkkt0?start=000001", "eQML6bnNk7w?start=000005", "jyxIRzlkO_g?start=000025", "J7HIfklyF9w?start=000600", "c72TJGMNwjs?start=000145", "dXJYg3Qx6e4?start=000226", "eTWbjduZhWs?start=000339", "RqKtcCuGmX0?start=000180", "aQPUbiblOHo?start=000039", "AM91mhKFKbM?start=000915", "cHrpLgl0jbo?start=001340", "rlGAuh3tNlY?start=000628", "Vqu9-5fvhHU?start=000016", "W52KiKLMds4?start=000008", "sr5htKv9vso?start=000008", "scjLxGh17rA?start=000006", "ziUsOvkNMPo?start=000006", "EfewkJ2xdfM?start=000730", "oiZgqkyBUXw?start=002998", "ba_zL0p2H7U?start=000001", "k9yu6MIyONc?start=002530", "ehRReaALV5M?start=000490", "YqiLAKtxBJM?start=000288", "8KY7HicoV0M?start=000046", "Y_D2I1BYxrA?start=000919", "1CdEpsdBq_Y?start=000934", "vUsm31Ow_8E?start=000021", "vUsm31Ow_8E?start=003645", "6PHApdWRjEY?start=000093", "s3axkCaYil8?start=000001", "W4Jo1B43J1U?start=000035", "nv5LDZAzXJE?start=000115", "nv5LDZAzXJE?start=000557", "qeFXQP_MRRA?start=000040", "yhCEDrCwkN8?start=000011", "73BUYy05JRY?start=000330", "_SvX-1DVKuQ?start=000210", "Rbk7is1NqWc?start=000020", "c3TPWWLJfRc?start=000001", "ZggwRjfPhIM?start=000003", "ZggwRjfPhIM?start=000140", "3gU8FCkcIEI?start=001981", "3gU8FCkcIEI?start=000715", "2BnFnZwsVP0?start=000215", "uheHx6BnBJ0?start=000390", "ploEnK1nDTk?start=000040", "UKyT_a-raW4?start=000013", "UKyT_a-raW4?start=001717", "ZAHhdymOl6Y?start=000003", "Ehx9eAxqkMM?start=000375", "cf0mP0f5EgM?start=000223", "HRK6cfhoInw?start=000419", "nF_Hpha2cUs?start=000001", "nF_Hpha2cUs?start=000450", "qkCiR1olRgc?start=000008", "qkCiR1olRgc?start=001918", "MzbczVtv-Vs?start=000005", "l-ImSdlZ77o?start=000070", "gTuRhOPCWCQ?start=000001", "aUJl46bEWYo?start=002376", "XVvYXBTSuaA?start=000001", "g3ZySpbllTQ?start=000387", "pvbBiPJrMRM?start=000040", "r85DZ9EX1Ho?start=000745", "mlSLvuyyRJM?start=000090", "MCSU8kzRO1Y?start=000300", "oHFwUWGN2-w?start=000001", "xrRFKEdtQIc?start=000765", "8CIkhCwu7U4?start=000518", "d_i1Wre23R4?start=001759", "WSNrXnt_4ws?start=000177", "OsnRSr7LxII?start=000142", "OsnRSr7LxII?start=000554", "RZ7csZPrpA4?start=000001", "63ARQhtaUPs?start=001110", "P4BiNL5yVxk?start=000028", "J1nObYmCezo?start=000006", "SwT01Uh75n8?start=000000", "-mKF83BndXY?start=000000", "ygRbKJ0Zlho?start=000006", "H9JHVl_OSe8?start=000159", "IcATDi7Mrq4?start=000001", "rAO37L0XkB0?start=000330", "I4NQVvXEQ-o?start=000014", "QXcPdsFgiTQ?start=000030", "UZ7Segqferk?start=000012", "RSa1s-grI9A?start=001365", "ap7ZGs6NEuU?start=000278", "i_-LCP3q0cA?start=000315"]
+          videolocations = [[40.7580, -73.9855],[40.7580, -73.9855], [37.7897, -122.3972], [37.7897, -122.3972], [37.793660, -122.403014], [37.8199, -122.4783], [40.6892, -74.0445], [37.762256, -122.435177], [38.6247, -90.1848], [43.6426, -79.3871], [33.984763, -118.471835], [21.3069, -157.8583], [34.011281, -118.495102], [42.357113, -71.071741], [38.903159, -77.039775], [38.916527, -77.201024], [45.521962, -122.678228], [45.4997, -122.4310], [45.0051, -122.7831], [44.938753, -123.038275], [45.210015, -123.197393], [45.300316, -122.976765], [45.356076, -122.840742], [45.382163, -122.761511], [45.519733, -122.678061], [37.335711, -121.886309], [38.5766, -121.4932], [43.4799, -110.7624], [41.133550, -104.816074], [32.785386, -96.799413], [29.424709, -98.488525], [40.730209, -73.992533], [25.776288, -80.187334], [40.6413, -73.7781], [41.9742, -87.9073], [33.6407, -84.4277], [33.759415, -84.387670], [30.422107, -84.293102], [36.1147, -115.1728], [36.1147, -115.1728], [36.1147, -115.1728], [37.769912, -122.447572], [37.770274, -122.444657], [39.531867, -119.815336], [43.658001, -70.257072], [44.260289, -72.576222], [44.260874, -72.578897], [45.521734, -122.692957], [45.518897, -122.680926], [45.531077, -122.653685], [45.530128, -122.661565], [45.530777, -122.657502], [47.609711, -122.340970], [47.609559, -122.338989], [47.610237, -122.336727], [30.282061, -81.389363], [30.315016, -81.394784], [30.322196, -81.395789], [38.2532, -85.7538], [42.955692, -85.672610], [41.894996, -87.624357], [41.888996, -87.624385], [21.313024, -157.861629], [21.311391, -157.862271], [21.276675, -157.826222], [21.309927, -157.861102], [61.219515, -149.891288], [61.217588, -149.895359], [58.300543, -134.405572], [58.298532, -134.403139], [55.341180, -131.646621], [55.342487, -131.648519], [40.709954, -73.962473], [33.154567, -117.350423], [33.819365, -116.546696], [33.754739, -118.121942], [33.659799, -117.999351], [37.795937, -122.407711], [37.8080, -122.4177], [37.7879, -122.4075], [32.747586, -117.160499], [41.2132, -124.0046], [40.759154, -73.984944], [41.879018, -87.640483], [41.881828, -87.640433], [41.885732, -87.635396], [41.258151, -95.932550], [41.258151, -95.932550], [41.255361, -95.932964], [41.255548, -95.929580], [40.793684, -73.958085], [40.793614, -73.959318], [40.614048, -73.981412], [40.725035, -73.999375], [40.818254, -73.960735], [40.783598, -73.947645], [37.540323, -77.432920], [37.542528, -77.436494], [35.090720, -106.660374], [33.984582, -118.471681], [34.009245, -118.497565], [34.042606, -118.257499], [34.070142, -118.403740], [37.814993, -122.478002], [29.9792, 31.1342], [40.6892, -74.0445], [41.4036, 2.1744], [51.5007, -0.1246], [41.891394, 12.491651], [48.8606, 2.3376], [51.1789, -1.8262], [41.8827, -87.6233], [36.426893, 25.428029], [37.762256, -122.435177], [20.6843, -88.5678], [34.011281, -118.495102], [41.899226, 12.476743], [38.6247, -90.1848], [43.6426, -79.3871], [44.107375, 9.725481], [52.5163, 13.3777], [40.4319, 116.5704], [34.3926, 132.4523], [37.7897, -122.3972], [37.7898, -122.3959], [35.659784, 139.744055], [37.793660, -122.403014], [-15.7983, -47.8755], [52.5186, 13.3762], [37.5130, 127.1027], [41.8789, -87.6359], [41.9009, 12.4833], [41.9022, 12.4539], [35.659477, 139.700500], [37.9715, 23.7257], [40.7464, -73.8451], [43.8791, -103.4591], [38.8814, -77.0365], [38.8977, -77.0365], [38.889838, -77.011728], [38.889935, -77.037673], [38.8894, -77.0405], [-13.1631, -72.5450], [45.502633, -73.570384], [43.656037, -79.382201], [43.642576, -79.387087], [43.674812, -79.388507], [49.286603, -123.111790], [49.284833, -123.114621], [49.280440, -123.121418], [49.284179, -123.115472], [49.283654, -123.116406], [49.277715, -123.117467], [49.284702, -123.124944], [49.273411, -123.113484], [49.280930, -123.119142], [48.425693, -123.367579], [48.425693, -123.367579], [48.422156, -123.368663], [48.414860, -123.365276], [48.414726, -123.363411], [49.326796, -122.949175], [45.495502, -73.577380], [51.056527, -114.069277], [49.893994, -97.143049], [49.894929, -97.145052], [49.882290, -97.154382], [51.503208, -0.047608], [51.506362, -0.142305], [59.9318, 30.3527], [59.9318, 30.3527], [59.9318, 30.3527], [55.748565, 37.588368], [55.748565, 37.588368], [59.924145, 30.383505], [55.756627, 37.614624], [55.7539, 37.6208], [54.720099, 20.501660], [54.716608, 20.503044], [54.719881, 20.502897], [54.707445, 20.527951], [43.120132, 131.885674], [43.116115, 131.883592], [45.2671, 19.8335], [55.757440, 37.622938], [54.980240, 82.901880], [54.986824, 82.890122], [59.935075, 30.325247], [54.9833, 82.8964], [52.037908, 113.491912], [52.037589, 113.499286], [-22.987572, -43.222958], [-22.906031, -43.177308], [-22.970802, -43.186546], [-22.952301, -43.186975], [-22.953982, -43.191755], [-23.574827, -46.688067], [-23.572509, -46.675234], [-22.982456, -43.193644], [-22.981807, -43.190289], [-22.966844, -43.186835], [-22.987779, -43.196431], [-23.567702, -46.669417], [-25.692320, -54.434670], [-22.950923, -43.213026], [-22.951956, -43.210492], [-22.949465, -43.156410], [-22.949309, -43.154596], [-22.915550, -43.179700], [-15.801817, -47.894947], [-22.950630, -43.164284], [-15.759995, -47.895292], [-12.956503, -38.387074], [-25.428485, -49.265903], [-25.427975, -49.272233], [-3.740851, -38.541177], [-33.883488, 151.204500], [-33.882604, 151.204054], [-33.858257, 151.208399], [-33.858467, 151.208267], [-33.855835, 151.209631], [-33.855639, 151.210518], [-33.873535, 151.211590], [-27.464953, 153.020640], [-37.817135, 144.952985], [-37.816280, 144.956105], [-37.818785, 144.968144], [-37.817442, 144.967511], [-37.811550, 144.968515], [-37.810296, 144.962819], [-37.808067, 144.956749], [-27.476276, 153.014262], [-27.482182, 153.018777], [-31.951902, 115.876272], [-32.168358, 115.862280], [-32.038130, 115.868280], [-34.923098, 138.597259], [-34.923206, 138.595586], [-34.922890, 138.601393], [-34.922710, 138.605624], [-34.922421, 138.610378], [-42.895138, 147.333299], [-27.995298, 153.430459], [-37.990525, -57.546139], [-37.991220, -57.547280], [-37.991331, -57.548906], [-34.562153, -58.456777], [-34.562085, -58.456507], [-34.561719, -58.455892], [-34.563994, -58.454805], [-34.561694, -58.455804], [-31.417254, -64.198682], [-31.416683, -64.197675], [-31.415069, -64.195832], [-31.414769, -64.192591], [-32.938178, -60.636563], [-32.938044, -60.636913], [-32.930519, -60.649546], [-37.989788, -57.547701], [-37.991187, -57.547319], [-24.789926, -65.408988], [-24.789881, -65.409666], [-24.795694, -65.424726], [20.913841, -100.743784], [35.687421, -105.938518], [-32.872814, -68.827629], [48.859676, 2.292323], [48.861985, 2.288764], [48.861475, 2.290213], [48.860736, 2.296017], [48.866286, 2.318601], [48.848691, 2.348276], [48.836112, 2.293948], [43.553832, 7.020194], [43.552889, 7.020571], [43.552511, 7.021563], [43.548235, 7.028576], [43.694543, 7.263876], [43.695885, 7.265239], [43.695630, 7.274916], [45.759459, 4.828660], [45.758119, 4.829329], [44.835319, -0.571360], [44.836452, -0.571504], [43.602906, 1.441646], [47.212571, -1.546158], [43.949414, 4.808819], [47.322894, 5.026628], [28.649460, 77.207522], [28.651506, 77.208118], [28.661702, 77.181000], [26.492697, 74.549942], [25.315217, 82.998796], [25.315217, 82.998796], [25.320668, 83.023103], [25.315974, 83.019205], [22.630153, 88.385631], [22.549372, 88.383153], [22.547847, 88.381207], [22.545933, 88.386136], [18.936454, 72.835822], [18.937173, 72.835817], [18.913594, 72.823320], [18.912379, 72.822104], [18.922550, 72.834467], [25.354131, 78.639282], [25.349826, 78.640344], [31.630677, 74.875434], [31.625358, 74.875945], [32.247916, 77.189258], [32.244381, 77.187516], [32.220349, 77.198614], [32.244339, 77.187904], [28.655919, 77.204416], [39.934209, 116.403149], [31.240285, 121.490588], [31.205121, 121.506303], [31.166701, 121.545920], [31.223192, 121.444977], [31.223192, 121.444977], [31.237463, 121.484639], [40.431919, 116.570377], [29.538451, 106.514611], [29.538451, 106.514611], [29.537535, 106.507147], [39.915932, 116.411145], [39.911448, 116.411359], [31.274222, 120.637781], [31.274222, 120.637781], [31.576486, 120.299125], [31.576486, 120.299125], [31.543299, 120.304850], [31.542412, 120.303365], [32.021647, 118.772922], [31.886462, 120.555504], [30.531136, 114.324987], [30.539285, 114.354233], [30.519551, 114.340924], [22.544191, 114.086719], [32.202342, 119.444744], [35.659111, 139.700394], [35.659458, 139.700552], [35.659937, 139.701672], [35.698048, 139.707406], [35.693908, 139.704671], [35.698619, 139.772663], [35.669152, 139.696320], [35.659614, 139.700431], [35.695583, 139.702698], [35.692659, 139.699582], [34.662975, 135.502283], [34.733561, 135.500193], [34.734830, 135.501719], [34.995893, 135.781507], [38.252057, 140.855769], [38.258976, 140.883444], [35.906912, 139.482416], [35.641952, 139.702048], [35.170512, 136.880456], [34.297297, 132.318128], [32.813273, 130.704237], [32.746753, 129.879483], [34.395828, 132.453814], [43.055377, 141.353386], [43.057038, 141.351138], [1.295433, 103.857530], [1.280174, 103.855759], [12.782044, 101.647166], [3.144270, 101.706213], [51.516207, -0.133839], [51.516207, -0.133839], [51.520321, -0.134084], [51.500863, -0.121954], [51.505579, -0.075326], [51.516134, -0.174605], [52.518635, 13.375300], [52.516253, 13.377159], [48.139252, 11.566118], [48.142930, 11.580000], [48.137642, 11.579796], [50.846713, 4.352346], [51.205785, 3.221424], [59.332366, 18.064477], [48.145774, 17.107378], [44.817726, 20.456989], [60.167679, 24.943039], [59.436811, 24.742718], [58.380283, 26.723508], [56.948056, 24.120961], [41.373965, 2.176127], [40.423799, -3.711197], [40.414264, -3.703374], [45.464149, 9.189860], [51.068701, -1.797369], [51.440773, 5.475545], [42.699644, 23.322888], [49.601032, 6.133417], [52.363717, 4.881663], [59.335524, 18.063378], [52.650180, -7.249856], [45.398387, 11.874765], [45.417013, 11.880054], [59.858378, 17.645178], [47.991402, 7.854445], [36.160739, -86.777807], [36.149194, -86.812988], [35.229130, -80.839371], [35.225655, -80.845213], [39.099760, -94.577968], [35.139683, -90.052123], [31.760667, -106.491447], [35.776918, -78.638255], [35.770581, -78.722980], [37.443515, -122.169681], [37.421882, -122.083764], [44.986719, -93.275413], [29.954086, -90.069718], [33.809653, -117.918978], [32.300558, -90.191024], [37.427309, -122.171013], [42.051562, -70.185555], [28.538624, -81.379126], [27.766268, -82.631770], [35.746619, -78.809957], [35.794894, -78.699363], [39.950349, -75.191782], [37.604379, -112.156528], [34.748948, -92.276347], [32.225717, -110.967128], [48.139027, 11.566799], [51.207409, 3.228069], [51.505879, -0.088814], [52.537891, 13.206501], [53.350416, -6.260831], [53.274251, -9.050642], [41.677903, 26.558588], [51.514223, -0.151348], [51.514609, -0.147300], [51.515256, -0.141923], [51.512714, -0.123622], [53.481890, -2.246513], [53.482138, -2.244276], [53.481121, -2.237945], [51.510125, -0.134590], [53.406509, -2.983006], [53.402120, -2.989976], [53.961462, -1.082405], [53.744167, -0.339499], [50.910312, -1.404739], [52.477067, -1.892532], [51.458471, -2.593007], [52.205088, 0.118993], [51.481007, -3.185849], [55.856354, -4.257498], [50.823676, -0.143565], [50.820779, -0.144928], [52.477550, -1.897276], [51.483559, -3.174913], [51.454934, -2.593103], [51.068747, -1.795757], [53.742757, -0.337896], [53.798282, -1.538016], [53.191376, -2.885437], [53.342174, -1.778868], [53.125761, -2.075282], [53.111095, -2.021443], [53.026100, -0.597654], [53.022445, -0.583874], [53.109786, -1.564628], [53.200954, -1.869341], [53.078287, -0.813248], [41.905815, 12.482366], [43.606530, 1.446398], [48.844962, 2.372113], [48.844466, 2.373969], [50.636349, 3.068642], [52.368560, 4.892370], [37.459888, -122.106177], [37.390001, -122.081569], [27.965646, -82.797204], [27.940431, -82.459961], [39.953611, -75.157286], [37.582312, -81.537124], [37.775448, -81.192638], [39.631791, -79.956654], [46.812456, -71.214226], [37.173647, -3.598236], [64.144875, -21.925058], [60.194006, 11.101726], [59.913116, 10.734722], [60.395087, 5.320227], [23.135270, -82.358601], [46.811458, -71.203518], [39.187117, -106.817918], [39.642099, -106.377504], [37.810765, -122.262454], [43.681040, 4.631309], [60.170591, 24.940500], [42.051953, -70.185578], [40.517568, -74.238840], [40.503156, -74.238446], [40.719718, -74.042467], [37.788050, -122.406703], [32.707710, -117.160113], [34.072204, -118.442648], [17.494820, -88.188845], [9.933714, -84.075953], [9.932446, -84.073466], [6.247718, -75.569594], [37.769874, -122.466132], [49.002856, 2.561634], [52.508044, 13.390196], [38.712658, -9.137146], [55.948602, -3.198846], [51.471337, -0.488455], [49.709725, 0.203599], [-6.191873, 106.822980], [1.284562, 103.843794], [1.277160, 103.846934], [3.156572, 101.713561], [3.148928, 101.713139], [5.419358, 100.336874], [18.787783, 98.993187], [47.499143, 19.053295], [47.498961, 19.043594], [45.438247, 10.992151], [47.025497, 28.836446], [37.270683, -81.219403], [44.972618, -93.274619], [41.016578, 28.976842], [36.953192, -81.079120], [37.794018, -79.995344], [37.115400, -81.523029], [35.919718, 14.490902], [35.898955, 14.513137], [35.925592, 14.489313], [45.438360, 12.337076], [51.899644, -8.470792], [51.893424, -8.470143], [51.220674, 4.402755], [41.012069, 28.968174], [37.983842, -1.129522], [38.345889, -0.490583], [36.838493, -2.467233], [49.759811, 6.644294], [41.369042, 2.153185], [51.920557, 4.471521], [51.917828, 4.481114], [51.909318, 4.486043], [35.169757, 33.361321], [35.177031, 33.362583], [34.672624, 33.042195], [52.079878, 4.316508], [52.093374, 5.119547], [59.857792, 17.637226], [55.858354, -4.256789], [59.437758, 24.747365], [54.678085, 25.287539], [53.551526, 10.003662], [53.552748, 9.985371], [49.610877, 6.132504], [53.126425, -1.550322], [7.003946, 100.470811], [18.787785, 98.993142], [50.084407, 14.418807], [40.345607, -74.657282], [-34.915530, -56.149826], [19.436069, -99.201282], [20.677334, -103.348535], [32.535890, -117.037053], [-12.086597, -77.054911], [-12.125620, -77.037381], [64.147133, -21.936670], [56.565020, -3.584648], [55.748717, 37.539316], [50.107259, 8.664136], [50.001700, 8.259649], [-6.245407, 106.783862], [-12.101940, -77.035284], [56.949950, 24.111021], [54.899319, 23.886286], [54.686662, 25.282305], [9.934645, -84.084827], [44.642592, -63.578746], [34.410277, -119.691353], [39.109783, -94.581958], [43.675812, -79.402544], [42.330976, -83.046791], [42.334950, -83.042467], [41.310377, -72.930226], [40.880165, -74.144593], [35.713010, -83.513626], [40.767236, -111.891175], [40.762885, -111.891173], [40.782829, -124.164628], [40.791810, -124.161308], [33.793065, -117.850917], [33.650550, -117.743442], [54.972331, -1.612211], [40.755863, -73.987061], [51.054520, 3.725592], [51.057226, 3.724197], [51.053093, 13.743622], [51.047632, 13.736038], [41.043493, 29.005523], [38.435716, 27.142725], [39.926486, 32.851705], [52.230147, 21.007235], [52.233766, 21.019204], [51.778657, 19.451581], [2.194362, 102.248778], [37.859435, 27.258773], [54.319587, 10.133598], [53.425096, 14.551013], [53.426658, 14.551908], [54.355755, 18.645106], [54.351687, 18.657924], [55.680233, 12.584554], [36.102504, -115.172784], [40.146802, 26.408075], [1.277402, 103.843379], [28.638987, 77.212643], [35.084196, -106.648857], [63.864719, -21.146732], [65.680938, -18.089497], [66.044033, -17.338710], [51.110222, 17.031119], [45.447824, 11.002870], [45.470440, 9.193158], [45.442076, 10.997556], [43.320830, 11.330731], [36.143011, -5.353948], [31.633354, -8.009764], [31.635800, -8.014185], [21.164616, -86.828082], [23.136237, -82.350164], [42.351945, -71.045715], [42.356524, -71.062007], [42.359906, -71.055522], [34.072439, -118.403137], [40.746902, -73.890967], [39.042437, -94.588338], [28.375802, -81.549401], [32.708577, -117.170485], [34.101615, -118.342204], [51.530808, -0.124167], [40.665236, -73.923154], [39.944654, -75.173487], [38.582107, -121.509237], [46.811844, -71.205451]]
+var official_video_id;
+var official_video_number
+var correct_coords = null;
+function beginchallenge() {
+  started_playing = 0;
+  timeleft = 0;
+  clearInterval(downloadTimer);
+  document.getElementById("countdown").style.color = "white";
+  document.getElementById("player").style.opacity = "1";
+  potential_coords = null;
+  correct_coords = null;
+  lstlength = videolocations.length
+  official_video_number = Math.floor(Math.random() * lstlength) + 1 
+  official_video_id = videoids[official_video_number]
+  official_video_location = videolocations[official_video_number]
+  official_video_seconds = official_video_id.substr(-6);
+  official_video_id = official_video_id.substring(0,11);
+  console.log(official_video_number, official_video_location)
+  document.getElementById("id01").style.display = "none"; 
+  document.getElementById("main-button").style.display = "block";
+  // invalidateSizeFunc()
+  document.getElementById("main-button2").style.display = "none";
+  // if (localStorage.getItem("current_video") !== null) {
+  //   official_video_id = localStorage.getItem("current_video")
+  //   official_video_seconds = official_video_id.substr(-6);
+  //   official_video_id = official_video_id.substring(0,11);
+  // }
+  player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
+  document.getElementById('vid-bac').style.display = "block";
+  document.getElementById("new-back-btn-time").style.display = "none";
+  fetch('http://api.geonames.org/countryCode?lat=' + String(official_video_location[0]) + '&lng=' + String(official_video_location[1]) + '&username=streaksmode').then(function (response) {
+  // The API call was successful!
+  return response.text();
+}).then(function (html) {
+  // This is the HTML from our response as a text string
+  // console.log('CODE' + html);
+  correct_coords = html
+  console.log(correct_coords)
+  document.getElementById("actualscore").innerHTML = localStorage.getItem("sovereignt-streak");
+  document.getElementById('original-c').style.display = "block";
+  document.getElementById('future-c').style.display = "none";
+  document.getElementById("present-z").style.display = "none";
+  document.getElementById("map-prompter").innerHTML = 'Select a Country <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i>'
+  localStorage.setItem("current_video", official_video_id)
+  if (correct_coords.includes("SG")) {
+    beginchallenge()
+  }
+  // correct_country_code = html
+}).catch(function (err) {
+  // There was an error
+  console.warn('Something went wrong.', err);
+  console.log('RECURSION HAPPENING')
+  beginchallenge()
+  });
+}
+var highlight_status = 0;
+var greenhighlight = null;
+var selected_country = null;
+var url ="convert.json";   //'https://www.geologycloud.tw/api/v1/zh-tw/Stratum?t=.json';
+
+    var map = L.map('map').setView([24.42401, 118.33202], 12); 
+
+    var osm=new L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{ 
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+var geojson;
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+var previous;
+var fetchCompletion;
+// var greenhighlight;
+function zoomToFeature(z) {
+    fetchCompletion = 0;
+    console.log('Fetch to ZERO')
+    console.log('fetch is 0')
+    if (greenhighlight !== null) {
+        previous = greenhighlight
+    }
+    if (previous) {
+        geojson.resetStyle(previous)
+    }
+    geojson.resetStyle(z);
+    greenhighlight = null;
+    greenhighlight = z.target;
+    fetchCompletion = 0;
+    greenhighlight.setStyle({
+        weight: 4,
+        color: '#56830b',
+        fillColor: '#56830b',
+        fillOpacity: '0.2',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        greenhighlight.bringToFront();
+    }
+    current_latitude = z.latlng.lat
+    current_longitude = z.latlng.lng
+//     fetch('http://api.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=streaksmode').then(function (response) {
+//   // The API call was successful!
+//     fetchCompletion = 0;
+//   return response.text();
+// }).then(function (html) {
+//   // This is the HTML from our response as a text string
+//   potential_coords = html
+//     console.log(potential_coords)
+//   console.log(correct_coords)
+//   console.log('FETCH COMPLETE!')
+//   fetchCompletion = 1;
+//   // submitted_country_code = html
+// }).catch(function (err) {
+//   // There was an error
+//   console.warn('Something went wrong.', err);
+// });
+    // map.fitBounds(e.target.getBounds());
+}
+function resetHighlight(e) {
+    // geojson.resetStyle(e.target);
+}
+function highlightFeature(e) {
+    // var layer = e.target;
+
+    // layer.setStyle({
+    //     weight: 4,
+    //     color: '#666',
+    //     dashArray: '',
+    //     fillOpacity: 0.7
+    // });
+
+    // if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    //     layer.bringToFront();
+    // }
+}
+var marker;
+var globallat;
+var globallon;
+var distance_between;
+var first_time = 0;
+var map;
+var current_latitude;
+var current_longitude;
+function invalidateSizeFunc(userinput) {
+  document.getElementById('id01').style.display = "block";
+    if (map != undefined) {
+      map.off();
+      map.remove();
+    }
+    document.getElementById('main-button').style.display='none'
+  map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+L.geoJSON(countries, {
+  style: function(feature) {
+    return {
+      //       fillColor: "#D3D3D3", // Default color of countries.
+      // fillOpacity: 0.5,
+      // stroke: true,
+      // color: "grey", // Lines in between countries.
+      // weight: 2
+      fillColor: "#D3D3D3", // Default color of countries.
+      fillOpacity: 0,
+      stroke: true,
+      color: "grey", // Lines in between countries.
+      weight: 0
+    };
+  },
+  onEachFeature: onEachFeature
+}).bindPopup(function(layer) {
+    // var hilit = layer;
+    // highlight_status = 1
+    // hilit.setStyle({
+    //     weight: 4,
+    //     color: '#56830b',
+    //     fillColor: '#56830b',
+    //     fillOpacity: '0.2',
+    //     dashArray: '',
+    //     fillOpacity: 0.7
+    // });
+  // console.log('Layer: ' + String(layer))
+  selected_country = layer.feature.properties.sovereignt;
+  
+  // console.log(layer.)
+  document.getElementById("map-prompter").innerHTML = "<b>Selected:</b> " + String(selected_country) + "<i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;''></i>"
+}).addTo(map);
+geojson = L.geoJson(countries, {
+  style: function(feature) {
+    return {
+      fillColor: "#D3D3D3", // Default color of countries.
+      fillOpacity: 0,
+      stroke: true,
+      color: "grey", // Lines in between countries.
+      weight: 0
+      // fillColor: "#D3D3D3", // Default color of countries.
+      // fillOpacity: 0.5,
+      // stroke: true,
+      // color: "grey", // Lines in between countries.
+      // weight: 2
+    };
+  },
+  onEachFeature: onEachFeature
+}).bindPopup(function(layer) {
+});
+
+  map.setMaxBounds(  [[-90,-180],   [90,180]]  )
+  setTimeout(function(){ map.invalidateSize()}, 500);
+  map.invalidateSize();
+  map.on('click', function(e) {
+  // console.log(marker)
+            // if (marker != undefined) {
+              // map.removeLayer(marker);
+        // };
+    // first_time = 1
+    // marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+    // current_latitude = e.latlng.lat
+    // current_longitude = e.latlng.lng
+    // console.log(e.latlng.lat)
+});
+// function addMarkerFunc(latit, longi) {
+//   var marker = L.marker([latit, longi]).addTo(map);
+// }
+
+// function intoBounds() {
+//   map.setView(markersLayer.getBounds().getCenter());
+// }
+
+
+
+}
+function removebtnkeepmap() {
+  document.getElementById('id01').style.display='none'
+  document.getElementById('main-button').style.display='none'
+  document.getElementById('main-button').onclick = "showIt"
+  document.getElementById('main-button2').style.display='block'
+}
+var potential_coords = null;
+function makeaguess() {
+  clearInterval(downloadTimer)
+  fetchCompletion = 0
+  if(potential_coords == null || fetchCompletion == 0) {
+  console.log('FETCH NOT COMPLETE 0')
+  document.getElementById("spinner").style.display = "block";
+  fetch('http://api.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=streaksmode').then(function (response) {
+  // The API call was successful!
+  return response.text();
+}).then(function (html) {
+  // This is the HTML from our response as a text string
+  potential_coords = html
+    console.log(potential_coords)
+  console.log(correct_coords)
+  if (potential_coords == correct_coords) {
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("map-prompter").innerHTML = "You got it right! 🎉 <b>+1</b>"
+        var sounds = new Audio('static/correct.mp3');
+        sounds.play();
+        confetti.start(1800)
+              document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        country_str = parseInt(localStorage.getItem("sovereignt-streak"));
+        country_str += 1
+        document.getElementById("actualscore").innerHTML = country_str;
+        localStorage.setItem("sovereignt-streak", country_str)
+  // } else {
+    // console.log('ITS NULL!')
+  // }
+  } else {
+    console.log(' i ran')
+    document.getElementById("spinner").style.display = "none";
+    greenhighlight.setStyle({
+        weight: 4,
+        color: '#cc0000',
+        fillColor: '#cc0000',
+        fillOpacity: '0.2',
+        dashArray: '',
+        fillOpacity: 0.7
+        });
+        for (var i=0 ; i < countries.features.length ; i++) {
+          console.log('iterated...')
+          if(correct_coords.includes(countries.features[i].properties.iso_a2)) {
+            correct_object = countries.features[i]
+            console.log(correct_object)
+            var sounds = new Audio('static/wrong.mp3');
+            sounds.play();
+            L.geoJSON(countries.features[i], {
+                style: function (feature) {
+                    return {weight: 4,
+                            color: '#56830b',
+                            fillColor: '#56830b',
+                            fillOpacity: '0.2',
+                            dashArray: '',
+                            fillOpacity: 0.7};
+                }
+            }).bindPopup(function (layer) {
+                // return layer.feature.properties.description;
+            }).addTo(map);
+            document.getElementById("map-prompter").innerHTML = "<b>Oops!</b> Your streak ends at <b>" + String(localStorage.getItem("sovereignt-streak") + "</b>. <i class='fa fa-hourglass-end' aria-hidden='true'></i>");
+            document.getElementById("original-c").style.display = "none";
+            document.getElementById("future-c").style.display = "none";
+            document.getElementById("present-z").style.display = "block";
+            localStorage.setItem("sovereignt-streak", 0);
+            country_str = 0;
+            break;
+          }
+        }
+        // selected_country
+  }
+  // submitted_country_code = html
+}).catch(function (err) {
+  // There was an error
+  console.warn('Something went wrong.', err);
+});
+  console.log(potential_coords)
+  // if (typeof lastname !== "undefined") {
+    console.log('NOT NULL!')
+      document.getElementById('original-c').style.display = "none";
+    document.getElementById('future-c').style.display = "block";
+  } else {
+      if (potential_coords == correct_coords) {
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("map-prompter").innerHTML = "You got it right! 🎉 <b>+1</b>"
+        var sounds = new Audio('static/correct.mp3');
+        sounds.play();
+        confetti.start(1800)
+              document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        country_str = parseInt(localStorage.getItem("sovereignt-streak"));
+        country_str += 1
+        document.getElementById("actualscore").innerHTML = country_str;
+        localStorage.setItem("sovereignt-streak", country_str)
+        document.getElementById('original-c').style.display = "none";
+        document.getElementById('future-c').style.display = "block";
+      } else {
+        document.getElementById("spinner").style.display = "none";
+        greenhighlight.setStyle({
+        weight: 4,
+        color: '#cc0000',
+        fillColor: '#cc0000',
+        fillOpacity: '0.2',
+        dashArray: '',
+        fillOpacity: 0.7
+        });
+        for (var i=0 ; i < countries.features.length ; i++) {
+          console.log('iterated...')
+          if(correct_coords.includes(countries.features[i].properties.iso_a2)) {
+            correct_object = countries.features[i]
+            console.log(correct_object)
+            var sounds = new Audio('static/wrong.mp3');
+            sounds.play();
+            L.geoJSON(countries.features[i], {
+                style: function (feature) {
+                    return {weight: 4,
+                            color: '#56830b',
+                            fillColor: '#56830b',
+                            fillOpacity: '0.2',
+                            dashArray: '',
+                            fillOpacity: 0.7};
+                }
+            }).bindPopup(function (layer) {
+                // return layer.feature.properties.description;
+            }).addTo(map);
+            document.getElementById("map-prompter").innerHTML = "<b>Oops!</b> Your streak ends at <b>" + String(localStorage.getItem("sovereignt-streak") + "</b>. <i class='fa fa-hourglass-end' aria-hidden='true'></i>");
+            document.getElementById("original-c").style.display = "none";
+            document.getElementById("future-c").style.display = "none";
+            document.getElementById("present-z").style.display = "block";
+            localStorage.setItem("sovereignt-streak", 0);
+            country_str = 0;
+            break;
+          }
+        }
+      }
+  }
+  // localStorage.setItem("current_video", null)
+}
+function shrinkupper() {
+  console.log('shrink called')
+  if (counter_upper == 0) {
+    document.getElementById("scorekeeper").style.width = "70px";
+    document.getElementById("scorekeeper").style.height = "70px";
+    document.getElementById("actualscore").style.fontSize = "18px";
+    counter_upper = 1;
+    console.log('0 called')
+  } else {
+    document.getElementById("scorekeeper").style.width = "100px";
+    document.getElementById("scorekeeper").style.height = "100px";
+    document.getElementById("actualscore").style.fontSize = "26px";    
+    counter_upper = 0;
+    console.log('1 called')
+  }
+}
+</script>
+<div class="video-background" id="vid-bac" style="z-index: 100000000;">
+        <center>
+      <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
+      <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
+      <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fa fa-map-marker"></i></a></p>
+      <!-- The Modal -->
+  <div id="id01" class="w3-modal" style="position: fixed; z-index: 2;">
+ <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+  
+  <header class="w3-container w3-blue" id="o-c"> 
+   <span onclick="removebtnkeepmap()" 
+   class="w3-button w3-blue w3-display-topright" id="x-out">&times;</span>
+   <h4 id="map-prompter">Select a Country <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></h4>
+  </header>
+  <header class="w3-container w3-blue" id="f-c"> 
+   <span onclick="removebtnkeepmap()" 
+   class="w3-button w3-blue w3-display-topright">&times;</span>
+   <h4 id="map-prompter">Select a Country <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></h4>
+  </header>
+  <div id="London" class="w3-container city" style="padding: 0 0 0 0;">
+           <div id="mapid" onload="L.Map.invalidateSize(); console.log('Hi')"></div>
+  </div>
+  <div class="w3-container w3-light-grey w3-padding" id="original-c">
+   <a class="w3-button w3-right w3-green w3-border" 
+   onclick="makeaguess()" style="margin-left: 1em;" id="guess-button-id">Guess</a>
+   <a class="w3-button w3-left w3-red w3-border" 
+   onclick="removebtnkeepmap()" style="" id="close-button-id">Close</a>
+  </div>
+  <div class="w3-container w3-light-grey w3-padding" id="future-c">
+   <a class="w3-button w3-right w3-green w3-border" 
+   onclick="beginchallenge()" style="margin-left: 1em;" id="guess-button-id">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+   <a class="w3-button w3-left w3-red w3-border" 
+   onclick="location.reload();" style="" id="close-button-id">Home <i class="fa fa-home" aria-hidden="true"></i></a>
+  </div>
+  <div class="w3-container w3-light-grey w3-padding" id="present-z">
+   <a class="w3-button w3-right w3-green w3-border" 
+   onclick="beginchallenge()" style="margin-left: 1em;" id="guess-button-id">Next Round <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+   <a class="w3-button w3-left w3-red w3-border" 
+   onclick="" style="background: #00acee; color: white;" id="close-button-id" title="See your place on the Leaderboard.">Leaderboard <i class="fa fa-trophy" aria-hidden="true"></i></a>
+  </div>
+ </div>
+</div>
+    </center>
+          <p id="new-back-btn" onclick="" type="button" data-toggle="modal" data-target="#exampleModal" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
+<p id="new-back-btn2" onclick="player.loadVideoById({'videoId': official_video_id.substring(0,11), 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fa fa-refresh"></i></a></p>
+<p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > official_video_seconds) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(official_video_seconds)}" class="back-btn-animation" style="" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
+<p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 1;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
+</a></p>
+<p id="new-back-btn6" style="z-index: 1;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
+<p id="new-back-btn5" style="z-index: 1;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
+  <div class="video-foreground">
+    <div id="player"></div>
+  </div>
+  <div id="scorekeeper" onclick="shrinkupper()">
+    <!-- abc -->
+    <p id="actualscore">0</p>
+  </div>
+<!--   <div id="scorekeeper2">
+    <p id="actualscore2">0</p>
+  </div> -->
+  <div id="spinner">
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner">
+  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
+  </circle>
+</svg>
+  </div>
+<div id="new-back-btn-time">
+  <center id="countdown">
+  </center>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Before You Leave! <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 15px;">
+        Your streak will not be saved if you exit the game session. To add your streak to the leaderboard, please log in or sign up.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="history.go(0)">Leave Anyway</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// $(window).on('beforeunload', function() {
+//     return 'Bye';
+// });
+</script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script> -->
+
+<script>
+</script>
+<!-- <script src="login.js"></script> -->
+<script>
+
+</script>
+<style>
+.modal-login {
+  color: #636363;
+  width: 350px;
+}
+.modal-login .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+}
+.modal-login .modal-header {
+  border-bottom: none;
+  position: relative;
+  justify-content: center;
+}
+.modal-login h4 {
+  text-align: center;
+  font-size: 26px;
+}
+.modal-login  .form-group {
+  position: relative;
+}
+.modal-login i {
+  position: absolute;
+  left: 13px;
+  top: 11px;
+  font-size: 18px;
+}
+.modal-login .form-control {
+  padding-left: 40px;
+}
+.modal-login .form-control:focus {
+  border-color: #00ce81;
+}
+.modal-login .form-control, .modal-login .btn {
+  min-height: 40px;
+  border-radius: 3px; 
+}
+.modal-login .hint-text {
+  text-align: center;
+  padding-top: 10px;
+}
+.modal-login .close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+.modal-login .btn, .modal-login .btn:active { 
+  border: none;
+  background: #00ce81;
+  line-height: normal;
+}
+.modal-login .btn:hover, .modal-login .btn:focus {
+  background: #00bf78;
+}
+.modal-login .modal-footer {
+  background: #ecf0f1;
+  border-color: #dee4e7;
+  text-align: center;
+  margin: 0 -20px -20px;
+  border-radius: 5px;
+  font-size: 13px;
+  justify-content: center;
+}
+.modal-login .modal-footer a {
+  color: #999;
+}
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+/*input[type="submit"] {
+    font-family: FontAwesome;
+}*/
+</style>
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title">User Login </h4><hr>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+              <p style="font-size: 13px;" id="error-message">In order to play the Streaks Gamemode, you must login to keep track of your streaks, and establish your position on the leaderboard.</p>
+
+      <div class="modal-body">
+          <div class="form-group">
+            <i class="fa fa-envelope"></i>
+            <input type="text" class="form-control" placeholder="Email" required="required" id="email_field">
+          </div>
+          <div class="form-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-control" placeholder="Password" required="required" id="password_field">         
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login" onclick="login()" style="">
+            <!-- <span type="submit" class="btn btn-secondary btn-block btn-lg" value="Login with Google" onclick="login()" style="background: #a6a6a6;">Login with Google</span> -->
+          <!-- </span> -->
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" onclick="$('#myModal').modal('hide'); $('#myModal3').modal('show');">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+    <div id="spinner2">
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner2">
+  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
+  </circle>
+</svg>
+  </div>
+</div>
+<div id="myModal2" class="modal fade modal2">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title">User Sign-up </h4><hr>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+              <p style="font-size: 13px;" id="error-message-second">To play the Streaks Gamemode, you must <b>sign-up</b> to keep track of your <b>streaks</b>, and establish your position on the <b>leaderboard.</b></p>
+
+      <div class="modal-body">
+          <div class="form-group">
+            <i class="fa fa-user"></i>
+            <input type="text" class="form-control" placeholder="Username" required="required" id="username-tag">
+          </div>
+          <div class="form-group">
+            <i class="fa fa-envelope"></i>
+            <input type="text" class="form-control" placeholder="Email" required="required" id="email-tag">
+          </div>
+          <div class="form-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-control" placeholder="Password" required="required" id="password-tag">         
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign Up" onclick="signup()">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" aria-hidden="true">Close Tab</a>
+      </div>
+    </div>
+  </div>
+
+      <div id="spinner3">
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner3">
+  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
+  </circle>
+</svg>
+  </div>
+</div>
+<div id="myModal3" class="modal fade modal3">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title">Password Reset </h4><hr>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+              <p style="font-size: 13px;" id="error-message-third"><b style="color: red;">Directions:</b> Input the email of the account you'd like to recover. Then check your email to reset your password.</p>
+
+      <div class="modal-body">
+          <div class="form-group">
+            <i class="fa fa-envelope"></i>
+            <input type="text" class="form-control" placeholder="Email" required="required" id="email-pwd-reset">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Send Verification" onclick="resetpwd()">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" aria-hidden="true">Close Tab</a>
+      </div>
+    </div>
+  </div>
+
+      <div id="spinner4">
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner4">
+  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
+  </circle>
+</svg>
+  </div>
+</div>
+<script>
+
+</script>
+</body>
+
+</html>
