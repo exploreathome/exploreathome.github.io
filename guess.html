@@ -1364,6 +1364,7 @@ Loading..
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 #annc-bar {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -1527,6 +1528,9 @@ Loading..
 /* Hero end*/
 </style>
 <script type="text/javascript">
+if (localStorage.getItem("streaks-page-loaded") === null) {
+  document.getElementById("annc-bar").style.display = "block";
+}
 // function isIpadPro() {
 //     var ratio = window.devicePixelRatio || 1;
 //     var screen = {
