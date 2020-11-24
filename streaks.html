@@ -1828,6 +1828,7 @@ function beginchallenge() {
   //   official_video_number = parseInt(ofnumber)
   //   official_video_location = videolocations[official_video_number]
   // }
+  official_video_seconds = parseInt(official_video_seconds) + 10
   if(localStorage.getItem("ongoing") == "true") {
     official_video_id = localStorage.getItem("ongoing-video")
     official_video_seconds = localStorage.getItem("ongoing-seconds")

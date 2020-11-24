@@ -20,6 +20,7 @@ function beginaccuracy() {
   document.getElementById("id01").style.display = "none"; 
   document.getElementById("main-button").style.display = "block";
   document.getElementById("main-button2").style.display = "none";
+  official_video_seconds = parseInt(official_video_seconds) + 10
   if(localStorage.getItem("radius-ongoing") == "true") {
     official_video_id = localStorage.getItem("radius-ongoing-id")
     official_video_seconds = localStorage.getItem("radius-ongoing-seconds")
