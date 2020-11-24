@@ -2450,6 +2450,10 @@ if (localStorage.getItem("classic-loaded") === null) {
   console.log('null')
   document.getElementById("information-div").style.display = "block";
 }
+var screenwidth = window.matchMedia( "(max-width: 800px)" );
+if (screenwidth.matches) {
+  document.getElementById("information-div").style.display = "none";
+}
 </script>
 </body>
 
