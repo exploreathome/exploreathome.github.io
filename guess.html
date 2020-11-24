@@ -2242,7 +2242,7 @@ function makeaguess() {
       } else if (distance_between <= 10) {
         var sounds = new Audio('static/cheering.wav');
         sounds.play();
-        guess_text = "<b>Nice!</b> Only <b> " + String(distance_between) + "</b> miles out! <span style='font-size: 11px;'>(" + String(parseInt(distance_between)*1.609) + "km)</span>"
+        guess_text = "<b>Nice!</b> Only <b> " + String(distance_between) + "</b> miles out! <span style='font-size: 11px;'>(" + String((parseInt(distance_between)*1.609).toFixed(1)) + "km)</span>"
         confetti.start(2300)
       document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
       }
