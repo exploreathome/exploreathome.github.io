@@ -488,7 +488,7 @@ h5 {
           </li>
 
           <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="https://ko-fi.com/cityguesser">Home <i class="fa fa-home" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="https://virtualvacation.us/guess">Home <i class="fa fa-home" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
           <!-- <span> -->
           <!-- <span id="authentication-prompt"> -->
@@ -711,10 +711,10 @@ h5 {
 
 </div>
 
-<div id="footer-tag">
+<!-- <div id="footer-tag">
 <p><a href="https://virtualvacation.us/guess">Home <i class="fa fa-home" aria-hidden="true"></i></a><a href="https://ko-fi.com/cityguesser">Support <i class="fa fa-coffee" aria-hidden="true"></i></a><a href="https://twitter.com/paul_mcb">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></a><a style="cursor: pointer;" onclick="$('.modal').modal('show');
 ">Help <i class="fa fa-question-circle" aria-hidden="true"></i></a><a style="cursor: pointer; float: right; color: red; font-size: 25px; margin-right: 11px;" onclick="document.getElementById('footer-tag').style.display = 'none';">&times;</a></p>
-</div>
+</div> -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -2395,7 +2395,30 @@ function shrinkupper() {
 
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+#information-div {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 34px;
+  line-height: 34px;
+  font-size: 15px;
+  width: 100vw;
+  background-color: #292b2c;
+  color: #bfbfbf;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
 
+}
+@media screen and (max-width: 797px) {
+  #information-div {
+    display: none;
+/*    font-size: 10px;
+    height: 30px;
+    line-height: 30px;*/
+  }
+}
 </style>
 
 
@@ -2413,6 +2436,20 @@ $(".card-person").css( "marginTop", "20px" );
 
 }
 localStorage.setItem("streaks-page-loaded", "true")
+</script>
+<div id="information-div">
+  <center>
+Bored of Streaks? 🤷‍♂️ Check out the classic gamemode we all love. <a style="margin: 7px; height: 20px; padding: 4px; padding-left: 7px; padding-right: 7px; background-color: #ff4742; color: white; font-family: 'Nunito', sans-serif;
+ border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/guess' onclick="console.log('played')">Let's Play!</a>
+<span style="float: right; margin-right: 30px; font-size: 18px; cursor: pointer;" onclick="document.getElementById('information-div').style.display = 'none';" title="Close Tab">&times;</span>
+
+</center>
+</div>
+<script>
+if (localStorage.getItem("classic-loaded") === null) {
+  console.log('null')
+  document.getElementById("information-div").style.display = "block";
+}
 </script>
 </body>
 
