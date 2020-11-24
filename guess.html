@@ -1361,7 +1361,41 @@ Loading..
 </div>
   <!-- Are you up to the challenge? -->
 </div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+#annc-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 36px;
+  line-height: 36px;
+  font-size: 15px;
+  width: 100vw;
+  background-color: #292b2c;
+  color: #bfbfbf;
+  font-family: 'Nunito', sans-serif;
 
+}
+@media screen and (max-width: 800px) {
+  #annc-bar {
+    display: none;
+    font-size: 10px;
+    height: 30px;
+    line-height: 30px;
+  }
+  #guesser-text {
+    display: none;
+  }
+}
+</style>
+<div id="annc-bar">
+  <center>
+<b>Hey<span id="guesser-text"> Guesser</span></b>! 👋 We just released our Streaks Gamemode. <a style="margin: 7px; height: 20px; padding: 5px; padding-left: 7px; padding-right: 7px; background-color: #ff4742; color: white; font-family: 'Nunito', sans-serif;
+ border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/streaks'>Let's Play!</a>
+<span style="float: right; margin-right: 30px; font-size: 18px; cursor: pointer;" onclick="document.getElementById('annc-bar').style.display = 'none';">&times;</span>
+
+</center>
+</div>
 </body>
 <style>
 
