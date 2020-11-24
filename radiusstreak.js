@@ -13,10 +13,31 @@ function beginaccuracy() {
   lstlength = videolocations.length
   official_video_number = Math.floor(Math.random() * lstlength) + 1 
   official_video_id = videoids[official_video_number]
+  official_video_id_nocut = official_video_id
   official_video_location = videolocations[official_video_number]
   official_video_seconds = official_video_id.substr(-6);
   official_video_id = official_video_id.substring(0,11);
   console.log(official_video_number, official_video_location)
+  if(localStorage.getItem("already_played").includes(official_video_id_nocut)) {
+    lstlength = videolocations.length
+    official_video_number = Math.floor(Math.random() * lstlength) + 1 
+    official_video_id = videoids[official_video_number]
+    official_video_id_nocut = official_video_id
+    official_video_location = videolocations[official_video_number]
+    official_video_seconds = official_video_id.substr(-6);
+    official_video_id = official_video_id.substring(0,11);
+    console.log(official_video_number, official_video_location)    
+    if(localStorage.getItem("already_played").includes(official_video_id_nocut)) {
+      lstlength = videolocations.length
+      official_video_number = Math.floor(Math.random() * lstlength) + 1 
+      official_video_id = videoids[official_video_number]
+      official_video_id_nocut = official_video_id
+      official_video_location = videolocations[official_video_number]
+      official_video_seconds = official_video_id.substr(-6);
+      official_video_id = official_video_id.substring(0,11);
+      console.log(official_video_number, official_video_location)    
+    }
+  }
   document.getElementById("id01").style.display = "none"; 
   document.getElementById("main-button").style.display = "block";
   document.getElementById("main-button2").style.display = "none";
@@ -46,6 +67,8 @@ function beginaccuracy() {
   localStorage.setItem("radius-ongoing-id", official_video_id)
   localStorage.setItem("radius-ongoing-seconds", official_video_seconds)
   localStorage.setItem("radius-ongoing-location", official_video_location)
+  current_storage = localStorage.getItem("already_played")
+  localStorage.setItem("already_played", current_storage + " " + official_video_id_nocut)
 }
 
 function mapmaker() {
