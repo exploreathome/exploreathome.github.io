@@ -1858,6 +1858,7 @@ function beginchallenge() {
   recursion_times = 0
   // recursion_local_storage = 0;
   if(localStorage.getItem("already_played").includes(official_video_id)) {
+    localStorage.setItem("ongoing", "false")
     recursion_local_storage += 1
     if(recursion_local_storage > 50) {
       localStorage.setItem("already_played", "ALREADY_PLAYED_CLEARED")
