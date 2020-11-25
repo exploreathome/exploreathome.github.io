@@ -2059,27 +2059,33 @@ var globallon;
 var distance_between;
 var first_time = 0;
 var map;
+var markers;
+var osm_scale = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+})
+var gray_scale = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+})
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
-    if (map != undefined) {
-      map.off();
-      map.remove();
+    if (map == undefined) {
+      map = L.map('mapid', {minZoom: 1, layers: [osm_scale, gray_scale]}).setView([42.35, -71.08], 3);
+        var differentLayers = {
+          "<b>1. </b>All English": gray_scale,
+          "<b>2.</b> Native Languages": osm_scale
+        };
+      L.control.layers(differentLayers).addTo(map);
+    } else {
+    // map.removeLayer(markers);
+    // markerArray.clearLayers();
+    map.setView([42.35, -71.08], 3);
+    for(i=0;i<markerArray.length;i++) {
+    map.removeLayer(markerArray[i]);
+    }
+    map.removeLayer(marker)  
     }
     document.getElementById('main-button').style.display='none'
-  map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
-  // map.options.maxZoom = 3;
-//     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-//     attribution: '',
-//     id: 'mapbox/streets-v11',
-//     tileSize: 512,
-//     zoomOffset: -1,
-//     // noWrap: true,
-//     // worldCopyJump: false,
-//     accessToken: 'your.mapbox.access.token'
-// }).addTo(map);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+  
   // map.fitWorld();
   map.setMaxBounds(  [[-90,-180],   [90,180]]  )
   setTimeout(function(){ map.invalidateSize()}, 500);
@@ -2104,6 +2110,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         };
     first_time = 1
     marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+    markerArray.push(marker);
     globallat = e.latlng.lat
     globallon = e.latlng.lng
     // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
@@ -2144,7 +2151,7 @@ function continueGame() {
   // }
 } 
 
-var markerArray;
+var markerArray = [];
 function makeaguess() {
   document.getElementById("main-button2").style.display = "none"
   // document.getElementById("main-button").style.display = "block"
@@ -2214,7 +2221,7 @@ function makeaguess() {
     //From documentation http://leafletjs.com/reference.html#polyline
     // create a red polyline from an arrays of LatLng points
     var polyline = L.polyline(latlngs, {color: 'black', dashArray: '5,10'}).addTo(map);
-
+    markerArray.push(polyline)
     // zoom the map to the polyline
     map.fitBounds(polyline.getBounds());
     // document.getElementById("map-prompter").innerHTML = guess_text
