@@ -1872,7 +1872,7 @@ function beginchallenge() {
   localStorage.setItem("ongoing-video", official_video_id)
   localStorage.setItem("ongoing-seconds", official_video_seconds)
   localStorage.setItem("ongoing-location", official_video_location)
-  fetch('https://secure.geonames.org/countryCode?lat=' + String(official_video_location[0]) + '&lng=' + String(official_video_location[1]) + '&username=streaksmode').then(function (response) {
+  fetch('https://secure.geonames.org/countryCode?lat=' + String(official_video_location[0]) + '&lng=' + String(official_video_location[1]) + '&username=coronabob').then(function (response) {
   // The API call was successful!
   return response.text();
 }).then(function (html) {
@@ -1974,7 +1974,7 @@ function zoomToFeature(z) {
     }
     current_latitude = z.latlng.lat
     current_longitude = z.latlng.lng
-//     fetch('http://api.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=streaksmode').then(function (response) {
+//     fetch('http://api.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=coronabob').then(function (response) {
 //   // The API call was successful!
 //     fetchCompletion = 0;
 //   return response.text();
@@ -2121,7 +2121,7 @@ function makeaguess() {
   if(potential_coords == null || fetchCompletion == 0) {
   console.log('FETCH NOT COMPLETE 0')
   document.getElementById("spinner").style.display = "block";
-  fetch('https://secure.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=streaksmode').then(function (response) {
+  fetch('https://secure.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=coronabob').then(function (response) {
   // The API call was successful!
   return response.text();
 }).then(function (html) {
