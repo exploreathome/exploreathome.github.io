@@ -1720,10 +1720,10 @@ queryWithout = "TseEGOmBL_o"
         }
         if (submissionVerify == 1 && event.data == YT.PlayerState.PLAYING) {
           var oneint = document.getElementById("opt-form-seconds").value
-          document.getElementById("100-decrement").textContent = oneint;
+          document.getElementById("100-decrement").textContent = oneint + "s";
           continuedecrement = setInterval(function() {
           oneint = oneint -1;
-          document.getElementById("100-decrement").textContent = oneint;
+          document.getElementById("100-decrement").textContent = oneint + "s";
           if (oneint == 0) {
             // document.getElementById("x-out").style.display = "none"
             clearInterval(continuedecrement);
