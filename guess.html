@@ -2068,21 +2068,13 @@ var gray_scale = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x
 })
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
-    if (map == undefined) {
+        if (map == undefined) {
       map = L.map('mapid', {minZoom: 1, layers: [osm_scale, gray_scale]}).setView([42.35, -71.08], 3);
         var differentLayers = {
           "<b>1. </b>All English": gray_scale,
           "<b>2.</b> Native Languages": osm_scale
         };
       L.control.layers(differentLayers).addTo(map);
-    } else {
-    // map.removeLayer(markers);
-    // markerArray.clearLayers();
-    map.setView([42.35, -71.08], 3);
-    for(i=0;i<markerArray.length;i++) {
-    map.removeLayer(markerArray[i]);
-    }
-    map.removeLayer(marker)  
     }
     document.getElementById('main-button').style.display='none'
   
@@ -2141,6 +2133,14 @@ function continueGame() {
   document.getElementById('map-prompter').innerHTML = "Click Map To Guess <i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;'></i>"
   document.getElementById("x-out").style.display = "block";
   document.getElementById("player").style.opacity = "1";
+    // map.removeLayer(markers);
+    // markerArray.clearLayers();
+    map.setView([42.35, -71.08], 3);
+    for(i=0;i<markerArray.length;i++) {
+    map.removeLayer(markerArray[i]);
+    }
+    map.removeLayer(marker)  
+    
   if (timeLimit == 1) {
     clearInterval(continuedecrement);
     timeChallengeSubmission()
