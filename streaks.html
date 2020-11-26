@@ -2477,6 +2477,9 @@ Bored of Streaks? 🤷‍♂️ Check out the classic gamemode we all love. <a s
 </center>
 </div>
 <script>
+if (localStorage.getItem("already_played") === null) {
+  localStorage.setItem("already_played", "abcd")
+}
 if (localStorage.getItem("classic-loaded") === null) {
   console.log('null')
   document.getElementById("information-div").style.display = "block";
