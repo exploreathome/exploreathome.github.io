@@ -1797,6 +1797,7 @@ function startgame() {
 //   localStorage.setItem("current_number", "null")
 // }
 var recursion_local_storage = 0;
+var recursion_times = 0;
 function beginchallenge() {
   started_playing = 0;
   timeleft = 0;
@@ -1910,7 +1911,7 @@ function beginchallenge() {
   localStorage.setItem("ongoing", "false")
   // There was an error
   recursion_times += 1
-  if(recursion_times >= 3) {
+  if(recursion_times >= 5) {
     history.go(0)
   }
   console.warn('Something went wrong.', err);
