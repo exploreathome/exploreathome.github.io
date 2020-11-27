@@ -1297,7 +1297,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
 #new-back-btn2 {
   cursor: pointer;
   position: fixed;
-  top: 6px;
+  top: 38px;
   right: 6px;
   width: 46px;
   color: white;
@@ -1319,7 +1319,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
   display: block;
   cursor: pointer;
   position: fixed;
-  top: 38px;
+  top: 70px;
   right: 6px;
   width: 46px;
   color: white;
@@ -1429,17 +1429,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
 #volumeEditor {
   cursor: pointer;
 }
-@media screen and (max-width: 800px) {
-  #new-back-btn3 {
-    display: block;
-  }
-  #new-back-btn2 {
-    display: block;
-  }
-  #new-back-btn6 {
-    display: none;
-  }
-}
+
 #new-back-btn4 {
   display: none;
   cursor: pointer;
@@ -1463,6 +1453,73 @@ if (localStorage.getItem("accuracy_button") !== null) {
     border: white 1px;
 }
 
+#new-back-btn7 {
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 1;
+    border: white 1px;
+}
+#new-back-btn8 {
+  display: none;
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  color: white;
+  font-weight: bold;
+    background: rgba(38, 38, 38, 1);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+        writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+}
+#new-back-btn7:hover~#new-back-btn8 {
+  display: block;
+}
+#new-back-btn8:hover {
+  display: block;
+}
+@media screen and (max-width: 870px) {
+  #new-back-btn3 {
+    top: 38px;
+    display: block;
+  }
+  #new-back-btn2 {
+    top: 6px;
+    display: block;
+  }
+  #new-back-btn6 {
+    display: none;
+  }
+  #new-back-btn7 {
+    display: none;
+  }
+  #new-back-btn8 {
+    display: none;
+  }
+}
 .back-btn-animation:hover:before, .back-btn-animation:focus:before, .back-btn-animation:active:before {
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
@@ -1768,6 +1825,8 @@ var country_str = localStorage.getItem("sovereignt-streak");
           document.getElementById("new-back-btn-time").style.display = "none";
         }
         if (event.data === 0) {
+          // player.seekTo(official_video_seconds)
+          console.log('video ended')
           document.getElementById("player").style.opacity = "0";
         }
       }
@@ -1848,6 +1907,7 @@ function beginchallenge() {
   document.getElementById("main-button").style.display = "block";
   // invalidateSizeFunc()
   document.getElementById("main-button2").style.display = "none";
+  document.getElementById("speedSlider").value = 100;
   // if (localStorage.getItem("current_video") !== null) {
   //   official_video_id = localStorage.getItem("current_video")
   //   official_video_seconds = official_video_id.substr(-6);
@@ -1864,13 +1924,16 @@ function beginchallenge() {
     official_video_id = localStorage.getItem("ongoing-video")
     official_video_seconds = localStorage.getItem("ongoing-seconds")
     official_video_location = localStorage.getItem("ongoing-location").split(',')
+    official_video_id_nocut = localStorage.getItem("ongoing-video-nc")
   }
   player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
+  // player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'endSeconds': player.getDuration()-26});  
   document.getElementById("actualscore").innerHTML = localStorage.getItem("sovereignt-streak");
   document.getElementById('vid-bac').style.display = "block";
   document.getElementById("new-back-btn-time").style.display = "none";
   localStorage.setItem("ongoing", "true")
   localStorage.setItem("ongoing-video", official_video_id)
+  localStorage.setItem("ongoing-video-nc", official_video_id_nocut)
   localStorage.setItem("ongoing-seconds", official_video_seconds)
   localStorage.setItem("ongoing-location", official_video_location)
   fetch('https://secure.geonames.org/countryCode?lat=' + String(official_video_location[0]) + '&lng=' + String(official_video_location[1]) + '&username=coronabob').then(function (response) {
@@ -2373,12 +2436,14 @@ function shrinkupper() {
 </div>
     </center>
           <p id="new-back-btn" onclick="history.go(0)" type="button" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
-<p id="new-back-btn2" onclick="player.loadVideoById({'videoId': official_video_id.substring(0,11), 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fa fa-refresh"></i></a></p>
+<p id="new-back-btn2" onclick="player.loadVideoById({'videoId': official_video_id.substring(0,11), 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'endSeconds': player.getDuration()-26});" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fa fa-refresh"></i></a></p>
 <p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > official_video_seconds) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(official_video_seconds)}" class="back-btn-animation" style="" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
 <p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 1;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
 </a></p>
 <p id="new-back-btn6" style="z-index: 1;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
 <p id="new-back-btn5" style="z-index: 1;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
+<p id="new-back-btn7" style="z-index: 1; cursor: pointer;" title="Adjust Speed"><i class="fa fa-clock-o fa-spin" aria-hidden="true"></i></p>
+<p id="new-back-btn8" style="z-index: 1; cursor: pointer;" title="Adjust Speed"><input style="cursor: pointer;" value="1" type="range" min="10" max="200" step="10" class="volumeSlider" id="speedSlider" oninput="this.nextElementSibling.value = String(this.value/parseFloat(100)); if(this.value == 200) {document.getElementById('output-id').innerHTML = '2.0'} if(this.value == 100) {document.getElementById('output-id').innerHTML = '1.0'} if(this.value == 0) {document.getElementById('output-id').innerHTML = '0.0'} player.setPlaybackRate(this.value/100)"><output style="width: 15px; float: right; margin-right: 10px;" id="output-id">1.0</output><span style="margin-left: 5px;">x</span></p>
   <div class="video-foreground">
     <div id="player"></div>
   </div>
@@ -2488,6 +2553,9 @@ var screenwidth = window.matchMedia( "(max-width: 800px)" );
 if (screenwidth.matches) {
   document.getElementById("information-div").style.display = "none";
 }
+document.getElementById("output-id").innerHTML = document.getElementById("speedSlider").value;
+document.getElementById("speedSlider").value = "100"
+document.getElementById("speedSlider").nextElementSibling.value = "1.0"
 </script>
 </body>
 

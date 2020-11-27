@@ -44,6 +44,7 @@ function beginaccuracy() {
   official_video_seconds = parseInt(official_video_seconds) + 10
   if(localStorage.getItem("radius-ongoing") == "true") {
     official_video_id = localStorage.getItem("radius-ongoing-id")
+    official_video_id_nocut = localStorage.getItem("radius-ongoing-id-nc")
     official_video_seconds = localStorage.getItem("radius-ongoing-seconds")
     official_video_location = localStorage.getItem("radius-ongoing-location").split(',')
   }
@@ -65,6 +66,7 @@ function beginaccuracy() {
   localStorage.setItem("accuracy_video_plays", parseInt(localStorage.getItem("accuracy_video_plays")) + 1);
   localStorage.setItem("radius-ongoing", "true")
   localStorage.setItem("radius-ongoing-id", official_video_id)
+  localStorage.setItem("radius-ongoing-id-nc", official_video_id_nocut)
   localStorage.setItem("radius-ongoing-seconds", official_video_seconds)
   localStorage.setItem("radius-ongoing-location", official_video_location)
   current_storage = localStorage.getItem("already_played")
