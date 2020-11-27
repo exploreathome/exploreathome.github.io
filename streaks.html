@@ -1936,6 +1936,8 @@ function beginchallenge() {
   localStorage.setItem("ongoing-video-nc", official_video_id_nocut)
   localStorage.setItem("ongoing-seconds", official_video_seconds)
   localStorage.setItem("ongoing-location", official_video_location)
+  document.getElementById("speedSlider").nextElementSibling.value = "1.0"
+  player.setPlaybackRate(1);
   fetch('https://secure.geonames.org/countryCode?lat=' + String(official_video_location[0]) + '&lng=' + String(official_video_location[1]) + '&username=coronabob').then(function (response) {
   // The API call was successful!
   return response.text();
