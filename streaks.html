@@ -2564,7 +2564,9 @@ $("#new-back-btn7").on("mouseover", function () {
   $("#new-back-btn-time").hide()
 });
 $("#new-back-btn8").on("mouseleave", function () {
-  $("#new-back-btn-time").show()
+  if(country_streak != 0 && which_selected != "accuracy") {
+    $("#new-back-btn-time").show()
+  }
 });
 </script>
 </body>
