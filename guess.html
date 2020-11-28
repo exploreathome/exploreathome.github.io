@@ -989,7 +989,7 @@ Hi
 #new-back-btn2 {
   cursor: pointer;
   position: fixed;
-  top: 6px;
+  top: 38px;
   right: 6px;
   width: 46px;
   color: white;
@@ -1011,7 +1011,7 @@ Hi
   display: block;
   cursor: pointer;
   position: fixed;
-  top: 38px;
+  top: 70px;
   right: 6px;
   width: 46px;
   color: white;
@@ -1080,17 +1080,7 @@ Hi
 #volumeEditor {
   cursor: pointer;
 }
-@media screen and (max-width: 800px) {
-  #new-back-btn3 {
-    display: block;
-  }
-  #new-back-btn2 {
-    display: block;
-  }
-  #new-back-btn6 {
-    display: none;
-  }
-}
+
 #new-back-btn4 {
   display: none;
   cursor: pointer;
@@ -1114,6 +1104,80 @@ Hi
     border: white 1px;
 }
 
+#new-back-btn7 {
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.6);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 1;
+    border: white 1px;
+}
+#new-back-btn8 {
+  display: none;
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  color: white;
+  font-weight: bold;
+    background: rgba(38, 38, 38, 1);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 500000000;
+        writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+}
+
+#new-back-btn7:hover~#new-back-btn8 {
+  display: block;
+}
+#new-back-btn8:hover {
+  display: block;
+}
+@media screen and (max-width: 800px) {
+  #new-back-btn3 {
+    top: 38px;
+    display: block;
+  }
+  #new-back-btn2 {
+    top: 6px;
+    display: block;
+  }
+  #new-back-btn3 {
+    display: block;
+  }
+  #new-back-btn2 {
+    display: block;
+  }
+  #new-back-btn6 {
+    display: none;
+  }
+  #new-back-btn7 {
+    display: none;
+  }
+  #new-back-btn8 {
+    display: none;
+  }
+}
 .back-btn-animation:hover:before, .back-btn-animation:focus:before, .back-btn-animation:active:before {
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
@@ -1267,6 +1331,8 @@ Hi
 </a></p>
 <p id="new-back-btn6" style="z-index: 1;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
 <p id="new-back-btn5" style="z-index: 1;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
+<p id="new-back-btn7" style="z-index: 1;" title="Video Speed"><i class="fa fa-clock-o" aria-hidden="true"></i></p>
+<p id="new-back-btn8" style="z-index: 1; cursor: pointer;" title="Video Speed"><input style="cursor: pointer;" value="1" type="range" min="10" max="200" step="10" class="volumeSlider" id="speedSlider" oninput="this.nextElementSibling.value = String(this.value/parseFloat(100)); if(this.value == 200) {document.getElementById('output-id').innerHTML = '2.0'} if(this.value == 100) {document.getElementById('output-id').innerHTML = '1.0'} if(this.value == 0) {document.getElementById('output-id').innerHTML = '0.0'} player.setPlaybackRate(this.value/100)"><output style="width: 15px; float: right; margin-right: 10px;" id="output-id">1.0</output><span style="margin-left: 5px;">x</span></p>
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
@@ -1909,6 +1975,9 @@ queryWithout = "TseEGOmBL_o"
         player.unMute();
         player.setVolume(cvol)
         document.getElementById("volumeEditor").value = cvol;
+        document.getElementById("speedSlider").nextElementSibling.value = "1.0"
+        document.getElementById("speedSlider").value = 100;
+        player.setPlaybackRate(1);
         if (localStorage.getItem("already_played") !== null) {
           localStorage.setItem('already_played', localStorage.getItem('already_played') + " " + random_vid_id);
         } else {
@@ -1918,11 +1987,13 @@ queryWithout = "TseEGOmBL_o"
         // document.getElementById("diff").style.display = "block";
         history.pushState(null, null, location.href);
         // player.seekTo(50, true)
+
     window.onpopstate = function () {
         history.go(0);
         // location.reload();
         console.log('went')
     };
+
         // window.history.pushState('', null, './');
         //   $(window).on('popstate', function() {
         //    location.reload(true);
@@ -2069,7 +2140,7 @@ var gray_scale = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [osm_scale, gray_scale]}).setView([42.35, -71.08], 3);
+      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 3);
         var differentLayers = {
           "<b>1. </b>All English": gray_scale,
           "<b>2.</b> Native Languages": osm_scale
@@ -2223,7 +2294,7 @@ function makeaguess() {
     var polyline = L.polyline(latlngs, {color: 'black', dashArray: '5,10'}).addTo(map);
     markerArray.push(polyline)
     // zoom the map to the polyline
-    map.fitBounds(polyline.getBounds());
+    // map.fitBounds(polyline.getBounds());
     // document.getElementById("map-prompter").innerHTML = guess_text
 
     // document.getElementById("guess-button-id").innerHTML = "Continue"
@@ -2387,6 +2458,8 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
     return dist;
   }
 }
+document.getElementById("speedSlider").value = "100"
+document.getElementById("speedSlider").nextElementSibling.value = "1.0"
 var timeLimit;
 var continuedecrement;
 var submissionVerify = 0;
