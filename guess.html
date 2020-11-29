@@ -455,6 +455,7 @@ a:hover {
 }
 
 </style>
+<center>
 <div class="content">
 
 <!-- <h1 style="font-size: 18px; margin-top: 3%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-user" aria-hidden="true"></i> Select a city to fly over:</h1> -->
@@ -463,18 +464,19 @@ a:hover {
 <!-- ShareThis END -->
 <!-- <p style="margin-left: 5%; margin-right: 5%;">Don't want fly around? Click here to <a href="https://virtualvacation.us/explore" style="color: darkblue;">drive, walk or view it LIVE!</a></p> -->
 <div class="welcome">
-    <div class="container-fluid">
-      <div class="row bg">
-        <div class="col-md-12">
-          <div class="content bg-dark">
+    <!-- <div class="container-fluid"> -->
+      <!-- <div class="row bg"> -->
+        <!-- <div class="col-md-12"> -->
+          <div class="bg-dark">
             <h4 style="color: white; font-weight: bold;">Welcome to</h2>
             <h1><h4 style="color: white; font-weight: bold;"><span class="back-mybtn">City Guesser <i class="fa fa-map-marker" aria-hidden="true"></i> </span></h4></h1>
             <p style="color: #f2f2f2;">To begin the guessing game, select a location or difficulty. <i class="fa fa-bar-chart" aria-hidden="true"></i></p>
           </div>
-        </div>
-      </div>
-    </div>
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
   </div>
+</h4>
 <ul class="xcards">
 <li class="xcards__item" onclick="loadVideoWithId('wor')" style="cursor: pointer;">
     <div class="xcard">
@@ -2041,42 +2043,33 @@ queryWithout = "TseEGOmBL_o"
 </script>
 <script src="https://afarkas.github.io/lazysizes/plugins/bgset/ls.bgset.min.js"></script>
   <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js"></script>
-<!-- <script src="https://static.jsbin.com/js/render/edit.js?4.1.8"></script> -->
 <style>
 #contents {
-  /*position: relative;*/
   transition: .3s;
-  margin-left: 290px;
   background-color: #2a2b3d;
 }
 
 
-/* End side navigation bar  */
-/* Start welcome */
-
 .welcome {
   color: #CCC;
-
-}
-.welcome .content {
-  /*background-color: #313348;*/
-  padding: 15px;
-  /*padding-bottom: 0px;*/
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 5px;
   margin-top: 1%;
-/*background: rgb(34,48,55);*/
-/*background: linear-gradient(0deg, rgba(34,48,55,1) 0%, rgba(26,26,26,1) 80%);*/
-border-radius: 5px;
-max-height: 150px;
 }
+.welcome .bg-dark {
+  padding-top: 11.5px;
+  padding-bottom: 11.5px;
+  border-radius: 5px;
+}
+
 @media only screen and (max-device-width: 800px) {
-.welcome .content {
-  /*background-color: #313348;*/
-  /*padding: 15px;*/
-  max-height: 175px;
-  margin-top: 3.5%;
-/*background: rgb(34,48,55);*/
-/*background: linear-gradient(0deg, rgba(34,48,55,1) 0%, rgba(26,26,26,1) 80%);*/
-border-radius: 5px;
+.welcome .bg-dark {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.welcome {
+  margin-top: 10px;
 }
 }
 
