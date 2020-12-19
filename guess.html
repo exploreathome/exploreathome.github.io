@@ -1798,6 +1798,9 @@ queryWithout = "TseEGOmBL_o"
             document.getElementById("player").style.opacity = "0.01"
             var sound2 = new Audio('static/airhorn.mp3');
             sound2.play();
+          } else if(oneint<=10) {
+            audio_play = new Audio('static/tick.ogg')
+            audio_play.play();
           }
           }, 1000);
           submissionVerify = 3
@@ -2095,7 +2098,8 @@ queryWithout = "TseEGOmBL_o"
     left: 50%;
     transform: translateX(-50%);
     top: 0%;
-    background: rgba(1, 2, 1, 0.42);
+    background: rgba(1, 2, 1, 0.7);
+    font-family: 'Nunito';
     padding: 0px;
     padding-left: 20px;
     border-bottom-left-radius: 5px;
