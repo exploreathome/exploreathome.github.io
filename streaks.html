@@ -1815,7 +1815,7 @@ var country_str = localStorage.getItem("sovereignt-streak");
                 } else {
                   document.getElementById("countdown").innerHTML = timeleft + 's';
                 }
-                if(timeleft <= 15) {
+                if(timeleft <= 15 && started_doing == 1) {
                   document.getElementById("countdown").style.color = "red";
                   audio_play = new Audio('static/tick.ogg')
                   audio_play.play();
@@ -1843,7 +1843,9 @@ var correct_coords = null;
 // var ofsecs = "null";
 // var ofid = "null";
 // var ofnumber = "null";
+var started_doing;
 function startgame() {
+  started_doing = 1;
   if(which_selected == "country") {
     beginchallenge()
   }
