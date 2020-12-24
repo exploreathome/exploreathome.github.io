@@ -1862,6 +1862,7 @@ function startgame() {
 // }
 var recursion_local_storage = 0;
 var recursion_times = 0;
+        var aud = new Audio("static/silence.mp3");
 function beginchallenge() {
   started_playing = 0;
   timeleft = 0;
@@ -1932,6 +1933,10 @@ function beginchallenge() {
     official_video_id_nocut = localStorage.getItem("ongoing-video-nc")
   }
   player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
+  navigator.mediaSession.metadata = new MediaMetadata({});
+  aud.loop = true;
+  aud.volume = 0;
+  aud.play();
   // player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'endSeconds': player.getDuration()-26});  
   document.getElementById("actualscore").innerHTML = localStorage.getItem("sovereignt-streak");
   document.getElementById('vid-bac').style.display = "block";
