@@ -1796,6 +1796,7 @@ var country_str = localStorage.getItem("sovereignt-streak");
       var downloadTimer;
       var interactedyet = 0;
       function onPlayerStateChange(event) {
+        try {
         if(interactedyet == 1) {
           navigator.mediaSession.metadata = new MediaMetadata({});
         
@@ -1803,6 +1804,9 @@ var country_str = localStorage.getItem("sovereignt-streak");
   aud.volume = 0;
   aud.play();
   interactedyet = 0;
+}
+} catch {
+  
 }
         if(event.data == YT.PlayerState.PLAYING && started_playing == 0 && which_selected == "country") {
           started_playing = 1;
