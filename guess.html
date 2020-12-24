@@ -1593,6 +1593,7 @@ Loading..
 /* Hero end*/
 </style>
 <script type="text/javascript">
+var interactedyet = 0;
 if (localStorage.getItem("streaks-page-loaded") === null) {
   document.getElementById("annc-bar").style.display = "block";
 }
@@ -1740,6 +1741,7 @@ if (localStorage.getItem("streaks-page-loaded") === null) {
 function minmaxrandom(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+var aud = new Audio("static/silence.mp3");
 queryWithout = "TseEGOmBL_o"
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -1783,6 +1785,15 @@ queryWithout = "TseEGOmBL_o"
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
+        if(interactedyet == 1) {
+          navigator.mediaSession.metadata = new MediaMetadata({});
+        
+          aud.loop = true;
+          aud.volume = 0;
+          aud.play();
+          console.log('media')
+          interactedyet = 0;
+        }
         if (event.data === 0) {
           document.getElementById("player").style.opacity = "0";
         }
@@ -1975,6 +1986,7 @@ queryWithout = "TseEGOmBL_o"
         random_number_minmax = parseInt(random_number_minmax)
         secs += random_number_minmax
         cvol = player.getVolume();
+        interactedyet = 1;
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
         document.getElementById('vid-bac').style.display = "block";
         player.unMute();
