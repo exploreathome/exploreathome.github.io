@@ -1794,7 +1794,18 @@ var country_str = localStorage.getItem("sovereignt-streak");
       var done = false;
       var started_playing = 0;
       var downloadTimer;
+      var interactedyet = 0;
       function onPlayerStateChange(event) {
+        if(interactedyet == 1) {
+          navigator.mediaSession.metadata = new MediaMetadata({});
+        
+  aud.loop = true;
+  aud.volume = 0;
+  aud.play();
+  console.log('media')
+  interactedyet = 0;
+}
+  console.log('audio played')
         if(event.data == YT.PlayerState.PLAYING && started_playing == 0 && which_selected == "country") {
           started_playing = 1;
           if(country_streak == 0) {
@@ -1932,11 +1943,8 @@ function beginchallenge() {
     official_video_location = localStorage.getItem("ongoing-location").split(',')
     official_video_id_nocut = localStorage.getItem("ongoing-video-nc")
   }
+  interactedyet = 1;
   player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
-  navigator.mediaSession.metadata = new MediaMetadata({});
-  aud.loop = true;
-  aud.volume = 0;
-  aud.play();
   // player.loadVideoById({'videoId': official_video_id, 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'endSeconds': player.getDuration()-26});  
   document.getElementById("actualscore").innerHTML = localStorage.getItem("sovereignt-streak");
   document.getElementById('vid-bac').style.display = "block";
@@ -2404,7 +2412,7 @@ function shrinkupper() {
   }
 }
 </script>
-<div class="video-background" id="vid-bac" style="z-index: 100000000;">
+<div class="video-background w3-animate-top" id="vid-bac" style="z-index: 100000000;">
         <center>
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a id="start-guessing-btn" style="cursor: pointer;" onclick="invalidateSizeFunc('check'); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
