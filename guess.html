@@ -1785,8 +1785,8 @@ queryWithout = "TseEGOmBL_o"
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        try {
         if(interactedyet == 1) {
+          try {
           navigator.mediaSession.metadata = new MediaMetadata({});
         
           aud.loop = true;
@@ -1794,9 +1794,9 @@ queryWithout = "TseEGOmBL_o"
           aud.play();
           console.log('media')
           interactedyet = 0;
-        }
-        } catch {
-          
+          } catch {
+            
+          }
         }
         if (event.data === 0) {
           document.getElementById("player").style.opacity = "0";
