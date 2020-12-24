@@ -1795,9 +1795,10 @@ var country_str = localStorage.getItem("sovereignt-streak");
       var started_playing = 0;
       var downloadTimer;
       var interactedyet = 0;
+      var interactedyet2 = 0;
       function onPlayerStateChange(event) {
 
-        if(interactedyet == 1) {
+        if(interactedyet == 1 && interactedyet2 == 0) {
           try {
             navigator.mediaSession.metadata = new MediaMetadata({});
           
@@ -1805,6 +1806,8 @@ var country_str = localStorage.getItem("sovereignt-streak");
             aud.volume = 0;
             aud.play();
             interactedyet = 0;
+            interactedyet2 = 1;
+            console.log('runs')
           } catch {
 
           }
