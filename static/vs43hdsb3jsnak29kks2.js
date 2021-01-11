@@ -18,9 +18,6 @@ window.addEventListener("focus", () => socket.connect());
 
 function initiateconnect(random_room_id) {
   // var socket = io.connect('http://localhost:5000');
-window.onbeforeunload = function() {
-    return true;
-};
   currentusername = document.getElementById("inputUsername").value;
   if(currentusername.length == 0) {
     alert("You forgot to enter a username!")
