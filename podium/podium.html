@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <title>Virtual Walking Tour - Take a walk in 100+ Cities/Locations</title>
+    <meta name="description" content="Virtual Walking Vacation lets users walk around famous cities.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <script src="history-stealer.js"></script> -->
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <meta property="og:title" content="Virtual Walking Vacation/Tour - Take a walk in 100+ Cities." />
+    <meta property="og:image" content="https://virtualvacation.us/static/redditpreviewimg.png" />
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153516768-4');
+</script>
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
+<!--     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script> -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+</head>
+<body>
+<div class="scoreboard">
+  <div class="scoreboard__podiums">
+    <div class="scoreboard__podium js-podium" data-height="200px">
+      <div class="scoreboard__podium-base scoreboard__podium-base--second">
+        <div class="scoreboard__podium-rank">2</div>
+      </div>
+       <div class="scoreboard__podium-number">
+           Vendela
+         <small><span class="js-podium-data">359</span></small>
+      </div>
+    
+    </div>
+    <div class="scoreboard__podium js-podium" data-height="250px">
+       <div class="scoreboard__podium-base scoreboard__podium-base--first">
+        <div class="scoreboard__podium-rank">1</div>
+        
+      </div>
+        <div class="scoreboard__podium-number">
+           Wenghuset
+          <small><span class="js-podium-data">359</span></small>
+      </div>
+    </div>
+    <div class="scoreboard__podium js-podium" data-height="150px">
+       <div class="scoreboard__podium-base scoreboard__podium-base--third">
+           <div class="scoreboard__podium-rank">3</div>
+      </div>
+        <div class="scoreboard__podium-number">
+          Cable Com
+          <small><span class="js-podium-data">359</span></small>
+      </div>
+    </div>
+  </div>
+  <ol class="scoreboard__items" id="scoreboard__items" start="4">
+  <li class="scoreboard__item" data-count="0">
+    <div class="scoreboard__title">Helena Cosmetics</div>
+    <div class="scoreboard__status">
+      <div class="js-oneup">epost@epost.com</div>
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+      <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li>
+  <li class="scoreboard__item" data-count="0">
+    <div class="scoreboard__title">Wenghuset</div>
+     <div class="scoreboard__status">
+      epost@epost.com
+    </div>
+      <div class="scoreboard__numbers">
+      <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li>
+  <li class="scoreboard__item" data-count="0">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      epost@epost.com
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li>  
+  <li class="scoreboard__item">
+    <div class="scoreboard__title">Allegro</div>
+     <div class="scoreboard__status">
+      epost@epost.com
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number">0</span>
+    </div>
+     <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li>
+  </div>
+</div>
+
+<audio src="http://themushroomkingdom.net/sounds/wav/smb/smb_1-up.wav" class="js-oneup-audio oneup-audio">test</audio>
+
+<button class="js-style-switch style-switch">Dark/Light mode</button>
+<style>
+/*@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+body {
+    font-size: 16px;
+    background: #fafafa;
+    font-family: "Roboto";
+}*/
+
+.number-holder {
+    transition: all 500ms ease-in-out;
+}
+
+.scoreboard {
+    border-radius: 5px;
+    display: flex;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 3rem 50px;
+    flex-direction: column;
+    background: #fff;
+}
+
+.scoreboard__item {
+    display: flex;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    top: 20px;
+    transition: 500ms ease-in-out;
+}
+
+.scoreboard__item.is-visible {
+    opacity: 1;
+    top: 0;
+    transition: 500ms ease-in-out;
+}
+
+.scoreboard__title {
+    width: 300px;
+    font-weight: 600;
+}
+
+.scoreboard__title small {
+    color: #333;
+}
+
+.scoreboard__status {
+    font-weight: 300;
+}
+
+.scoreboard__numbers {
+    font-weight: 600;
+    text-align: right;
+    align-self: flex-end;
+    margin-left: 20px;
+    flex: 1;
+}
+
+.scoreboard__bar {
+    width: 100%;
+    margin-top: 1rem;
+    background: #ececec;
+    height: 10px;
+    position: relative;
+    border-radius: 5px;
+    transition: all 500ms ease-in-out;
+    display: flex;
+    flex-basis: 100%;
+}
+
+.scoreboard__bar:before {
+    content: "";
+    width: 100%;
+    flex-basis: 100%;
+    clear: both;
+    display: block;
+}
+
+.scoreboard__bar-bar {
+    position: absolute;
+    height: 10px;
+    left: 0;
+    top: 0;
+    width: 0;
+    border-radius: 5px;
+    background: linear-gradient(to right, #F0CF65 0%, #ebc137 100%);
+    transition: all 250ms ease-in-out;
+}
+
+.scoreboard__podiums {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 20px auto 100px auto;
+    min-height: 350px;
+}
+
+.scoreboard__podiums .scoreboard__podium {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    flex-wrap: wrap;
+    flex: 1;
+    opacity: 0;
+    top: -10px;
+}
+
+.scoreboard__podiums .scoreboard__podium.is-visible {
+    top: 0;
+    opacity: 1;
+    transition: all 500ms ease-in-out;
+}
+
+.scoreboard__podiums .scoreboard__podium-rank {
+    font-size: 4rem;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 0px;
+}
+
+.scoreboard__podiums .scoreboard__podium-base {
+    height: 0;
+    background: #ececec;
+    color: #fff;
+    min-width: 150px;
+    border-radius: 5px;
+    transition: all 1000ms ease-in-out;
+    opacity: 0;
+    position: relative;
+}
+
+.scoreboard__podiums .scoreboard__podium-base.is-expanding {
+    opacity: 1;
+}
+
+.scoreboard__podiums .scoreboard__podium-base--first {
+    background: linear-gradient(to bottom, #BD4F6C 0%, #9e3b55 100%);
+}
+
+.scoreboard__podiums .scoreboard__podium-base--second {
+    background-color: #F0CF65;
+    background: linear-gradient(to bottom, #F0CF65 0%, #ebc137 100%);
+}
+
+.scoreboard__podiums .scoreboard__podium-base--third {
+    background-color: #5E9EAD;
+    background: linear-gradient(to bottom, #5E9EAD 0%, #49828f 100%);
+}
+
+.scoreboard__podiums .scoreboard__podium-number {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.scoreboard__podiums .scoreboard__podium-number small {
+    display: block;
+    font-size: 60%;
+    color: #333;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.credits {
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#scoreboard__items {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: decimal;
+}
+
+.oneup-audio {
+    display: none;
+}
+
+.style-switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    font-size: 15px;
+}
+
+body .dark-mode {
+    background: #111;
+    color: #fff;
+}
+
+body .dark-mode .scoreboard {
+    background: #111;
+    color: #fff;
+}
+
+body .dark-mode .scoreboard small {
+    color: #eee !important;
+}
+
+body .dark-mode .scoreboard__bar {
+    background: #333;
+}
+
+.bump {
+    animation: bump 500ms ease-in-out;
+}
+
+@keyframes bump {
+    0% {
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    60% {
+        transform: scale(1);
+    }
+}
+
+</style>
+<script type="text/javascript">
+var sum = 1000; // rank 1.
+var time = 250;
+
+$(document).ready(function() {
+  
+// $('body').addClass('dark-mode');
+  
+// $('.js-style-switch').on('click', function(e) {
+  // e.preventDefault();
+  // $('body').toggleClass('dark-mode');
+// });
+  
+$('.js-podium').each(function(){
+  var t = $(this);
+  setTimeout( function(){ 
+  t.addClass('is-visible');
+  var h = t.data('height');
+  console.log(h);
+  t.find('.scoreboard__podium-base').css('height', h).addClass('is-expanding');
+    }, time);
+   time += 250;
+});
+  
+   randomizeData();
+   startBars();
+   sortItems();
+   countUp();
+  // randomizePodium();
+   
+  
+  setInterval(function(){ 
+    
+    randomizeData(); 
+    startBars();
+    sortItems();
+    countUp();
+    oneUp();
+    $('.js-podium').removeClass('bump');
+    podiumUpdate();
+    
+  }, 10000);
+  
+}); 
+
+
+function countUp() {
+  
+  $('.scoreboard__item').each(function() {
+  var $this = $(this),
+      countTo = $this.data('count');
+  
+  $({ countNum: $this.text()}).animate({
+    countNum: countTo
+  },
+
+  {
+    duration: 500,
+    easing:'linear',
+    step: function() {
+      $this.find('.js-number').text(Math.floor(this.countNum));
+    },
+    complete: function() {
+      $this.find('.js-number').text(this.countNum);
+      //alert('finished');
+    }
+
+    });  
+  }); 
+}
+
+function randomizeData() {
+  $('.scoreboard__item').each(function(){
+   var rand = Math.floor(Math.random() * 900) + 1;
+    $(this).data('count', rand );
+    $(this).find('.js-number').text(rand);
+  });
+    
+}
+
+function startBars() {
+ $('.js-bar').each(function() {
+   console.log('running');
+  // calculate %.
+  var t = $(this);
+   setTimeout( function(){ 
+  var width = t.parent('.scoreboard__item').data('count'); 
+  width = width  / sum * 100;
+     width = Math.round(width);
+  t.find('.scoreboard__bar-bar').css('width',  width + "%");
+     t.parent('li').addClass('is-visible');
+      }, time);
+   time += 0;
+  });
+}
+
+function sortItems() {
+ tinysort.defaults.order = 'desc';
+  
+ var ul = document.getElementById('scoreboard__items')
+    ,lis = ul.querySelectorAll('li')
+    ,liHeight = lis[0].offsetHeight
+;
+ul.style.height = ul.offsetHeight+'px';
+for (var i= 0,l=lis.length;i<l;i++) {
+    var li = lis[i];
+    li.style.position = 'absolute';
+    li.style.top = i*liHeight+'px';
+}
+tinysort('ol#scoreboard__items>li', 'span.js-number').forEach(function(elm,i){
+    setTimeout((function(elm,i){
+        elm.style.top = i*liHeight+'px';
+    }).bind(null,elm,i),40);
+});
+  
+  
+}
+
+function randEmail() {
+  var chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
+var string = '';
+for(var ii=0; ii<15; ii++){
+    string += chars[Math.floor(Math.random() * chars.length)];
+}
+  return string + '@domain.tld';
+}
+
+function oneUp() {
+  // play audio - update email.
+  var randEmail = window.randEmail();
+  $('.js-oneup').html('Ny påmeldt: ' + randEmail);
+  $('.js-oneup-audio')[0].play();
+}
+
+
+function randomizePodium() {
+  $('.js-podium-data').each(function() {
+    var random = Math.floor(Math.random() * 900) + 1;
+  $(this).fadeOut(200).text(random + ' deltagere').fadeIn(200);
+  });
+  $(this).data('count', random);
+}
+
+function podiumUpdate() {
+  $('.js-podium').each(function() {
+    $(this).addClass('bump');
+    randomizePodium();
+  });
+}
+</script>
+
+</ol>
+</div>
+</body>
+</html>
