@@ -2871,7 +2871,8 @@ queryWithout = "TseEGOmBL_o"
     map.invalidateSize();
               if(round_present == round_total+1) {
                 player.mute();
-            loadpodium();
+                loadpodium();
+                player.pauseVideo();
             return;
           } else {
             document.getElementById("round-div").innerHTML = String(round_present) + "/" + String(round_total)
