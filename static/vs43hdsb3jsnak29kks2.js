@@ -10,8 +10,8 @@ var exist_error_check;
 var socket;
 // var group;
 // Make connection
-var socket = io.connect('http://localhost:5000');
-// var socket = io.connect("https://testapp149.herokuapp.com/");
+// var socket = io.connect('http://localhost:5000');
+var socket = io.connect("https://testapp149.herokuapp.com/");
 var hostornot = false;
 // var socket = io.connect('http://testapp149.herokuapp.com/');
 window.addEventListener("focus", () => socket.connect());
