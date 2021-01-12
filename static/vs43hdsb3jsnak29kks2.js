@@ -34,22 +34,6 @@ function initiateconnect(random_room_id) {
       alert("We just restarted our game-servers when you joined. Reload the page and everything will be okay. Sorry for the inconvinience.")
       location.reload();
     }, 10000)
-    // interval_iterate = 0
-    // connect_interval = setInterval(function() {
-    //   interval_iterate++
-    //     console.log('tested...')
-    //   if(interval_iterate > 2) {
-    //     document.getElementById("sharelink").innerHTML = "So Sorry! <i class='fas fa-spinner fa-spin' style='margin-left: 5px;'></i>"
-    //   }
-    //   // if(interval_iterate > 5) {
-    //   //   alert("We figured out the issue. Our servers are up now. Just reinput some information. ")
-    //   //   location.reload();
-    //   // }
-    //   if(socket.connected == true) {
-    //     clearInterval(connect_interval)
-    //     console.log('IM CONNEKTED!!')
-    //     initiateconnect(Math.floor(Math.random()*90000) + 10000)
-    //   }
     return;
   }
   localStorage.setItem("my_username", currentusername)
@@ -213,7 +197,7 @@ socket.on('start-game-notify', function(data){
     serverleft = 90;
   } else if(data["t_p_g"] == "1 minute") {
     serverleft = 60
-  } else if(data["t_p_g"] == "2 minutes (recommended") {
+  } else if(data["t_p_g"] == "2 minutes") {
     serverleft = 120
   } else if(data["t_p_g"] == "3 minutes") {
     serverleft = 180
