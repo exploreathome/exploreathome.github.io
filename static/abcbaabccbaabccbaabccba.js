@@ -1,4 +1,6 @@
-var socket = io.connect('http://localhost:4000');
+// var socket = io.connect('http://localhost:4000');
+var socket = io.connect('https://secure-players.herokuapp.com/');
+
 var unit = "mi";
 // var hostornot = false;
 window.addEventListener("focus", () => socket.connect());
@@ -317,6 +319,7 @@ $("#new-back-btn8").on("mouseleave", function () {
 });
 socket.on('load-podium', function(data) {
   player.mute();
+  player.pauseVideo();
   transmit_json = data["currentplayers"]
   // document.getElementsById("vid-bac").style.display = "none";
   document.get
