@@ -248,7 +248,7 @@ socket.on('start-game-notify', function(data){
                   document.getElementById("spinner").style.display = 'block';
   // $("#spinner").slideDown(700);
                   // document.getElementById("spinner").style.display = "block";
-                  document.getElementById('guess-button-id').style.display = "none";
+                  // document.getElementById('guess-button-id').style.display = "none";
                   // document.getElementById("vid-bac").style.pointerEvents = 'none';
                   // document.getElementById()
                   document.getElementById("countdown").innerHTML = "0s";
@@ -495,7 +495,8 @@ socket.on('finished-guessing', function(data){
     document.getElementsByClassName("user-name-score")[obj_i].innerHTML = String(new_obj2[obj_i][4])
   }
   console.log(new_obj2.length)
-  leaderboardcount(new_obj2.length)
+  obj2_length = new_obj2.length
+  leaderboardcount(obj2_length)
   map.invalidateSize();
   for (var key in transmit_json) {
     // console.log('KEY IN:')
@@ -547,8 +548,9 @@ socket.on('finished-guessing', function(data){
           marker1 = L.marker([random_lat_lon[0], random_lat_lon[1]], {icon: greenMarker})
           markerArray.push(marker1);
     var group = L.featureGroup(markerArray).addTo(map);
-      current_marker_push.openPopup();
-
+      if(obj2_length < 3) {
+        current_marker_push.openPopup();
+      }
       var polyline_new = L.polyline([random_lat_lon, score_coord_info[1]], {color: 'black', dashArray: '5,10'}).addTo(map);
       markerArray.push(polyline_new)
         console.log(guess_coord_list)
