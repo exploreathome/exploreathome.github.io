@@ -163,18 +163,18 @@ socket.on('change-num-of-players', function(data) {
   document.getElementById("usernameList").innerHTML = player_string
   // num_of_players -= 1
   document.getElementById("playersWaiting").innerHTML = num_of_players
-                if(map != undefined && inguessingstage == 0) {
-                  if(guessmade == true) {
-                    socket.emit('current_score', {
-                      current_score: current_grade,
-                      guessing_point: [globallat, globallon],
-                      distance_between: distance_between,
-                      ran_out_of_time: false,
-                      intentional_exit: true,
-                      forced: false
-                    })                    
-                  }
-                }   
+                // if(map != undefined && inguessingstage == 0) {
+                //   if(guessmade == true) {
+                //     socket.emit('current_score', {
+                //       current_score: current_grade,
+                //       guessing_point: [globallat, globallon],
+                //       distance_between: distance_between,
+                //       ran_out_of_time: false,
+                //       intentional_exit: true,
+                //       forced: false
+                //     })                    
+                //   }
+                // }   
 })
 let current_players = {}
 socket.on('lobby', function(data){
