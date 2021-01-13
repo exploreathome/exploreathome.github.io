@@ -788,7 +788,7 @@ function onPlayerReady2(event) {
     </div>
     <div class="card w3-animate-top" id="sixth-card" style="box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.50);">
       <center>
-<img src="static/share-icon.svg" height="98" style="margin: 10px;">
+<img src="static/share-icon.svg" height="98" style="margin: 10px;" id="share-icon-svg">
 </center>
       <div class="text" style="margin-bottom: -20px; padding: 20px; margin-bottom: 8px;">
         <div class="title">
@@ -1960,6 +1960,9 @@ function onPlayerReady2(event) {
   .card {
     width: 95%;
   }
+  .share-icon-svg {
+    display: none;
+  }
 }
 #spinner {
     position: fixed;
@@ -3023,6 +3026,11 @@ queryWithout = "TseEGOmBL_o"
           localStorage.setItem('already_played', [random_vid_id]);
         }
         console.log('after this if statement')
+        var viewport = document.querySelector('meta[name="viewport"]');
+        if ( viewport ) {
+          viewport.content = "initial-scale=0.1";
+          viewport.content = "width=device-width";
+        }
         localList = localStorage.getItem("already_played")
             var messages = document.querySelectorAll(".coolbob29");
             var messages2 = document.querySelectorAll(".upvote-downvote");
@@ -3034,11 +3042,6 @@ queryWithout = "TseEGOmBL_o"
 
         }
         console.log('before state')
-        var viewport = document.querySelector('meta[name="viewport"]');
-        if ( viewport ) {
-          viewport.content = "initial-scale=0.1";
-          viewport.content = "width=device-width";
-        }
         // document.getElementById("diff").style.display = "block";
         history.pushState(null, null, location.href);
 
