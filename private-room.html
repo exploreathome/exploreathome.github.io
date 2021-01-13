@@ -2957,6 +2957,7 @@ queryWithout = "TseEGOmBL_o"
         document.getElementById("speedSlider").nextElementSibling.value = "1.0"
         document.getElementById("speedSlider").value = 100;
         player.setPlaybackRate(1);
+        player.playVideo();
         if (localStorage.getItem("already_played") !== null) {
           localStorage.setItem('already_played', localStorage.getItem('already_played') + " " + random_vid_id);
         } else {
@@ -2999,7 +3000,7 @@ queryWithout = "TseEGOmBL_o"
             document.getElementsByClassName("tooltip-text")[index].style.display = "none";
         } 
         mydict = []
-
+        console.log('ends')
       }
 
 // var map = L.map('mapid').setView([51.505, -0.09], 13);
