@@ -839,6 +839,9 @@ socket.on('update-guess', function(data){
           console.log('THEY ARE THE SAME U NOOB')
           mydict.push(num)
           document.getElementsByClassName("tooltip-text")[num].innerHTML = "I'm <b>"+ String(parseInt(data["distance"])) + "mi's</b> out. <span style='margin-left: 5px;'>👈</span>";
+          if(isMobile) {
+           document.getElementsByClassName("tooltip-text")[num].innerHTML = "✅";           
+          }
           document.getElementsByClassName("tooltip-text")[num].style.display = "block";
           player_guessed_aud = new Audio('static/playerGuessed.ogg')
           player_guessed_aud.play();
