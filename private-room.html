@@ -142,6 +142,39 @@ body{
   /*box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);*/
   padding-bottom: 12px;
 }
+.card-wait {
+  overflow-y: auto;
+  background: rgba(1, 2, 1, 0.7);
+  width: 290px;
+  max-height: 55vh;
+  /*max-height: 405px;*/
+  position: fixed;
+  margin-top: 20px;
+  font-family: 'Montserrat';
+  /*margin-left: 500px;*/
+  /*display: inline-block;*/
+    left: 50%;
+    margin-left: -145px;
+    /*transform: translateX(-50%);*/
+    padding: 0px;
+    display: none;
+    /*padding-left: 15px;*/
+    border-radius: 10px;
+    /*padding-right: 15px;*/
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 5000000000;
+    border: white 1px;
+    box-shadow: 0 0.4px 3.6px rgba(0, 0, 0, 0.15),
+    0 1px 8.5px rgba(0, 0, 0, 0.01), 0 1.9px 15.7px rgba(0, 0, 0, 0.15),
+    0 3.4px 28.2px rgba(0, 0, 0, 0.03), 0 6.3px 54.4px rgba(0, 0, 0, 0.15),
+    0 15px 137px rgba(0, 0, 0, 0.15), 0 0 7px 7px rgba(0, 0, 0, 0.25);
+  /*box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);*/
+  padding-bottom: 12px;
+}
 .card8 {
   position: fixed;
   top: 0;
@@ -798,9 +831,11 @@ function onPlayerReady2(event) {
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); document.getElementById('id01').style.display='block';" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
 <!--       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fas fa-map-marker-alt"></i></a></p> -->
-      <div class="card8" id="eigth-card">
-      <span style="margin-left: 10px; margin-right: 10px; font-size: 15px;">Waiting for all players to guess.. <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i></span>
-    </div>
+      <div class="card-wait w3-animate-zoom" id="eigth-card" style="margin-top: 10px; margin-left: -145px; padding-bottom: 0;">
+      <center>
+              <span style="margin-left: 10px; margin-right: 10px; font-size: 15px;">Waiting for all players to guess.. <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i></span>
+</center>
+      </div>
       <!-- The Modal -->
   <div id="id01" class="w3-modal" style="position: fixed; z-index: 2;">
  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="border-radius: 20px;">
@@ -1411,6 +1446,8 @@ function onPlayerReady2(event) {
 <style>
 * {
   box-sizing: border-box;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
 }
 .video-background {
   background: #000;
@@ -2785,7 +2822,7 @@ queryWithout = "TseEGOmBL_o"
 
 
 
-        
+
         // player.stopVideo();
         // player.playVideo();
       }
