@@ -2837,6 +2837,7 @@ queryWithout = "TseEGOmBL_o"
       // var videoloadfuncran = 0;
         var aud = new Audio("static/silence.mp3");
       function loadVideoWithId(input_id, random_input) {
+        console.log('video loading')
           document.getElementById("player").style.opacity = "0";
           player.playVideo();
           started_playing = 0
@@ -2945,6 +2946,7 @@ queryWithout = "TseEGOmBL_o"
         cvol = player.getVolume();
         interactedyet=1;
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
+        console.log('after load video')
 navigator.mediaSession.metadata = new MediaMetadata({});
   aud.loop = true;
   aud.volume = 0;
@@ -2954,6 +2956,7 @@ navigator.mediaSession.metadata = new MediaMetadata({});
           document.getElementById("player").style.opacity = "1";
         player.unMute();
         player.setVolume(cvol)
+        console.log('after set volume')
         document.getElementById("volumeEditor").value = cvol;
         document.getElementById("speedSlider").nextElementSibling.value = "1.0"
         document.getElementById("speedSlider").value = 100;
@@ -2973,11 +2976,12 @@ navigator.mediaSession.metadata = new MediaMetadata({});
             messages2[i].style.display = 'none';
 
         }
+        console.log('before state')
         // document.getElementById("diff").style.display = "block";
         history.pushState(null, null, location.href);
 
         // player.seekTo(50, true)
-
+        console.log('we good')
     window.onpopstate = function () {
         history.go(0);
         // location.reload();
