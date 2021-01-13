@@ -190,6 +190,7 @@ socket.on('start-game-notify', function(data){
   console.log('Start Game Notified Initiate')
   console.log(data)
   console.log(data["player_info"])
+  console.log(data["t_p_g"])
   round_total = data["rounds"]
   console.log(round_total)
   serverleft = 90;
@@ -650,7 +651,6 @@ function copyToClip() {
 }
 var is_asdfasdfasdf;
 var is_host = 0;
-// var first_placers = []
 function begingame() {
     console.log(socket.id)
     console.log('Round Present:')
@@ -666,20 +666,6 @@ function begingame() {
       host_round: round_present+1,
       user_random: "hello world"
     });
-    // first_placers.push(document.getElementsByClassName("coolbob29"))
-  // document.getElementById("id01").style.display = "none";
-  // document.getElementById("main-button").style.display = "block";
-  // document.getElementById("main-button").onclick = "invalidateSizeFunc('hi')";
-
-  // document.getElementById('original-c').style.display = "block";
-  // document.getElementById('future-c').style.display = "none";
-
-  // document.getElementById('map-prompter').innerHTML = "Click Map To Guess <i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;'></i>"
-  // document.getElementById("x-out").style.display = "block";
-  // document.getElementById("player").style.opacity = "1";
-  // document.getElementById("seventh-card").style.display = 'none';
-    // map.removeLayer(markers);
-    // markerArray.clearLayers();
 }
 function loadpodium() {
   player.mute();
