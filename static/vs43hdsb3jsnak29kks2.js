@@ -210,6 +210,7 @@ socket.on('start-game-notify', function(data){
     serverleft = 15;
   }
   round_present = data["current_round"]
+  console.log('loadvideowithid')
   loadVideoWithId("wor", data['random_num']);
   player.mute();
   console.log('Player Muted')
