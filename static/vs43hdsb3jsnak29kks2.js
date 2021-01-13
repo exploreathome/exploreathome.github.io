@@ -212,15 +212,19 @@ socket.on('start-game-notify', function(data){
   round_present = data["current_round"]
   loadVideoWithId("wor", data['random_num']);
   player.mute();
+  console.log('Player Muted')
   document.getElementsByClassName("demo")[0].style.display = 'block'
   document.getElementsByClassName("demo")[0].style.zIndex = 1234
   $("#demo-back").slideDown(350);
   setTimeout(function() {
+              console.log('demo2')
               $("#demo-back").slideUp(350);
               document.getElementsByClassName("demo")[0].style.display = 'none'
   }, 4000)
+            console.log('before sound played')
             var start_sound = new Audio('static/gamestartnotif.ogg');
             start_sound.play();
+            console.log('sound able to be played')
               timeleft = serverleft
             setTimeout(function() {
                 player.unMute();
