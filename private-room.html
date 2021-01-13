@@ -2789,6 +2789,8 @@ queryWithout = "TseEGOmBL_o"
       function onPlayerStateChange(event) {
         if(interactedyet == 1 && interactedyet2 == 0) {
           try {
+            ismobile = isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+            if(isMobile == false) {
             navigator.mediaSession.metadata = new MediaMetadata({});
             aud.loop = true;
             aud.volume = 0;
@@ -2796,6 +2798,7 @@ queryWithout = "TseEGOmBL_o"
             console.log('media')
             interactedyet = 0;
             interactedyet2 = 1
+            }
           } catch {
 
           }
