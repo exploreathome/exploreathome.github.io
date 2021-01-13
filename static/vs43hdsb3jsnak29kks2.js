@@ -378,7 +378,7 @@ socket.on('finished-guessing', function(data){
                   document.getElementById("main-button").style.display = "none";
                   document.getElementById("main-button2").style.display = "none";
                   document.getElementById("future-c").style.display = "block";
-  // document.getElementById('eigth-card').style.display = 'none';
+  document.getElementById('eigth-card').style.display = 'none';
   console.log('message recieved IN FINISHED GUESSINGGGGGG')
   transmit_json = data['transmit_json']
   console.log(transmit_json)
