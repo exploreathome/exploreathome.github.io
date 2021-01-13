@@ -211,14 +211,14 @@ socket.on('start-game-notify', function(data){
     serverleft = 15;
   }
   round_present = data["current_round"]
-  loadVideoWithId("wor", data['random_num']);
   player.mute();
+  loadVideoWithId("wor", data['random_num']);
   document.getElementsByClassName("demo")[0].style.display = 'block'
   document.getElementsByClassName("demo")[0].style.zIndex = 1234
   $("#demo-back").slideDown(350);
   setTimeout(function() {
               $("#demo-back").slideUp(350);
-              player.playVideo();
+              // player.playVideo();
               document.getElementsByClassName("demo")[0].style.display = 'none'
   }, 4000)
             console.log('before sound played')
@@ -366,14 +366,6 @@ socket.on('start-game-notify', function(data){
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
   document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
-    // if (map == undefined) {
-      // map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 3);
-        // var differentLayers = {
-          // "<b>1. </b>All English": gray_scale,
-          // "<b>2.</b> Native Languages": osm_scale
-        // };
-      // L.control.layers(differentLayers).addTo(map);
-    // }
 });
 var firsttime = 0;
 socket.on('finished-guessing', function(data){
