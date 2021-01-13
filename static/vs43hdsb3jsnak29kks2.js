@@ -191,6 +191,7 @@ socket.on('start-game-notify', function(data){
   console.log(data)
   console.log(data["player_info"])
   round_total = data["rounds"]
+  console.log(round_total)
   serverleft = 90;
   if (data["t_p_g"] == "1 minute 30 seconds") {
     console.log(' i am cool')
@@ -198,6 +199,7 @@ socket.on('start-game-notify', function(data){
   } else if(data["t_p_g"] == "1 minute") {
     serverleft = 60
   } else if(data["t_p_g"] == "2 minutes") {
+    console.log('im here')
     serverleft = 120
   } else if(data["t_p_g"] == "3 minutes") {
     serverleft = 180
@@ -209,6 +211,7 @@ socket.on('start-game-notify', function(data){
   if(data["t_p_g"] == "15 seconds") {
     serverleft = 15;
   }
+  console.log('i survived!')
   round_present = data["current_round"]
   console.log('loadvideowithid')
   loadVideoWithId("wor", data['random_num']);
