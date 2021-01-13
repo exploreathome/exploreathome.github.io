@@ -97,6 +97,7 @@ function joinroom(room_id, username, userid) {
       unit = "mi"
       localStorage.setItem("unit", "mi")
     }
+    player.playVideo();
 }
 var globalcolor = "red";
 socket.on('color-change', function(data) {
