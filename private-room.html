@@ -837,11 +837,6 @@ function onPlayerReady2(event) {
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); document.getElementById('id01').style.display='block';" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
 <!--       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fas fa-map-marker-alt"></i></a></p> -->
-      <div class="card-wait w3-animate-zoom" id="eigth-card" style="margin-top: 10px; margin-left: -145px; padding-bottom: 0;">
-      <center>
-              <span style="margin-left: 10px; margin-right: 10px; font-size: 15px;">Waiting for all players to guess.. <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i></span>
-</center>
-      </div>
       <!-- The Modal -->
   <div id="id01" class="w3-modal" style="position: fixed; z-index: 2;">
  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="border-radius: 20px;">
@@ -918,6 +913,13 @@ function onPlayerReady2(event) {
 <!-- <br> -->
 
       </div>
+      
+      <div class="card-wait w3-animate-zoom" id="eigth-card" style="margin-top: 10px; margin-left: -145px; padding-bottom: 0;">
+      <center>
+              <span style="margin-left: 10px; margin-right: 10px; font-size: 15px;">Waiting for all players to guess.. <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i></span>
+</center>
+      </div>
+
       <div class="card7 w3-animate-zoom" id="seventh-card2" style="margin-top: 10px; margin-left: -145px;">
       <center>
 <!-- <img src="static/share-icon.svg" height="98" style="margin: 10px;"> -->
