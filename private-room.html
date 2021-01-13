@@ -489,6 +489,42 @@ input {
 select {
   font-size: 16px;
 }
+/*** Styles added to fix the issue with zoom in on iphone ***/
+/* iPhone < 5: */
+@media screen and (device-aspect-ratio: 2/3) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 6, iPhone 6s, iPhone 7 portrait/landscape */
+@media screen and (device-aspect-ratio: 375/667) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus portrait/landscape */
+@media screen and (device-aspect-ratio: 9/16) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
 </style>
   <!-- <div id="player2" style="position: fixed; top: 0; left: 0;"></div> -->
       <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XIMLoLxmTDw" frameborder="0" allowfullscreen allow="autoplay" style="position: fixed; top: 0; left: 0;"></iframe> -->
@@ -2846,7 +2882,6 @@ queryWithout = "TseEGOmBL_o"
       function onPlayerStateChange(event) {
         if(interactedyet == 1 && interactedyet2 == 0) {
           try {
-            ismobile = isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
             if(isMobile == false) {
               console.log('ismobile is false')
             navigator.mediaSession.metadata = new MediaMetadata({});
@@ -3488,6 +3523,7 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
     return dist;
   }
 }
+var isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
 </script>
 <script src="static/vs43hdsb3jsnak29kks2.js"></script>
 </html>
