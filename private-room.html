@@ -2952,6 +2952,7 @@ queryWithout = "TseEGOmBL_o"
         cvol = player.getVolume();
         interactedyet=1;
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
+        player.playVideo();
         console.log('after load video')
         console.log('occurs')
         document.getElementById('vid-bac').style.display = "block";
