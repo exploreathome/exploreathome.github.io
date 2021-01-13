@@ -2962,10 +2962,7 @@ queryWithout = "TseEGOmBL_o"
         } else {
           localStorage.setItem('already_played', [random_vid_id]);
         }
-        navigator.mediaSession.metadata = new MediaMetadata({});
-          aud.loop = true;
-          aud.volume = 0;
-          aud.play();
+        console.log('after this if statement')
         localList = localStorage.getItem("already_played")
             var messages = document.querySelectorAll(".coolbob29");
             var messages2 = document.querySelectorAll(".upvote-downvote");
@@ -2993,11 +2990,16 @@ queryWithout = "TseEGOmBL_o"
         //    location.reload(true);
         // });
         // history.pushState(null, null, 'https://twitter.com/hello');
+        navigator.mediaSession.metadata = new MediaMetadata({});
+          aud.loop = true;
+          aud.volume = 0;
+          aud.play();
         document.getElementById("carouselExampleIndicators").style.display = "none";
         for (index = 0; index < mydict.length; index++) { 
             document.getElementsByClassName("tooltip-text")[index].style.display = "none";
         } 
         mydict = []
+
       }
 
 // var map = L.map('mapid').setView([51.505, -0.09], 13);
