@@ -2792,6 +2792,7 @@ queryWithout = "TseEGOmBL_o"
           try {
             ismobile = isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
             if(isMobile == false) {
+              console.log('ismobile is false')
             navigator.mediaSession.metadata = new MediaMetadata({});
             aud.loop = true;
             aud.volume = 0;
