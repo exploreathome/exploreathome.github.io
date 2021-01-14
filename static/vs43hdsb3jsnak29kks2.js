@@ -219,6 +219,7 @@ socket.on('start-game-notify', function(data){
   $("#demo-back").slideDown(350);
   setTimeout(function() {
               $("#demo-back").slideUp(350);
+              player.unMute();
               // player.playVideo();
               document.getElementsByClassName("demo")[0].style.display = 'none'
   }, 4000)
@@ -370,6 +371,7 @@ socket.on('start-game-notify', function(data){
 });
 var firsttime = 0;
 socket.on('finished-guessing', function(data){
+  player.mute();
   clearInterval(downloadTimer);
   document.getElementById("countdown").innerHTML = "0s"
   inguessingstage = 1;
