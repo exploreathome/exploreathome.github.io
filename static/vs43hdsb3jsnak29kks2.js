@@ -7,6 +7,7 @@ var random_room_id;
 var marker1;
 var exist_error_check;
 var socket;
+var audio_play = new Audio();
 // var group;
 // Make connection
 // var socket = io.connect('http://localhost:5000');
@@ -98,6 +99,7 @@ function joinroom(room_id, username, userid) {
       localStorage.setItem("unit", "mi")
     }
     player.playVideo();
+    audio_play.play();
 }
 var globalcolor = "red";
 socket.on('color-change', function(data) {
@@ -284,7 +286,7 @@ socket.on('start-game-notify', function(data){
                 }
                 if(timeleft <= 10) {
                   // document.getElementById("countdown").style.color = "red";
-                  audio_play = new Audio('static/tick.mp3')
+                  audio_play.src = 'static/tick.mp3'
                   audio_play.play();
                 }
                 timeleft -= 1;
@@ -443,7 +445,7 @@ socket.on('finished-guessing', function(data){
     }
     // }
   }
-  audio_play = new Audio('static/roundEndSuccess.mp3')
+  audio_play.src = 'static/roundEndSuccess.mp3'
   audio_play.play();
   $("#seventh-card").slideDown(700);
   document.getElementById("id01").style.display = 'block';
