@@ -684,10 +684,10 @@ function onPlayerReady2(event) {
       </div>
       <div class="buttons">
         <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div>
-        <div class="button button-primary" type="button" onclick="initiateconnect(Math.floor(Math.random()*90000) + 10000)" id="sharelink">Share Link <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  onclick="initiateconnect(Math.floor(Math.random()*90000) + 10000)" id="sharelink">Share Link <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
 <!--       <div class="buttons" style="margin-top: -13px;">
-        <div class="button button-primary" type="button" style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div> -->
     </div>
     <div class="card w3-animate-top" id="fourth-card">
@@ -722,10 +722,10 @@ function onPlayerReady2(event) {
       </div>
       <div class="buttons">
         <!-- <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div> -->
-        <div class="button button-primary" type="button" onclick="begingame()" style="margin-left: 19px; margin-right: 19px;"><span id="start-game-text">Start Game!</span> <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  onclick="begingame()" style="margin-left: 19px; margin-right: 19px;"><span id="start-game-text">Start Game!</span> <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
 <!--       <div class="buttons" style="margin-top: -13px;">
-        <div class="button button-primary" type="button" style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div> -->
     </div>
     <div class="card w3-animate-top" id="second-card">
@@ -744,7 +744,7 @@ function onPlayerReady2(event) {
           <!-- <center style="font-weight: bold; margin-top: 8px;">How does this work?</center> -->
           <div class="input-group mb-3">
   <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" style="float: left;" onclick="fifth()">👉 Join</button>
+    <button class="btn btn-outline-secondary"  style="float: left;" onclick="fifth()">👉 Join</button>
   </div>
   <input type="text" class="form-control" style="float: right;" placeholder="Game Code" maxlength="6" id="potential_id">
 </div>
@@ -753,11 +753,11 @@ function onPlayerReady2(event) {
         <!-- <hr> -->
       </div>
       <div class="buttons">
-        <div class="button button-primary" type="button" style="margin-left: 19px; margin-right: 19px;" onclick="window.location='multiplayer.html'">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="window.location='multiplayer.html'">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
       <div class="buttons" id="create-rooms-leave" style="margin-top: -5px;">
         <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div>
-        <div class="button" type="button" onclick="createroommenu()">Create Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button"  onclick="createroommenu()">Create Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
     </div>
     <div class="card w3-animate-top" id="fifth-card">
@@ -816,10 +816,10 @@ function onPlayerReady2(event) {
       </div>
       <div class="buttons">
         <!-- <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div> -->
-        <div class="button button-primary" type="button" onclick="joinroom(potential_id, document.getElementById('inputUsername2').value, socket.id)" style="margin-left: 19px; margin-right: 19px;">Join Game! <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  onclick="joinroom(potential_id, document.getElementById('inputUsername2').value, socket.id)" style="margin-left: 19px; margin-right: 19px;">Join Game! <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
 <!--       <div class="buttons" style="margin-top: -13px;">
-        <div class="button button-primary" type="button" style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div> -->
     </div>
     <div class="card w3-animate-top" id="sixth-card" style="">
@@ -1045,7 +1045,7 @@ function onPlayerReady2(event) {
       
         <div class="modal-header">
           <h4 class="modal-title">Take a wild guess!  </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button  class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <div class="modal-body">
@@ -1054,7 +1054,7 @@ function onPlayerReady2(event) {
         </div>
         
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button  class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
         
       </div>
@@ -1234,7 +1234,7 @@ function onPlayerReady2(event) {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Skip Waiting <i class="fas fa-forward"></i></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button  class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -1248,8 +1248,8 @@ function onPlayerReady2(event) {
   <label for="vehicle1"> Don't show this again</label><br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="skipfunc2()">End Round</button>
+        <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button  class="btn btn-primary" onclick="skipfunc2()">End Round</button>
       </div>
     </div>
   </div>
