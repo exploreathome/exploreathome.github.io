@@ -22,6 +22,7 @@ function joinroom(username) {
         // rannum: rannum
       })
     }
+    player.playVideo();
     if(document.getElementById("form-number-1").value = "Kilometres") {
       unit = "km"
       localStorage.setItem("unit", "km")
