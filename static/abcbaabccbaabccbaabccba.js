@@ -114,8 +114,11 @@ socket.on('guess', function(data) {
               distance_away = String(distance_away) + " mi's"
             }
             document.getElementById("tooltip-text-id" + String(num)).innerHTML = "I'm <b>"+ String(distance_away) + "</b> out. <span style='margin-left: 5px;'>👈</span>";
+            if(isMobile) {
+             document.getElementsByClassName("tooltip-text")[num].innerHTML = "✅";           
+            }
             document.getElementById("tooltip-text-id" + String(num)).style.display = "block";
-            player_guessed_aud = new Audio('static/playerGuessed.ogg')
+            player_guessed_aud = new Audio('static/playerGuessed.mp3')
             player_guessed_aud.play();
           }
         }
@@ -209,7 +212,7 @@ socket.on('finished-guessing', function(data) {
       document.getElementsByClassName("coolbob29")[x].style.display = "block";
       document.getElementsByClassName("upvote-downvote")[x].style.display = "block";
   }
-  audio_play = new Audio('static/roundEndSuccess.ogg')
+  audio_play = new Audio('static/roundEndSuccess.mp3')
   audio_play.play();
   document.getElementById("map-prompter").innerHTML = "Intermission... <i class='far fa-clock fa-spin'></i>"
   $("#seventh-card").slideDown(700);
@@ -372,7 +375,7 @@ socket.on('load-podium', function(data) {
   console.log(sum_of_scores)
   document.getElementById("vid-bac").style.display = "none";
   document.getElementById("new-back-btn-end").style.display = 'block';
-          player_guessed_aud = new Audio('static/playerGuessed.ogg')
+          player_guessed_aud = new Audio('static/playerGuessed.mp3')
           player_guessed_aud.play();
   for(var count=0; count<10;count++) {
     console.log(count)
