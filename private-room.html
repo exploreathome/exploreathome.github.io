@@ -753,7 +753,7 @@ function onPlayerReady2(event) {
         <!-- <hr> -->
       </div>
       <div class="buttons">
-        <div class="button button-primary" type="button" style="margin-left: 19px; margin-right: 19px;" href="multiplayer.html">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary" type="button" style="margin-left: 19px; margin-right: 19px;" onclick="window.location='multiplayer.html'">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
       <div class="buttons" id="create-rooms-leave" style="margin-top: -5px;">
         <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div>
@@ -2901,7 +2901,7 @@ queryWithout = "TseEGOmBL_o"
         }
         if(event.data == YT.PlayerState.PLAYING && started_playing == 0) {
           document.getElementById("player").style.opacity = "1"
-          timeleft = serverleft
+          // timeleft = serverleft
           // timeleft = 90
           started_playing = 1;
               document.getElementById("new-back-btn-time").style.display = "block";
