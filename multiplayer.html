@@ -2713,6 +2713,7 @@ queryWithout = "TseEGOmBL_o"
         if (event.data === 0) {
           document.getElementById("player").style.opacity = "0";
         }
+        console.log('i reach')
         if(event.data == YT.PlayerState.PLAYING && started_playing == 0) {
           document.getElementById("player").style.opacity = "1"
           timeleft = synced_game_time
