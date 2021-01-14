@@ -2787,13 +2787,15 @@ queryWithout = "TseEGOmBL_o"
         }
         if(interactedyet == 1 && interactedyet2 == 0) {
           try {
-            navigator.mediaSession.metadata = new MediaMetadata({});
-            aud.loop = true;
-            aud.volume = 0;
-            aud.play();
-            console.log('media')
-            interactedyet = 0;
-            interactedyet2 = 1
+            if(isMobile == false) {
+              navigator.mediaSession.metadata = new MediaMetadata({});
+              aud.loop = true;
+              aud.volume = 0;
+              aud.play();
+              console.log('media')
+              interactedyet = 0;
+              interactedyet2 = 1
+            }
           } catch {
 
           }
