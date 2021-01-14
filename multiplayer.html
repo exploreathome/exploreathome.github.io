@@ -2709,19 +2709,6 @@ queryWithout = "TseEGOmBL_o"
         setTimeout(function() {
           document.getElementById("spinner2").style.display = "none";
         }, 4000)
-        if(interactedyet == 1 && interactedyet2 == 0) {
-          try {
-            navigator.mediaSession.metadata = new MediaMetadata({});
-            aud.loop = true;
-            aud.volume = 0;
-            aud.play();
-            console.log('media')
-            interactedyet = 0;
-            interactedyet2 = 1
-          } catch {
-
-          }
-        }
         if (event.data === 0) {
           document.getElementById("player").style.opacity = "0";
         }
@@ -2797,6 +2784,19 @@ queryWithout = "TseEGOmBL_o"
                         // score: current_grade,
                         // distance_between: distance_between
                       })
+        }
+        if(interactedyet == 1 && interactedyet2 == 0) {
+          try {
+            navigator.mediaSession.metadata = new MediaMetadata({});
+            aud.loop = true;
+            aud.volume = 0;
+            aud.play();
+            console.log('media')
+            interactedyet = 0;
+            interactedyet2 = 1
+          } catch {
+
+          }
         }
       }
       function stopVideo() {
@@ -2919,10 +2919,6 @@ queryWithout = "TseEGOmBL_o"
         cvol = player.getVolume();
         interactedyet=1;
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
-navigator.mediaSession.metadata = new MediaMetadata({});
-  aud.loop = true;
-  aud.volume = 0;
-  aud.play();
 
         document.getElementById('vid-bac').style.display = "block";
           document.getElementById("player").style.opacity = "1";
