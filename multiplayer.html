@@ -542,38 +542,42 @@ nav {
   
   color: #bbb;
 }
-
-</style>
-  <!-- <div id="player2" style="position: fixed; top: 0; left: 0;"></div> -->
-      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XIMLoLxmTDw" frameborder="0" allowfullscreen allow="autoplay" style="position: fixed; top: 0; left: 0;"></iframe> -->
-<!-- <script>
-var player2;
-// This code loads the IFrame Player API code asynchronously. This is the Youtube-recommended script loading method
-var tag2 = document.createElement("script");
-
-tag2.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag2 = document.getElementsByTagName("script")[0];
-firstScriptTag2.parentNode.insertBefore(tag2, firstScriptTag2);
-
-//  This function is called by YouTube once the the API is ready.It creates an &lt;iframe&gt; and sets up the video player inside.
-// function onYouTubeIframeAPIReady2() {
-//   player2 = new YT.Player("player2", {
-//     height: "320",
-//     width: "320",
-//     videoId: "668nUCeBHyY",
-//     events: {
-//       // API event handlers
-//       onReady: onPlayerReady2
-//     }
-//   });
-// }
-
-// The API will call this function when the video player is ready (in this case, start playing the video).
-function onPlayerReady2(event) {
-  event.target.playVideo();
+@media screen and (device-aspect-ratio: 2/3) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
 }
 
-</script> -->
+/* iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 6, iPhone 6s, iPhone 7 portrait/landscape */
+@media screen and (device-aspect-ratio: 375/667) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
+
+/* iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus portrait/landscape */
+@media screen and (device-aspect-ratio: 9/16) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 16px; }
+}
+</style>
+
 <nav class="navbar navbar-expand-md navbar-dark navbar-thin bg-dark" id="diff">
       <a class="navbar-brand back-mybtn" href="https://virtualvacation.us/guess" id="cityguesser1">City Guesser   <i class="fas fa-map-marker-alt" aria-hidden="true" style="margin-left: 5px;"></i></a>
       <div class="collapse navbar-collapse" id="navbarsExample04">
@@ -624,7 +628,7 @@ function onPlayerReady2(event) {
         <div class="info" style="">
           
 
-          Compete with friends, and sharpen your geography skills with City Guesser's multiplayer gamemode. To get started, create a room or join one.<br><center style="font-weight: bold; margin-top: 8px;">How does this work?</center>
+          Compete with friends, and sharpen your geography skills with City Guesser's multiplayer gamemode. To <span onclick="roommenu()">get</span> started, create a room or join one.<br><center style="font-weight: bold; margin-top: 8px;">How does this work?</center>
           <div style="text-align: center; margin-top: 8px;">
           <span style="float: left; cursor: pointer;" id="myarrow" onclick="nexttip(0)"><i class="fa fa-angle-double-left" aria-hidden="true" style="font-size: 19px;"></i></span><span style="text-align: center;" id="explanation-span">Guess your location based on video.</span><span style="float: right; cursor: pointer;" id="myarrow" onclick="nexttip(1)"><i class="fa fa-angle-double-right" aria-hidden="true" style="font-size: 19px;"></i></span><br><span class="dot" style="background-color: #0060f6;"></span>
 <span class="dot"></span>
@@ -989,16 +993,7 @@ function onPlayerReady2(event) {
       <div class="card7 w3-animate-zoom" id="eigth-card" style="margin-top: 10px; margin-left: -145px; padding-bottom: 0;">
       <center>
               <span style="margin-left: 10px; margin-right: 10px; font-size: 15px;">Waiting for all players to guess.. <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i></span>
-<!-- <img src="static/share-icon.svg" height="98" style="margin: 10px;"> -->
 </center>
-      <!-- <div class="text" style="margin-bottom: -20px;"> -->
-        <!-- <div class="title"> -->
-          <!-- <span style="font-size: 20px;">Starting Soon </span> <i class="fa fa-users" aria-hidden="true" style="margin-left: 10px; font-size: 20px;"></i> -->
-        <!-- </div> -->
-
-                  <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
-<!-- <br> -->
-
       </div>
 <!--       <div class="card8" id="eigth-card">
       <span style="margin-left: 10px; margin-right: 10px; font-size: 15px;">Waiting for all players to guess.. <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i></span>
@@ -2792,7 +2787,7 @@ queryWithout = "TseEGOmBL_o"
                 }
                 if(timeleft <= 10) {
                   // document.getElementById("countdown").style.color = "red";
-                  audio_play = new Audio('static/tick.ogg')
+                  audio_play = new Audio('static/tick.mp3')
                   audio_play.play();
                 }
                 timeleft -= 1;
@@ -2839,7 +2834,7 @@ queryWithout = "TseEGOmBL_o"
           number_of_players = 0;
           marker1 = undefined;
           round_present++
-            var start_sound = new Audio('static/gamestartnotif.ogg');
+            var start_sound = new Audio('static/gamestartnotif.mp3');
             start_sound.play();
           document.getElementById("round-div").innerHTML = String(round_present) + "/" + String(round_total)
           // videoloadfuncran = 1;
@@ -3009,7 +3004,7 @@ function invalidateSizeFunc(userinput) {
     document.getElementById('main-button').style.display='none'
   
   // map.fitWorld();
-  map.setMaxBounds(  [[-90,-180],   [90,180]]  )
+  // map.setMaxBounds(  [[-90,-180],   [90,180]]  )
   setTimeout(function(){ map.invalidateSize()}, 500);
   console.log('ya')
   map.invalidateSize();
@@ -3044,6 +3039,7 @@ function invalidateSizeFunc(userinput) {
     // markerArray.push(marker);
     globallat = e.latlng.lat
     globallon = e.latlng.lng
+    globallon = (globallon % 360 + 540) % 360 - 180
   }
     // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
 });
@@ -3400,6 +3396,7 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
     return dist;
   }
 }
+var isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
 </script>
 <script src="static/abcbaabccbaabccbaabccba.js"></script>
 <!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"> -->
