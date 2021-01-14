@@ -30,6 +30,9 @@
 .social {
     display: none;
 }
+.scoreboard__podiums {
+    display: none;
+}
 }
 .scoreboard__item {
     display: flex;
