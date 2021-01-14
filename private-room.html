@@ -1403,13 +1403,13 @@ function onPlayerReady2(event) {
 <!-- ShareThis BEGIN -->
 <!-- <div class="sharethis-inline-share-buttons"></div> -->
 <!-- ShareThis END -->
-    <div id="social">
+    <div id="social" class="second-social">
       <a class="facebookBtn smGlobalBtn2" href="https://www.facebook.com/sharer/sharer.php?u=https://virtualvacation.us/multiplayer" ><i class="fab fa-facebook"></i></a>
       <a class="twitterBtn smGlobalBtn2" href="https://twitter.com/intent/tweet?url=https://virtualvacation.us/multiplayer&text=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!" ><i class="fab fa-twitter"></i></a>
       <!-- <a class="googleplusBtn smGlobalBtn2" href="#" ><i class="fab fa-twitter"></i></a> -->
-      <a class="linkedinBtn smGlobalBtn2" href="https://www.linkedin.com/shareArticle?mini=true&url=https://virtualvacation.us/multiplayer&title=&summary=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!&source=" ><i class="fab fa-linkedin-in"></i></a>
+      <a id="linkedin-id" class="linkedinBtn smGlobalBtn2" href="https://www.linkedin.com/shareArticle?mini=true&url=https://virtualvacation.us/multiplayer&title=&summary=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!&source=" ><i class="fab fa-linkedin-in"></i></a>
       <a class="pinterestBtn smGlobalBtn2" href="https://pinterest.com/pin/create/button/?url=https://virtualvacation.us/multiplayer&media=&description=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!" ><i class="fab fa-pinterest"></i></a>
-      <a class="tumblrBtn smGlobalBtn2" href="mailto:" ><i class="fas fa-envelope"></i></a>
+      <a id="mail-id" class="tumblrBtn smGlobalBtn2" href="mailto:" ><i class="fas fa-envelope"></i></a>
       <!-- <a class="rssBtn smGlobalBtn" href="#" ></a> -->
     </div>
   <center>
@@ -1998,6 +1998,15 @@ function onPlayerReady2(event) {
   }
   #share-icon-svg {
     display: none;
+  }
+  #mail-id {
+    display: none;
+  }
+  #linkedin-id {
+    display: none;
+  }
+  #new-back-btn-end {
+    overflow: hidden;
   }
 }
 #spinner {
