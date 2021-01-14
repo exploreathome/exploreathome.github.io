@@ -2714,6 +2714,7 @@ queryWithout = "TseEGOmBL_o"
           document.getElementById("player").style.opacity = "0";
         }
         console.log('i reach')
+        player.unMute();
         if(event.data == YT.PlayerState.PLAYING && started_playing == 0) {
           console.log('THIS RUNSSSZSZSZZ')
           document.getElementById("player").style.opacity = "1"
