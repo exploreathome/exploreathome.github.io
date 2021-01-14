@@ -70,6 +70,8 @@ function initiateconnect(random_room_id) {
   }
   document.getElementById("linkInput").value = "https://virtualvacation.us/multiplayer?" + random_room_id
   document.getElementById("custom-code").innerHTML = String(random_room_id)
+  player.playVideo();
+  audio_play.play();
 }
 var myusername;
 function joinroom(room_id, username, userid) {
@@ -112,11 +114,6 @@ socket.on('user-join', function(data){
   for (var key in data["room_list"]){
     num_of_players++
     console.log(num_of_players)
-    // document.getElementById("usernameList").innerHTML = document.getElementById("usernameList").innerHTML + " " + data["room_list"].name
-    // check if the property/key is defined in the object itself, not in parent
-    // if (dicttionary.hasOwnProperty(key)) {           
-        // console.log(key, dictionary[key]);
-    // }
   }
   document.getElementById("playersWaiting").innerHTML = num_of_players
   document.getElementById("usernameList").innerHTML = String(document.getElementById("usernameList").innerHTML) + ", " + String(data["username"])
