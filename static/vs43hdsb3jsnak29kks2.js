@@ -119,7 +119,7 @@ socket.on('user-join', function(data){
   document.getElementById("playersWaiting").innerHTML = num_of_players
   document.getElementById("usernameList").innerHTML = String(document.getElementById("usernameList").innerHTML) + ", " + String(data["username"])
   if(hostornot == true) {
-    var room_join_sound = new Audio('static/playerGuessed.ogg');
+    var room_join_sound = new Audio('static/playerGuessed.mp3');
     room_join_sound.play();
   }
   // console.log(document.getElementById("usernameList").innerHTML)
@@ -224,7 +224,7 @@ socket.on('start-game-notify', function(data){
               document.getElementsByClassName("demo")[0].style.display = 'none'
   }, 4000)
             console.log('before sound played')
-            var start_sound = new Audio('static/gamestartnotif.ogg');
+            var start_sound = new Audio('static/gamestartnotif.mp3');
             start_sound.play();
             console.log('sound able to be played')
               timeleft = serverleft
@@ -284,7 +284,7 @@ socket.on('start-game-notify', function(data){
                 }
                 if(timeleft <= 10) {
                   // document.getElementById("countdown").style.color = "red";
-                  audio_play = new Audio('static/tick.ogg')
+                  audio_play = new Audio('static/tick.mp3')
                   audio_play.play();
                 }
                 timeleft -= 1;
@@ -443,7 +443,7 @@ socket.on('finished-guessing', function(data){
     }
     // }
   }
-  audio_play = new Audio('static/roundEndSuccess.ogg')
+  audio_play = new Audio('static/roundEndSuccess.mp3')
   audio_play.play();
   $("#seventh-card").slideDown(700);
   document.getElementById("id01").style.display = 'block';
@@ -845,7 +845,7 @@ socket.on('update-guess', function(data){
            document.getElementsByClassName("tooltip-text")[num].innerHTML = "✅";           
           }
           document.getElementsByClassName("tooltip-text")[num].style.display = "block";
-          player_guessed_aud = new Audio('static/playerGuessed.ogg')
+          player_guessed_aud = new Audio('static/playerGuessed.mp3')
           player_guessed_aud.play();
         }
       } else {
