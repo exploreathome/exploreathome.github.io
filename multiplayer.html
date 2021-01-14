@@ -2679,7 +2679,8 @@ queryWithout = "TseEGOmBL_o"
             disablekb: 1,
             modestbranding: 1,
             showinfo: 0,
-            loop: 1
+            loop: 1,
+            autoplay: 1
           },
           events: {
             'onReady': onPlayerReady,
@@ -2920,7 +2921,7 @@ queryWithout = "TseEGOmBL_o"
         // secs += random_number_minmax
         cvol = player.getVolume();
         interactedyet=1;
-        player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});
+        player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'mute': 1});
         player.playVideo();
         document.getElementById('vid-bac').style.display = "block";
           document.getElementById("player").style.opacity = "1";
