@@ -65,7 +65,9 @@ socket.on('loadvideo', function(data) {
       // }, 4000)
       // }
       // times = 1
+      player.mute();
       loadVideoWithId("wor", data["number"])
+      player.unMute();
     // }, 2010);
     console.log('RAN AFTER 2010')
 })
@@ -181,6 +183,7 @@ socket.on('finished-guessing', function(data) {
   for(var iterate=0; iterate < 9; iterate++) {
     document.getElementsByClassName("tooltip-text")[iterate].style.display = "none";
   }
+  player.mute();
   // unit = "mi"
   for(let x=0;x<new_obj.length;x++) {
     if(new_obj[x][2] != "") {
