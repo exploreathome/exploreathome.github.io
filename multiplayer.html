@@ -2691,9 +2691,9 @@ queryWithout = "TseEGOmBL_o"
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
-        event.target.playVideo();
-        player.mute();
-        player.stopVideo();
+          event.target.playVideo();
+          event.target.mute();
+          event.target.stopVideo();
       }
 
       // 5. The API calls this function when the player's state changes.
@@ -2785,21 +2785,21 @@ queryWithout = "TseEGOmBL_o"
                         // distance_between: distance_between
                       })
         }
-        if(interactedyet == 1 && interactedyet2 == 0) {
-          try {
-            if(isMobile == false) {
-              navigator.mediaSession.metadata = new MediaMetadata({});
-              aud.loop = true;
-              aud.volume = 0;
-              aud.play();
-              console.log('media')
-              interactedyet = 0;
-              interactedyet2 = 1
-            }
-          } catch {
+        // if(interactedyet == 1 && interactedyet2 == 0) {
+        //   try {
+        //     if(isMobile == false) {
+        //       navigator.mediaSession.metadata = new MediaMetadata({});
+        //       aud.loop = true;
+        //       aud.volume = 0;
+        //       aud.play();
+        //       console.log('media')
+        //       interactedyet = 0;
+        //       interactedyet2 = 1
+        //     }
+        //   } catch {
 
-          }
-        }
+        //   }
+        // }
       }
       function stopVideo() {
         player.stopVideo();
