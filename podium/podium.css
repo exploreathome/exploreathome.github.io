@@ -24,6 +24,7 @@
 @media screen and (max-width: 1010px) {
 .scoreboard {
     width: 98%;
+    margin-top: 15.2%;
 }
 }
 @media screen and (max-width: 800px) {
@@ -31,6 +32,9 @@
     display: none;
 }
 .scoreboard__podiums {
+    display: none;
+}
+#gamepodiumtext {
     display: none;
 }
 }
