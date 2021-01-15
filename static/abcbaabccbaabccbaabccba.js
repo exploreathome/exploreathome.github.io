@@ -268,6 +268,7 @@ socket.on('finished-guessing', function(data) {
     }
   }
   if(round_present == 8) {
+    loaed
     document.getElementById("player-stats").innerHTML = "Game Over!"
     document.getElementById("round-done").innerHTML = "The final result's are in. Click the button to see the final results."
     document.getElementById("end-game-button").innerHTML = "See Podium!"
@@ -326,6 +327,7 @@ $("#new-back-btn8").on("mouseleave", function () {
   // }
 });
 socket.on('load-podium', function(data) {
+  loaded_podium = true;
   player.mute();
   player.pauseVideo();
   transmit_json = data["currentplayers"]
