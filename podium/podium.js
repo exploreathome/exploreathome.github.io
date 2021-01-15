@@ -42,7 +42,7 @@ $('.js-podium').each(function(){
   // }, 10000);
   if(isMobile) {
     document.getElementById("gamepodiumtext").innerHTML = "Nice! 🥳"
-    // document.getElementsByClassName("scoreboard__podiums")[0].style.display = "none";
+    document.getElementsByClassName("scoreboard__podiums")[0].style.display = "none";
   }
 }; 
 
