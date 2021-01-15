@@ -406,6 +406,7 @@ socket.on('load-podium', function(data) {
   // socket.emit("disconnect-socket")
   goez();
   document.getElementsByTagName("nav")[0].style.zIndex = "1000000000000";
+  socket.disconnect();
 
 
 })
