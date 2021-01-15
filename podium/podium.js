@@ -40,7 +40,9 @@ $('.js-podium').each(function(){
   //   podiumUpdate();
     
   // }, 10000);
-  
+  if(isMobile) {
+    document.getElementsByClassName("scoreboard__podiums")[0].style.display = "none";
+  }
 }; 
 
 
