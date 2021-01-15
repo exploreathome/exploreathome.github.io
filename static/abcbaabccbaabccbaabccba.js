@@ -268,7 +268,7 @@ socket.on('finished-guessing', function(data) {
     }
   }
   if(round_present == 8) {
-    loaed
+    loaded_podium = true;
     document.getElementById("player-stats").innerHTML = "Game Over!"
     document.getElementById("round-done").innerHTML = "The final result's are in. Click the button to see the final results."
     document.getElementById("end-game-button").innerHTML = "See Podium!"
