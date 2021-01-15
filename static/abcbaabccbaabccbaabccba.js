@@ -272,6 +272,7 @@ socket.on('finished-guessing', function(data) {
     document.getElementById("round-done").innerHTML = "The final result's are in. Click the button to see the final results."
     document.getElementById("end-game-button").innerHTML = "See Podium!"
     document.getElementById("end-game-button").onclick = loadthepodium()
+    player.mute();
     for(let num=0;num<10;num++) {
     document.getElementsByClassName("br-tag")[num].style.display = "none";
     document.getElementsByClassName("coolbob29")[num].style.display = "none";
