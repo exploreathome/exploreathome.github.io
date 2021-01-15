@@ -852,7 +852,7 @@ nav {
 </div>
     <div class="video-background w3-animate-top" id="vid-bac" style="z-index: 100000000;">
         <center>
-      <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); document.getElementById('id01').style.display='block';" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
+      <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); document.getElementById('id01').style.display='block';" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="main-button-a">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
 <!--       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fas fa-map-marker-alt"></i></a></p> -->
       <!-- The Modal -->
@@ -1170,7 +1170,8 @@ nav {
   </div>
 </div>
 </div>
-  <div id="spinner2">
+<!-- removed this spinner cause theres already another spinner2 -->
+<!--   <div id="spinner2">
 <svg version="1.1"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner2">
@@ -1180,7 +1181,7 @@ nav {
     <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
   </circle>
 </svg>
-  </div>
+  </div> -->
 <div id="new-back-btn-time" title="Time to Guess">
   <center id="countdown">
 <!-- <i class="fas fa-stopwatch"></i> -->
@@ -1256,7 +1257,7 @@ nav {
 </div>
 <!-- <div></div> -->
     <!-- <div id="surround-spinner"> -->
-  <div id="spinner2">
+  <div id="spinner2" class="w3-animate-zoom">
 <svg version="1.1"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner">
@@ -2850,7 +2851,7 @@ queryWithout = "TseEGOmBL_o"
         var aud = new Audio("static/silence.mp3");
       function loadVideoWithId(input_id, length2) {
           document.getElementById("player").style.opacity = "0";
-          document.getElementById("spinner2").style.display = "block";
+          // document.getElementById("spinner2").style.display = "block";
           // player.playVideo();
           started_playing = 0
           ranoutoftime=false;
@@ -2874,7 +2875,6 @@ queryWithout = "TseEGOmBL_o"
           document.getElementById("x-out").style.display = "block";
           document.getElementById("seventh-card").style.display = 'none';
           document.getElementById("new-back-btn-time").style.display = "none";
-          document.getElementById("spinner2").style.display = "none";
           document.getElementById("tenth-card").style.display = "none";
           //
           // document.getElementById()
@@ -2951,6 +2951,10 @@ queryWithout = "TseEGOmBL_o"
         document.getElementById("volumeEditor").value = cvol;
         document.getElementById("speedSlider").nextElementSibling.value = "1.0"
         document.getElementById("speedSlider").value = 100;
+        if(isMobile) {
+          document.getElementById("spinner2").style.display = "block";
+        }
+
         player.setPlaybackRate(1);
         if (localStorage.getItem("already_played") !== null) {
           localStorage.setItem('already_played', localStorage.getItem('already_played') + " " + random_vid_id);
