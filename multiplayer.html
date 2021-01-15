@@ -2670,7 +2670,7 @@ function minmaxrandom(min, max) { // min and max included
 queryWithout = "TseEGOmBL_o"
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
-
+      var loaded_podium = false;
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -2805,7 +2805,7 @@ queryWithout = "TseEGOmBL_o"
                       })
         }
         // if user clicks or turns of phone, player will unpause.
-          if (event.data == YT.PlayerState.PAUSED) {
+          if (event.data == YT.PlayerState.PAUSED && loaded_podium == false) {
             player.playVideo();
           }
         // if(interactedyet == 1 && interactedyet2 == 0) {
