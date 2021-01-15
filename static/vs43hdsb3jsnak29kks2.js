@@ -832,6 +832,8 @@ var mydict = [];
 socket.on('update-guess', function(data){
   if(data['intentional_exit'] != true) {
   // mydict = {}
+  player_guessed_aud = new Audio('static/playerGuessed.mp3')
+  player_guessed_aud.play();
   if(data["socket_id"] != socket.id) {
     console.log('Im not the guesser :)')
     for(let num=0; num<10; num++) {
@@ -848,8 +850,6 @@ socket.on('update-guess', function(data){
            document.getElementsByClassName("tooltip-text")[num].innerHTML = "✅";           
           }
           document.getElementsByClassName("tooltip-text")[num].style.display = "block";
-          player_guessed_aud = new Audio('static/playerGuessed.mp3')
-          player_guessed_aud.play();
         }
       } else {
       }
