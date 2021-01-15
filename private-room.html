@@ -1368,7 +1368,7 @@ function onPlayerReady2(event) {
 <!-- </div> -->
     <div id="new-back-btn-end" class="w3-animate-zoom">
       <div class="scoreboard" style="">
-        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Game Podium <i class="fas fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="playagainfunc();">Play Again <i class="fa fa-redo" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
+        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Game Podium <i class="fas fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="location.href = 'multiplayer.html?play-again';">Play Again <i class="fas fa-redo-alt" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
   <div class="scoreboard__podiums">
     <div class="scoreboard__podium js-podium second-place" data-height="200px" style="display: none;">
       <div class="scoreboard__podium-base scoreboard__podium-base--second">
@@ -1464,6 +1464,90 @@ function onPlayerReady2(event) {
   <div class="scoreboard__bar-bar"></div>
   </div>
   </li>  
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li>
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li> 
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li> 
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li> 
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li> 
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li> 
+  <li class="scoreboard__item" data-count="0" style="display: none;">    
+    <div class="scoreboard__title">Cable Com</div>
+     <div class="scoreboard__status">
+      
+    </div>
+      <div class="scoreboard__numbers">
+       <span class="js-number"></span>
+    </div>
+    <div class="scoreboard__bar js-bar">
+  <div class="scoreboard__bar-bar"></div>
+  </div>
+  </li> 
   <li class="scoreboard__item" data-count="0" style="display: none;">    
     <div class="scoreboard__title">Cable Com</div>
      <div class="scoreboard__status">
@@ -2975,15 +3059,6 @@ queryWithout = "TseEGOmBL_o"
       L.control.layers(differentLayers).addTo(map);
     }
     map.invalidateSize();
-              if(round_present == round_total+1) {
-                player.mute();
-                loadpodium();
-                player.pauseVideo();
-                clearInterval(downloadTimer)
-            return;
-          } else {
-            document.getElementById("round-div").innerHTML = String(round_present) + "/" + String(round_total)
-          }
           guessmade = false;
           try {
             console.log(markerArray)
@@ -3051,6 +3126,15 @@ queryWithout = "TseEGOmBL_o"
         cvol = player.getVolume();
         interactedyet=1;
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'mute': 1});
+          if(round_present == round_total+1) {
+                player.mute();
+                loadpodium();
+                player.pauseVideo();
+                clearInterval(downloadTimer)
+            return;
+          } else {
+            document.getElementById("round-div").innerHTML = String(round_present) + "/" + String(round_total)
+          }
         player.playVideo();
         console.log('after load video')
         console.log('occurs')
