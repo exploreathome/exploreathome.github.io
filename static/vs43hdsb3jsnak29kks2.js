@@ -832,6 +832,7 @@ var mydict = [];
 socket.on('update-guess', function(data){
   if(data['intentional_exit'] != true) {
   // mydict = {}
+  console.log(allowUpdate)
   if(data["allowUpdate"] == 0) {
     player_guessed_aud = new Audio('static/playerGuessed.mp3')
   }
