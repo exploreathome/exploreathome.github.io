@@ -722,7 +722,7 @@ function onPlayerReady2(event) {
       </div>
       <div class="buttons">
         <!-- <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div> -->
-        <div class="button button-primary"  onclick="begingame()" style="margin-left: 19px; margin-right: 19px;"><span id="start-game-text">Start Game!</span> <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  onclick="begingame();" style="margin-left: 19px; margin-right: 19px;"><span id="start-game-text">Start Game!</span> <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
 <!--       <div class="buttons" style="margin-top: -13px;">
         <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
@@ -1026,7 +1026,7 @@ function onPlayerReady2(event) {
   </div>
   <div class="w3-container w3-light-grey w3-padding" id="future-c" style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
    <a class="w3-button w3-right w3-green w3-border" 
-   onclick="begingame()" style="margin-left: 1em; display: none;" id="guess-button-id-host">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+   onclick="begingame();" style="margin-left: 1em; display: none;" id="guess-button-id-host">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 <!--    <a class="w3-button w3-left w3-blue w3-border" 
    onclick="location.reload();" style="font-family: 'Montserrat'; cursor: normal; pointer-events: none;" id="waiting-for-all">Waiting for all users to guess... <i class="fa fa-spinner fa-spin" aria-hidden="true"></i></a> -->
    <a class="w3-button w3-right w3-green w3-border" 
@@ -1368,7 +1368,7 @@ function onPlayerReady2(event) {
 <!-- </div> -->
     <div id="new-back-btn-end" class="w3-animate-zoom">
       <div class="scoreboard" style="">
-        <span><h3 style="font-family: 'Montserrat';">Game Podium <i class="fas fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="playagainfunc();">Play Again <i class="fa fa-redo" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
+        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Game Podium <i class="fas fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="playagainfunc();">Play Again <i class="fa fa-redo" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
   <div class="scoreboard__podiums">
     <div class="scoreboard__podium js-podium second-place" data-height="200px" style="display: none;">
       <div class="scoreboard__podium-base scoreboard__podium-base--second">
