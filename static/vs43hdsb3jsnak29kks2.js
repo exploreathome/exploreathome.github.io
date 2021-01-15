@@ -391,6 +391,14 @@ socket.on('finished-guessing', function(data){
     document.getElementById("skip-button-id").style.display = "none";
     document.getElementById("original-c").style.display = "none";
   // }
+          if(round_present == round_total) {
+                player.mute();
+                loadpodium();
+                player.pauseVideo();
+            return;
+          } else {
+            document.getElementById("round-div").innerHTML = String(round_present) + "/" + String(round_total)
+          }
   current_i = 0
   var items = Object.keys(transmit_json).map(function(key) {
     console.log(key)
