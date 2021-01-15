@@ -34,9 +34,9 @@
 .scoreboard__podiums {
     display: none;
 }
-#gamepodiumtext {
+/*#gamepodiumtext {
     display: none;
-}
+}*/
 }
 .scoreboard__item {
     display: flex;
