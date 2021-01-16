@@ -217,8 +217,8 @@ body{
   max-height: 55vh;
   position: absolute;
   font-family: 'Montserrat';
-    left: 8px;
-    top: 53px;
+    right: 8px;
+    bottom: 62px;
     display: none;
     opacity: 1;
     vertical-align: center;
@@ -3036,6 +3036,8 @@ var osm_scale = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 })
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
+  $('.leaflet-control-attribution').hide()
+
     //     if (map == undefined) {
     //   map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 2);
     //     var differentLayers = {
@@ -3442,7 +3444,8 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
 }
 var isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
 window.history.replaceState(null, null, window.location.pathname);
-
+// $('.leaflet-control-attribution').hide()
+localStorage.setItem("multiplayer-opened", "true")
 </script>
 <script src="static/abcbaabccbaabccbaabccba.js"></script>
 <!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"> -->

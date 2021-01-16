@@ -3228,6 +3228,7 @@ var osm_scale = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 })
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
+  $('.leaflet-control-attribution').hide()
     //     if (map == undefined) {
     //   map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 2);
     //     var differentLayers = {
@@ -3626,14 +3627,13 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
 var isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
 function changepage() {
   if(is_host == 1) {
-    location.href = "multiplayer.html?play-again"
+    location.href = "play-again.html?play-again"
   } else {
-    location.href = "multiplayer.html?rejoin"
+    location.href = "play-again.html?rejoin"
 
   }
 }
 window.history.replaceState(null, null, window.location.pathname);
-
 </script>
 <script src="static/vs43hdsb3jsnak29kks2.js"></script>
 </html>
