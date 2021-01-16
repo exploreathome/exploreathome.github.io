@@ -11,17 +11,6 @@ function joinroom(username) {
       document.getElementById("choice-card").style.display = "none";
       return;
     }
-    if(card_selected == 1) {
-      let r = Math.random().toString(36).substring(7);
-      document.getElementById("choice-card").style.display = "none";
-      document.getElementById("sixth-card").style.display = "block";
-      rannum = Math.floor(Math.random()*usa_lst.length)+1
-      socket.emit("create_room", {
-        username: String(username)
-        // video: usa_lat_lon[rannum],
-        // rannum: rannum
-      })
-    }
     player.playVideo();
     if(document.getElementById("form-number-1").value = "Kilometres") {
       unit = "km"
@@ -40,6 +29,15 @@ function joinroom(username) {
     setTimeout(function() {
       document.getElementsByClassName("loading")[0].innerHTML = "Joining Room"
     }, 10000)
+    if(card_selected == 1) {
+      let r = Math.random().toString(36).substring(7);
+      document.getElementById("choice-card").style.display = "none";
+      document.getElementById("sixth-card").style.display = "block";
+      rannum = Math.floor(Math.random()*usa_lst.length)+1
+      socket.emit("create_room", {
+        username: String(username)
+      })
+    }
     // setTimeout(function(){
     //   loadVideoWithId("wor", Math.floor(Math.random()*usa_lst.length)+1)
     // }, 2010);
@@ -434,4 +432,6 @@ function cardx(num) {
 }
 socket.on('profanity', function() {
   alert("We detected profanity in your username!")
+  document.getElementById("second-card").style.display = "block";
+  document.getElementById("sixth-card").style.display = "none";
 })
