@@ -751,7 +751,7 @@ function onPlayerReady2(event) {
         <!-- <hr> -->
       </div>
       <div class="buttons">
-        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="window.location='multiplayer.html'">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
+        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="window.location='multiplayer'">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
       <div class="buttons" id="create-rooms-leave" style="margin-top: -5px;">
         <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div>
@@ -2760,7 +2760,7 @@ function roommenu() {
   document.getElementById("second-card").style.display = "block";
 }
 function roommenuback() {
-  location.href = "multiplayer.html"
+  location.href = "multiplayer"
   // document.getElementById("first-card").style.display = "block";
   // document.getElementById("second-card").style.display = "none";  
   // document.getElementById("third-card").style.display = "none";  
@@ -3499,7 +3499,7 @@ function makeaguess() {
     //You can just keep adding markers
     guess_text = "<b>Cool!</b> You are <b>" + String(distance_between) + "</b> miles out!"
     guess_text = "<b>Spot On!</b> Within 1 mile! 👍"
-    //From documentation http://leafletjs.com/reference.html#polyline
+    //From documentation http://leafletjs.com/reference#polyline
     // create a red polyline from an arrays of LatLng points
     // var polyline = L.polyline(latlngs, {color: 'black', dashArray: '5,10'}).addTo(map);
 
@@ -3627,9 +3627,9 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
 var isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
 function changepage() {
   if(is_host == 1) {
-    location.href = "play-again.html?play-again"
+    location.href = "play-again?play-again"
   } else {
-    location.href = "play-again.html?rejoin"
+    location.href = "play-again?rejoin"
 
   }
 }

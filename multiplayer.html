@@ -640,9 +640,6 @@ nav {
         <!-- <hr> -->
       </div>
       <div class="buttons">
-<!--         <div class="button" onclick="createroommenu()">Private Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
-        <div class="button button-primary" onclick="roommenu()">Join Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div> -->
-
 
         <div class="button" onclick="createroommenu()">Private Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
         <div class="button button-primary" onclick="" style="cursor: not-allowed;">Join Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
@@ -1381,7 +1378,7 @@ nav {
 <!-- </div> -->
     <div id="new-back-btn-end" class="w3-animate-zoom">
       <div class="scoreboard">
-        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Final Results <i class="fas fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="location.href = 'multiplayer.html?play-again';">Play Again <i class="fas fa-redo-alt" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
+        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Final Results <i class="fas fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="location.href = 'multiplayer?play-again';">Play Again <i class="fas fa-redo-alt" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
   <div class="scoreboard__podiums">
     <div class="scoreboard__podium js-podium second-place" data-height="200px" style="display: none;">
       <div class="scoreboard__podium-base scoreboard__podium-base--second">
@@ -2538,7 +2535,7 @@ function roommenuback() {
   }
   try {
   if(queryString.length == 5 && queryString != "exist") {
-    location.href = "private-room.html?" + String(queryString)
+    location.href = "private-room?" + String(queryString)
   }
   }catch{
 
@@ -2569,7 +2566,7 @@ function fifth() {
 function joinprivateroom() {
   potential_id = document.getElementById("potential_id").value;
   if(String(potential_id).length == 5) {
-    location.href = "private-room.html?" + document.getElementById("potential_id").value
+    location.href = "private-room?" + document.getElementById("potential_id").value
   } else {
     alert("You have to enter a six letter game code!")
   }
@@ -2671,7 +2668,7 @@ function nexttip2(direction) {
 
 }
 function createroommenu() {
-  location.href = "private-room.html"
+  location.href = "private-room"
   // document.getElementById("first-card").style.display = "none";
   // document.getElementById("second-card").style.display = "none";  
   // document.getElementById("third-card").style.display = "block";    
@@ -3302,7 +3299,7 @@ function makeaguess() {
     //You can just keep adding markers
     guess_text = "<b>Cool!</b> You are <b>" + String(distance_between) + "</b> miles out!"
     guess_text = "<b>Spot On!</b> Within 1 mile! 👍"
-    //From documentation http://leafletjs.com/reference.html#polyline
+    //From documentation http://leafletjs.com/reference#polyline
     // create a red polyline from an arrays of LatLng points
     // var polyline = L.polyline(latlngs, {color: 'black', dashArray: '5,10'}).addTo(map);
 
