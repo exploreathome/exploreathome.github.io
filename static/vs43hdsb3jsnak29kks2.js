@@ -773,9 +773,9 @@ function loadpodium() {
 }
 function playagainfunc() {
   if(is_host == 1) {
-    location.href = "private-room.html"
+    location.href = "private-room"
   } else {
-    location.href = "private-room.html?rejoin"
+    location.href = "private-room?rejoin"
   }
 }
 function playagain() {
