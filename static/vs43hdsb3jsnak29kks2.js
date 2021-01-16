@@ -10,8 +10,8 @@ var socket;
 var audio_play = new Audio();
 // var group;
 // Make connection
-// var socket = io.connect('http://localhost:5000');
-var socket = io.connect("https://testapp149.herokuapp.com/");
+var socket = io.connect('http://localhost:5000');
+// var socket = io.connect("https://testapp149.herokuapp.com/");
 var hostornot = false;
 // var socket = io.connect('http://testapp149.herokuapp.com/');
 window.addEventListener("focus", () => socket.connect());
@@ -87,12 +87,12 @@ function joinroom(room_id, username, userid) {
     myusername = username;
     console.log('room joined')
     exist_error_check = 0;
+    sixth()
     socket.emit('join_room', {
       room_id: String(room_id),
       username: String(username),
       userid: String(userid)
     });
-    sixth()
     if(document.getElementById("form-number-1").value = "Kilometres") {
       unit = "km"
       localStorage.setItem("unit", "km")
@@ -816,23 +816,28 @@ socket.on('check_host_verify', function(data){
 socket.on('room-dont-exist', function(data){
   alert("The room you tried to join does not exist. Let's try again!")
   exist_error_check = 1;
-  location.href = "multiplayer.html?exist"
-  // location.reload();
-  // BRING BACKK IF BADD
     // document.getElementById("first-card").style.display = "none";
-    // document.getElementById("second-card").style.display = "block";  
-    // document.getElementById("third-card").style.display = "none";    
-    // document.getElementById("fourth-card").style.display = "none";    
-    // document.getElementById("fifth-card").style.display = "none";
-    // document.getElementById("sixth-card").style.display = "none";
-  // location.reload();
+    document.getElementById("second-card").style.display = "block";  
+    document.getElementById("third-card").style.display = "none";    
+    document.getElementById("fourth-card").style.display = "none";    
+    document.getElementById("fifth-card").style.display = "none";
+    document.getElementById("sixth-card").style.display = "none";
+})
+socket.on('profanity', function(data){
+  alert("Our filters detected profanity in your username.")
+    // document.getElementById("first-card").style.display = "none";
+    document.getElementById("second-card").style.display = "none";  
+    document.getElementById("third-card").style.display = "none";    
+    document.getElementById("fourth-card").style.display = "none";    
+    document.getElementById("fifth-card").style.display = "block";
+    document.getElementById("sixth-card").style.display = "none";
 })
 socket.on('room-full', function(data){
   // console.log('room full')
   alert("The room you tried to join is full. :( ")
   // exist_error_check = 1;
   // location.reload();
-    document.getElementById("first-card").style.display = "none";
+    // document.getElementById("first-card").style.display = "none";
     document.getElementById("second-card").style.display = "block";  
     document.getElementById("third-card").style.display = "none";    
     document.getElementById("fourth-card").style.display = "none";    
