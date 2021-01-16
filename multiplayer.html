@@ -2061,12 +2061,13 @@ nav {
     margin-left: -150px;
   }
   .card {
-    width: 98vw;
+    width: 99vw;
   }
   .scoreboard {
     width: 98%;
   }
 }
+
 #spinner {
     position: fixed;
     top: 50%;
@@ -2496,6 +2497,11 @@ nav {
       color: #e88845;
       background: #fff;
       border-color: #e88845;
+}
+@media screen and (max-width: 372px) {
+  .linkedinBtn {
+    display: none;
+  }
 }
 </style>
 <script>
@@ -3435,6 +3441,7 @@ function distance_func(lat1, lon1, lat2, lon2, unit) {
   }
 }
 var isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
+window.history.replaceState(null, null, window.location.pathname);
 
 </script>
 <script src="static/abcbaabccbaabccbaabccba.js"></script>

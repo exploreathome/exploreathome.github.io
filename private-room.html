@@ -2747,6 +2747,11 @@ function onPlayerReady2(event) {
       background: #fff;
       border-color: #e88845;
 }
+@media screen and (max-width: 372px) {
+  .linkedinBtn {
+    display: none;
+  }
+}
 </style>
 <script>
 function roommenu() {
@@ -3626,6 +3631,8 @@ function changepage() {
 
   }
 }
+window.history.replaceState(null, null, window.location.pathname);
+
 </script>
 <script src="static/vs43hdsb3jsnak29kks2.js"></script>
 </html>
