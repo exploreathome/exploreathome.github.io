@@ -432,3 +432,6 @@ function cardx(num) {
     card_selected = 2
   }
 }
+socket.on('profanity', function() {
+  alert("We detected profanity in your username!")
+})
