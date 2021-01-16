@@ -914,13 +914,13 @@ function skipfunc2() {
 }
 socket.on('room-duplicate', function(data){
   // console.log('room full')
-  alert("Some is already using the username you inputted. Try again with something different, or join a random server with your desired username.")
+  alert("Someone is already using the username you inputted. Try again with something different, or join a random server with your desired username.")
   // exist_error_check = 1;
     // document.getElementById("first-card").style.display = "none";
-    document.getElementById("second-card").style.display = "block";  
+    document.getElementById("second-card").style.display = "none";  
     document.getElementById("third-card").style.display = "none";    
     document.getElementById("fourth-card").style.display = "none";    
-    document.getElementById("fifth-card").style.display = "none";
+    document.getElementById("fifth-card").style.display = "block";
     document.getElementById("sixth-card").style.display = "none";
   // location.reload();
   // location.reload();
