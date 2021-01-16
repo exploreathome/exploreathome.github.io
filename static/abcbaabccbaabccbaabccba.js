@@ -346,6 +346,8 @@ socket.on('load-podium', function(data) {
   console.log(pod_obj)
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   // console.log(new_obj)
+  document.getElementsByTagName("nav")[0].style.position = "fixed";
+  document.getElementsByTagName("nav")[0].style.width = "100vw";
   sum_of_scores = 0;
   for(let obj_p = 0; obj_p < pod_obj.length; obj_p++) {
     try {

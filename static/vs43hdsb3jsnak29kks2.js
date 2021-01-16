@@ -686,6 +686,8 @@ function loadpodium() {
   console.log(pod_obj)
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   // console.log(new_obj)
+  document.getElementsByTagName("nav")[0].style.position = "fixed";
+  document.getElementsByTagName("nav")[0].style.width = "100vw";
   coolsound = new Audio("static/gameOver.mp3")
   coolsound.play();
   sum_of_scores = 0;
