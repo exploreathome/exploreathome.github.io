@@ -828,7 +828,7 @@ nav {
     <div class="video-background w3-animate-top" id="vid-bac" style="z-index: 100000000;">
         <center>
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); document.getElementById('id01').style.display='block';" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="main-button-a">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
-      <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
+      <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000; color: white;"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize();" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
 <!--       <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fas fa-map-marker-alt"></i></a></p> -->
       <!-- The Modal -->
   <div id="id01" class="w3-modal" style="position: fixed; z-index: 2;">
@@ -1025,7 +1025,7 @@ nav {
     </div>
   </div> -->
     </center>
-          <p id="new-back-btn" onclick="history.go(0); document.getElementById('main-button2').style.display='none'" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
+          <p id="new-back-btn" onclick="history.go(0);" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
 <p id="new-back-btn2" onclick="player.seekTo(secs);" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fas fa-redo-alt"></i></a></p>
 <p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > secs) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(secs)}" class="back-btn-animation" style="" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
 <p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 1;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
