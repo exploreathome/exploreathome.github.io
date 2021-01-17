@@ -236,7 +236,7 @@ p {
             <a class="nav-link" href="https://virtualvacation.us/streaks">Streaks <i class="fa fa-trophy" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="https://virtualvacation.us/">Home <i class="fa fa-home" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="https://virtualvacation.us/multiplayer" style="background-color: #fcfcfc; border-radius: 5px; color: black; border: solid black 1px;">Multiplayer <i class="fa fa-users" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active" id="gobackitem">
             <a class="nav-link" href="https://virtualvacation.us/guess">Go Back <i class="fa fa-caret-square-o-left" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
@@ -1428,7 +1428,7 @@ Loading..
 </div>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
-#annc-bar {
+.annc-bar {
   display: none;
   position: fixed;
   bottom: 0;
@@ -1449,16 +1449,31 @@ Loading..
     height: 30px;
     line-height: 30px;
   }
+  #annc-bar2 {
+    display: none;
+    font-size: 10px;
+    height: 30px;
+    line-height: 30px;
+  }
   #guesser-text {
     display: none;
   }
 }
+
 </style>
-<div id="annc-bar">
+<div id="annc-bar" class="annc-bar">
   <center>
 <b>Hey<span id="guesser-text"> Guesser</span></b>! 👋 We just released our Streaks Gamemode. <a style="margin: 7px; height: 20px; padding: 5px; padding-left: 7px; padding-right: 7px; background-color: #ff4742; color: white; font-family: 'Nunito', sans-serif;
  border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/streaks'>Let's Play!</a>
-<span style="float: right; margin-right: 30px; font-size: 18px; cursor: pointer;" onclick="document.getElementById('annc-bar').style.display = 'none';">&times;</span>
+<span style="float: right; margin-right: 30px; font-size: 18px; cursor: pointer;" onclick="$('#annc-bar').hide('fast')">&times;</span>
+
+</center>
+</div>
+<div id="annc-bar2" class='annc-bar'>
+  <center>
+<b>Hey! 👋 Like City Guesser? Try the multiplayer version! <a style="margin: 7px; height: 20px; padding: 5px; padding-left: 7px; padding-right: 7px; background-color: #ff4742; color: white; font-family: 'Nunito', sans-serif;
+ border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/multiplayer'>Play Online!</a>
+<span style="float: right; margin-right: 30px; font-size: 18px; cursor: pointer;" onclick="$('#annc-bar2').hide('fast')">&times;</span>
 
 </center>
 </div>
@@ -1595,7 +1610,9 @@ Loading..
 <script type="text/javascript">
 var interactedyet = 0;
 var interactedyet2 = 0;
-if (localStorage.getItem("streaks-page-loaded") === null) {
+if (localStorage.getItem("multiplayer-loaded") === null) {
+  document.getElementById("annc-bar2").style.display = "block";
+} else if (localStorage.getItem("streaks-page-loaded") === null) {
   document.getElementById("annc-bar").style.display = "block";
 }
 // function isIpadPro() {
