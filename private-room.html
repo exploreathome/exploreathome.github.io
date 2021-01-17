@@ -1212,7 +1212,7 @@ function onPlayerReady2(event) {
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Skip Waiting <i class="fas fa-forward"></i></h5>
         <button  class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" onclick="document.getElementById('main-button2').style.display = 'block';">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="padding: 18px; padding-bottom: 8px;">
@@ -1225,7 +1225,7 @@ function onPlayerReady2(event) {
   <label for="vehicle1"> Don't show this again</label><br>
       </div>
       <div class="modal-footer">
-        <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button  class="btn btn-secondary" data-dismiss="modal" onclick="document.getElementById('main-button2').style.display = 'block';">Close</button>
         <button  class="btn btn-primary" onclick="skipfunc2()">End Round</button>
       </div>
     </div>
