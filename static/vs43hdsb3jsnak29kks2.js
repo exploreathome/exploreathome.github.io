@@ -318,7 +318,7 @@ socket.on('start-game-notify', function(data){
     return second[2] - first[2];
   });
   console.log('MATCHED ITEMS PLAYER INFO')
-  const pinfoobj = items.slice(0, 5);
+  const pinfoobj = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   console.log(pinfoobj)
   for(let ione = 0; ione < pinfoobj.length; ione++) {
@@ -409,7 +409,7 @@ socket.on('finished-guessing', function(data){
     return second[1] - first[1];
   });
   console.log('MATCHED ITEMS')
-  const new_obj = items.slice(0, 5);
+  const new_obj = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   console.log(new_obj)
   // var coolbobclasses = startElem.getElementsByClassName("coolbob29");
@@ -481,7 +481,7 @@ socket.on('finished-guessing', function(data){
     return second[4] - first[4];
   });
   console.log('MATCHED ITEMS-2')
-  const new_obj2 = items.slice(0, 5);
+  const new_obj2 = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   console.log(new_obj2)
   for(let obj_i = 0; obj_i < new_obj2.length; obj_i++) {
@@ -682,7 +682,7 @@ function loadpodium() {
     return second[4] - first[4];
   });
   console.log('PODIUM ITEMS')
-  const pod_obj = items.slice(0, 5);
+  const pod_obj = items.slice(0, 10);
   console.log(pod_obj)
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   // console.log(new_obj)
