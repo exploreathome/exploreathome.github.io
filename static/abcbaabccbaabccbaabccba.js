@@ -432,6 +432,7 @@ function cardx(num) {
 }
 socket.on('profanity', function() {
   alert("We detected profanity in your username!")
+  document.getElementById("fifth-button").innerHTML = "Join Room Again"
   document.getElementById("second-card").style.display = "block";
   document.getElementById("sixth-card").style.display = "none";
 })
