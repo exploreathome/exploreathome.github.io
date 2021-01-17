@@ -563,35 +563,14 @@ function onPlayerReady2(event) {
         <ul class="navbar-nav ml-auto">
           <!-- <span id="authentication-prompt5"> -->
           <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="https://virtualvacation.us/guess">Back <i class="fa fa-arrow-left" aria-hidden="true" style=""></i><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="https://virtualvacation.us/guess">Singleplayer <i class="fas fa-user" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
-<!--           <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="https://ko-fi.com/cityguesser">Support <i class="fa fa-coffee" aria-hidden="true" style=""></i><span class="sr-only">(current)</span></a>
-          </li> -->
-
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="https://virtualvacation.us/streaks">Streaks <i class="fas fa-trophy" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item active" id="homeitem">
             <a class="nav-link" href="https://virtualvacation.us/guess">Home <i class="fa fa-home" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
-          <!-- <span> -->
-          <!-- <span id="authentication-prompt"> -->
-<!--           <span id="authentication-prompt">
-          <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="#myModal" data-toggle="modal">Log In <i class="fa fa-sign-in" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
-          </li>
-          </span>
-          <span id="authentication-prompt2">
-          <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="#myModal2" data-toggle="modal">Sign Up <i class="fa fa-user-plus" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
-          </li>
-          </span> -->
-          <!-- </span> -->
-          <!-- <span id="logout-prompt"> -->
-<!--           <div id="authentication-prompt3" style="cursor: pointer;">
-          <li class="nav-item active" id="homeitem logout-prompt">
-            <a class="nav-link" onclick="signout()">Log Out <i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
-          </li>
-          </div> -->
-          <!-- </span> -->
         </ul>
       </div>
     </nav>
@@ -1060,7 +1039,7 @@ function onPlayerReady2(event) {
   </div> -->
     </center>
           <p id="new-back-btn" onclick="history.go(0); document.getElementById('main-button2').style.display='none'" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
-<p id="new-back-btn2" onclick="player.loadVideoById({'videoId': random_vid_id.substring(0,11), 'startSeconds': secs, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0});" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fas fa-redo-alt"></i></a></p>
+<p id="new-back-btn2" onclick="player.seekTo(secs);" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fas fa-redo-alt"></i></a></p>
 <p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > secs) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(secs)}" class="back-btn-animation" style="" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
 <p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 1;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
 </a></p>
@@ -3014,8 +2993,8 @@ queryWithout = "TseEGOmBL_o"
         player.stopVideo();
       }
 
-      var random_lat_lon;
-      var random_vid_id;
+      // var random_lat_lon;
+      // var random_vid_id;
       var stored_input_id;
       var usa_lst;
       var usa_lat_lon;
@@ -3023,8 +3002,8 @@ queryWithout = "TseEGOmBL_o"
       var secs;
       var ranint;
       var recursive_count = 0;
-      var random_lat;
-      var random_lon;
+      // var random_lat;
+      // var random_lon;
       var current_marker_push;
       var localList = "12345678912";
       var round_total = 0;
@@ -3179,7 +3158,7 @@ queryWithout = "TseEGOmBL_o"
         console.log('before state')
         // document.getElementById("diff").style.display = "block";
         history.pushState(null, null, location.href);
-
+        random_vid_id = "nocheating"
         // player.seekTo(50, true)
         console.log('we good')
     window.onpopstate = function () {
@@ -3203,7 +3182,6 @@ queryWithout = "TseEGOmBL_o"
         } 
         mydict = []
         console.log('ends')
-        // player.playVideo();
       }
 
 // var map = L.map('mapid').setView([51.505, -0.09], 13);
@@ -3368,6 +3346,8 @@ function makeaguess() {
   random_lat = random_lat_lon[0]
   random_lon = random_lat_lon[1]
   distance_between = distance_func(random_lat, random_lon, globallat, globallon, "M")
+  // random_lat = "nocheating"
+  // random_lon = "nocheating"
   myguessdistances.push(distance_between)
   current_grade = score_grader(distance_between)
   current_grade = Math.round(current_grade)
