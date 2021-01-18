@@ -68,7 +68,7 @@ function initiateconnect(random_room_id) {
     });
     console.log(random_room_id)
   }
-  document.getElementById("linkInput").value = "https://virtualvacation.us/multiplayer?" + random_room_id
+  document.getElementById("linkInput").value = "https://virtualvacation.us/private-room?" + random_room_id
   document.getElementById("custom-code").innerHTML = String(random_room_id)
   player.playVideo();
   audio_play.play();
