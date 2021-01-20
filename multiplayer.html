@@ -3161,12 +3161,12 @@ queryWithout = "TseEGOmBL_o"
         // secs += random_number_minmax
         cvol = player.getVolume();
         interactedyet=1;
+        player.mute();
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'mute': 1});
         player.playVideo();
-        player.mute();
         document.getElementById('vid-bac').style.display = "block";
-        // player.unMute();
         player.setVolume(cvol)
+        player.mute();
         document.getElementById("volumeEditor").value = cvol;
         document.getElementById("speedSlider").nextElementSibling.value = "1.0"
         document.getElementById("speedSlider").value = 100;
