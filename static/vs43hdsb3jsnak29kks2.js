@@ -801,7 +801,7 @@ function foo() {
 //   console.log(' I AM HOST IS TRUE ')
 //   document.getElementById("guess-button-id-host").style.display = 'block';
 // });
-foo();
+// foo();
 
 socket.on('check_host_verify', function(data){
   document.getElementById("second-card").style.display = "none";
