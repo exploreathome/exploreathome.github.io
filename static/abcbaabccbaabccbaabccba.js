@@ -65,7 +65,6 @@ socket.on('loadvideo', function(data) {
       // times = 1
       player.mute();
       loadVideoWithId("wor", data["number"])
-      player.unMute();
     // }, 2010);
     console.log('RAN AFTER 2010')
 })
