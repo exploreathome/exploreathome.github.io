@@ -11,9 +11,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!-- <script type="text/javascript" src="jquery.lazy.min.js"></script> -->
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/lafortman273hasdc/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
@@ -21,29 +18,24 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
+
  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
-  <!-- <link href="static/css/bootstrap.min.css" rel="stylesheet"> -->
-  <!-- <link href="static/css/mdb.min.css" rel="stylesheet"> -->
-    <!-- <meta property="og:title" content="Multiplayer - City Guesser" /> -->
-    <!-- <meta property="og:description" content="A multiplayer video-guessing geography game."> -->
-    <!-- <meta property="og:image" content="static/twitterimg.png" /> -->
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
-<link rel="stylesheet" href="css/leaflet.extra-markers.css">
-    
-<script src="js/leaflet.extra-markers.js"></script>
-<!-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css"> -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://virtualvacation.us/multiplayer" />
         <meta property="og:title" content="Multiplayer - City Guesser" />
-        <meta property="og:description" content="Compete with others in real time and sharpen your geography skills with City Guesser multiplayer." />
-        <meta property="og:image" content="https://virtualvacation.us/static/twitterimg.png" />
-        <meta property="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="css/leaflet.extra-markers.css">
+    
         <meta property="twitter:url" content="https://virtualvacation.us/static/twitterimg.png" />
         <meta property="twitter:creator" content="paul_mcb" />
         <meta property="twitter:title" content="Multiplayer - City Guesser" />
         <meta property="twitter:description" content="A multiplayer video-guessing geography game" />
+        <script src="js/leaflet.extra-markers.js"></script>
+        <meta property="og:description" content="Compete with others in real time and sharpen your geography skills with City Guesser multiplayer." />
+        <meta property="og:image" content="https://virtualvacation.us/static/twitterimg.png" />
+        <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content="https://virtualvacation.us/static/twitterimg.png" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -55,7 +47,6 @@
 
   gtag('config', 'UA-153516768-4');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -844,7 +835,7 @@ nav {
 
     </div>
 </div>
-    <div class="video-background w3-animate-top" id="vid-bac" style="z-index: 100000000;">
+    <div class="video-background w3-animate-top" id="vid-bac" style="z-index: 5000;">
         <center>
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="invalidateSizeFunc('check'); document.getElementById('id01').style.display='block';" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="main-button-a">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000; color: white;"><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize();" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fas fa-map-marker-alt"></i></a></p>
@@ -1134,48 +1125,8 @@ nav {
 
 
 </div>
-<div class="demo-back" id="demo-back">
-<div class="demo">
-  <div class="demo__colored-blocks">
-    <div class="demo__colored-blocks-rotater">
-      <div class="demo__colored-block"></div>
-      <div class="demo__colored-block"></div>
-      <div class="demo__colored-block"></div>
-    </div>
-    <div class="demo__colored-blocks-inner"></div>
-    <div class="demo__text">Start</div>
-  </div>
-  <div class="demo__inner">
-    <svg class="demo__numbers" viewBox="0 0 100 100">
-      <defs>
-        <path class="demo__num-path-1" d="M40,28 55,22 55,78"/>
-        <path class="demo__num-join-1-2" d="M55,78 55,83 a17,17 0 1,0 34,0 a20,10 0 0,0 -20,-10"/>
-        <path class="demo__num-path-2" d="M69,73 l-35,0 l30,-30 a16,16 0 0,0 -22.6,-22.6 l-7,7"/>
-        <path class="demo__num-join-2-3" d="M28,69 Q25,44 34.4,27.4"/>
-        <path class="demo__num-path-3" d="M30,20 60,20 40,50 a18,15 0 1,1 -12,19"/>
-      </defs>
-      <path class="demo__numbers-path" 
-            d="M-10,20 60,20 40,50 a18,15 0 1,1 -12,19 
-               Q25,44 34.4,27.4
-               l7,-7 a16,16 0 0,1 22.6,22.6 l-30,30 l35,0 L69,73 
-               a20,10 0 0,1 20,10 a17,17 0 0,1 -34,0 L55,83 
-               l0,-61 L40,28" />
-    </svg>
-  </div>
-</div>
-</div>
-<!-- removed this spinner cause theres already another spinner2 -->
-<!--   <div id="spinner2">
-<svg version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner2">
-  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
-    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
-    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
-    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
-  </circle>
-</svg>
-  </div> -->
+
+
 <div id="new-back-btn-time" title="Time to Guess">
   <center id="countdown">
 <!-- <i class="fas fa-stopwatch"></i> -->
@@ -1251,17 +1202,6 @@ nav {
 </div>
 <!-- <div></div> -->
     <!-- <div id="surround-spinner"> -->
-  <div id="spinner2" class="w3-animate-zoom">
-<svg version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner">
-  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
-    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
-    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
-    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
-  </circle>
-</svg>
-  </div>
   <div id="spinner" class="w3-animate-zoom">
 <svg style="display: block;" version="1.1"
   xmlns="http://www.w3.org/2000/svg"
@@ -1534,6 +1474,48 @@ nav {
           <center><p>5000 miles</p></center> -->
   </div>
     </div>
+  <div id="spinner2">
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50" id="svg-spinner2">
+  <circle cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke="#45d6b5" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"/>
+  </circle>
+</svg>
+  </div>
+<div class="demo-back" id="demo-back">
+<div class="demo">
+  <div class="demo__colored-blocks">
+    <div class="demo__colored-blocks-rotater">
+      <div class="demo__colored-block"></div>
+      <div class="demo__colored-block"></div>
+      <div class="demo__colored-block"></div>
+    </div>
+    <div class="demo__colored-blocks-inner"></div>
+    <div class="demo__text">Start</div>
+  </div>
+  <div class="demo__inner">
+    <svg class="demo__numbers" viewBox="0 0 100 100">
+      <defs>
+        <path class="demo__num-path-1" d="M40,28 55,22 55,78"/>
+        <path class="demo__num-join-1-2" d="M55,78 55,83 a17,17 0 1,0 34,0 a20,10 0 0,0 -20,-10"/>
+        <path class="demo__num-path-2" d="M69,73 l-35,0 l30,-30 a16,16 0 0,0 -22.6,-22.6 l-7,7"/>
+        <path class="demo__num-join-2-3" d="M28,69 Q25,44 34.4,27.4"/>
+        <path class="demo__num-path-3" d="M30,20 60,20 40,50 a18,15 0 1,1 -12,19"/>
+      </defs>
+      <path class="demo__numbers-path" 
+            d="M-10,20 60,20 40,50 a18,15 0 1,1 -12,19 
+               Q25,44 34.4,27.4
+               l7,-7 a16,16 0 0,1 22.6,22.6 l-30,30 l35,0 L69,73 
+               a20,10 0 0,1 20,10 a17,17 0 0,1 -34,0 L55,83 
+               l0,-61 L40,28" />
+    </svg>
+  </div>
+</div>
+</div>
+
 </body>
 <style>
 * {
@@ -2091,7 +2073,7 @@ nav {
     background: #e6e6e6;
     box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
     display: none;
-    z-index: 1000000;
+    z-index: 100000000000;
 }
 #svg-spinner2 {
   height: 80px;
@@ -2329,6 +2311,287 @@ nav {
    /*position: absolute;*/
    /*top: 50%;*/
    /*transform: translate3d(-50%, -50%, 0);*/
+}
+.demo-back {
+  display: none;
+  position: fixed;
+  z-index: 10000000001234123421;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(50, 56, 109, 0.99);
+  /*background: rgba(0, 96, 246, 0.95);*/
+}
+.demo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  height: 140px;
+  margin-top: -70px;
+  padding: 10px;
+  border-radius: 20px;
+  transform: translateX(-50%);
+}
+
+.demo__colored-blocks {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 500px;
+  height: 100%;
+  margin-left: -250px;
+  padding: 10px;
+  border-radius: 20px;
+  perspective: 1000px;
+  -webkit-animation: demoAnim 4s ease-in-out infinite, contAnim 4s infinite;
+          animation: demoAnim 4s ease-in-out infinite, contAnim 4s infinite;
+}
+
+.demo__colored-blocks-rotater {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  -webkit-animation: rotation 1.3s linear infinite;
+          animation: rotation 1.3s linear infinite;
+}
+
+.demo__colored-blocks-inner {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  background: #32386d;
+  border-radius: inherit;
+}
+
+.demo__colored-block {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300%;
+  height: 300%;
+  transform-origin: 0 0;
+}
+
+.demo__colored-block:nth-child(1) {
+  transform: rotate(0deg) skewX(-30deg);
+  background-color: #fd3359;
+}
+
+.demo__colored-block:nth-child(2) {
+  transform: rotate(120deg) skewX(-30deg);
+  background-color: #f4d302;
+}
+
+.demo__colored-block:nth-child(3) {
+  transform: rotate(240deg) skewX(-30deg);
+  background-color: #21bdff;
+}
+
+.demo__inner {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.demo__numbers {
+  overflow: visible;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+
+.demo__numbers-path {
+  fill: none;
+  stroke-width: 10px;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0, 518.055065155;
+  stroke-dashoffset: 0;
+  -webkit-animation: numAnim 4s ease-in-out infinite;
+          animation: numAnim 4s ease-in-out infinite;
+  opacity: 0;
+}
+
+.demo__text {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 500px;
+  height: 100%;
+  margin-left: -250px;
+  text-align: center;
+  line-height: 140px;
+  font-size: 100px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+  transform: translateX(10px);
+  -webkit-animation: hideText 4s infinite;
+          animation: hideText 4s infinite;
+}
+
+@-webkit-keyframes contAnim {
+  15%, 100% {
+    margin-left: -250px;
+    width: 500px;
+  }
+  25%, 90% {
+    margin-left: -70px;
+    width: 140px;
+  }
+}
+
+@keyframes contAnim {
+  15%, 100% {
+    margin-left: -250px;
+    width: 500px;
+  }
+  25%, 90% {
+    margin-left: -70px;
+    width: 140px;
+  }
+}
+@-webkit-keyframes numAnim {
+  15% {
+    stroke-dasharray: 0, 518.055065155;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  25%, 41% {
+    opacity: 1;
+    stroke-dasharray: 144.4256591797, 518.055065155;
+    stroke-dashoffset: -40;
+  }
+  53%, 66% {
+    stroke-dasharray: 136.0216217041, 518.055065155;
+    stroke-dashoffset: -227.238697052;
+  }
+  76% {
+    stroke-dasharray: 113.4751205444, 518.055065155;
+    stroke-dashoffset: -445.8995704651;
+  }
+  88%, 100% {
+    stroke-dasharray: 72.1554946899, 518.055065155;
+    stroke-dashoffset: -445.8995704651;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes numAnim {
+  15% {
+    stroke-dasharray: 0, 518.055065155;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  25%, 41% {
+    opacity: 1;
+    stroke-dasharray: 144.4256591797, 518.055065155;
+    stroke-dashoffset: -40;
+  }
+  53%, 66% {
+    stroke-dasharray: 136.0216217041, 518.055065155;
+    stroke-dashoffset: -227.238697052;
+  }
+  76% {
+    stroke-dasharray: 113.4751205444, 518.055065155;
+    stroke-dashoffset: -445.8995704651;
+  }
+  88%, 100% {
+    stroke-dasharray: 72.1554946899, 518.055065155;
+    stroke-dashoffset: -445.8995704651;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes demoAnim {
+  15% {
+    border-radius: 20px;
+    transform: rotate(0);
+  }
+  30%, 43% {
+    border-radius: 50%;
+    transform: rotate(360deg);
+  }
+  52%, 65% {
+    border-radius: 0;
+    transform: rotate(720deg);
+  }
+  78%, 90% {
+    border-radius: 50%;
+    transform: rotate(1080deg);
+  }
+  100% {
+    border-radius: 20px;
+    transform: rotate(1440deg);
+  }
+}
+@keyframes demoAnim {
+  15% {
+    border-radius: 20px;
+    transform: rotate(0);
+  }
+  30%, 43% {
+    border-radius: 50%;
+    transform: rotate(360deg);
+  }
+  52%, 65% {
+    border-radius: 0;
+    transform: rotate(720deg);
+  }
+  78%, 90% {
+    border-radius: 50%;
+    transform: rotate(1080deg);
+  }
+  100% {
+    border-radius: 20px;
+    transform: rotate(1440deg);
+  }
+}
+@-webkit-keyframes hideText {
+  15%, 100% {
+    opacity: 1;
+  }
+  20%, 96% {
+    opacity: 0;
+  }
+}
+@keyframes hideText {
+  15%, 100% {
+    opacity: 1;
+  }
+  20%, 96% {
+    opacity: 0;
+  }
 }
 #social {
   margin: 10px 30px;
@@ -2734,23 +2997,19 @@ queryWithout = "TseEGOmBL_o"
       var interactedyet2=0;
       var synced_game_time;
       function onPlayerStateChange(event) {
-        // player.playVideo()
-        document.getElementById("spinner2").style.display = "none";
-        setTimeout(function() {
-          document.getElementById("spinner2").style.display = "none";
-        }, 4000)
-        if (event.data === 0) {
-          document.getElementById("player").style.opacity = "0";
-        }
-        console.log('i reach')
-        player.unMute();
         if(event.data == YT.PlayerState.PLAYING && started_playing == 0) {
-          // document.getElementById("player").style.opacity = "1";
-          console.log('THIS RUNSSSZSZSZZ')
-          document.getElementById("player").style.opacity = "1"
-          // document.getElementById("spinner2").style.display = "none";
+          player.mute();
+        document.getElementById("spinner2").style.display = "none";
+  document.getElementsByClassName("demo")[0].style.display = 'block'
+  document.getElementsByClassName("demo")[0].style.zIndex = 1234
+            $("#demo-back").slideDown(350);
+            setTimeout(function() {
+                        document.getElementById("vid-bac").style.filter = "brightness(1)"
+                        $("#demo-back").slideUp(350);
+                        player.unMute();
+                        // player.playVideo();
+                        document.getElementsByClassName("demo")[0].style.display = 'none'
           timeleft = synced_game_time
-          // timeleft = 90
           started_playing = 1;
               document.getElementById("new-back-btn-time").style.display = "block";
               document.getElementById("countdown").innerHTML = timeleft + 's';
@@ -2758,53 +3017,13 @@ queryWithout = "TseEGOmBL_o"
               console.log('DOWNLOAD TIMER INTERVAl RUNNING START!')
               downloadTimer = setInterval(function(){
                 if(timeleft <= 0){
-                  // document.getElementById("surround-spinner").style.display = 'block';
                   document.getElementById("svg-spinner").style.display = 'block';
                   document.getElementById("spinner").style.display = 'block';
-                      // socket.emit('finished-guessing', {
-                      //   // score: current_grade,
-                      //   // distance_between: distance_between
-                      // })
-  // $("#spinner").slideDown(700);
-                  // document.getElementById("spinner").style.display = "block";
                   document.getElementById('guess-button-id').style.display = "none";
-                  // document.getElementById("vid-bac").style.pointerEvents = 'none';
-                  // document.getElementById()
                   document.getElementById("countdown").innerHTML = "0s";
-                  // document.getElementById("countdown").style.color = "white";
-                  // try {
-                      // socket.emit('current_score', {
-                      // current_score: current_grade,
-                      // guessing_point: [globallat, globallon],
-                      // distance_between: distance_between,
-                      // ran_out_of_time: false
-                    // })
-                    // } catch {
                   clearInterval(downloadTimer);
-
-                  // console.log('makeaguessran')
-                  // document.getElementById("countdown").innerHTML = "0s";
-                  // document.getElementById("countdown").style.color = "white";
-                  // document.getElementById("player").style.opacity = "0";
                   console.log('running this')
                   player.mute();
-                  // if(guessmade == false) {
-                    // multiplayer_guesses.push()
-                  // }
-                  // if(guessmade == false) {
-                  //   ranoutoftime = true;
-                  //   makeaguess()
-                  // } else if(guessmade == true) {
-                  //   socket.emit('current_score', {
-                  //     current_score: current_grade,
-                  //     guessing_point: [globallat, globallon],
-                  //     distance_between: distance_between,
-                  //     ran_out_of_time: false,
-                  //     forced: true,
-                  //     intentional_exit: false
-                  //   })                    
-                  // }
-                // }
                 } else {
                   document.getElementById("countdown").innerHTML = timeleft + 's';
                 }
@@ -2817,29 +3036,13 @@ queryWithout = "TseEGOmBL_o"
               }, 1000);
                       socket.emit('finished-guessing', {
                         bypass: false
-                        // score: current_grade,
-                        // distance_between: distance_between
                       })
+            }, 4000)
         }
         // if user clicks or turns of phone, player will unpause.
           if (event.data == YT.PlayerState.PAUSED && loaded_podium == false) {
             player.playVideo();
           }
-        // if(interactedyet == 1 && interactedyet2 == 0) {
-        //   try {
-        //     if(isMobile == false) {
-        //       navigator.mediaSession.metadata = new MediaMetadata({});
-        //       aud.loop = true;
-        //       aud.volume = 0;
-        //       aud.play();
-        //       console.log('media')
-        //       interactedyet = 0;
-        //       interactedyet2 = 1
-        //     }
-        //   } catch {
-
-        //   }
-        // }
       }
       function stopVideo() {
         player.stopVideo();
@@ -2867,9 +3070,7 @@ queryWithout = "TseEGOmBL_o"
       // var videoloadfuncran = 0;
         var aud = new Audio("static/silence.mp3");
       function loadVideoWithId(input_id, length2) {
-          document.getElementById("player").style.opacity = "0";
-          // document.getElementById("spinner2").style.display = "block";
-          // player.playVideo();
+          document.getElementById("vid-bac").style.filter = "brightness(0)"
           started_playing = 0
           ranoutoftime=false;
           guessmade = false;
@@ -2962,6 +3163,7 @@ queryWithout = "TseEGOmBL_o"
         interactedyet=1;
         player.loadVideoById({'videoId': input_id, 'startSeconds': secs+13, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'mute': 1});
         player.playVideo();
+        player.mute();
         document.getElementById('vid-bac').style.display = "block";
         // player.unMute();
         player.setVolume(cvol)
@@ -3112,7 +3314,6 @@ function continueGame() {
 
   document.getElementById('map-prompter').innerHTML = "Click Map To Guess <i class='fas fa-map-marker-alt' aria-hidden='true' style='margin-left: 5px;'></i>"
   document.getElementById("x-out").style.display = "block";
-  document.getElementById("player").style.opacity = "1";
     // map.removeLayer(markers);
     // markerArray.clearLayers();
     map.setView([42.35, -71.08], 2);
