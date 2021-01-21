@@ -3041,6 +3041,7 @@ queryWithout = "TseEGOmBL_o"
         // if user clicks or turns of phone, player will unpause.
           if (event.data == YT.PlayerState.PAUSED && loaded_podium == false) {
             player.playVideo();
+            console.log('Player is mobile and paused!')
           }
       }
       function stopVideo() {
@@ -3565,7 +3566,7 @@ function makeaguess() {
     var ding = new Audio('static/correct3.mp3');
     ding.play();
   } else {
-    var ding = new Audio('static/questionwrong.mp3')
+    var ding = new Audio('static/playerGuessed.mp3')
     ding.play();
   }
   }
