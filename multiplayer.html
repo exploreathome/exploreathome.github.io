@@ -2799,6 +2799,10 @@ function roommenuback() {
   }catch{
 
   }
+  if(queryString == "server") {
+    document.getElementById("first-card").style.display = "none";
+    document.getElementById("fifth-card").style.display = "block";
+  }
 //   if(queryString != undefined) {
 //   if(queryString.length == 5) {
 //     potential_id = queryString
