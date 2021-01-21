@@ -38,11 +38,13 @@ function joinroom(username) {
         username: String(username)
       })
     }
+    if(isMobile == false) {
             navigator.mediaSession.metadata = new MediaMetadata({});
             aud.loop = true;
             aud.volume = 0;
             aud.play();
             console.log('media')
+    }
     // setTimeout(function(){
     //   loadVideoWithId("wor", Math.floor(Math.random()*usa_lst.length)+1)
     // }, 2010);
