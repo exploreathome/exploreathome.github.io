@@ -1,6 +1,5 @@
 // var socket = io.connect('http://localhost:4000');
 var socket = io.connect('https://secure-players.herokuapp.com/');
-
 var unit = "mi";
 // var hostornot = false;
 window.addEventListener("focus", () => socket.connect());
@@ -149,6 +148,7 @@ socket.on('nop', function(data) {
 function loadthepodium() {
   socket.emit('load-podium')
 }
+var playerguesses = {}
 socket.on('finished-guessing', function(data) {
   guessmade = true
   clearInterval(downloadTimer)
@@ -244,6 +244,7 @@ socket.on('finished-guessing', function(data) {
   console.log('MATCHED ITEMS')
   var new_obj = items.slice(0, 10);
   console.log(new_obj)
+  temporary_lst = []
   for(let x=0;x<new_obj.length;x++) {
     console.log(new_obj[x][0])
     document.getElementsByClassName("li-class")[x].style.display = "block";
@@ -255,6 +256,7 @@ socket.on('finished-guessing', function(data) {
     console.log('THIS THING RAN!!')
     if(new_obj[x][2] != "" && new_obj[x][6] != "away") {
     console.log('running..')
+    currentcolors = String(new_obj[x][5])
     yellowMarker = L.ExtraMarkers.icon({
       icon: 'fa-question',
       markerColor: String(new_obj[x][5]),
@@ -268,10 +270,12 @@ socket.on('finished-guessing', function(data) {
     markerArray.push(current_marker_push.addTo(map));
     var polyline_new = L.polyline([data["correctLatLon"], new_obj[x][3]], {color: 'black', dashArray: '5,10'}).addTo(map);
     markerArray.push(polyline_new.addTo(map))
+    temporary_lst.push([new_obj[x][0], new_obj[x][3], new_obj[x][2], currentcolors])
     // current_marker_push.openPopup();
     }
   }
-  if(round_present == 8) {
+  playerguesses[String(data["correctLatLon"])] = temporary_lst
+  if(round_present >= 10) {
     loaded_podium = true;
     document.getElementById("player-stats").innerHTML = "Game Over!"
     document.getElementById("round-done").innerHTML = "The final result's are in. Click the button to see the final results."
@@ -410,8 +414,8 @@ socket.on('load-podium', function(data) {
     }
   }
   // goez();
-  distance_average = myguessdistances.reduce((a, b) => a + b, 0)
-  distance_average = distance_average/distance_average.length
+  // distance_average = myguessdistances.reduce((a, b) => a + b, 0)
+  // distance_average = distance_average/distance_average.length
   // socket.emit("disconnect-socket")
   goez();
   document.getElementsByTagName("nav")[0].style.zIndex = "1000000000000";
@@ -442,3 +446,79 @@ socket.on('profanity', function() {
   document.getElementById("second-card").style.display = "block";
   document.getElementById("sixth-card").style.display = "none";
 })
+
+var opened_markers_and_lines = []
+var mymap;
+function loadsecondmap() {
+  mymap = L.map('secondary-map-container').setView([51.505, -0.09], 1);
+  var maplayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  });
+  maplayer.addTo(mymap);
+  document.getElementById("secondary-map-container").style.display = "block";
+  $('.leaflet-control-attribution').hide()
+  document.getElementById("view-guesses-button").style.display = "none";
+  document.getElementById("performance-span2").innerHTML = "Click the green markers to see every guess you made."
+
+    var greenmarkerIcon = L.ExtraMarkers.icon({
+      icon: 'fa-check',
+      markerColor: 'green',
+      prefix: 'fa'
+    });
+  console.log(playerguesses)
+  for([key,value] of Object.entries(playerguesses)) {
+    if(myguesses[String(key)] != undefined) {
+      console.log(key)
+      console.log(value)
+      console.log('=')
+      console.log(JSON.parse("[" + String(key) + "]"))
+      endGreenMarker = L.marker(JSON.parse("[" + String(key) + "]"), {icon: greenmarkerIcon}).on('click', showMarkers).addTo(mymap);
+    }
+  }
+  mymap.invalidateSize();
+  document.getElementById("performance-container").scrollIntoView({behavior: "smooth"});
+}
+
+function showMarkers(e) {
+  try {
+  mymap.removeLayer(opened_markers_and_lines)
+  }catch(err){
+    console.log(err)
+  }
+  opened_markers_and_lines = []
+  templatlon = [e.latlng]
+  console.log(templatlon)
+  normal_lat_lon = [templatlon[0]["lat"],templatlon[0]["lng"]]
+  templatlon = String(templatlon[0]["lat"]) + "," + String(templatlon[0]["lng"])
+  guessmade = playerguesses[String(templatlon)]
+  for(var i=0; i<guessmade.length;i++) {
+      yellowMarker = L.ExtraMarkers.icon({
+        icon: 'fa-question',
+        markerColor: String(guessmade[i][3]),
+        prefix: 'fa'
+      });
+      endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + guessmade[i][2] + "mi" + " <span style='font-size: 10.5px;'>(" + String(parseInt(parseInt(guessmade[i][2])*1.609)) + "km)</span>")
+      opened_markers_and_lines.push(endPlayerMarker);   
+      endPolyline = L.polyline([normal_lat_lon, guessmade[i][1]], {color: 'black', dashArray: '5,10'})
+      opened_markers_and_lines.push(endPolyline);
+  }
+    redmarkerIcon = L.ExtraMarkers.icon({
+      icon: 'fa-times',
+      markerColor: 'red',
+      prefix: 'fa'
+    });
+  // L.marker([globallat, globallon], {icon: redmarkerIcon})
+  endGuess = myguesses[String(templatlon)]
+  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String(endGuess[1]) + "mi" + " <span style='font-size: 10.5px;'>(" + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "km)</span>", {
+    sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
+  })
+  opened_markers_and_lines.push(yourmarker);
+      endPolyline = L.polyline([normal_lat_lon, endGuess[0]], {color: 'black', dashArray: '5,10'})
+      opened_markers_and_lines.push(endPolyline);
+      opened_markers_and_lines = L.featureGroup(opened_markers_and_lines)
+      mymap.flyToBounds(opened_markers_and_lines.getBounds(), {padding: L.point(60,60), duration:0.25});
+      opened_markers_and_lines.addTo(mymap)
+  yourmarker.openPopup();
+      mymap.invalidateSize();
+
+
+}
