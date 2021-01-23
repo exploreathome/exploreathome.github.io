@@ -1,5 +1,5 @@
-// var socket = io.connect('http://localhost:4000');
-var socket = io.connect('https://secure-players.herokuapp.com/');
+var socket = io.connect('http://localhost:4000');
+// var socket = io.connect('https://secure-players.herokuapp.com/');
 var unit = "mi";
 // var hostornot = false;
 window.addEventListener("focus", () => socket.connect());
@@ -465,14 +465,14 @@ function loadsecondmap() {
       prefix: 'fa'
     });
   console.log(playerguesses)
-  for([key,value] of Object.entries(playerguesses)) {
-    if(myguesses[String(key)] != undefined) {
+  for([key,value] of Object.entries(myguesses)) {
+    // if(myguesses[String(key)] != undefined) {
       console.log(key)
       console.log(value)
       console.log('=')
       console.log(JSON.parse("[" + String(key) + "]"))
       endGreenMarker = L.marker(JSON.parse("[" + String(key) + "]"), {icon: greenmarkerIcon}).on('click', showMarkers).addTo(mymap);
-    }
+    // }
   }
   mymap.invalidateSize();
   document.getElementById("performance-container").scrollIntoView({behavior: "smooth"});
@@ -490,16 +490,18 @@ function showMarkers(e) {
   normal_lat_lon = [templatlon[0]["lat"],templatlon[0]["lng"]]
   templatlon = String(templatlon[0]["lat"]) + "," + String(templatlon[0]["lng"])
   guessmade = playerguesses[String(templatlon)]
-  for(var i=0; i<guessmade.length;i++) {
-      yellowMarker = L.ExtraMarkers.icon({
-        icon: 'fa-question',
-        markerColor: String(guessmade[i][3]),
-        prefix: 'fa'
-      });
-      endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + guessmade[i][2] + "mi" + " <span style='font-size: 10.5px;'>(" + String(parseInt(parseInt(guessmade[i][2])*1.609)) + "km)</span>")
-      opened_markers_and_lines.push(endPlayerMarker);   
-      endPolyline = L.polyline([normal_lat_lon, guessmade[i][1]], {color: 'black', dashArray: '5,10'})
-      opened_markers_and_lines.push(endPolyline);
+  if(guessmade != undefined) {
+    for(var i=0; i<guessmade.length;i++) {
+        yellowMarker = L.ExtraMarkers.icon({
+          icon: 'fa-question',
+          markerColor: String(guessmade[i][3]),
+          prefix: 'fa'
+        });
+        endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + guessmade[i][2] + "mi" + " <span style='font-size: 11px;'>(" + String(parseInt(parseInt(guessmade[i][2])*1.609)) + "km)</span>")
+        opened_markers_and_lines.push(endPlayerMarker);   
+        endPolyline = L.polyline([normal_lat_lon, guessmade[i][1]], {color: 'black', dashArray: '5,10'})
+        opened_markers_and_lines.push(endPolyline);
+    }
   }
     redmarkerIcon = L.ExtraMarkers.icon({
       icon: 'fa-times',
@@ -508,7 +510,7 @@ function showMarkers(e) {
     });
   // L.marker([globallat, globallon], {icon: redmarkerIcon})
   endGuess = myguesses[String(templatlon)]
-  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String(endGuess[1]) + "mi" + " <span style='font-size: 10.5px;'>(" + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "km)</span>", {
+  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String(endGuess[1]) + "mi" + " <span style='font-size: 11px;'>(" + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "km)</span>", {
     sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
   })
   opened_markers_and_lines.push(yourmarker);

@@ -982,6 +982,7 @@ function showMarkers(e) {
   normal_lat_lon = [templatlon[0]["lat"],templatlon[0]["lng"]]
   templatlon = String(templatlon[0]["lat"]) + "," + String(templatlon[0]["lng"])
   guessmade = playerguesses[String(templatlon)]
+  if(guessmade != undefined) {
   for(var i=0; i<guessmade.length;i++) {
       yellowMarker = L.ExtraMarkers.icon({
         icon: 'fa-question',
@@ -992,6 +993,7 @@ function showMarkers(e) {
       opened_markers_and_lines.push(endPlayerMarker);   
       endPolyline = L.polyline([normal_lat_lon, guessmade[i][1]], {color: 'black', dashArray: '5,10'})
       opened_markers_and_lines.push(endPolyline);
+  }
   }
   endGuess = myguesses[String(templatlon)]
     redmarkerIcon = L.ExtraMarkers.icon({
