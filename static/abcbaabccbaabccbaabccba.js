@@ -220,8 +220,6 @@ socket.on('finished-guessing', function(data) {
       document.getElementsByClassName("coolbob29")[x].style.display = "block";
       document.getElementsByClassName("upvote-downvote")[x].style.display = "block";
   }
-  audio_play = new Audio('static/roundEndSuccess.mp3')
-  audio_play.play();
   document.getElementById("map-prompter").innerHTML = "Intermission... <i class='far fa-clock fa-spin'></i>"
   $("#seventh-card").slideDown(700);
 
@@ -292,6 +290,8 @@ socket.on('finished-guessing', function(data) {
     map.fitBounds(L.featureGroup(markerArray).getBounds().pad(1));
     return;
   }
+  audio_play = new Audio('static/roundEndSuccess.mp3')
+  audio_play.play();
   console.log('why does this run so much')
   document.getElementsByClassName("li-class")[new_obj.length-1].style.borderBottom = "none";
   map.fitBounds(L.featureGroup(markerArray).getBounds().pad(1));
@@ -392,8 +392,8 @@ socket.on('load-podium', function(data) {
   console.log(sum_of_scores)
   document.getElementById("vid-bac").style.display = "none";
   document.getElementById("new-back-btn-end").style.display = 'block';
-          player_guessed_aud = new Audio('static/playerGuessed.mp3')
-          player_guessed_aud.play();
+  coolsound = new Audio("static/gameOver.mp3")
+  coolsound.play();
   for(var count=0; count<10;count++) {
     console.log(count)
     if(String(document.getElementsByClassName("user-name-ll")[count].innerHTML) == String(data["username"])) {
