@@ -369,6 +369,7 @@ socket.on('start-game-notify', function(data){
   document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
 });
 var firsttime = 0;
+var playerguesses = {}
 socket.on('finished-guessing', function(data){
   player.mute();
   clearInterval(downloadTimer);
@@ -395,9 +396,11 @@ socket.on('finished-guessing', function(data){
                 player.mute();
                 loadpodium();
                 player.pauseVideo();
-            return;
+            // return;
           } else {
             document.getElementById("round-div").innerHTML = String(round_present) + "/" + String(round_total)
+            audio_play.src = 'static/roundEndSuccess.mp3'
+            audio_play.play();
           }
   current_i = 0
   var items = Object.keys(transmit_json).map(function(key) {
@@ -454,8 +457,8 @@ socket.on('finished-guessing', function(data){
     }
     // }
   }
-  audio_play.src = 'static/roundEndSuccess.mp3'
-  audio_play.play();
+  // audio_play.src = 'static/roundEndSuccess.mp3'
+  // audio_play.play();
   $("#seventh-card").slideDown(700);
   document.getElementById("id01").style.display = 'block';
   // abc
@@ -492,6 +495,7 @@ socket.on('finished-guessing', function(data){
   obj2_length = new_obj2.length
   leaderboardcount(obj2_length)
   map.invalidateSize();
+  temporary_lst = []
   for (var key in transmit_json) {
     // console.log('KEY IN:')
     // console.log(transmit_json[key])
@@ -558,6 +562,7 @@ socket.on('finished-guessing', function(data){
               console.log(feature__group)
     map.flyToBounds(feature__group.getBounds().pad(1));
     console.log('i iterated...')
+        temporary_lst.push([score_coord_info[2], score_coord_info[1], score_coord_info[3], temp_color])
     } else {
           noguesscount++
           console.log('else initiated!!')
@@ -581,6 +586,8 @@ socket.on('finished-guessing', function(data){
     }
     } 
   }
+  playerguesses[String(random_lat_lon)] = temporary_lst
+
 
     map.invalidateSize();
   firsttime = 1;
@@ -766,8 +773,6 @@ function loadpodium() {
   document.getElementById("vid-bac").style.display = "none";
   document.getElementById("new-back-btn-end").style.display = 'block';
   goez();
-  distance_average = myguessdistances.reduce((a, b) => a + b, 0)
-  distance_average = distance_average/distance_average.length
   socket.emit("disconnect-socket")
   document.getElementsByTagName("nav")[0].style.zIndex = "1000000000000";
 }
@@ -933,3 +938,79 @@ socket.on('room-duplicate', function(data){
 socket.on('one-person', function(data){
   alert("There is no one in your server except you. Invite a friend into the game to continue.")
 })
+
+var opened_markers_and_lines = []
+var mymap;
+function loadsecondmap() {
+  mymap = L.map('secondary-map-container').setView([51.505, -0.09], 1);
+  var maplayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  });
+  maplayer.addTo(mymap);
+  document.getElementById("secondary-map-container").style.display = "block";
+  $('.leaflet-control-attribution').hide()
+  document.getElementById("view-guesses-button").style.display = "none";
+  document.getElementById("performance-span2").innerHTML = "Click the green markers to see every guess you made."
+
+    var greenmarkerIcon = L.ExtraMarkers.icon({
+      icon: 'fa-check',
+      markerColor: 'green',
+      prefix: 'fa'
+    });
+  console.log(playerguesses)
+  for([key,value] of Object.entries(myguesses)) {
+    // if(myguesses[String(key)] != undefined) {
+      console.log(key)
+      console.log(value)
+      console.log('=')
+      console.log(JSON.parse("[" + String(key) + "]"))
+      endGreenMarker = L.marker(JSON.parse("[" + String(key) + "]"), {icon: greenmarkerIcon}).on('click', showMarkers).addTo(mymap);
+    // }
+  }
+  mymap.invalidateSize();
+  document.getElementById("performance-container").scrollIntoView({behavior: "smooth"});
+}
+
+function showMarkers(e) {
+  try {
+  mymap.removeLayer(opened_markers_and_lines)
+  }catch(err){
+    console.log(err)
+  }
+  opened_markers_and_lines = []
+  templatlon = [e.latlng]
+  console.log(templatlon)
+  normal_lat_lon = [templatlon[0]["lat"],templatlon[0]["lng"]]
+  templatlon = String(templatlon[0]["lat"]) + "," + String(templatlon[0]["lng"])
+  guessmade = playerguesses[String(templatlon)]
+  for(var i=0; i<guessmade.length;i++) {
+      yellowMarker = L.ExtraMarkers.icon({
+        icon: 'fa-question',
+        markerColor: String(guessmade[i][3]),
+        prefix: 'fa'
+      });
+      endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + guessmade[i][2] + "mi" + " <span style='font-size: 11px;'>(" + String(parseInt(parseInt(guessmade[i][2])*1.609)) + "km)</span>")
+      opened_markers_and_lines.push(endPlayerMarker);   
+      endPolyline = L.polyline([normal_lat_lon, guessmade[i][1]], {color: 'black', dashArray: '5,10'})
+      opened_markers_and_lines.push(endPolyline);
+  }
+  endGuess = myguesses[String(templatlon)]
+    redmarkerIcon = L.ExtraMarkers.icon({
+      icon: 'fa-times',
+      markerColor: endGuess[2],
+      prefix: 'fa'
+    });
+  // L.marker([globallat, globallon], {icon: redmarkerIcon})
+  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String(endGuess[1]) + "mi" + " <span style='font-size: 11px;'>(" + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "km)</span>", {
+    sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
+  })
+  opened_markers_and_lines.push(yourmarker);
+      endPolyline = L.polyline([normal_lat_lon, endGuess[0]], {color: 'black', dashArray: '5,10'})
+      opened_markers_and_lines.push(endPolyline);
+      opened_markers_and_lines = L.featureGroup(opened_markers_and_lines)
+      mymap.flyToBounds(opened_markers_and_lines.getBounds(), {padding: L.point(60,60), duration:0.25});
+      opened_markers_and_lines.addTo(mymap)
+  yourmarker.openPopup();
+      mymap.invalidateSize();
+
+
+}
