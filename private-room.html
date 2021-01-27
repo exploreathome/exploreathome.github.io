@@ -113,7 +113,7 @@ body{
   overflow-y: auto;
   background: rgba(1, 2, 1, 0.7);
   width: 290px;
-  max-height: 55vh;
+  max-height: 57vh;
   /*max-height: 405px;*/
   position: fixed;
   margin-top: 20px;
@@ -133,16 +133,15 @@ body{
     vertical-align: center;
     margin: auto;
     color: white;
-    z-index: 5000000000;
+    z-index: 1000;
     border: white 1px;
     box-shadow: 0 0.4px 3.6px rgba(0, 0, 0, 0.15),
     0 1px 8.5px rgba(0, 0, 0, 0.01), 0 1.9px 15.7px rgba(0, 0, 0, 0.15),
     0 3.4px 28.2px rgba(0, 0, 0, 0.03), 0 6.3px 54.4px rgba(0, 0, 0, 0.15),
     0 15px 137px rgba(0, 0, 0, 0.15), 0 0 7px 7px rgba(0, 0, 0, 0.25);
-  /*box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);*/
   padding-bottom: 12px;
-  /*display: flex;*/
 }
+
 .card-wait {
   overflow-y: auto;
   background: rgba(1, 2, 1, 0.7);
@@ -175,6 +174,21 @@ body{
     0 15px 137px rgba(0, 0, 0, 0.15), 0 0 7px 7px rgba(0, 0, 0, 0.25);
   /*box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);*/
   padding-bottom: 12px;
+}
+.card-update {
+  position: fixed;
+  background-color: #fff;
+  border-radius: 15.59px;
+  box-shadow: 0 0.4px 3.6px rgba(0, 0, 0, 0.004),
+    0 1px 8.5px rgba(0, 0, 0, 0.01), 0 1.9px 15.7px rgba(0, 0, 0, 0.019),
+    0 3.4px 28.2px rgba(0, 0, 0, 0.03), 0 6.3px 54.4px rgba(0, 0, 0, 0.047),
+    0 15px 137px rgba(0, 0, 0, 0.07);
+  width: 200px;
+  margin-left: 410px;
+  padding: 10px;
+    background-color: #f2f2f2;
+    opacity: 0.95;
+
 }
 .card8 {
   position: fixed;
@@ -485,6 +499,24 @@ nav {
 .br-tag {
   display: none;
 }
+.coolbob29 {
+  float: left;
+  font-size: 18px; 
+  color: #e6e6e6; 
+  margin-left: 20px; 
+  display: none;
+}
+.upvote-downvote {
+  float: right;
+  font-size: 18px;
+  color: limegreen;
+  margin-right: 20px; 
+  display: none;
+}
+.minimize-leaderboard:hover {
+  color: red;
+  transform: scale(0.9);
+}
 input {
   font-size: 16px;
 }
@@ -578,8 +610,19 @@ function onPlayerReady2(event) {
 <div id="main-big-container">
 
     <div class="card w3-animate-top" id="third-card">
+            <div class="card-update" id="update-card">
+      <p style="font-size: 15px; color: #0060f6;">What's new? <i class="fas fa-gift" style="margin-left: 5px;"></i><span style="float: right; color: red; font-size: 25px; margin-top: -5px; cursor: pointer;" onclick="  $('#update-card').slideUp(200);">&times;</span></p>
+      <hr style="margin-top: -8.5px; margin-bottom: 6px;">
+          <span id="invitefriends" style="color: #ED4D80; font-weight: 600; font-size: 14px;">Room Limits</span>
+          <br>
+          <span style="font-size: 14px;"><span style="font-weight: bold;">•</span> Increased max-number of players per room to 25</span>
+          <br>
+          <span id="invitefriends" style="color: #ED4D80; font-weight: 600; font-size: 14px;">Measurement</span>
+          <br>
+          <span style="font-size: 14px;"><span style="font-weight: bold;">•</span> Added ability to choose unit of measurement.</span>
+      </div>
       <center>
-<img src="static/blue-invite.svg" height="98" style="margin: 10px;">
+<img src="static/blue-invite.svg" height="98" style="margin: 10px;" class="blue-img">
 </center>
       <div class="text">
         <div class="title">
@@ -664,9 +707,6 @@ function onPlayerReady2(event) {
         <div class="button" onclick="roommenuback()"><i class="fa fa-angle-double-left" aria-hidden="true" style="margin-right: 5px;" id="arrow-btn"></i>Go Back</div>
         <div class="button button-primary"  onclick="initiateconnect(Math.floor(Math.random()*90000) + 10000)" id="sharelink">Share Link <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
       </div>
-<!--       <div class="buttons" style="margin-top: -13px;">
-        <div class="button button-primary"  style="margin-left: 19px; margin-right: 19px;" onclick="loadVideoWithId('wor')">Join Random Room <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px;" id="arrow-btn"></i></div>
-      </div> -->
     </div>
     <div class="card w3-animate-top" id="fourth-card">
       <center>
@@ -879,52 +919,48 @@ function onPlayerReady2(event) {
                   <p style="float: right; margin-right: 6.5px; font-size: 25px; cursor: pointer; margin-top: -5px;" id="hover-times" onclick="document.getElementById('seventh-card').style.display = 'none';">&times;</p>
                   <h4 style="text-shadow: black 0px 0px 20px; font-family: 'Montserrat';">Player Stats <i class="fa fa-trophy" aria-hidden="true" style="margin-left: 5px;"></i></h4>
                   <div style="color: lightgrey; margin-top: -10px; font-size: 14px;">Round Done!</div>
-                  <!-- Please wait for the host to start the game... <i class="fa fa-spinner fa-spin" aria-hidden="true" style='margin-left: 5px;'></i> -->
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <span id="over-10-span" style="display: none;">
+                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; display: block !important;" id="first-coolbob29">
+                    testabc123
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; display: none !important;" class="upvote-downvote"> </div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; display: block !important;" id="first-upvote-downvote">+123</div>
+                  <br style="display: block;" id="br-tag2">
+                  <hr style="margin-left: 20px; margin-right: 20px; margin-top: 4px; margin-bottom: 4px; display: block;" id="hr-tag">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"> </div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
-                  <span style="float: left; font-size: 18px; color: #e6e6e6; margin-left: 20px; margin-top: 0px; display: none !important;" class="coolbob29">
-                    <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
                   </span>
-                  <div style="float: right; font-size: 18px; color: limegreen; margin-right: 20px; margin-top: 0px; display: none !important;" class="upvote-downvote"></div><br class="br-tag">
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
+                  </span>
+                  <div class="upvote-downvote"></div><br class="br-tag">
+                  <span class="coolbob29">
+                  </span>
+                  <div class="upvote-downvote"></div><br class="br-tag">
                   <center>
                   <button class="btn button-primary button-primary-hover" style="margin-top: 6px;" onclick="document.getElementById('seventh-card').style.display = 'none';">Okay, cool!</button>
                   </center>
-                  <!-- <span style="float: left; font-size: 13px; color: lightgrey; margin-left: 20px;">128 mi (50km)</span> -->
-<!-- <br> -->
+
 
       </div>
 
@@ -1048,6 +1084,8 @@ function onPlayerReady2(event) {
 <p id="new-back-btn5" style="z-index: 1;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
 <p id="new-back-btn7" style="z-index: 1;" title="Video Speed"><i class="far fa-clock fa-spin" aria-hidden="true"></i></p>
 <p id="new-back-btn8" style="z-index: 1; cursor: pointer;" title="Video Speed"><input style="cursor: pointer;" value="1" type="range" min="10" max="200" step="10" class="volumeSlider" id="speedSlider" oninput="this.nextElementSibling.value = String(this.value/parseFloat(100)); if(this.value == 200) {document.getElementById('output-id').innerHTML = '2.0'} if(this.value == 100) {document.getElementById('output-id').innerHTML = '1.0'} if(this.value == 0) {document.getElementById('output-id').innerHTML = '0.0'} player.setPlaybackRate(this.value/100)"><output style="width: 15px; float: right; margin-right: 10px;" id="output-id">1.0</output><span style="margin-left: 5px;">x</span></p>
+<p id="new-back-btn-mobile" style="z-index: 1;" title="Maximize Leaderboard" onclick="$('#new-back-btn9').slideDown(200); $('#wrap-lb').slideDown(200); document.getElementById('new-back-btn-mobile').style.display = 'none'"><a style="cursor: pointer;"><i class="fas fa-eye" aria-hidden="true"></i></a></p>
+
 <div id="new-back-btn9" class="" style="z-index: 1; font-family: 'Montserrat';" title="Leaderboard">
   <!-- <br> -->
   <!-- <hr id="new-back-btn9-hr"> -->
@@ -1125,10 +1163,27 @@ function onPlayerReady2(event) {
 <span class="tooltip-text w3-animate-zoom" style=""> I Guessed <span style="margin-left: 5px;">👈</span></span>
 
 </li>
+<li class="li-class" style="display: none;" id="li-class-and-others">
+<span class="user-name-ll" style="display: block;"><span id="and-others">And 15 others..</span><span style="float: right; cursor: pointer;" class="minimize-leaderboard" onclick="$('#new-back-btn9').slideUp(200); $('#wrap-lb').slideUp(200); document.getElementById('new-back-btn-mobile').style.display='block';"><i class="fas fa-eye-slash"></i></span></span>
+</li>
 </ul>
 
 
 </div>
+<span id="wrap-lb">
+<div id="new-back-btn-lb" title="Your Place">
+<ul style="width: 100%;">
+<li class="li-class" style="width: 100%; display: block;">
+<span class="li-circles" id="lb-circle">15</span><span id="user-name-ll" class="user-name-ll">ABCABCABCA</span>
+<div id="user-name-score" class="user-name-score" style="float: right;"></div>
+</li>
+</li>
+</ul>
+
+
+</div>
+</span>
+
 <div class="demo-back" id="demo-back">
 <div class="demo">
   <div class="demo__colored-blocks">
@@ -1394,150 +1449,8 @@ function onPlayerReady2(event) {
 <p style="font-size: 18px; margin-top: 19px;">You finished in <b id="place-number">4th</b> place! 🎉</p>
 </center>
   <ol class="scoreboard__items" id="scoreboard__items" start="4">
-  <li class="scoreboard__item" data-count="0" style="display: none;">
-    <div class="scoreboard__title">Helena Cosmetics</div>
-    <div class="scoreboard__status">
-      <div class="js-oneup"></div>
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-      <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li>
-  <li class="scoreboard__item" data-count="0" style="display: none;">
-    <div class="scoreboard__title">Wenghuset</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-      <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li>
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li>  
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li>  
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li>
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
-  <li class="scoreboard__item" data-count="0" style="display: none;">    
-    <div class="scoreboard__title">Cable Com</div>
-     <div class="scoreboard__status">
-      
-    </div>
-      <div class="scoreboard__numbers">
-       <span class="js-number"></span>
-    </div>
-    <div class="scoreboard__bar js-bar">
-  <div class="scoreboard__bar-bar"></div>
-  </div>
-  </li> 
+  
+</ol>
     <hr>
           <span style="margin-top: 1px;"><span><h3 style="font-family: 'Montserrat'; font-size: 18.5px;">Your Performance <i class="fas fa-chart-line" style="margin-left: 3px;"></i></h3></span></span>
           <p id="performance-span2" style="color: #1a1a1a;"></p>
@@ -1547,9 +1460,6 @@ function onPlayerReady2(event) {
             <div id="secondary-map-container" style="display: none; width: 100%; height: 325px; border-radius: 5px; font-family: 'Montserrat';"></div>
             </center>
           </div>
-<!--   <hr>
-          <span style="margin-top: 1px;"><h3 style="font-family: 'Montserrat'; font-size: 18.5px;">Your Performance <i class="fas fa-chart-line" style="margin-left: 3px;"></i></h3></span>
-          <center><p style="font-family: 'Montserrat';">You guessed at an average of..</p></center> -->
   </div>
     </div>
 </body>
@@ -1746,6 +1656,12 @@ function onPlayerReady2(event) {
     border: white 1px;
   }
 }*/
+@media screen and (max-height: 598px) {
+  .blue-img {
+    height: 78px;
+  }
+}
+
 
 #new-back-btn2 {
   cursor: pointer;
@@ -1864,7 +1780,6 @@ function onPlayerReady2(event) {
     z-index: 300;
     border: white 1px;
 }
-
 #new-back-btn7 {
   display: block;
   cursor: pointer;
@@ -1904,7 +1819,7 @@ function onPlayerReady2(event) {
     margin: auto;
     color: white;
     z-index: 300;
-        writing-mode: bt-lr; /* IE */
+        writing-mode: bt-lr; /* IE 
     -webkit-appearance: slider-vertical; /* WebKit */
 }
 
@@ -1921,10 +1836,7 @@ function onPlayerReady2(event) {
   position: fixed;
   top: 70px;
   left: 6px;
-  /*font-family: 'Montserrat', sans-serif;*/
-  /*width: 46px;*/
   color: white;
-  /*font-weight: bold;*/
     background: rgba(1, 2, 1, 0.7);
     padding: 0px;
     padding-left: 14px;
@@ -1948,6 +1860,37 @@ function onPlayerReady2(event) {
   margin-bottom: 0px;
 }
 #new-back-btn9 ul {
+  float: left;
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+#new-back-btn-lb {
+  display: none;
+  position: fixed;
+  top: 411px;
+  left: 6px;
+  color: white;
+    background: rgba(1, 2, 1, 0.7);
+    padding: 0px;
+    padding-left: 14px;
+    border-radius: 5px;
+    padding-right: 14px;
+    padding-top: 1.3px;
+    padding-bottom: 1.3px;
+    font-size: 16px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 300;
+    border: white 1px;
+    z-index: 1; 
+    font-family: 'Montserrat', sans-serif;
+    width: 188.05px;
+}
+
+#new-back-btn-lb ul {
   float: left;
   margin:0;
   padding:0;
@@ -2030,6 +1973,31 @@ function onPlayerReady2(event) {
 .scoreboard {
   width: 51%;
 }
+#new-back-btn-mobile {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 38px;
+  left: 6px;
+  width: 46px;
+  color: white;
+  font-weight: bold;
+    background: rgba(1, 2, 1, 0.7);
+    padding: 0px;
+    padding-left: 15px;
+    border-radius: 5px;
+    padding-right: 15px;
+    font-size: 18px;
+    opacity: 0.9;
+    vertical-align: center;
+    margin: auto;
+    color: white;
+    z-index: 300;
+    border: white 1px;  
+}
+.minimize-leaderboard {
+  display: none;
+}
 @media screen and (max-width: 800px) {
   #new-back-btn3 {
     top: 38px;
@@ -2083,13 +2051,17 @@ function onPlayerReady2(event) {
     width: 300px;
     margin-left: -150px;
   }
+  .card-update {
+    display: none;
+  }
+  .minimize-leaderboard {
+    display: block;
+  }
 }
 #spinner {
     position: fixed;
     top: 50%;
     left: 50%;
-    /*-webkit-transform: translate(-50%, -50%);*/
-    /*transform: translate(-50%, -50%);*/
     margin-left: -100px;
     margin-top: -92.5px;
     z-index: 100;
@@ -2108,7 +2080,6 @@ function onPlayerReady2(event) {
   height: 100vw;
   position: fixed;
   background: rgba(0, 0, 0, 0.50);
-  /*pointer-events: none;*/
 }
 #svg-spinner {
   height: 80px;
@@ -2117,12 +2088,8 @@ function onPlayerReady2(event) {
     top: 8.5%;
     left: 50%;
     margin-left: -40px;
-    /*-webkit-transform: translate(-50%, -50%);*/
-    /*transform: translate(-50%, -50%);*/
     z-index: 100;
     display: none;
-    /*display: none;*/
-
 }
 #times-up-div {
   margin-top: 55%;
@@ -2164,23 +2131,19 @@ function onPlayerReady2(event) {
 .user-name-score {
   float: right;
   font-size: 14px;
-  /*line-height: 14px;*/
   line-height: 27px;
-  /*margin-bottom: -3px;*/
-  /*margin-top: 3px;*/
-  /*margin-right: 0;*/
 }
 
 #new-back-btn9 li:not(:first-child) {
+  border-top: thin solid rgb(255, 255, 255);
+}
+#new-back-btn-lb li:not(:first-child) {
   border-top: thin solid rgb(255, 255, 255);
 }
 #new-back-btn10 .li-class2:not(:last-child) {
   border-bottom: thin solid rgba(255, 255, 255, 0.5);
 }
 
-#new-back-btn9 .li-class {
-  display: none;
-}
 .li-class {
   display: none;
 }
@@ -3042,6 +3005,7 @@ queryWithout = "TseEGOmBL_o"
           document.getElementById("seventh-card").style.display = 'none';
                   // document.getElementById("surround-spinner").style.display = 'none';
                   document.getElementById("svg-spinner").style.display = 'none';
+          document.getElementById("over-10-span").style.display = "none";
                   // document.getElementById("vid-bac").style.pointerEvents = 'auto';
                   console.log('PointerEventsNowAUto')
           // round_total = 5
@@ -3374,32 +3338,11 @@ function makeaguess() {
   //   ding.play();
   // }
   if (distance_between != 0) {
-    var redmarkerIcon = new L.Icon({
-      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    });
-    var greenmarkerIcon = new L.Icon({
-      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    });
     var redmarkerIcon = L.ExtraMarkers.icon({
       icon: 'fa-times',
       markerColor: globalcolor,
       prefix: 'fa'
     });
-    // var redmarkerIcon = L.ExtraMarkers.icon({
-    //   icon: 'fa-times',
-    //   markerColor: 'red',
-    //   prefix: 'fa'
-    // });
     var greenmarkerIcon = L.ExtraMarkers.icon({
       icon: 'fa-check',
       markerColor: 'green',
