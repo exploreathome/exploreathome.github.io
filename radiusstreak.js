@@ -81,7 +81,7 @@ function mapmaker() {
     }
     document.getElementById('main-button').style.display='none'
   map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
