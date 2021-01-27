@@ -10,8 +10,8 @@ var socket;
 var audio_play = new Audio();
 // var group;
 // Make connection
-// var socket = io.connect('http://localhost:5000');
-var socket = io.connect("https://testapp150.herokuapp.com/");
+var socket = io.connect('http://localhost:5000');
+// var socket = io.connect("https://testapp149.herokuapp.com/");
 var hostornot = false;
 // var socket = io.connect('http://testapp149.herokuapp.com/');
 window.addEventListener("focus", () => socket.connect());
@@ -318,6 +318,7 @@ socket.on('start-game-notify', function(data){
     return second[2] - first[2];
   });
   console.log('MATCHED ITEMS PLAYER INFO')
+  pre_pinfoobj = items
   const pinfoobj = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   console.log(pinfoobj)
@@ -327,6 +328,12 @@ socket.on('start-game-notify', function(data){
       document.getElementsByClassName("li-circles")[ione].style.backgroundColor = pinfoobj[ione][3];
       console.log("COLORS HELP")
       gamenotified = 1;   
+  }
+  if(pre_pinfoobj.length > 10) {
+    document.getElementById("li-class-and-others").style.display = "block";
+    document.getElementById("and-others").innerHTML = "And " + String(pre_pinfoobj.length - 10) + " others..";
+  } else {
+    document.getElementById("li-class-and-others").style.display = "none";
   }
     // for (var key in player_info) {
     //   key_name = key
@@ -408,42 +415,47 @@ socket.on('finished-guessing', function(data){
     console.log(transmit_json[key][2])
     return [key, transmit_json[key][0], transmit_json[key][2], transmit_json[key][3], transmit_json[key][4], transmit_json[key][5]];
   });
+  pre_new_obj2 = items
   items.sort(function(first, second) {
     return second[1] - first[1];
   });
-  console.log('MATCHED ITEMS')
   const new_obj = items.slice(0, 10);
-  // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   console.log(new_obj)
-  // var coolbobclasses = startElem.getElementsByClassName("coolbob29");
   for (var p = 9; p--;) {
     document.getElementsByClassName("br-tag")[p].style.display = "none";
   }
-  for(let obj_i = 0; obj_i < new_obj.length; obj_i++) {
-    // console.log()
-    // if(new_obj[obj_i][3] != null) {
+  obj_length = new_obj.length;
+  if(pre_new_obj2.length > 10) {
+    obj_length = 10;
+    document.getElementById("li-class-and-others").style.display = "block";
+    document.getElementById("and-others").innerHTML =  "And " + String(pre_new_obj2.length - 10) + " others..";
+  } else {
+    document.getElementById("li-class-and-others").style.display = "none";
+  }
+  pointed_right = 0;
+  for(let obj_i = 0; obj_i < obj_length; obj_i++) {
     document.getElementsByClassName("br-tag")[obj_i].style.display = "block";
     document.getElementsByClassName("coolbob29")[obj_i].style.display = "block";
     console.log(String(new_obj[obj_i][1]))
     if(String(new_obj[obj_i][1] == 'null')) {
-      console.log('Hey!')
     }
-    // console.log()
     if(String(new_obj[obj_i][1]) != "0" && String(new_obj[obj_i][1]) != 'null') { 
-    console.log('Hey2!')
-    document.getElementsByClassName("upvote-downvote")[obj_i].innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(new_obj[obj_i][1])
-    if(String(new_obj[obj_i][2]) != currentusername) {
-      document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+      document.getElementsByClassName("upvote-downvote")[obj_i].innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(new_obj[obj_i][1])
+      if(String(new_obj[obj_i][2]) != currentusername) {
+        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+      } else {
+        pointed_right = 1;
+        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+      }
     } else {
-      document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
-    }
-    }else{
-    console.log('this is running1234')
-    document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
-    document.getElementsByClassName("upvote-downvote")[obj_i].innerHTML = "<i class='fa fa-caret-down' aria-hidden='true' style='margin-right: 4px; color: red;'></i><span style='color: red;'>" + String(0) + "</span>"
-    document.getElementsByClassName("br-tag")[obj_i].style.display = "block";
-    document.getElementsByClassName("coolbob29")[obj_i].style.display = "block";
-    document.getElementsByClassName("upvote-downvote")[obj_i].style.display = "block";
+      document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
+      document.getElementsByClassName("upvote-downvote")[obj_i].innerHTML = "<i class='fa fa-caret-down' aria-hidden='true' style='margin-right: 4px; color: red;'></i><span style='color: red;'>0</span>"
+      document.getElementsByClassName("br-tag")[obj_i].style.display = "block";
+      document.getElementsByClassName("coolbob29")[obj_i].style.display = "block";
+      document.getElementsByClassName("upvote-downvote")[obj_i].style.display = "block";
+      if(String(new_obj[obj_i][2]) == currentusername) {
+        pointed_right = 1
+      }
     }
     document.getElementsByClassName("upvote-downvote")[obj_i].style.display = "block";
     document.getElementsByClassName("user-name-ll")[obj_i].innerHTML = String(new_obj[obj_i][2])
@@ -455,24 +467,20 @@ socket.on('finished-guessing', function(data){
       document.getElementById("future-c").style.display = 'block';
       console.log('yes is host')
     }
-    // }
   }
-  // audio_play.src = 'static/roundEndSuccess.mp3'
-  // audio_play.play();
+  if(pointed_right == 0) {
+    console.log('testing')
+    if(String(transmit_json[socket.id][0]) != "0" && String(transmit_json[socket.id][0]) != 'null') {
+      document.getElementById("first-coolbob29").innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(transmit_json[socket.id][3])+"mi)</span>"
+      document.getElementById("first-upvote-downvote").innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(transmit_json[socket.id][0])
+    } else {
+    document.getElementById("first-coolbob29").innerHTML = String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
+    document.getElementById("first-upvote-downvote").innerHTML = "<i class='fa fa-caret-down' aria-hidden='true' style='margin-right: 4px; color: red;'></i><span style='color: red;'>0</span>"
+    }
+    document.getElementById("over-10-span").style.display = "block";
+  } 
   $("#seventh-card").slideDown(700);
   document.getElementById("id01").style.display = 'block';
-  // abc
-    //     if (map == undefined) {
-    //       console.log(' Map is actually undefined')
-    //   map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 3);
-    //     var differentLayers = {
-    //       "<b>1. </b>All English": gray_scale,
-    //       "<b>2.</b> Native Languages": osm_scale
-    //     };
-    //   L.control.layers(differentLayers).addTo(map);
-    // } else {
-    //   console.log(" is undefined ")
-    // }
   noguesscount = 0;
   realguesscount=0;
   var items = Object.keys(transmit_json).map(function(key) {
@@ -484,18 +492,48 @@ socket.on('finished-guessing', function(data){
     return second[4] - first[4];
   });
   console.log('MATCHED ITEMS-2')
+  pre_new_obj2 = items
   const new_obj2 = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   console.log(new_obj2)
+  onleaderboard = 0;
   for(let obj_i = 0; obj_i < new_obj2.length; obj_i++) {
     document.getElementsByClassName("user-name-ll")[obj_i].innerHTML = String(new_obj2[obj_i][2])
     document.getElementsByClassName("user-name-score")[obj_i].innerHTML = String(new_obj2[obj_i][4])
+    if(currentusername == new_obj2[obj_i][2]) {
+      onleaderboard = 1
+    }
+  }
+  if(onleaderboard == 0) {
+    document.getElementById("user-name-ll").innerHTML = String(transmit_json[socket.id][2])
+    document.getElementById("user-name-score").innerHTML = String(transmit_json[socket.id][4])  
+    document.getElementById("lb-circle").style.backgroundColor = String(transmit_json[socket.id][7])  
+    for(var i=0;i<pre_new_obj2.length;i++) {
+      if(socket.id == pre_new_obj2[i][0]) {
+        place = i+1
+        document.getElementById("lb-circle").innerHTML = place
+        break;
+      }
+    }
+    document.getElementById("new-back-btn-lb").style.display = "block"; 
+  } else {
+    document.getElementById("new-back-btn-lb").style.display = "none";     
   }
   console.log(new_obj2.length)
   obj2_length = new_obj2.length
   leaderboardcount(obj2_length)
   map.invalidateSize();
   temporary_lst = []
+  var greenMarker = L.ExtraMarkers.icon({
+    icon: 'fa-check',
+    markerColor: 'green',
+    prefix: 'fa'
+  });
+  var redMarker = L.ExtraMarkers.icon({
+    icon: 'fa-times',
+    markerColor: 'red',
+    prefix: 'fa'
+  });
   for (var key in transmit_json) {
     // console.log('KEY IN:')
     // console.log(transmit_json[key])
@@ -511,40 +549,21 @@ socket.on('finished-guessing', function(data){
     current_i += 1
 
     if(score_coord_info[1] != undefined && score_coord_info[1][0] != globallat) {
-      console.log('RANNNN')
-      //create markers and polyline
-  var redMarker = L.ExtraMarkers.icon({
-    icon: 'fa-times',
-    markerColor: 'red',
-    prefix: 'fa'
-  });
-  var greenMarker = L.ExtraMarkers.icon({
-    icon: 'fa-check',
-    markerColor: 'green',
-    prefix: 'fa'
-  });
-  console.log('Color: ' + String(score_coord_info[6]))
-  console.log(score_coord_info)
   var yellowMarker = L.ExtraMarkers.icon({
     icon: 'fa-user-times',
     markerColor: temp_color,
     prefix: 'fa'
   });
-    console.log(redMarker)
-    console.log('scorecoord')
-    console.log(score_coord_info)
+    if(guessmade == false) {         
+      marker1 = L.marker([random_lat_lon[0], random_lat_lon[1]], {icon: greenMarker})
+      markerArray.push(marker1);
+    }
     if(score_coord_info[1] != "away") {
-      console.log('THIS THING RAN!!')
     current_marker_push = L.marker(score_coord_info[1], {icon: yellowMarker}).bindPopup("<b>" + String(score_coord_info[2]) + "'s guess.</b><br>" + String(score_coord_info[3]) + "mi" + " <span style='font-size: 10.5px;'>(" + String(parseInt(parseInt(score_coord_info[3])*1.609)) + "km)</span>", {
   sticky: true,
   autoClose: false
-})
-    console.log('Marker Array Below Push')
+  })
     markerArray.push(current_marker_push);
-
-
-          marker1 = L.marker([random_lat_lon[0], random_lat_lon[1]], {icon: greenMarker})
-          markerArray.push(marker1);
     var group = L.featureGroup(markerArray).addTo(map);
       if(obj2_length < 3) {
         current_marker_push.openPopup();
@@ -566,8 +585,8 @@ socket.on('finished-guessing', function(data){
     } else {
           noguesscount++
           console.log('else initiated!!')
-          marker1 = L.marker([random_lat_lon[0], random_lat_lon[1]], {icon: greenMarker})
-          markerArray.push(marker1);
+          // marker1 = L.marker([random_lat_lon[0], random_lat_lon[1]], {icon: greenMarker})
+          // markerArray.push(marker1);
           var group = L.featureGroup(markerArray).addTo(map);
           try {
                       map.removeLayer(marker)
@@ -700,11 +719,7 @@ function loadpodium() {
   sum_of_scores = 0;
   for(let obj_p = 0; obj_p < pod_obj.length; obj_p++) {
     try {
-      document.getElementsByClassName("scoreboard__item")[obj_p].style.display = "block";
-      document.getElementsByClassName("scoreboard__title")[obj_p].innerHTML = pod_obj[obj_p][2]
-      // document.getElementsByClassName("js-number")[obj_p].innerHTML = String(pod_obj[obj_p][4])
-      console.log(document.getElementsByClassName("user-name-score")[obj_p].innerHTML)
-      document.getElementsByClassName("js-number")[obj_p].innerHTML = pod_obj[obj_p][4]
+      document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0'><div class='scoreboard__title'>" + String(pod_obj[obj_p][2]) + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
       sum_of_scores += parseInt(pod_obj[obj_p][4])
       if(obj_p == 0) {
         document.getElementsByClassName("podium-name-first")[0].innerHTML = "<i class='fas fa-medal' style='color: #ebc137;'></i> " + String(pod_obj[obj_p][2])
@@ -716,31 +731,11 @@ function loadpodium() {
         // document.getElementsByClassName("podium-num-second")[0].innerHTML = String(pod_obj[obj_p][4])
         document.getElementsByClassName("second-place")[0].style.display = "block"
         animateValue("podium-num-second", 0, pod_obj[obj_p][4], 2000, 0);
-
-    // jQuery({someValue: 10}).animate({someValue: parseInt(pod_obj[obj_p][4])}, {
-    // duration: 1500,
-    // easing:'swing', // can be anything
-    // step: function() { // called on every step
-    //     // Update the element's text with rounded-up value:
-    //     document.getElementsByClassName("podium-num-second")[0].innerHTML = String(this.someValue)
-    //     // $('.upvote-downvote')[obj_i].text("<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + this.someValue);
-    // }
-    // });
-
       } else if (obj_p == 2) {
         document.getElementsByClassName("podium-name-third")[0].innerHTML = String(pod_obj[obj_p][2])
         document.getElementsByClassName("podium-num-third")[0].innerHTML = String(pod_obj[obj_p][4])
         document.getElementsByClassName("third-place")[0].style.display = "block"
           animateValue("podium-num-third", 0, pod_obj[obj_p][4], 2000, 0);
-    // jQuery({someValue: 10}).animate({someValue: parseInt(pod_obj[obj_p][4])}, {
-    // duration: 1500,
-    // easing:'swing', // can be anything
-    // step: function() { // called on every step
-    //     // Update the element's text with rounded-up value:
-    //     document.getElementsByClassName("podium-num-third")[0].innerHTML = String(this.someValue)
-    //     // $('.upvote-downvote')[obj_i].text("<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + this.someValue);
-    // }
-    // });
 
       } else {
         console.log('else bud')
@@ -751,20 +746,26 @@ function loadpodium() {
   }
   sum = sum_of_scores
   console.log(sum_of_scores)
+  function find_suffix(i) {
+      var j = i % 10,
+          k = i % 100;
+      if (j == 1 && k != 11) {
+          return i + "st";
+      }
+      if (j == 2 && k != 12) {
+          return i + "nd";
+      }
+      if (j == 3 && k != 13) {
+          return i + "rd";
+      }
+      return i + "th";
+  }
   for(var count=0; count<10;count++) {
     console.log(count)
     if(String(document.getElementsByClassName("user-name-ll")[count].innerHTML) == myusername) {
       place = count+1
       document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
-      if(place == 1) {
-        place = "1st"
-      } else if (place == 2) {
-        place = "2nd"
-      } else if(place == 3) {
-        place = "3rd"
-      } else {
-        place = String(place) + "th"
-      }
+      place = find_suffix(place)
       console.log('THE PLACE: ' + String(place))
       document.getElementById('place-number').innerHTML = place
       break;
@@ -855,19 +856,14 @@ socket.on('update-guess', function(data){
   if(data['intentional_exit'] != true) {
   // mydict = {}
   // console.log(allowUpdate)
-  if(data["allowUpdate"] == 0) {
-    player_guessed_aud = new Audio('static/playerGuessed.mp3')
-  }
-  player_guessed_aud.play();
   if(data["socket_id"] != socket.id) {
     console.log('Im not the guesser :)')
     for(let num=0; num<10; num++) {
       console.log('num: ' + String(num))
       console.log(document.getElementsByClassName("user-name-ll")[num].innerHTML)
       console.log(data["nickname"])
-      if(document.getElementsByClassName("li-class")[num].style.display == 'block') {
+      if(document.getElementsByClassName("li-class")[num].style.display == 'block' && String(document.getElementsByClassName("user-name-ll")[num].innerHTML) == String(data["nickname"])) {
         console.log('is block!!')
-        if(String(document.getElementsByClassName("user-name-ll")[num].innerHTML) == String(data["nickname"])) {
           console.log('THEY ARE THE SAME U NOOB')
           mydict.push(num)
           document.getElementsByClassName("tooltip-text")[num].innerHTML = "I'm <b>"+ String(parseInt(data["distance"])) + "mi's</b> out. <span style='margin-left: 5px;'>👈</span>";
@@ -875,8 +871,6 @@ socket.on('update-guess', function(data){
            document.getElementsByClassName("tooltip-text")[num].innerHTML = "✅";           
           }
           document.getElementsByClassName("tooltip-text")[num].style.display = "block";
-        }
-      } else {
       }
     }
   }
