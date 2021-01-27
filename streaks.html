@@ -1789,7 +1789,7 @@ var country_str = localStorage.getItem("sovereignt-streak");
       function onPlayerReady(event) {
         event.target.playVideo();
         player.playVideo();
-        console.log('playing')
+        //console.log('playing')
       }
       var done = false;
       var started_playing = 0;
@@ -1807,7 +1807,7 @@ var country_str = localStorage.getItem("sovereignt-streak");
             aud.play();
             interactedyet = 0;
             interactedyet2 = 1;
-            console.log('runs')
+            //console.log('runs')
           } catch {
 
           }
@@ -1847,7 +1847,7 @@ var country_str = localStorage.getItem("sovereignt-streak");
         }
         if (event.data === 0) {
           // player.seekTo(official_video_seconds)
-          console.log('video ended')
+          //console.log('video ended')
           document.getElementById("player").style.opacity = "0";
         }
       }
@@ -1896,7 +1896,7 @@ function beginchallenge() {
   official_video_location = videolocations[official_video_number]
   official_video_seconds = official_video_id.substr(-6);
   official_video_id = official_video_id.substring(0,11);
-  console.log(official_video_number, official_video_location)
+  //console.log(official_video_number, official_video_location)
   if(localStorage.getItem("already_played").includes(official_video_id_nocut)) {
     lstlength = videolocations.length
     official_video_number = Math.floor(Math.random() * lstlength) + 1 
@@ -1905,7 +1905,7 @@ function beginchallenge() {
     official_video_location = videolocations[official_video_number]
     official_video_seconds = official_video_id.substr(-6);
     official_video_id = official_video_id.substring(0,11);
-    console.log(official_video_number, official_video_location)
+    //console.log(official_video_number, official_video_location)
     if(localStorage.getItem("already_played").includes(official_video_id_nocut)) {
       lstlength = videolocations.length
       official_video_number = Math.floor(Math.random() * lstlength) + 1 
@@ -1914,7 +1914,7 @@ function beginchallenge() {
       official_video_location = videolocations[official_video_number]
       official_video_seconds = official_video_id.substr(-6);
       official_video_id = official_video_id.substring(0,11);
-      console.log(official_video_number, official_video_location)   
+      //console.log(official_video_number, official_video_location)   
       if(localStorage.getItem("already_played").includes(official_video_id_nocut)) {
         lstlength = videolocations.length
         official_video_number = Math.floor(Math.random() * lstlength) + 1 
@@ -1923,7 +1923,7 @@ function beginchallenge() {
         official_video_location = videolocations[official_video_number]
         official_video_seconds = official_video_id.substr(-6);
         official_video_id = official_video_id.substring(0,11);
-        console.log(official_video_number, official_video_location)   
+        //console.log(official_video_number, official_video_location)   
       }   
     }   
   }
@@ -1968,9 +1968,9 @@ function beginchallenge() {
   return response.text();
 }).then(function (html) {
   // This is the HTML from our response as a text string
-  // console.log('CODE' + html);
+  // //console.log('CODE' + html);
   correct_coords = html
-  console.log(correct_coords)
+  //console.log(correct_coords)
   document.getElementById('original-c').style.display = "block";
   document.getElementById('future-c').style.display = "none";
   document.getElementById("present-z").style.display = "none";
@@ -1985,7 +1985,7 @@ function beginchallenge() {
   //   recursion_local_storage += 1
   //   if(recursion_local_storage > 50) {
   //     localStorage.setItem("already_played", "ALREADY_PLAYED_CLEARED")
-  //     console.log('over100')
+  //     //console.log('over100')
   //     location.reload();
   //   }
   //   beginchallenge()
@@ -1995,6 +1995,7 @@ function beginchallenge() {
     localStorage.setItem("ongoing", "false")
   }
   if(player.getDuration() <= 0) {
+    console.log('Zero Duration')
     beginchallenge()
     localStorage.setItem("ongoing", "false")    
   }
@@ -2009,7 +2010,7 @@ function beginchallenge() {
     history.go(0)
   }
   console.warn('Something went wrong.', err);
-  console.log('RECURSION HAPPENING')
+  //console.log('RECURSION HAPPENING')
   beginchallenge()
   });
   localStorage.setItem("country_video_plays", parseInt(localStorage.getItem("country_video_plays")) + 1);
@@ -2041,10 +2042,10 @@ var previous;
 var fetchCompletion;
 // var greenhighlight;
 function zoomToFeature(z) {
-    console.log(z.latlng)
+    //console.log(z.latlng)
     fetchCompletion = 0;
-    console.log('Fetch to ZERO')
-    console.log('fetch is 0')
+    //console.log('Fetch to ZERO')
+    //console.log('fetch is 0')
     if (greenhighlight !== null) {
         previous = greenhighlight
     }
@@ -2076,9 +2077,9 @@ function zoomToFeature(z) {
 // }).then(function (html) {
 //   // This is the HTML from our response as a text string
 //   potential_coords = html
-//     console.log(potential_coords)
-//   console.log(correct_coords)
-//   console.log('FETCH COMPLETE!')
+//     //console.log(potential_coords)
+//   //console.log(correct_coords)
+//   //console.log('FETCH COMPLETE!')
 //   fetchCompletion = 1;
 //   // submitted_country_code = html
 // }).catch(function (err) {
@@ -2086,8 +2087,8 @@ function zoomToFeature(z) {
 //   console.warn('Something went wrong.', err);
 // });
     // map.fitBounds(e.target.getBounds());
-    // console.log('z::')
-    // console.log(z.features)
+    // //console.log('z::')
+    // //console.log(z.features)
 }
 function resetHighlight(e) {
     // geojson.resetStyle(e.target);
@@ -2152,10 +2153,10 @@ L.geoJSON(countries, {
     //     dashArray: '',
     //     fillOpacity: 0.7
     // });
-  // console.log('Layer: ' + String(layer))
+  // //console.log('Layer: ' + String(layer))
   selected_country = layer.feature.properties.sovereignt;
   
-  // console.log(layer.)
+  // //console.log(layer.)
   document.getElementById("map-prompter").innerHTML = "<b>Selected:</b> " + String(selected_country) + "<i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;''></i>"
 }).addTo(map);
 geojson = L.geoJson(countries, {
@@ -2181,7 +2182,7 @@ geojson = L.geoJson(countries, {
   setTimeout(function(){ map.invalidateSize()}, 500);
   map.invalidateSize();
   map.on('click', function(e) {
-  // console.log(marker)
+  // //console.log(marker)
             // if (marker != undefined) {
               // map.removeLayer(marker);
         // };
@@ -2189,7 +2190,7 @@ geojson = L.geoJson(countries, {
     // marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
     // current_latitude = e.latlng.lat
     // current_longitude = e.latlng.lng
-    // console.log(e.latlng.lat)
+    // //console.log(e.latlng.lat)
 });
 // function addMarkerFunc(latit, longi) {
 //   var marker = L.marker([latit, longi]).addTo(map);
@@ -2214,7 +2215,7 @@ function makeaguess() {
   clearInterval(downloadTimer)
   fetchCompletion = 0
   if(potential_coords == null || fetchCompletion == 0) {
-  console.log('FETCH NOT COMPLETE 0')
+  //console.log('FETCH NOT COMPLETE 0')
   document.getElementById("spinner").style.display = "block";
   fetch('https://secure.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=coronabob').then(function (response) {
   // The API call was successful!
@@ -2222,8 +2223,8 @@ function makeaguess() {
 }).then(function (html) {
   // This is the HTML from our response as a text string
   potential_coords = html
-    console.log(potential_coords)
-  console.log(correct_coords)
+    //console.log(potential_coords)
+  //console.log(correct_coords)
 
   if (potential_coords == correct_coords) {
         document.getElementById("spinner").style.display = "none";
@@ -2242,10 +2243,10 @@ function makeaguess() {
               localStorage.setItem("sovereignt-streak-hs", cur_ls)
             }
   // } else {
-    // console.log('ITS NULL!')
+    // //console.log('ITS NULL!')
   // }
   } else {
-    console.log(' i ran')
+    //console.log(' i ran')
     document.getElementById("spinner").style.display = "none";
     greenhighlight.setStyle({
         weight: 4,
@@ -2256,10 +2257,10 @@ function makeaguess() {
         fillOpacity: 0.7
         });
         for (var i=0 ; i < countries.features.length ; i++) {
-          console.log('iterated...')
+          //console.log('iterated...')
           if(correct_coords.includes(countries.features[i].properties.iso_a2)) {
             correct_object = countries.features[i]
-            console.log(correct_object)
+            //console.log(correct_object)
             var sounds = new Audio('static/questionwrong.mp3');
             sounds.play();
             redhighlight = L.geoJSON(countries.features[i], {
@@ -2333,9 +2334,9 @@ function makeaguess() {
                 // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
   console.warn('Something went wrong.', err);
 });
-  console.log(potential_coords)
+  //console.log(potential_coords)
   // if (typeof lastname !== "undefined") {
-    console.log('NOT NULL!')
+    //console.log('NOT NULL!')
       document.getElementById('original-c').style.display = "none";
     document.getElementById('future-c').style.display = "block";
   } 
@@ -2370,10 +2371,10 @@ function makeaguess() {
       //   fillOpacity: 0.7
       //   });
       //   for (var i=0 ; i < countries.features.length ; i++) {
-      //     console.log('SECONDARY ITERATED...')
+      //     //console.log('SECONDARY ITERATED...')
       //     if(correct_coords.includes(countries.features[i].properties.iso_a2)) {
       //       correct_object = countries.features[i]
-      //       console.log(correct_object)
+      //       //console.log(correct_object)
       //       var sounds = new Audio('static/wrong.mp3');
       //       sounds.play();
       //       L.geoJSON(countries.features[i], {
@@ -2407,19 +2408,19 @@ function makeaguess() {
   // ofnumber = "null";
 }
 function shrinkupper() {
-  console.log('shrink called')
+  //console.log('shrink called')
   if (counter_upper == 0) {
     document.getElementById("scorekeeper").style.width = "70px";
     document.getElementById("scorekeeper").style.height = "70px";
     document.getElementById("actualscore").style.fontSize = "18px";
     counter_upper = 1;
-    console.log('0 called')
+    //console.log('0 called')
   } else {
     document.getElementById("scorekeeper").style.width = "100px";
     document.getElementById("scorekeeper").style.height = "100px";
     document.getElementById("actualscore").style.fontSize = "26px";    
     counter_upper = 0;
-    console.log('1 called')
+    //console.log('1 called')
   }
 }
 </script>
@@ -2443,7 +2444,7 @@ function shrinkupper() {
    <h4 id="map-prompter">Select a Country <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i></h4>
   </header>
   <div id="London" class="w3-container city" style="padding: 0 0 0 0;">
-           <div id="mapid" onload="L.Map.invalidateSize(); console.log('Hi')"></div>
+           <div id="mapid" onload="L.Map.invalidateSize(); //console.log('Hi')"></div>
   </div>
   <div class="w3-container w3-light-grey w3-padding" id="original-c">
    <a class="w3-button w3-right w3-green w3-border" 
@@ -2567,7 +2568,7 @@ localStorage.setItem("streaks-page-loaded", "true")
 <div id="information-div">
   <center>
 Having Fun? 🤷‍♂️ Try out City Guesser Multiplayer! <a style="margin: 7px; height: 20px; padding: 4px; padding-left: 7px; padding-right: 7px; background-color: #ff4742; color: white; font-family: 'Nunito', sans-serif;
- border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/multiplayer' onclick="console.log('played')">Play Online!</a>
+ border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/multiplayer' onclick="//console.log('played')">Play Online!</a>
 <span style="float: right; margin-right: 30px; font-size: 18px; cursor: pointer;" onclick="document.getElementById('information-div').style.display = 'none';" title="Close Tab">&times;</span>
 
 </center>
@@ -2577,7 +2578,7 @@ if (localStorage.getItem("already_played") === null) {
   localStorage.setItem("already_played", "abcd")
 }
 if (localStorage.getItem("multiplayer-opened") === null) {
-  console.log('null')
+  //console.log('null')
   document.getElementById("information-div").style.display = "block";
 }
 var screenwidth = window.matchMedia( "(max-width: 800px)" );
