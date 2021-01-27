@@ -708,7 +708,7 @@ function loadpodium() {
     return second[4] - first[4];
   });
   console.log('PODIUM ITEMS')
-  const pod_obj = items.slice(0, 10);
+  const pod_obj = items
   console.log(pod_obj)
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
   // console.log(new_obj)
