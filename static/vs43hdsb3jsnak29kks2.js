@@ -510,7 +510,7 @@ socket.on('finished-guessing', function(data){
 
     current_i += 1
 
-    if(score_coord_info[1][0] != globallat) {
+    if(score_coord_info[1] != undefined && score_coord_info[1][0] != globallat) {
       console.log('RANNNN')
       //create markers and polyline
   var redMarker = L.ExtraMarkers.icon({
