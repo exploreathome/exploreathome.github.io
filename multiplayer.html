@@ -3112,10 +3112,10 @@ queryWithout = "TseEGOmBL_o"
           // round_total = 5
           // round_present++
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 2);
+      map = L.map('mapid', {minZoom: 1, layers: [osm_scale, gray_scale]}).setView([42.35, -71.08], 2);
         var differentLayers = {
-          "<b>1.</b> Native Languages": osm_scale,
-          "<b>2. </b>All English": gray_scale
+          "<b>1. </b>All English": gray_scale,
+          "<b>2.</b> Native Languages": osm_scale
         };
       L.control.layers(differentLayers).addTo(map);
     }
