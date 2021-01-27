@@ -1994,6 +1994,10 @@ function beginchallenge() {
     beginchallenge()
     localStorage.setItem("ongoing", "false")
   }
+  if(player.getDuration() <= 0) {
+    beginchallenge()
+    localStorage.setItem("ongoing", "false")    
+  }
   current_storage = localStorage.getItem("already_played")
   localStorage.setItem("already_played", current_storage + " " + official_video_id_nocut)
   // correct_country_code = html
