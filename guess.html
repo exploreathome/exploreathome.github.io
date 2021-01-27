@@ -2166,16 +2166,16 @@ var markers;
 var osm_scale = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 })
-var gray_scale = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-})
+// var gray_scale = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+// })
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 3);
+      map = L.map('mapid', {minZoom: 1, layers: [osm_scale]}).setView([42.35, -71.08], 3);
         var differentLayers = {
-          "<b>1. </b>All English": gray_scale,
-          "<b>2.</b> Native Languages": osm_scale
+          // "<b>1. </b>All English": gray_scale,
+          "<b>1.</b> Native Languages": osm_scale
         };
       L.control.layers(differentLayers).addTo(map);
     }
