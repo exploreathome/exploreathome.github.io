@@ -2467,7 +2467,7 @@ function shrinkupper() {
  </div>
 </div>
     </center>
-          <p id="new-back-btn" onclick="history.go(0)" type="button" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
+          <p id="new-back-btn" onclick="history.go(0)" class="back-btn-animation" style="z-index: 1;"><a style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
 <p id="new-back-btn2" onclick="player.loadVideoById({'videoId': official_video_id.substring(0,11), 'startSeconds': official_video_seconds, 'loop': 1, 'playsinline': 1, 'controls': 0, 'showinfo': 0, 'fs': 0, 'endSeconds': player.getDuration()-26});" class="back-btn-animation" style="z-index: 1;" title="Restart Video"><a style="cursor: pointer;"><i class="fa fa-refresh"></i></a></p>
 <p id="new-back-btn3" onclick="if(player.getCurrentTime() - 5 > official_video_seconds) {player.seekTo(player.getCurrentTime()-5)} else {player.seekTo(official_video_seconds)}" class="back-btn-animation" style="" title="Rewind 5 Secs"><a style="cursor: pointer;"><i class="fa fa-fast-backward" aria-hidden="true"></i>
 <p id="new-back-btn4" onclick="player.playVideo(); document.getElementById('new-back-btn4').style.display = 'none'; document.getElementById('new-back-btn3').style.display = 'block';" class="" style="z-index: 1;" title="Play Video"><a style="cursor: pointer;"><i class="fa fa-play" aria-hidden="true"></i>
