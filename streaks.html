@@ -2027,7 +2027,7 @@ var url ="convert.json";   //'https://www.geologycloud.tw/api/v1/zh-tw/Stratum?t
 
     var map = L.map('map').setView([24.42401, 118.33202], 12); 
 
-    var osm=new L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    var osm=new L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     subdomains:['mt0','mt1','mt2','mt3']
     }).addTo(map);
@@ -2125,7 +2125,7 @@ function invalidateSizeFunc(userinput) {
     }
     document.getElementById('main-button').style.display='none'
   map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
-L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(map);
