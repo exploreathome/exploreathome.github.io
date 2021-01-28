@@ -2182,6 +2182,7 @@ geojson = L.geoJson(countries, {
 });
 
   map.setMaxBounds(  [[-90,-180],   [90,180]]  )
+  $('.leaflet-control-attribution').hide()
   setTimeout(function(){ map.invalidateSize()}, 500);
   map.invalidateSize();
   map.on('click', function(e) {
