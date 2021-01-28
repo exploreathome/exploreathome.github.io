@@ -3112,10 +3112,10 @@ queryWithout = "TseEGOmBL_o"
           // round_total = 5
           // round_present++
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [osm_scale, gray_scale]}).setView([42.35, -71.08], 2);
+      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 2);
         var differentLayers = {
-          "<b>1. </b>All English": gray_scale,
-          "<b>2.</b> Native Languages": osm_scale
+          "<b>1.</b> Native Languages": osm_scale,
+          "<b>2. </b>All English": gray_scale
         };
       L.control.layers(differentLayers).addTo(map);
     }
@@ -3238,8 +3238,9 @@ var first_time = 0;
 var map;
 var markers;
 var isMobile = false;
-var gray_scale = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+var gray_scale = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains:['mt0','mt1','mt2','mt3']
 })
 var osm_scale = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
