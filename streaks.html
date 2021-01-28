@@ -2027,8 +2027,10 @@ var url ="convert.json";   //'https://www.geologycloud.tw/api/v1/zh-tw/Stratum?t
 
     var map = L.map('map').setView([24.42401, 118.33202], 12); 
 
-    var osm=new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{ 
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+    var osm=new L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
 var geojson;
 
 function onEachFeature(feature, layer) {
@@ -2123,8 +2125,9 @@ function invalidateSizeFunc(userinput) {
     }
     document.getElementById('main-button').style.display='none'
   map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(map);
 L.geoJSON(countries, {
   style: function(feature) {
