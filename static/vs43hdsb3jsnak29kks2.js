@@ -724,19 +724,20 @@ function loadpodium() {
       if(obj_p == 0) {
         document.getElementsByClassName("podium-name-first")[0].innerHTML = "<i class='fas fa-medal' style='color: #ebc137;'></i> " + String(pod_obj[obj_p][2])
         // document.getElementsByClassName("podium-num-first")[0].innerHTML = document.getElementsByClassName("user-name-score")[0].innerHTML | pod_obj[obj_p][4]
-        animateValue("podium-num-first", 0, pod_obj[obj_p][4], 2000, 0);
+        document.getElementsByClassName("podium-num-first")[0].innerHTML = pod_obj[obj_p][4]
+        // animateValue("podium-num-first", 0, pod_obj[obj_p][4], 2000, 0);
         document.getElementsByClassName("first-place")[0].style.display = "block"
       } else if (obj_p == 1) {
         document.getElementsByClassName("podium-name-second")[0].innerHTML = String(pod_obj[obj_p][2])
         // document.getElementsByClassName("podium-num-second")[0].innerHTML = String(pod_obj[obj_p][4])
         document.getElementsByClassName("second-place")[0].style.display = "block"
-        animateValue("podium-num-second", 0, pod_obj[obj_p][4], 2000, 0);
+        // animateValue("podium-num-second", 0, pod_obj[obj_p][4], 2000, 0);
+        document.getElementsByClassName("podium-num-second")[0].innerHTML = pod_obj[obj_p][4]
       } else if (obj_p == 2) {
         document.getElementsByClassName("podium-name-third")[0].innerHTML = String(pod_obj[obj_p][2])
         document.getElementsByClassName("podium-num-third")[0].innerHTML = String(pod_obj[obj_p][4])
         document.getElementsByClassName("third-place")[0].style.display = "block"
-          animateValue("podium-num-third", 0, pod_obj[obj_p][4], 2000, 0);
-
+        document.getElementsByClassName("podium-num-third")[0].innerHTML = pod_obj[obj_p][4]
       } else {
         console.log('else bud')
       }
