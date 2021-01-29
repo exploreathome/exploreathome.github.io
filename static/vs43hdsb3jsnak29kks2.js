@@ -760,7 +760,7 @@ function loadpodium() {
       }
       return i + "th";
   }
-  for(var count=0; count<10;count++) {
+  for(var count=0; count<100;count++) {
     console.log(count)
     if(String(document.getElementsByClassName("user-name-ll")[count].innerHTML) == myusername) {
       place = count+1
