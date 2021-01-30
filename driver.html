@@ -695,7 +695,7 @@ a:hover {
   </li>
 <li class="cards__item" onclick="loadVideoWithId('OqfI_U78LKs?start=000001')" style="cursor: pointer;">
     <div class="card">
-      <div class="card__image lazyload" data-bgset="static/Florence.jpeg"></div>
+      <div class="card__image lazyload" data-bgset="static/florence.jpeg"></div>
       <div class="card__content">
         <div class="card__title">Florence 🇮🇹</div>
         <p class="card__text">Florence, Italy is famed for it's small streets and beautiful architecture. Experience it for yourself here!</p>
@@ -725,7 +725,7 @@ a:hover {
   </li>
   <!-- </div> -->
 </ul>
-<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-tree" aria-hidden="true"></i> Hey Driver! You've reached the end. Share it with a friend: <i class="fa fa-tree" aria-hidden="true"></i></h2>
+<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-car" aria-hidden="true"></i> If you enjoyed a drive, feel free to share us. <i class="fa fa-car" aria-hidden="true"></i></h2>
 <!-- ShareThis BEGIN -->
 <div class="sharethis-inline-share-buttons" style="margin-bottom: 1%;"></div>
 <!-- ShareThis END -->
@@ -1295,10 +1295,12 @@ queryWithout = "TseEGOmBL_o"
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        // if (event.data == YT.PlayerState.PLAYING && !done) {
-        //   setTimeout(stopVideo, 6000);
-        //   done = true;
-        // }
+        if (event.data == YT.PlayerState.PAUSED) {
+            player.playVideo();
+        }
+        if (event.data === 0) {
+          document.getElementById("player").style.opacity = "0";
+        }
       }
       function stopVideo() {
         player.stopVideo();
