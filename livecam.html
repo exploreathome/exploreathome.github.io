@@ -69,7 +69,6 @@ p {
 /*#i-am-lazy {
   display: none;
 }
-
 #i-am-lazy-2 {
   display: none;
 }*/
@@ -404,7 +403,7 @@ a:hover {
 
 <ul class="cards">
 
-  <li class="cards__item" onclick="loadVideoWithId('hBnhSxlL9So')" style="cursor: pointer;">
+  <li class="cards__item" onclick="loadVideoWithId('m6wk49_EtPc')" style="cursor: pointer;">
     <div class="card">
       <div class="card__image lazyload" data-bgset="static/amsterdampic.jpeg"></div>
       <div class="card__content">
@@ -589,7 +588,7 @@ a:hover {
       </div>
     </div>
   </li> -->
-  
+
 <!--   <li class="cards__item" onclick="loadVideoWithId('JLJGvIRRWkw')" style="cursor: pointer;">
     <div class="card">
       <div class="card__image lazyload" data-bgset="static/montreal_canada.jpeg"></div>
@@ -661,7 +660,7 @@ a:hover {
     </div>
   </li> -->
 
-  
+
   <li class="cards__item" onclick="loadVideoWithId('-HAi_5IIAYg')" style="cursor: pointer;">
     <div class="card">
       <div class="card__image lazyload" data-bgset="static/deerfield-beach.jpeg"></div>
@@ -726,7 +725,7 @@ a:hover {
   </li> -->
   <!-- </div> -->
 </ul>
-<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-tree" aria-hidden="true"></i> Hey Voyager! You've reached the end. Share it with a friend: <i class="fa fa-tree" aria-hidden="true"></i></h2>
+<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;">Continue exploring with us. <i class="fa fa-globe" aria-hidden="true"></i></h2>
 <!-- ShareThis BEGIN -->
 <div class="sharethis-inline-share-buttons" style="margin-bottom: 1%;"></div>
 <!-- ShareThis END -->
@@ -922,28 +921,53 @@ Hi
                0 3px 0 rgba(1, 96, 116, 1);*/
   text-transform: uppercase;
 }
+@keyframes live-animation {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+
+  72% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
+}
+.back-btn2 {
+  position: fixed;
+  top: 0.4%;
+  right: 0.5%;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 2px 0 black;
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 676px) {
   .back-btn {
     position: fixed;
-    font-weight: bold;
     top: 0;
     left: 1.2%;
-    color: white;
     font-size: 10px;
     text-shadow:
         0.13em 0 rgba(1, 96, 116, 1),
         0 0.13em rgba(1, 96, 116, 1),
         -0.13em 0 rgba(1, 96, 116, 1),
         0 -0.13em rgba(1, 96, 116, 1);
-/*    text-shadow: -2px -2px 0 rgba(1, 96, 116, 1),
-                   2px -2px 0 rgba(1, 96, 116, 1),
-                   -2px 2px 0 rgba(1, 96, 116, 1),
-                   2px 2px 0 rgba(1, 96, 116, 1),
-                   -3px 0 0 rgba(1, 96, 116, 1),
-                   3px 0 0 rgba(1, 96, 116, 1),
-                   0 -3px 0 rgba(1, 96, 116, 1),
-                   0 3px 0 rgba(1, 96, 116, 1);*/
-    text-transform: uppercase;  }
+    }
+    .back-btn2 {
+  position: fixed;
+  top: 0;
+  right: 1.2%;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 0 black;
+  text-transform: uppercase;
+}
 }
 </style>
     <!-- <input type="hidden" id="refresh" value="no"> -->
@@ -972,6 +996,7 @@ Hi
             </nav>
         </div> -->
       <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.back();" style="cursor: pointer;">Go Back <i class="fa fa-arrow-left"></i></a></p>
+      <p class="back-btn2" style="z-index: 900000000000000000000000000;">LIVE <span style="animation: live-animation 2s infinite; border-radius: 30px;">🔴</span></p>
   <div class="video-foreground">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
