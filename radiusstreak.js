@@ -83,7 +83,7 @@ function mapmaker() {
   map = L.map('mapid', {minZoom: 1}).setView([42.35, -71.08], 3);
 L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    subdomains:['mt0','mt1','mt2','mt3']
+    subdomains:['mt0']
 }).addTo(map);
 
 
