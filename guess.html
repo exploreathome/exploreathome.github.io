@@ -103,28 +103,6 @@ p {
   vertical-align: middle;
 }
 
-.inner-header {
-  height:65vh;
-  width:100%;
-  margin: 0;
-  padding: 0;
-}
-
-.flex { /*Flexbox for containers*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.wasf {
-  position:relative;
-  width: 100%;
-  height:15vh;
-  margin-bottom:-7px; /*Fix for safari gap*/
-  min-height:100px;
-  max-height:150px;
-}
 
 .content {
   position:relative;
@@ -1533,79 +1511,6 @@ Loading..
     transition: transform .5s ease;
 }
 
-.nav-link:hover::after{
-    transform: scaleX(1);
-}
-
-#nav-cta{
-    display: inline-block;
-    background-color: #fff;
-    color: #313131;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    transition: background-color .5s ease;
-}
-
-#nav-cta:hover{
-    background-color: #d3d3d3;
-}
-
-
-/*Apply styles after scroll*/
-.scrolling-active{
-    background-color: #fff;
-    box-shadow: 0 3px 1rem rgba(0,0,0,.1);
-}
-
-.scrolling-active .nav{
-    height: 6.6rem;
-}
-
-.scrolling-active .nav a{
-    color: #313131;
-}
-
-.scrolling-active #nav-cta{
-    background-color: #313131;
-    color: #fff;
-}
-
-.scrolling-active #nav-cta:hover{
-    background-color: #151515;
-}
-
-.scrolling-active .nav-link::after{
-    background-color: #313131;
-}
-
-/*Apply styles after scroll end*/
-
-
-/* Hero Demo Content*/
-.hero{
-    width: 100%;
-    height: 100vh;
-    background: url("mountain-large.jpg") center no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-.hero::after{
-    content: '';
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.5);
-}
-
-.demo-content{
-    width: 100%;
-    height: 200vh;
-    background-color: #fff;
-}
-/* Hero end*/
 </style>
 <script type="text/javascript">
 var interactedyet = 0;
