@@ -2063,7 +2063,7 @@ var gray_scale = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 3);
+      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 2);
         var differentLayers = {
           "<b>1.</b> Native Languages": osm_scale,
           "<b>2. </b>All English": gray_scale
@@ -2130,7 +2130,7 @@ function continueGame() {
   document.getElementById("player").style.opacity = "1";
     // map.removeLayer(markers);
     // markerArray.clearLayers();
-    map.setView([42.35, -71.08], 3);
+    map.setView([42.35, -71.08], 2);
     for(i=0;i<markerArray.length;i++) {
     map.removeLayer(markerArray[i]);
     }
