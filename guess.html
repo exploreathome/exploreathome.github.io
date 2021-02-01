@@ -14,8 +14,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="jquery.lazy.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
@@ -28,11 +26,6 @@
  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
-  <!-- Bootstrap core CSS -->
-  <link href="static/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="static/css/mdb.min.css" rel="stylesheet">
     <link rel="manifest" href="static/site.webmanifest">
     <meta property="og:title" content="City Guesser - Can you guess what city you're in?" />
     <meta property="og:image" content="https://virtualvacation.us/static/beachvacation.jpg" />
@@ -46,9 +39,7 @@
 
   gtag('config', 'UA-153516768-4');
 </script>
-<!-- <script data-ad-client="ca-pub-2104426707154383" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-<!--     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script> -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+
 </head>
 
 <style>
@@ -95,20 +86,14 @@ p {
   background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
   color:white;
 }
-.logo {
+/*.logo {
   width:50px;
   fill:white;
   padding-right:15px;
   display:inline-block;
   vertical-align: middle;
-}
+}*/
 
-.inner-header {
-  height:65vh;
-  width:100%;
-  margin: 0;
-  padding: 0;
-}
 
 .flex { /*Flexbox for containers*/
   display: flex;
@@ -117,14 +102,6 @@ p {
   text-align: center;
 }
 
-.wasf {
-  position:relative;
-  width: 100%;
-  height:15vh;
-  margin-bottom:-7px; /*Fix for safari gap*/
-  min-height:100px;
-  max-height:150px;
-}
 
 .content {
   position:relative;
@@ -134,10 +111,6 @@ p {
 }
 
 @media (max-width: 768px) {
-  .wasf {
-    height:40px;
-    min-height:40px;
-  }
   .content {
     height:30vh;
   }
@@ -163,15 +136,6 @@ p {
 
 
 </style>
-
-
-<script>
-// enableScroll()
-// history.pushState(null, null, document.URL);
-// window.addEventListener('popstate', function () {
-//     history.pushState(null, null, document.URL);
-// });
-</script>
 
 
 
@@ -712,10 +676,10 @@ a:hover {
         <div class="col-6 col-md">
           <h5 style="font-weight: bold;">New Releases <i class="fa fa-street-view" aria-hidden="true"></i></h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="https://virtualvacation.us/explore">Easy Expedition <i class="fa fa-globe" aria-hidden="true"></i></a></li>
-            <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/streaks">Streaks <i class="fa fa-trophy" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/multiplayer">Multiplayer <i class="fa fa-users" aria-hidden="true"></i></a></li>
             <li><a class="text-muted" href="https://virtualvacation.us/walk">Walking Tour <i class="fa fa-users" aria-hidden="true"></i></a></li>
-            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Footage Tour <i class="fa fa-camera" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
           </ul>
         </div>
         <div class="col-6 col-md">
@@ -740,7 +704,7 @@ a:hover {
           <h5 style="font-weight: bold;">About <i class="fa fa-info" aria-hidden="true"></i></h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-muted" href="mailto:contactvirtualvacation@gmail.com">Contact</a></li>
-            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Our Mission</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/about">About Us</a></li>
             <li><a class="text-muted" href="https://virtualvacation.typeform.com/to/VAdncnhj">Submit Video</a></li>
             <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Terms</a></li>
           </ul>
@@ -1500,6 +1464,8 @@ Loading..
 <script type="text/javascript">
 var interactedyet = 0;
 var interactedyet2 = 0;
+var coordinates = [42.35, -71.08]
+var zoom_level = 2
 if (localStorage.getItem("multiplayer-loaded") === null) {
   document.getElementById("annc-bar2").style.display = "block";
 } else if (localStorage.getItem("streaks-page-loaded") === null) {
@@ -1761,7 +1727,7 @@ queryWithout = "TseEGOmBL_o"
           console.log('USA RUN')
           usa_lst = ["WruNXhtEbdM?start=000113","WruNXhtEbdM?start=000113", "UtcZHutaI4g?start=000300", "K92ipWWn2Hs?start=000001", "ymuN7-3MklE?start=000000","zd6BYcjNMYw?start=000303", "YcjA-aig2Rk?start=000029", "U5I0o2JTtug?start=000077", "I8YGf7d7GsA?start=000056", "fgbFdV7yL_o?start=000007", "Fhg8tvyJbAo?start=000039", "4xgbnavlloM?start=000040", "7NpUMxETJa8?start=000268", "JB0A8Me8EKk?start=000001", "QpepXSfYEBk?start=000011", "ww-LFK1-GRg?start=000002", "AXgg0GSp2oE?start=000030", "2sXWZaGG7RM?start=000010", "ZovWiY9xJME?start=000018", "mUfVm5IQXBw?start=000030", "3AL8Egrtyz4?start=000040", "GkypZ2RMNMc?start=000020", "Nj5caHcD-_E?start=000020", "jCcyiF2Uxl4?start=000020", "pWD_6BlMWLA?start=000020", "RIQ35VH6Dh0?start=000015", "oW2fFqhhM74?start=000013", "GjIkrB4lpc8?start=000013", "DSMWWvA_aYw?start=000148", "0XQauZHzVx4?start=000045", "c0GlCjZbVzk?start=000042", "iNUoL1K-VY4?start=000012", "NDED6BcBr-s?start=000021", "VRmh2gGeBiE?start=000037", "rpR463QSL_I?start=000009", "3N0oVxBrGuU?start=000001", "jSRRaMSRZOE?start=000060", "dQcRSXgfjis?start=000005", "3WLRRAJdpnE?start=000021", "3WLRRAJdpnE?start=000380", "8fRVUzNEOrM?start=000025", "hamFV1rwJxo?start=000244", "hamFV1rwJxo?start=000021", "HZAiu2B9yA0?start=000060", "uLUriQM4NN0?start=000010", "Ze94WzmmFY0?start=000004", "Ze94WzmmFY0?start=000170", "TEQCi6LU-4g?start=000021", "TEQCi6LU-4g?start=000661", "B84UXGFVl6E?start=000030", "B84UXGFVl6E?start=000710", "B84UXGFVl6E?start=000241", "N6KWvkqVgEI?start=000071", "N6KWvkqVgEI?start=000216", "N6KWvkqVgEI?start=000421", "4qX4xZS6Wj0?start=000009", "4qX4xZS6Wj0?start=000341", "4qX4xZS6Wj0?start=000641", "VBXXBnpO4TM?start=000024", "SsymLcBMi3s?start=000060", "vsiGQpDbbz8?start=000017", "vsiGQpDbbz8?start=000508", "tTUwmi0olXI?start=000020", "tTUwmi0olXI?start=000233", "Jf3MrsUej98?start=000028", "I0Gq41AjiBc?start=000001", "181Tfbzs84k?start=000009", "181Tfbzs84k?start=000500", "gR7TsoSbaXk?start=000034", "gR7TsoSbaXk?start=000400", "yHCpq9ls_As?start=000060", "yHCpq9ls_As?start=000400", "mGyc_dr_JWk?start=000005", "Md7UC97MbNA?start=000060", "Uey_mvR3kSI?start=000013", "iWvr7ySTjvY?start=000095", "f4gCduK2lH8?start=000014", "Vc5PnKohfas?start=000015", "oN2WYWHoul0?start=000015", "zt4sWtdOthU?start=000020", "hHA47enXuQc?start=000016", "rny9bLHRN4Y?start=000019", "t-PbhlgkakI?start=000009", "rANRmPPPxGU?start=000001", "rANRmPPPxGU?start=000400", "rANRmPPPxGU?start=000940", "1o5dfinDZS4?start=000001", "1o5dfinDZS4?start=000130", "vWD8H8iXBXE?start=000004", "vWD8H8iXBXE?start=000330", "7JsOhtl_zG4?start=000060", "7JsOhtl_zG4?start=000350", "AAd6JwWNfvo?start=000020", "4WcMFwU6EpE?start=000012", "PkuPVxZnZUs?start=000120", "q30k45IlYVQ?start=000231", "_D5ljSxYC6o?start=000010", "_D5ljSxYC6o?start=000500", "g3ZySpbllTQ?start=000005", "Fhg8tvyJbAo?start=000004", "Fhg8tvyJbAo?start=002780", "SCudGb7z0OE?start=000068", "gJ66mod4ouY?start=000001", "uJAhx-Ha--A?start=000004", "PZYPYZWfNg4?start=000003", "F5HZQ6P_YsQ?start=000072", "qeM7cxGLg8Y?start=000019", "IygYryXJ0MI?start=000035", "IYfzyG88xMY?start=000100", "OD7meugDRjY?start=000012", "Qsz5m1nl4jM?start=001202", "I7OHMNjWfqw?start=000015", "TN6yafK9u7Q?start=000020", "UQ7rxNfdmkw?start=000010", "GYBeBWkqZ0M?start=000030", "djJ4N-Y7hZc?start=000002", "d1p4Y4N6dYo?start=000005", "4-cwk3DZP3w?start=000261", "74fvGvcqUhs?start=000011", "W_TbkruGZRc?start=000013", "q2uaQww6T3w?start=000030", "eb2_uTiIJ7c?start=000040", "PGYJvzFtn0M?start=000001", "RSa1s-grI9A?start=000009", "R7lirHnNy84?start=000010", "jGPm3l9qkJQ?start=000001", "bdDtsRh_C1g?start=000002", "kYbesfOO4bE?start=000010", "mz97fPJfFvM?start=000008", "EYp8AcMxrTA?start=000050", "eXQwfsvCzeA?start=000055", "M2Xqdk_gA8w?start=000012", "rfxNHhOYze8?start=000003", "nWQ8QlLrb3U?start=000001", "sZ42BwugrRU?start=000093", "Xly3YJImi2A?start=000040", "xEPIde0qhg0?start=000023", "lrdvh-DfBW0?start=000020", "14JALDJKYko?start=000070", "rXCVThalXsk?start=000002", "XCDyHduQWiI?start=000003", "KOniYvMausM?start=000017", "N1cI697GXt0?start=000002", "x5_Pr0p-0tI?start=000001", "Z0F6NcfcRdU?start=001970"]
           usa_lat_lon = [[40.7580, -73.9855],[40.7580, -73.9855], [37.7897, -122.3972], [37.7897, -122.3972], [37.793660, -122.403014], [37.8199, -122.4783], [40.6892, -74.0445], [37.762256, -122.435177], [38.6247, -90.1848], [43.6426, -79.3871], [33.984763, -118.471835], [21.3069, -157.8583], [34.011281, -118.495102], [42.357113, -71.071741], [38.903159, -77.039775], [38.916527, -77.201024], [45.521962, -122.678228], [45.4997, -122.4310], [45.0051, -122.7831], [44.938753, -123.038275], [45.210015, -123.197393], [45.300316, -122.976765], [45.356076, -122.840742], [45.382163, -122.761511], [45.519733, -122.678061], [37.335711, -121.886309], [38.5766, -121.4932], [43.4799, -110.7624], [41.133550, -104.816074], [32.785386, -96.799413], [29.424709, -98.488525], [40.730209, -73.992533], [25.776288, -80.187334], [40.6413, -73.7781], [41.9742, -87.9073], [33.6407, -84.4277], [33.759415, -84.387670], [30.422107, -84.293102], [36.1147, -115.1728], [36.1147, -115.1728], [36.1147, -115.1728], [37.769912, -122.447572], [37.770274, -122.444657], [39.531867, -119.815336], [43.658001, -70.257072], [44.260289, -72.576222], [44.260874, -72.578897], [45.521734, -122.692957], [45.518897, -122.680926], [45.531077, -122.653685], [45.530128, -122.661565], [45.530777, -122.657502], [47.609711, -122.340970], [47.609559, -122.338989], [47.610237, -122.336727], [30.282061, -81.389363], [30.315016, -81.394784], [30.322196, -81.395789], [38.2532, -85.7538], [42.955692, -85.672610], [41.894996, -87.624357], [41.888996, -87.624385], [21.313024, -157.861629], [21.311391, -157.862271], [21.276675, -157.826222], [21.309927, -157.861102], [61.219515, -149.891288], [61.217588, -149.895359], [58.300543, -134.405572], [58.298532, -134.403139], [55.341180, -131.646621], [55.342487, -131.648519], [40.709954, -73.962473], [33.154567, -117.350423], [33.819365, -116.546696], [33.754739, -118.121942], [33.659799, -117.999351], [37.795937, -122.407711], [37.8080, -122.4177], [37.7879, -122.4075], [32.747586, -117.160499], [41.2132, -124.0046], [40.759154, -73.984944], [41.879018, -87.640483], [41.881828, -87.640433], [41.885732, -87.635396], [41.258151, -95.932550], [41.258151, -95.932550], [41.255361, -95.932964], [41.255548, -95.929580], [40.793684, -73.958085], [40.793614, -73.959318], [40.614048, -73.981412], [40.725035, -73.999375], [40.818254, -73.960735], [40.783598, -73.947645], [37.540323, -77.432920], [37.542528, -77.436494], [35.090720, -106.660374], [33.984582, -118.471681], [34.009245, -118.497565], [34.042606, -118.257499], [36.160739, -86.777807], [36.149194, -86.812988], [35.229130, -80.839371], [35.225655, -80.845213], [39.099760, -94.577968], [35.139683, -90.052123], [31.760667, -106.491447], [35.776918, -78.638255], [35.770581, -78.722980], [37.443515, -122.169681], [37.421882, -122.083764], [44.986719, -93.275413], [29.954086, -90.069718], [33.809653, -117.918978], [32.300558, -90.191024], [37.427309, -122.171013], [42.051562, -70.185555], [28.538624, -81.379126], [27.766268, -82.631770], [35.746619, -78.809957], [35.794894, -78.699363], [39.950349, -75.191782], [37.604379, -112.156528], [34.748948, -92.276347], [32.225717, -110.967128], [37.459888, -122.106177], [37.390001, -122.081569], [27.965646, -82.797204], [27.940431, -82.459961], [39.953611, -75.157286], [37.582312, -81.537124], [37.775448, -81.192638], [39.631791, -79.956654], [39.187117, -106.817918], [39.642099, -106.377504], [37.810765, -122.262454], [42.051953, -70.185578], [40.517568, -74.238840], [40.503156, -74.238446], [40.719718, -74.042467], [37.788050, -122.406703], [32.707710, -117.160113], [34.072204, -118.442648]]
-
+            zoom_level = 3
         }
         if (input_id == "wor") {
           ranint = 30
@@ -1786,12 +1752,15 @@ queryWithout = "TseEGOmBL_o"
           //  DO CAN DO CAN DO CAN DO CAN
           // usa_lat_lon = [[45.5035, -73.5685], [45.5035, -73.5685], [43.6548, -79.3883], [43.6426, -79.3871], [43.638664112, -79.371331848], [49.272551, -123.133049], [49.272551, -123.133049], [43.651070, -79.347015], [49.2820, -123.1171], [49.2820, -123.1171], [49.275917, -123.114778], [49.2754, -123.1204], [49.273417, -123.113333], [49.280278, -123.118028], [48.426556, -123.367389], [48.426556, -123.367389], [48.426556, -123.367389], [48.4122, -123.3628], [48.4122, -123.3628], [49.326833, -122.950556], [45.5101, -73.5635], [51.10067, -114.2365], [51.0478, -114.0593], [53.5456, -113.4995], [53.5462, -113.4972], [53.5458, -113.4946], [49.8943, -97.1388], [49.898364, -97.218484], [49.8826, -97.1720], [42.9849, -81.2453], [51.5039, -0.1439]]
           usa_lat_lon = [[45.5035, -73.5685], [45.502633, -73.570384], [43.656037, -79.382201], [43.642576, -79.387087], [43.674812, -79.388507], [49.286603, -123.111790], [49.284833, -123.114621], [49.280440, -123.121418], [49.284179, -123.115472], [49.283654, -123.116406], [49.277715, -123.117467], [49.284702, -123.124944], [49.273411, -123.113484], [49.280930, -123.119142], [48.425693, -123.367579], [48.425693, -123.367579], [48.422156, -123.368663], [48.414860, -123.365276], [48.414726, -123.363411], [49.326796, -122.949175], [45.495502, -73.577380], [51.056527, -114.069277], [49.893994, -97.143049], [49.894929, -97.145052], [49.882290, -97.154382], [51.503208, -0.047608], [51.506362, -0.142305]]
-
+          coordinates = [57.35, -80.08]
+          zoom_level = 3
         } else if (input_id == "eur") {
           ranint = 35
           console.log('EUROPE RUN')
           usa_lst = ["NyLF8nHIquM?start=000031", "NyLF8nHIquM?start=000031", "w7CTOkNWemc?start=000019", "aBOsIVU9mms?start=000824", "N77GSxYd2jM?start=000060", "xYNCfN3TLBs?start=000037", "GSCbzHvrmjE?start=000032", "zca688Ecwpk?start=000313", "mlS89Cd176M?start=000021", "gXIWNZFq-H0?start=000001", "BTAJP0aDud0?start=000084", "DmmEKbLOzTg?start=000055", "liQQ6NHZsXQ?start=000030", "Jr9x-RB4E1U?start=000016", "gMllzBuAbBg?start=000010", "WmKNcI4atpA?start=000005", "y9NZL6CmUyc?start=000007", "rOhHgHm2dFc?start=000005", "_3t_BI97Z2s?start=000001", "oiZgqkyBUXw?start=000003", "h_nTvenH1Gs?start=000005", "oER__tVuOPU?start=000018", "6-mxZGFvBpo?start=000020", "xrRFKEdtQIc?start=000034", "LhODRz8W2vI?start=000013", "NwNmbb1viic?start=000009", "ez1KCblQ6iM?start=000008", "giHQmVbOuYo?start=000025", "E07rTPgIvn0?start=000001", "OHMk5ah8xfU?start=000014", "Qu6GBZTWJEs?start=000051", "ncIVCU5M6cc?start=000018", "X4CY6EVQ_1E?start=000030", "aVh_jTIP2cE?start=000018", "GS9eri4tYx8?start=000048", "Ut84Anle7Pc?start=000011", "eTFjzTvogxg?start=000025", "eTFjzTvogxg?start=001087", "Huf3QpHTSyk?start=000021", "3SS4iXpMVfk?start=000029", "_dRjY9gMcxE?start=000023", "AWMpvQhFKzA?start=000020", "xEangf-PZ4Q?start=000015", "xEangf-PZ4Q?start=000066", "xEangf-PZ4Q?start=000130", "cIX92xMXhaE?start=000035", "TEs1YGWfrqA?start=000012", "uN821ZtlYMo?start=000029", "gehm5IhtHtk?start=000036", "l9srE3GavW4?start=000001", "l9srE3GavW4?start=000311", "BLtiVbpVEn0?start=000010", "BLtiVbpVEn0?start=000067", "hA8Ke2upJqA?start=000051", "arSCDQUFa0s?start=000001", "4lOzYUlhJEw?start=000031", "DT6g6VPvQ6Q?start=000024", "DZ_4CiyHUpY?start=000020", "o1DJjWHc1ZE?start=000033", "z1S3pHGjhpg?start=000115", "EvaOoKBLxjE?start=000160", "6eqRZzs8SKQ?start=000080"]
           usa_lat_lon = [[51.516207, -0.133839], [51.516207, -0.133839], [51.520321, -0.134084], [51.500863, -0.121954], [51.505579, -0.075326], [51.516134, -0.174605], [52.518635, 13.375300], [52.516253, 13.377159], [48.139252, 11.566118], [48.142930, 11.580000], [48.137642, 11.579796], [50.846713, 4.352346], [51.205785, 3.221424], [59.332366, 18.064477], [48.145774, 17.107378], [44.817726, 20.456989], [60.167679, 24.943039], [59.436811, 24.742718], [58.380283, 26.723508], [56.948056, 24.120961], [41.373965, 2.176127], [40.423799, -3.711197], [40.414264, -3.703374], [45.464149, 9.189860], [51.068701, -1.797369], [51.440773, 5.475545], [42.699644, 23.322888], [49.601032, 6.133417], [52.363717, 4.881663], [59.335524, 18.063378], [52.650180, -7.249856], [45.398387, 11.874765], [45.417013, 11.880054], [59.858378, 17.645178], [47.991402, 7.854445], [48.859676, 2.292323], [48.861985, 2.288764], [48.861475, 2.290213], [48.860736, 2.296017], [48.866286, 2.318601], [48.848691, 2.348276], [48.836112, 2.293948], [43.553832, 7.020194], [43.552889, 7.020571], [43.552511, 7.021563], [43.548235, 7.028576], [43.694543, 7.263876], [43.695885, 7.265239], [43.695630, 7.274916], [45.759459, 4.828660], [45.758119, 4.829329], [44.835319, -0.571360], [44.836452, -0.571504], [43.602906, 1.441646], [47.212571, -1.546158], [48.139027, 11.566799], [51.207409, 3.228069], [51.505879, -0.088814], [52.537891, 13.206501], [53.350416, -6.260831], [53.274251, -9.050642], [41.677903, 26.558588]]
+          zoom_level = 4
+          coordinates = [49.35, 5.08]
 
 
 
@@ -1822,18 +1791,24 @@ queryWithout = "TseEGOmBL_o"
           usa_lst = ["PBLFHJhc6ZY?start=000011", "PBLFHJhc6ZY?start=000100", "PBLFHJhc6ZY?start=000011", "PBLFHJhc6ZY?start=000430", "aSyipwo0BzA?start=000015", "aSyipwo0BzA?start=000300", "j1ziJ2aHdxI?start=000028", "wi_3WwCvzo8?start=000013", "CxXjIv7rDig?start=000040", "DYStlL3c-8o?start=000022", "DYStlL3c-8o?start=000300", "jb16zvCeTWc?start=000065", "jb16zvCeTWc?start=001863", "L9scS-zQDBY?start=000024", "L9scS-zQDBY?start=000300", "996_ylB-hEQ?start=000016", "j9XeBcaR5I8?start=000014", "qaEfELDAW5c?start=000030", "qaEfELDAW5c?start=000110", "UNIus5K5drA?start=000052", "IDIWc6CR7OU?start=000040", "iIeNQ6xzBIU?start=000035", "MolMMaSPzwI?start=000019", "bB6DGkrIVZk?start=000157", "bB6DGkrIVZk?start=000310", "bB6DGkrIVZk?start=002120", "bB6DGkrIVZk?start=003623", "MxguYwcj2hA?start=001265", "DB2Gq7p3okk?start=001102", "_bpkHB4N2zQ?start=000017", "I4p39-Mukzc?start=000011", "iyWcX-mvtaI?start=000230", "_GDXJisM99I?start=000015", "W52KiKLMds4?start=000008", "GsTx4Gfac5Q?start=000046"]
           // TAJ MAHAL IS 44rTTLjZZz4?start=000064
           usa_lat_lon = [[59.9318, 30.3527], [59.9318, 30.3527], [59.9318, 30.3527], [59.9318, 30.3527], [55.748565, 37.588368], [55.748565, 37.588368], [59.924145, 30.383505], [55.756627, 37.614624], [55.7539, 37.6208], [54.720099, 20.501660], [54.716608, 20.503044], [54.719881, 20.502897], [54.707445, 20.527951], [43.120132, 131.885674], [43.116115, 131.883592], [45.2671, 19.8335], [55.757440, 37.622938], [54.980240, 82.901880], [54.986824, 82.890122], [59.935075, 30.325247], [54.9833, 82.8964], [52.037908, 113.491912], [52.037589, 113.499286], [43.113093, 131.891087], [43.112726, 131.892587], [43.115211, 131.907252], [43.104492, 131.923483], [43.574744, 39.725041], [55.753714, 37.634727], [43.542703, 39.801984], [43.446913, 39.902122], [59.934513, 30.332777], [48.739431, 44.545812], [55.748717, 37.539316], [55.815534, 37.488784]]
+          zoom_level = 3
+          coordinates = [62, 65.08]
         } else if (input_id == "chi") {
           ranint = 40
           console.log('CHINA RUN')
           usa_lst = ["qztRJrWt-Es?start=000030", "qztRJrWt-Es?start=000030", "2uQ58Xwx1V4?start=000014", "82WxDwYB9aE?start=000014", "82WxDwYB9aE?start=000120", "O3Q0Frnxonw?start=000008", "O3Q0Frnxonw?start=000059", "O3Q0Frnxonw?start=002436", "WXIfF7TN1QQ?start=000120", "5LArhIB_rVM?start=000001", "5LArhIB_rVM?start=000174", "BZ95vp8zCoA?start=000001", "bpY4aDOK-0E?start=000019", "bpY4aDOK-0E?start=000120", "U3069EeP8Ms?start=000003", "U3069EeP8Ms?start=000100", "HzPHcK2dZ3Y?start=000018", "HzPHcK2dZ3Y?start=000136", "z1WC2_K1Bd8?start=000002", "z1WC2_K1Bd8?start=000132", "NpiP5Wu7Rsc?start=000002", "lYaGhFtJFsI?start=000002", "c8KFNAwlim0?start=000015", "zHh_ezLp7_E?start=000005", "3kI4ja3-oXM?start=000005", "0xC77KW2vW8?start=000003", "RUS16cEgeNQ?start=000002"]
           // TAJ MAHAL IS 44rTTLjZZz4?start=000064
           usa_lat_lon = [[39.934209, 116.403149], [39.934209, 116.403149], [31.240285, 121.490588], [31.205121, 121.506303], [31.166701, 121.545920], [31.223192, 121.444977], [31.223192, 121.444977], [31.237463, 121.484639], [40.431919, 116.570377], [29.538451, 106.514611], [29.538451, 106.514611], [29.537535, 106.507147], [39.915932, 116.411145], [39.911448, 116.411359], [31.274222, 120.637781], [31.274222, 120.637781], [31.576486, 120.299125], [31.576486, 120.299125], [31.543299, 120.304850], [31.542412, 120.303365], [32.021647, 118.772922], [31.886462, 120.555504], [30.531136, 114.324987], [30.539285, 114.354233], [30.519551, 114.340924], [22.544191, 114.086719], [32.202342, 119.444744]]
+          zoom_level = 4
+          coordinates = [32, 120.08]
         } else if (input_id == "fra") {
           ranint = 40
           console.log('FRANCE RUN')
           usa_lst = ["Ut84Anle7Pc?start=000011", "Ut84Anle7Pc?start=000011", "eTFjzTvogxg?start=000025", "eTFjzTvogxg?start=001087", "Huf3QpHTSyk?start=000021", "3SS4iXpMVfk?start=000029", "_dRjY9gMcxE?start=000023", "AWMpvQhFKzA?start=000020", "xEangf-PZ4Q?start=000015", "xEangf-PZ4Q?start=000066", "xEangf-PZ4Q?start=000130", "cIX92xMXhaE?start=000035", "TEs1YGWfrqA?start=000012", "uN821ZtlYMo?start=000029", "gehm5IhtHtk?start=000036", "l9srE3GavW4?start=000001", "l9srE3GavW4?start=000311", "BLtiVbpVEn0?start=000010", "BLtiVbpVEn0?start=000067", "hA8Ke2upJqA?start=000051", "arSCDQUFa0s?start=000001", "Y1QPjQ2I2uY?start=000019", "8SW_nFrfg-I?start=000056"]
           // TAJ MAHAL IS 44rTTLjZZz4?start=000064
           usa_lat_lon = [[48.859676, 2.292323], [48.859676, 2.292323], [48.861985, 2.288764], [48.861475, 2.290213], [48.860736, 2.296017], [48.866286, 2.318601], [48.848691, 2.348276], [48.836112, 2.293948], [43.553832, 7.020194], [43.552889, 7.020571], [43.552511, 7.021563], [43.548235, 7.028576], [43.694543, 7.263876], [43.695885, 7.265239], [43.695630, 7.274916], [45.759459, 4.828660], [45.758119, 4.829329], [44.835319, -0.571360], [44.836452, -0.571504], [43.602906, 1.441646], [47.212571, -1.546158], [43.949414, 4.808819], [47.322894, 5.026628]]
+          zoom_level = 5
+          coordinates = [46.35, 3.08]
         } else if (input_id == "ind") {
           ranint = 70
           console.log('INDIA RUN')
@@ -1846,6 +1821,8 @@ queryWithout = "TseEGOmBL_o"
           usa_lst = ["SKjpx43BEEc?start=000023", "SKjpx43BEEc?start=000023", "Qurzbqxv9Cc?start=000084", "Nqk9oAHv-NE?start=000047", "RRBi1Qcn-JA?start=000001", "RRBi1Qcn-JA?start=000100", "kTAWZS1CdXQ?start=000014", "kTAWZS1CdXQ?start=000180", "kDJruOu5gtU?start=000300", "kDJruOu5gtU?start=000522", "ALMhsxhjaxg?start=000075", "pvWNQjFUJiA?start=000011", "x5Trk4PsXr0?start=000009", "7VOHFV9Pl9M?start=000030", "QWJhHkPsatI?start=000014", "QWJhHkPsatI?start=000199", "aE6BBlB4r_Y?start=000005", "aE6BBlB4r_Y?start=000223", "45hEgiWEE9U?start=000740", "8nPL9YBWV0o?start=000009", "_ikmrMAHb5A?start=000002", "8nPL9YBWV0o?start=000733", "8uke7MX6YIs?start=000001", "1w5eAshOono?start=000020", "zSHq0rF0sz8?start=000031", "OjcCdyQcvDE?start=000001"]
           // TAJ MAHAL IS 44rTTLjZZz4?start=000064
           usa_lat_lon = [[-22.987572, -43.222958], [-22.987572, -43.222958], [-22.906031, -43.177308], [-22.970802, -43.186546], [-22.952301, -43.186975], [-22.953982, -43.191755], [-23.574827, -46.688067], [-23.572509, -46.675234], [-22.982456, -43.193644], [-22.981807, -43.190289], [-22.966844, -43.186835], [-22.987779, -43.196431], [-23.567702, -46.669417], [-25.692320, -54.434670], [-22.950923, -43.213026], [-22.951956, -43.210492], [-22.949465, -43.156410], [-22.949309, -43.154596], [-22.915550, -43.179700], [-15.801817, -47.894947], [-22.950630, -43.164284], [-15.759995, -47.895292], [-12.956503, -38.387074], [-25.428485, -49.265903], [-25.427975, -49.272233], [-3.740851, -38.541177]]
+          coordinates = [-20.35, -65.08]
+          zoom_level = 3
         } else if (input_id == "aus") {
           ranint = 45
           console.log('AUSTRALIA RUN')
@@ -1853,6 +1830,8 @@ queryWithout = "TseEGOmBL_o"
           // SQnj = 21
           // TAJ MAHAL IS 44rTTLjZZz4?start=000064
           usa_lat_lon = [[-27.470896, 153.023503], [-33.883488, 151.204500], [-33.882604, 151.204054], [-33.858257, 151.208399], [-33.858467, 151.208267], [-33.855835, 151.209631], [-33.855639, 151.210518], [-33.873535, 151.211590], [-27.464953, 153.020640], [-37.817135, 144.952985], [-37.816280, 144.956105], [-37.818785, 144.968144], [-37.817442, 144.967511], [-37.811550, 144.968515], [-37.810296, 144.962819], [-37.808067, 144.956749], [-27.476276, 153.014262], [-27.482182, 153.018777], [-31.951902, 115.876272], [-32.168358, 115.862280], [-32.038130, 115.868280], [-34.923098, 138.597259], [-34.923206, 138.595586], [-34.922890, 138.601393], [-34.922710, 138.605624], [-34.922421, 138.610378], [-42.895138, 147.333299], [-27.995298, 153.430459]]
+          coordinates = [-30, 137.08]
+          zoom_level = 3
           // usa_lst = ["iif1sA9jhXY?start=000050", "iif1sA9jhXY?start=000050"]
           // usa_lat_lon = [[-27.470896, 153.023503], [-27.470896, 153.023503]]
         } else if (input_id == "arg") {
@@ -1862,18 +1841,26 @@ queryWithout = "TseEGOmBL_o"
           // SQnj = 21
           // TAJ MAHAL IS 44rTTLjZZz4?start=000064
           usa_lat_lon = [[-38.037967, -57.540762], [-37.990525, -57.546139], [-37.991220, -57.547280], [-37.991331, -57.548906], [-34.562153, -58.456777], [-34.562085, -58.456507], [-34.561719, -58.455892], [-34.563994, -58.454805], [-34.561694, -58.455804], [-31.417254, -64.198682], [-31.416683, -64.197675], [-31.415069, -64.195832], [-31.414769, -64.192591], [-32.938178, -60.636563], [-32.938044, -60.636913], [-32.930519, -60.649546], [-37.989788, -57.547701], [-37.991187, -57.547319], [-24.789926, -65.408988], [-24.789881, -65.409666], [-24.795694, -65.424726], [20.913841, -100.743784], [-31.627370, -60.713791]]
+          coordinates = [-38.35, -65.08]
+          zoom_level = 3
         } else if (input_id == "asi") {
           ranint = 60
           usa_lst = ["XZVBoSteNYA?start=000001", "XZVBoSteNYA?start=000060", "ldWLai0BtmE?start=000011", "OmgARbYAAvQ?start=000002", "0MiA-5upvEA?start=000003", "PUrlmfnysZ8?start=000001", "PUrlmfnysZ8?start=000120", "XRU9omrRV64?start=000001", "VxetycIW22A?start=000005", "VxetycIW22A?start=001000", "VxetycIW22A?start=001725", "VxetycIW22A?start=003555", "APynX3LRinY?start=000027", "APynX3LRinY?start=000099", "BD_nlE9uiDE?start=000001", "BD_nlE9uiDE?start=000100", "KzbVYTr04eQ?start=000004", "10xER_E1kek?start=000005", "dJOnsOy3j9I?start=000002", "JqruO5UEkrI?start=000005", "JqruO5UEkrI?start=000120", "17IajJTlFEU?start=000005", "17IajJTlFEU?start=000685", "eE3x-ZgaU3s?start=000002", "eE3x-ZgaU3s?start=000585", "QsyoLAWWQ9Q?start=000002", "qztRJrWt-Es?start=000030", "2uQ58Xwx1V4?start=000014", "82WxDwYB9aE?start=000014", "82WxDwYB9aE?start=000120", "O3Q0Frnxonw?start=000008", "O3Q0Frnxonw?start=000059", "O3Q0Frnxonw?start=002436", "WXIfF7TN1QQ?start=000120", "5LArhIB_rVM?start=000001", "5LArhIB_rVM?start=000174", "BZ95vp8zCoA?start=000001", "bpY4aDOK-0E?start=000019", "bpY4aDOK-0E?start=000120", "U3069EeP8Ms?start=000003", "U3069EeP8Ms?start=000100", "HzPHcK2dZ3Y?start=000018", "HzPHcK2dZ3Y?start=000136", "z1WC2_K1Bd8?start=000002", "z1WC2_K1Bd8?start=000132", "NpiP5Wu7Rsc?start=000002", "lYaGhFtJFsI?start=000002", "c8KFNAwlim0?start=000015", "zHh_ezLp7_E?start=000005", "3kI4ja3-oXM?start=000005", "0xC77KW2vW8?start=000003", "RUS16cEgeNQ?start=000002", "6qGiXY1SB68?start=000019", "6qGiXY1SB68?start=000112", "6qGiXY1SB68?start=000942", "vHr4qSQ-5XU?start=000020", "vHr4qSQ-5XU?start=000423", "2PqkuJMbHaw?start=000049", "MKcBBVimth0?start=001312", "_dWyKj7I9JM?start=000020", "Et7O5-CzJZg?start=000030", "wa12902YOnc?start=000013", "vA9GWzLLmxg?start=000005", "VYVKQ2OIzh0?start=000001", "VYVKQ2OIzh0?start=003965", "rAeN7TdGq4o?start=000009", "cHjKckxsOCs?start=000315", "cHjKckxsOCs?start=005400", "re-wjNxH4Jw?start=000295", "TGFPQhPuayE?start=000065", "e1J6DYeJFas?start=000008", "PE-P-nCSxHc?start=000734", "MRsTpmecPzg?start=000015", "LA4_2H_qBp4?start=000008", "9UMn6CVizOw?start=000007", "xFPEt9omvrU?start=000048", "xFPEt9omvrU?start=000260", "uZocEYAyUSs?start=000005", "uZocEYAyUSs?start=003698", "DxP8fc2XYb4?start=000035", "3qIzs9PQLxk?start=000014"]
           usa_lat_lon = [[28.649460, 77.207522], [28.651506, 77.208118], [28.661702, 77.181000], [26.492697, 74.549942], [25.315217, 82.998796], [25.315217, 82.998796], [25.320668, 83.023103], [25.315974, 83.019205], [22.630153, 88.385631], [22.549372, 88.383153], [22.547847, 88.381207], [22.545933, 88.386136], [18.936454, 72.835822], [18.937173, 72.835817], [18.913594, 72.823320], [18.912379, 72.822104], [18.922550, 72.834467], [25.354131, 78.639282], [25.349826, 78.640344], [31.630677, 74.875434], [31.625358, 74.875945], [32.247916, 77.189258], [32.244381, 77.187516], [32.220349, 77.198614], [32.244339, 77.187904], [28.655919, 77.204416], [39.934209, 116.403149], [31.240285, 121.490588], [31.205121, 121.506303], [31.166701, 121.545920], [31.223192, 121.444977], [31.223192, 121.444977], [31.237463, 121.484639], [40.431919, 116.570377], [29.538451, 106.514611], [29.538451, 106.514611], [29.537535, 106.507147], [39.915932, 116.411145], [39.911448, 116.411359], [31.274222, 120.637781], [31.274222, 120.637781], [31.576486, 120.299125], [31.576486, 120.299125], [31.543299, 120.304850], [31.542412, 120.303365], [32.021647, 118.772922], [31.886462, 120.555504], [30.531136, 114.324987], [30.539285, 114.354233], [30.519551, 114.340924], [22.544191, 114.086719], [32.202342, 119.444744], [35.659111, 139.700394], [35.659458, 139.700552], [35.659937, 139.701672], [35.698048, 139.707406], [35.693908, 139.704671], [35.698619, 139.772663], [35.669152, 139.696320], [35.659614, 139.700431], [35.695583, 139.702698], [35.692659, 139.699582], [34.662975, 135.502283], [34.733561, 135.500193], [34.734830, 135.501719], [34.995893, 135.781507], [38.252057, 140.855769], [38.258976, 140.883444], [35.906912, 139.482416], [35.641952, 139.702048], [35.170512, 136.880456], [34.297297, 132.318128], [32.813273, 130.704237], [32.746753, 129.879483], [34.395828, 132.453814], [43.055377, 141.353386], [43.057038, 141.351138], [1.295433, 103.857530], [1.280174, 103.855759], [12.782044, 101.647166], [3.144270, 101.706213]]
+          coordinates = [32, 120.08]
+          zoom_level = 2
         } else if (input_id == "jap") {
           ranint = 60
           usa_lst = ["6qGiXY1SB68?start=000019", "6qGiXY1SB68?start=000019", "6qGiXY1SB68?start=000112", "6qGiXY1SB68?start=000942", "vHr4qSQ-5XU?start=000020", "vHr4qSQ-5XU?start=000423", "2PqkuJMbHaw?start=000049", "MKcBBVimth0?start=001312", "_dWyKj7I9JM?start=000020", "Et7O5-CzJZg?start=000030", "wa12902YOnc?start=000013", "vA9GWzLLmxg?start=000005", "VYVKQ2OIzh0?start=000001", "VYVKQ2OIzh0?start=003965", "rAeN7TdGq4o?start=000009", "cHjKckxsOCs?start=000315", "cHjKckxsOCs?start=005400", "re-wjNxH4Jw?start=000295", "TGFPQhPuayE?start=000065", "e1J6DYeJFas?start=000008", "PE-P-nCSxHc?start=000734", "MRsTpmecPzg?start=000015", "LA4_2H_qBp4?start=000008", "9UMn6CVizOw?start=000007", "xFPEt9omvrU?start=000048", "xFPEt9omvrU?start=000260"]
           usa_lat_lon = [[35.659111, 139.700394], [35.659111, 139.700394], [35.659458, 139.700552], [35.659937, 139.701672], [35.698048, 139.707406], [35.693908, 139.704671], [35.698619, 139.772663], [35.669152, 139.696320], [35.659614, 139.700431], [35.695583, 139.702698], [35.692659, 139.699582], [34.662975, 135.502283], [34.733561, 135.500193], [34.734830, 135.501719], [34.995893, 135.781507], [38.252057, 140.855769], [38.258976, 140.883444], [35.906912, 139.482416], [35.641952, 139.702048], [35.170512, 136.880456], [34.297297, 132.318128], [32.813273, 130.704237], [32.746753, 129.879483], [34.395828, 132.453814], [43.055377, 141.353386], [43.057038, 141.351138]]
+          coordinates = [35, 137.08]
+          zoom_level = 5
         } else if (input_id == "ukn") {
           ranint = 21
           usa_lst = ["f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000030", "f7oUEEI4_6I?start=000213", "EAV0Gl6vJsw?start=000113", "FSIbzC6qGyU?start=000010", "zIqAI8WJhi0?start=000001", "zIqAI8WJhi0?start=001046", "CJyhMaH5WRs?start=000036", "DAVd95WXCoA?start=000004", "jKJ2zDSYns8?start=000016", "jKJ2zDSYns8?start=001794", "G0fWvIxy88A?start=000589", "p-Ld8dhWKxA?start=000057", "zxbaZVPybuc?start=000012", "rvoQ9fLXf-Y?start=000008", "aX3solS4LIc?start=000016", "klGjMHwCbs4?start=000008", "E5AnaDiy2C8?start=000015", "utohtmBGLqg?start=000052", "abIHlI083CU?start=000008", "abIHlI083CU?start=002899", "rvoQ9fLXf-Y?start=001647", "E5AnaDiy2C8?start=001525", "aX3solS4LIc?start=001830", "LhODRz8W2vI?start=000044", "p-Ld8dhWKxA?start=001644", "Ok9KlSp7ouo?start=000017", "_xqSPG7xFJA?start=000001", "tCqeAUFRc_k?start=000002", "s14Q7cT5_KI?start=000007", "mlG5mZueln8?start=000010", "lYSsP5WgVWI?start=000001", "u_KU5B3JS2A?start=000001", "S0S17xIEqD8?start=000001", "2fRYpyDZ-Ck?start=000001", "cfbgfL8ShHU?start=000001"]
           usa_lat_lon = [[51.514223, -0.151348], [51.514223, -0.151348], [51.514609, -0.147300], [51.515256, -0.141923], [51.512714, -0.123622], [53.481890, -2.246513], [53.482138, -2.244276], [53.481121, -2.237945], [51.510125, -0.134590], [53.406509, -2.983006], [53.402120, -2.989976], [53.961462, -1.082405], [53.744167, -0.339499], [50.910312, -1.404739], [52.477067, -1.892532], [51.458471, -2.593007], [52.205088, 0.118993], [51.481007, -3.185849], [55.856354, -4.257498], [50.823676, -0.143565], [50.820779, -0.144928], [52.477550, -1.897276], [51.483559, -3.174913], [51.454934, -2.593103], [51.068747, -1.795757], [53.742757, -0.337896], [53.798282, -1.538016], [53.191376, -2.885437], [53.342174, -1.778868], [53.125761, -2.075282], [53.111095, -2.021443], [53.026100, -0.597654], [53.022445, -0.583874], [53.109786, -1.564628], [53.200954, -1.869341], [53.078287, -0.813248]]
+          coordinates = [53.35, -2]
+          zoom_level = 5
         } else if (input_id == "nmo") {
           usa_lst = ["9KBx0keOg5s?start=000060", "9KBx0keOg5s?start=000060", "UZn1MrjL4pE?start=000017", "FiVoaD1tdVw?start=000021", "ILBDMisz5K8?start=000009", "M9cJMXmQ_ZU?start=000019", "Ll1xRGhd3YU?start=000141", "4lYfSW5Pr-U?start=000009", "fz5H7ObqXj4?start=000060", "-SG5kkMqPNE?start=000018", "2H3jSgTbugc?start=000017", "SKjpx43BEEc?start=000023", "yr2vLq0B-vs?start=000029", "BE1A-kb0X2o?start=000049", "jSQHDY5D7Tc?start=000151", "NpTLbHu8m08?start=000001", "4Yg9QUiPAHg?start=000010", "ZpoyRpZ70m4?start=003780", "O2WBotXOIZs?start=000060", "xDHGMlYSRME?start=000020", "WGHYQG0KgiQ?start=000060", "O7XsXDUp9Ko?start=000059", "he-VxB01QKw?start=000004", "qVi2Otx28Kc?start=000010", "6cmEWXJuBTk?start=000054", "Ls1UZ_8dG44?start=000018", "PB6qyS63_e8?start=000004", "uVwb9psE_9o?start=000060", "L0yOgsmElpg?start=000060", "9x_qosfdo9Q?start=000060", "tyBpKdxfbEA?start=000060", "qjLzFSFfOpA?start=000001", "5hjAf57y1P4?start=000840", "S8DH9QqVvqo?start=000020", "cR3MEbdyFwU?start=000060", "8u6DXanmX_8?start=000060", "jJ2uuHcHCjA?start=000060", "Ntm9BDWtqS8?start=000060", "c0GlCjZbVzk?start=000126", "8AZ24XEbV_8?start=001020", "OUqayGBZLFo?start=000300"]
           usa_lat_lon = [[40.710984, -74.005342], [40.710984, -74.005342], [33.848173, -84.359893], [34.050574, -118.259088], [35.545296, 139.767977], [34.048267, -118.251388], [37.514228, 126.955201], [37.563040, 126.982019], [47.593699, -122.318519], [35.292078, 25.441844], [-22.949418, -43.179281], [-22.987815, -43.224238], [37.761562, -122.434956], [48.844106, 2.291601], [51.510053, -0.134973], [25.197331, 55.274294], [37.808868, -122.471736], [47.611365, -122.349986], [43.707152, -79.397850], [59.322728, 18.069156], [-22.958755, -43.173122], [18.273143, 109.479341], [50.070693, 19.921358], [40.771134, -74.016140], [35.697511, 139.610369], [48.863344, 2.293766], [52.362285, 4.898789], [37.587041, 127.004241], [49.278982, -123.147815], [49.277920, -123.142815], [49.331001, -123.266513], [13.741014, 100.562151], [45.485842, -73.816819], [52.457897, 5.033325], [31.242849, 121.482060], [21.277214, -157.825723], [21.277349, -157.830905], [49.575235, 25.645600], [29.424318, -98.488337], [51.503435, -0.072609], [37.556637, 126.973200]]
@@ -1937,38 +1924,7 @@ queryWithout = "TseEGOmBL_o"
 //omnivore.kml('https://www.pcc.edu/about/locations/map/kml/veterans.kml').addTo(map);s
 </script>
 
-<script>
-// var first_time_scroll = 1;
-// window.addEventListener("scroll",function(){
-//   if (first_time_scroll == 1) {
-//     // document.getElementById("second_chart_display_none").style.display = "block";
-//     document.getElementById("i-am-lazy").style.display = "block";
-//     document.getElementById("i-am-lazy-2").style.display = "block";
-//     first_time_scroll = 0;
-//   }
-// })
 
-
-// $(".lazyload").lazyload({
-//   effect : "fadeIn"
-// });
-// $(window).load(function(){
-
-//     $('.lazyload').each(function() {
-
-//         var lazy = $(this);
-//         var src = lazy.attr('data-src');
-
-//         $('<img>').attr('src', src).load(function(){
-//             lazy.find('img.spinner').remove();
-//             lazy.css('background-image', 'url("'+src+'")');
-//         });
-
-//     });
-
-// });
-
-</script>
 <script src="https://afarkas.github.io/lazysizes/plugins/bgset/ls.bgset.min.js"></script>
   <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js"></script>
 <style>
@@ -2063,7 +2019,7 @@ var gray_scale = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView([42.35, -71.08], 2);
+      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView(coordinates, zoom_level);
         var differentLayers = {
           "<b>1.</b> Native Languages": osm_scale,
           "<b>2. </b>All English": gray_scale
@@ -2130,7 +2086,7 @@ function continueGame() {
   document.getElementById("player").style.opacity = "1";
     // map.removeLayer(markers);
     // markerArray.clearLayers();
-    map.setView([42.35, -71.08], 2);
+    map.setView(coordinates, zoom_level);
     for(i=0;i<markerArray.length;i++) {
     map.removeLayer(markerArray[i]);
     }
