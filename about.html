@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+  <title>About - City Guesser</title>
+  <meta name="description" content="Get all the info you need about the geography game, City Guesser.">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153516768-4');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+
+<style>
+@keyframes backgroundcoloranimation{0%{background: rgba(252,252,252);}25%{background: rgba(128,200,255);}50%{background:#8cc73f;}75%{background:#f3d333;}100%{background:#f78e56;}}
+
+body{
+  background: url("static/blurredguesser.png");
+      background-repeat: no-repeat;
+    background-size: cover;
+  animation-direction:alternate;
+  font-family: "Source Sans Pro", sans-serif;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+@media screen and (max-width: 800px) {
+
+}
+#main-big-container {
+  width: 100vw;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+}
+#secondary-big-container {
+  margin-top: 20px;
+  margin-left: 17%;
+  margin-right: 17%;
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.15);
+   border-radius: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+    background-color: #181818;
+    z-index: 100;
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 800px) {
+  #secondary-big-container {
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+}
+.game-logo {
+  color: white;
+  font-weight: bold;
+  text-shadow: -2px -2px 0 rgba(204, 0, 0, 1),
+               2px -2px 0 rgba(204, 0, 0, 1),
+               -2px 2px 0 rgba(204, 0, 0, 1),
+               2px 2px 0 rgba(204, 0, 0, 1),
+               -3px 0 0 rgba(204, 0, 0, 1),
+               3px 0 0 rgba(204, 0, 0, 1),
+               0 -3px 0 rgba(204, 0, 0, 1),
+               0 3px 0 rgba(204, 0, 0, 1);
+  text-transform: uppercase;
+}
+.nav{
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(255,255,255,.05);
+    transition: height .5s ease;
+}
+nav {
+  z-index: 100000000000;
+}
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.nav .logo {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.nav-list{
+    list-style: none;
+    display: flex;
+    margin-right: auto;
+}
+
+.nav-link{
+    margin: 0 2rem;
+    position: relative;
+}
+
+.nav-link::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s ease;
+}
+
+.nav-link:hover::after{
+    transform: scaleX(1);
+}
+
+#landscape-image {
+  width: 100%;
+  height: 275px;
+  overflow: hidden;
+}
+.dropdown-parent {
+  padding: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: thin solid rgba(255, 255, 255, 0.2);
+  border-top: thin solid rgba(255, 255, 255, 0.2);
+  color: #d9d9d9;
+  cursor: pointer;
+}
+.dropdown-parent:hover {
+  background: #262626;
+}
+.dropdown-child {
+  display: none;
+  padding: 5px;
+  padding-left: 20px;
+  color: #bfbfbf;
+}
+.times-close:hover {
+  color: red;
+  transition-duration: 0.2s;
+}
+#button-home {
+  text-align: center;
+  background: #00ab66;
+  padding: 5px;
+  border-radius: 5px;
+}
+.media-link:hover {
+  transform: scale(1.01);
+  filter: brightness(1.5);
+}
+#cityguesser1:hover{
+  transform: scale(1.005);
+}
+.times-a:hover {
+  color: red;
+}
+.twitter-hover:hover {
+  color: #00acee;
+}
+</style>
+
+<nav class="navbar navbar-expand-md navbar-dark navbar-thin bg-dark" id="diff">
+      <a class="navbar-brand game-logo" href="https://virtualvacation.us/guess" id="cityguesser1">City Guesser   <i class="fas fa-map-marker-alt" aria-hidden="true" style="margin-left: 5px;"></i></a>
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="https://virtualvacation.us/streaks">Streaks <i class="fas fa-trophy" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active" id="homeitem">
+            <a class="nav-link" href="https://virtualvacation.us/multiplayer">Multiplayer <i class="fa fa-users" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+<div id="main-big-container" class="w3-animate-top">
+  <div id="secondary-big-container">
+    <span style="position: relative; float: right; right: 0; top: 0; margin-right: 10px; font-size: 22px; cursor: pointer;" class="times-close"><a href="https://virtualvacation.us/guess" class="times-a"><i class="fas fa-times-circle"></i></a></span>
+    <p style="font-size: 20px; text-align: center;">As featured in..</p>
+    <div>
+    <span><center style="margin-top: -15px;"><a href="https://www.pcgamer.com/city-guesser-is-like-geoguessr-but-with-video-and-free/" class="media-link"><img src="static/pcgamerlogo.jpeg" style="width: 22%; margin-right: 5px;"></a><a href="https://www.theburnin.com/games/interview-city-guesser-creator-escape-quarantine-boredom-2020-10-06/" class="media-link"><img src="static/theburnin.jpg" style="width: 22%; margin-left: 20px; margin-right: 20px;"></a><a href="https://www.producthunt.com/posts/city-guesser" class="media-link"><img src="static/testingproduct.jpg" style="width: 22%; margin-left: 5px;"></a></center><p style="width: 66%; font-size: 16px; margin-top: 10px; margin-left: 12.6%;">City Guesser is a geography based browser game that strives to provide an exceptional travel and guessing experience. City Guesser launched on August 13th, 2020, and welcomes thousands of geography-enthusiasts each day. <span style="margin-left: 3px;">🌍</span></p>
+    <div style="width: 66%; font-size: 16px; margin-top: 10px; margin-left: 12.6%;" class="dropdown-main">
+    <div class="dropdown-parent" onclick="adddropdown(0)" style="border-top: 2px solid rgba(255, 255, 255, 0.2);">
+      <span>Can I play with friends?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+     You can! Exploring the world is fun by yourself, but it's even more enjoyable with friends. You can create a private server and invite your friends, <a href="virtualvacation.us/private-room" style="color: red;">here</a>. 
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(1)">
+      <span>What should I look out for?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+      Some of the <span style="color: #fcfcfc;">biggest giveaways</span> that reveal your location are:<br>
+      &#8226; License Plates 🚘<br>
+      &#8226; Language ✏️<br>
+      &#8226; Flags 🏳️<br>
+      &#8226; Road Signs/Markings 🛣<br>
+      &#8226; Business Names 🏪<br>
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(2)">
+      <span>Who created City Guesser?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+      City Guesser was created and launched by <a href="https://twitter.com/paul_mcb" style="color: red;">Paul McBurney Jr</a>. He was inspired by one of his favorite games, GeoGuessr, and wanted to bring value to the geography community. He first shared the game to <a href="https://www.reddit.com/r/InternetIsBeautiful/comments/i9wsce/i_made_city_guesser_a_geoguessr_spinoff_that_lets/" style="color: red;">Reddit</a> on August 14th, 2020 and it turned out to be a hit. <br><br>
+      <a href="https://twitter.com/paul_mcb">Follow Paul here: <i class="fab fa-twitter-square" style="color: #00acee; font-size: 20px;"></i></a>
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(3)">
+      <span>Why are there no ads?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+      Providing the best user experience is one of the core values behind City Guesser. People have <a href="https://ko-fi.com/cityguesser" style="color: red;">donated</a> enough money to cover costs.
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(4)">
+      <span>How can I contribute?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+    We appreciate anyone who takes the time to <a style="color: red; cursor: pointer;" onclick="adddropdown(5)">submit</a> video or <a href="https://ko-fi.com/cityguesser" style="color: red;">donate</a>. For most people, the most effective thing you can do is share City Guesser with a friend. Maybe even play a round of <a href="https://virtualvacation.us/multiplayer" style="color: red;">multiplayer</a> with them!
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(5)">
+      <span>How do I submit my own video?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+      If you'd like to have your video on City Guesser, post it to <a href="youtube.com/upload" style="color: red;">YouTube</a> with the title "City Guesser Video:" and the city being showcased. <span style="color: red;">Example:</span> <span style="color: #fcfcfc;">City Guesser Video: Barcelona, Spain</span> 
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(6)">
+      <span>How can I help financially?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+      City Guesser has never ran a single ad. This is <a onclick="adddropdown(3)" style="cursor: pointer; color: red;">why</a>. You can donate <a href="https://ko-fi.com/cityguesser" style="color: red;">here</a> to keep City Guesser free.
+    </div>
+
+    <div class="dropdown-parent" onclick="adddropdown(7)">
+      <span>How can I get in touch?</span><span style="float: right;" class="chevron-updown"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="dropdown-child w3-animate-right">
+      Send an <a href="mailto:virtualvacationsupport@gmail.com" style="color: red;">email</a> and expect a response within 48 hours. All inquiries welcome. 
+    </div>
+    <br>
+            <a href="https://twitter.com/paul_mcb" class="twitter-hover"><i class="fab fa-twitter" style="font-size: 25px; cursor: pointer;"></i></a>
+
+    <p style="font-size: 13px; color: #cccccc;">virtualvacation.us &copy; 2021</p>
+    </div>
+    </span>
+    </div>
+    
+    
+  </div>
+</div>
+<script>
+var savednum = undefined
+function adddropdown(num) {
+  if(savednum != undefined && savednum == num) {
+    document.getElementsByClassName("chevron-updown")[savednum].innerHTML = "<i class='fas fa-chevron-down'></i>"
+    document.getElementsByClassName("dropdown-child")[savednum].style.display = "none";
+    document.getElementsByClassName("dropdown-parent")[savednum].style.borderBottom = "border-bottom: thin solid rgba(255, 255, 255, 0.2)"    
+    savednum = undefined
+  } else {
+    for(var i=0; i<document.getElementsByClassName("dropdown-parent").length; i++) {
+    document.getElementsByClassName("chevron-updown")[i].innerHTML = "<i class='fas fa-chevron-down'></i>"
+    document.getElementsByClassName("dropdown-child")[i].style.display = "none";
+    document.getElementsByClassName("dropdown-parent")[i].style.borderBottom = "border-bottom: thin solid rgba(255, 255, 255, 0.2)"
+    }
+    document.getElementsByClassName("dropdown-parent")[num].style.borderBottom = ""
+    document.getElementsByClassName("dropdown-child")[num].style.display = "block";
+    document.getElementsByClassName("chevron-updown")[num].innerHTML = "<i class='fas fa-chevron-up'></i>"
+    savednum = num
+  }
+}
+</script>
+  </body>
+  </html>
