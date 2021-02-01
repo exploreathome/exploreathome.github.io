@@ -2074,7 +2074,6 @@ function invalidateSizeFunc(userinput) {
     document.getElementById('main-button').style.display='none'
   
   // map.fitWorld();
-  map.setMaxBounds(  [[-90,-180],   [90,180]]  )
   setTimeout(function(){ map.invalidateSize()}, 500);
   console.log('ya')
   map.invalidateSize();
@@ -2100,6 +2099,7 @@ function invalidateSizeFunc(userinput) {
     markerArray.push(marker);
     globallat = e.latlng.lat
     globallon = e.latlng.lng
+    globallon = (globallon % 360 + 540) % 360 - 180
     // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
 });
 function addMarkerFunc(latit, longi) {
