@@ -91,6 +91,7 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=en', {
   map.setMaxBounds(  [[-90,-180],   [90,180]]  )
   setTimeout(function(){ map.invalidateSize()}, 500);
   map.invalidateSize();
+  $('.leaflet-control-attribution').hide()
   map.on('click', function(e) {
     if(allow_marker == true) {
       console.log(marker)
@@ -260,4 +261,3 @@ document.getElementById("hs1").innerHTML = localStorage.getItem("sovereignt-stre
 // document.getElementById("vp2").innerHTML = localStorage.getItem("accuracy_video_plays")
 document.getElementById("cg2").innerHTML = localStorage.getItem("accuracy_correct_guesses")
 document.getElementById("hs2").innerHTML = localStorage.getItem("radius-streak-hs")
-player.playVideo();
