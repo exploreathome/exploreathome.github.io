@@ -11,7 +11,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
@@ -67,18 +66,6 @@ body {
     font-size: 1.6rem;
 }
 
-.nav .logo{
-    font-size: 3.5rem;
-    font-weight: bold;
-}
-
-.nav-list{
-    list-style: none;
-    display: flex;
-    margin-right: auto;
-    margin-left: 4rem;
-}
-
 .nav-link{
     margin: 0 2rem;
     position: relative;
@@ -101,58 +88,6 @@ body {
     transform: scaleX(1);
 }
 
-#nav-cta{
-    display: inline-block;
-    background-color: #fff;
-    color: #313131;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    transition: background-color .5s ease;
-}
-
-#nav-cta:hover{
-    background-color: #d3d3d3;
-}
-
-
-/*Apply styles after scroll*/
-.scrolling-active{
-    background-color: #fff;
-    box-shadow: 0 3px 1rem rgba(0,0,0,.1);
-}
-
-.scrolling-active .nav{
-    height: 6.6rem;
-}
-
-.scrolling-active .nav a{
-    color: #313131;
-}
-
-.scrolling-active #nav-cta{
-    background-color: #313131;
-    color: #fff;
-}
-
-.scrolling-active #nav-cta:hover{
-    background-color: #151515;
-}
-
-.scrolling-active .nav-link::after{
-    background-color: #313131;
-}
-
-.background-img {
-  background-image: url("static/neighborhood1.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(5px);
-  /*background: rgba(0.42);*/
-  /*filter: grayscale(100%);*/
-  background-size: cover;
-  -webkit-filter: blur(5px);
-}
 #streaks-main {
   position: absolute;
   top: 270px;
@@ -447,25 +382,6 @@ h5 {
   transform: translateY(-2px);
 }
 
-#footer-tag {
-  /*position: fixed;*/
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  height: 24px;
-  line-height: 24px;
-  font-size: 12px;
-  background-color: rgba(204,204,204,0.5);
-  text-align: center;
-  font-family: Montserrat;
-}
-#footer-tag:hover {
-  color: black;
-}
-#footer-tag a {
-  margin-left: 8px;
-  margin-right: 8px;
-}
 #sharelink-incard:visited { text-decoration: none; color:white; }
 #sharelink-incard:hover { text-decoration: none; color:white; }
 #sharelink-incard:focus { text-decoration: none; color:white; }
@@ -1624,58 +1540,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
     z-index: 100;
 
 }
-#spinner3 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 100;
-    width: 120px;
-    height: 120px;
-    border-radius: 7px;
-    background: #e6e6e6;
-    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
-    z-index: 200;
-    display: none;
-}
-#svg-spinner3 {
-  height: 45px;
-  width: 45px;
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 100;
 
-}
-#spinner4 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 100;
-    width: 120px;
-    height: 120px;
-    border-radius: 7px;
-    background: #e6e6e6;
-    box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.32);
-    z-index: 200;
-    display: none;
-}
-#svg-spinner4 {
-  height: 45px;
-  width: 45px;
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 100;
-
-}
 #scorekeeper {
   height: 100px;
   width: 100px;
@@ -1702,32 +1567,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
     transform: translate(-50%, -50%);
     color: white;
 }
-#scorekeeper2 {
-  height: 100px;
-  width: 100px;
-  position: fixed;
-  top: -5px;
-  background: rgba(1, 2, 1, 0.72);  
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.32);
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  cursor: pointer;
 
-}
-
-#actualscore2 {
-    position: fixed;
-    top: 72%;
-    font-size: 26px;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    color: white;
-}
 </style>
 <script type="text/javascript" src="countries.js"></script>
 <script src="confetti.js"></script>
@@ -2484,9 +2324,6 @@ function shrinkupper() {
     <!-- abc -->
     <p id="actualscore">0</p>
   </div>
-<!--   <div id="scorekeeper2">
-    <p id="actualscore2">0</p>
-  </div> -->
   <div id="spinner">
 <svg version="1.1"
   xmlns="http://www.w3.org/2000/svg"
