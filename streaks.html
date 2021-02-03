@@ -1160,6 +1160,7 @@ if (localStorage.getItem("accuracy_button") !== null) {
 }
 #mapid {
   height: 60vh;
+  font-family: 'Montserrat';
   /*width: 100%;*/
   /*z-index: 9000000;*/
 }
@@ -1995,9 +1996,9 @@ L.geoJSON(countries, {
     // });
   // //console.log('Layer: ' + String(layer))
   selected_country = layer.feature.properties.sovereignt;
-  
   // //console.log(layer.)
   document.getElementById("map-prompter").innerHTML = "<b>Selected:</b> " + String(selected_country) + "<i class='fa fa-map-marker' aria-hidden='true' style='margin-left: 5px;''></i>"
+  selected_country_a2 = layer.feature.properties.iso_a2
 }).addTo(map);
 geojson = L.geoJson(countries, {
   style: function(feature) {
@@ -2052,22 +2053,20 @@ function removebtnkeepmap() {
 }
 var potential_coords = null;
 function makeaguess() {
+  document.getElementById("spinner").style.display = "block";
+  setTimeout(function() {
+  document.getElementById("spinner").style.display = "none";
   localStorage.setItem("ongoing", "false")
   clearInterval(downloadTimer)
   fetchCompletion = 0
-  if(potential_coords == null || fetchCompletion == 0) {
-  //console.log('FETCH NOT COMPLETE 0')
-  document.getElementById("spinner").style.display = "block";
-  fetch('https://secure.geonames.org/countryCode?lat=' + String(current_latitude) + '&lng=' + String(current_longitude) + '&username=streaksmode').then(function (response) {
-  // The API call was successful!
-  return response.text();
-}).then(function (html) {
   // This is the HTML from our response as a text string
-  potential_coords = html
+  potential_coords = selected_country_a2
     //console.log(potential_coords)
   //console.log(correct_coords)
-
-  if (potential_coords == correct_coords) {
+            document.getElementById("original-c").style.display = "none";
+            document.getElementById("future-c").style.display = "none";
+            document.getElementById("present-z").style.display = "block";
+  if (potential_coords[0] == correct_coords[0] && potential_coords[1] == correct_coords[1]) {
         document.getElementById("spinner").style.display = "none";
         document.getElementById("map-prompter").innerHTML = "You got it right! 🎉 <b>+1</b>"
         var sounds = new Audio('static/correct.mp3');
@@ -2119,10 +2118,7 @@ function makeaguess() {
             redhighlight.addTo(map);
             var group = new L.featureGroup([greenhighlight, redhighlight]);
             map.fitBounds(group.getBounds());
-            document.getElementById("map-prompter").innerHTML = "<b>Oops!</b> Your streak ends at <b>" + String(localStorage.getItem("sovereignt-streak") + "</b>. <i class='fa fa-hourglass-end' aria-hidden='true'></i>");
-            document.getElementById("original-c").style.display = "none";
-            document.getElementById("future-c").style.display = "none";
-            document.getElementById("present-z").style.display = "block";
+            document.getElementById("map-prompter").innerHTML = "<b>Oops!</b> Your streak ends at <b>" + String(localStorage.getItem("sovereignt-streak") + "</b>. <span style='margin-left: 3px;'>😔</span>");
             cur_ls = parseInt(localStorage.getItem("sovereignt-streak"))
             if(cur_ls > parseInt(localStorage.getItem("sovereignt-streak-hs"))) {
               localStorage.setItem("sovereignt-streak-hs", cur_ls)
@@ -2153,33 +2149,11 @@ function makeaguess() {
     // });
     // marker = L.marker([official_video_location[0], official_video_location[1]], {icon: correct_loction_marker}).bindTooltip("Exact Location <i class='fa fa-map-marker' aria-hidden='true'></i>").addTo(map);
   // submitted_country_code = html
-}).catch(function (err) {
-  // There was an error
-            alert("Something went wrong, carefully re-select your country by clicking the middle of it.")
-            document.getElementById("original-c").style.display = "block";
-            document.getElementById("future-c").style.display = "none";
-            document.getElementById("present-z").style.display = "none";
-            document.getElementById("spinner").style.display = "none";
-            greenhighlight.setStyle({
-              weight: 0,
-              color: '#56830b',
-              fillColor: '#56830b',
-              fillOpacity: '0',
-              dashArray: '',
-              fillOpacity: 0
-            });
-            // window.greenhighlight.remove()
-            document.getElementById("map-prompter").innerHTML = 'Select a Country <i class="fa fa-map-marker" aria-hidden="true" style="margin-left: 5px;"></i>'
-                // var map = L.map('map').setView([24.42401, 118.33202], 12); 
-                // var osm=new L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{ 
-                // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-  console.warn('Something went wrong.', err);
-});
+
   //console.log(potential_coords)
   // if (typeof lastname !== "undefined") {
     //console.log('NOT NULL!')
-      document.getElementById('original-c').style.display = "none";
-    document.getElementById('future-c').style.display = "block";
+  }, 500)
   } 
   // else {
       // if (potential_coords == correct_coords) {
@@ -2247,7 +2221,7 @@ function makeaguess() {
   // ofsecs = "null";
   // ofid = "null";
   // ofnumber = "null";
-}
+
 function shrinkupper() {
   //console.log('shrink called')
   if (counter_upper == 0) {
