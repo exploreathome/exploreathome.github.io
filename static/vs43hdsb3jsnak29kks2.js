@@ -1,6 +1,6 @@
 var emitted_reload = 0;
 // var thing = things[Math.floor(Math.random()*things.length)];
-// console.log(timelimit)
+// //a console.log(timelimit)
 var timelimit = "";
 var currentusername = "";
 var random_room_id;
@@ -17,8 +17,8 @@ var hostornot = false;
 window.addEventListener("focus", () => socket.connect());
 
 function initiateconnect(random_room_id) {
-  console.log(socket.connected)
-  console.log('test')
+  //a console.log(socket.connected)
+  //a console.log('test')
   // var socket = io.connect('http://localhost:5000');
   currentusername = document.getElementById("inputUsername").value;
   if(currentusername.length == 0) {
@@ -46,18 +46,18 @@ function initiateconnect(random_room_id) {
   document.getElementById("tpg").innerHTML = String(timelimit)
   document.getElementById("pl").innerHTML = String(document.getElementById("form-number-3").value)
 
-  // console.log(currentusername.length)
-  // console.log('-')
-  // console.log(currentusername)
+  // //a console.log(currentusername.length)
+  // //a console.log('-')
+  // //a console.log(currentusername)
   myusername = currentusername;
   if(currentusername == undefined) {
     currentusername = things[Math.floor(Math.random()*things.length)];
-    console.log('hey hey hey')
+    //a console.log('hey hey hey')
   }
-  console.log(timelimit)
+  //a console.log(timelimit)
   random_room_id = random_room_id
   if(emitted_reload == 0) {
-    console.log(socket.id)
+    //a console.log(socket.id)
     emitted_reload = 1
     socket.emit('create_room', {
       time: String(timelimit)[0],
@@ -66,7 +66,7 @@ function initiateconnect(random_room_id) {
       user_id_1: socket.id,
       room_id: random_room_id
     });
-    console.log(random_room_id)
+    //a console.log(random_room_id)
   }
   document.getElementById("linkInput").value = "https://virtualvacation.us/private-room?" + random_room_id
   document.getElementById("custom-code").innerHTML = String(random_room_id)
@@ -80,12 +80,12 @@ function joinroom(room_id, username, userid) {
       alert("You forgot to enter a username!")
       return;
     }
-    console.log(room_id)
-    console.log(username)
-    console.log(userid)
+    //a console.log(room_id)
+    //a console.log(username)
+    //a console.log(userid)
     currentusername = username;
     myusername = username;
-    console.log('room joined')
+    //a console.log('room joined')
     exist_error_check = 0;
     sixth()
     socket.emit('join_room', {
@@ -108,12 +108,12 @@ socket.on('color-change', function(data) {
   globalcolor = data["color"]
 })
 socket.on('user-join', function(data){
-  console.log('user-join initiate')
-  console.log(data["room_list"])
+  //a console.log('user-join initiate')
+  //a console.log(data["room_list"])
   num_of_players = 0;
   for (var key in data["room_list"]){
     num_of_players++
-    console.log(num_of_players)
+    //a console.log(num_of_players)
   }
   document.getElementById("playersWaiting").innerHTML = num_of_players
   document.getElementById("usernameList").innerHTML = String(document.getElementById("usernameList").innerHTML) + ", " + String(data["username"])
@@ -121,29 +121,29 @@ socket.on('user-join', function(data){
     var room_join_sound = new Audio('static/playerGuessed.mp3');
     room_join_sound.play();
   }
-  // console.log(document.getElementById("usernameList").innerHTML)
-  // console.log('fart')
-    // console.log('detectedchat')
+  // //a console.log(document.getElementById("usernameList").innerHTML)
+  // //a console.log('fart')
+    // //a console.log('detectedchat')
     // feedback.innerHTML = '';
     // output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
 socket.on('change-num-of-players', function(data) {
-  console.log('CHANGING NUM OF PLAYERS')
-  console.log(data['room_list'])
+  //a console.log('CHANGING NUM OF PLAYERS')
+  //a console.log(data['room_list'])
   // if(videoloadfuncran == 1) {
   player_string = ""
   num_of_players = 0;
   for (var key in data["room_list"]){
-    console.log(key.nickname)
+    //a console.log(key.nickname)
     num_of_players++
-    console.log(num_of_players)
+    //a console.log(num_of_players)
     if(String(socket.id) == String(key)) {
       player_string += "You"
     } else {
       player_string += ", " + String(data["room_list"][key])
     }
   }  
-  console.log(player_string)
+  //a console.log(player_string)
   document.getElementById("usernameList").innerHTML = player_string
   // num_of_players -= 1
   document.getElementById("playersWaiting").innerHTML = num_of_players
@@ -162,19 +162,19 @@ socket.on('change-num-of-players', function(data) {
 })
 let current_players = {}
 socket.on('lobby', function(data){
-  console.log('runs')
-  console.log(data)
-  console.log(data["host_id"])
+  //a console.log('runs')
+  //a console.log(data)
+  //a console.log(data["host_id"])
     current_players[data["host_id"]] = [data["host_name"]]
-  console.log(data["room_list"])
+  //a console.log(data["room_list"])
   num_of_players = 0;
   for (var key in data["room_list"]){
     num_of_players++
-    console.log(num_of_players)
+    //a console.log(num_of_players)
     // document.getElementById("usernameList").innerHTML = document.getElementById("usernameList").innerHTML + " " + data["room_list"].name
     // check if the property/key is defined in the object itself, not in parent
     // if (dictionary.hasOwnProperty(key)) {           
-        // console.log(key, dictionary[key]);
+        // //a console.log(key, dictionary[key]);
     // }
   }
   document.getElementById("playersWaiting").innerHTML = num_of_players
@@ -187,18 +187,18 @@ var active_json = {
 var serverleft;
 var gamenotified = 0;
 socket.on('start-game-notify', function(data){
-  console.log('Start Game Notified Initiate')
-  console.log(data)
-  console.log(data["player_info"])
+  //a console.log('Start Game Notified Initiate')
+  //a console.log(data)
+  //a console.log(data["player_info"])
   round_total = data["rounds"]
   serverleft = 90;
   if (data["t_p_g"] == "1 minute 30 seconds") {
-    console.log(' i am cool')
+    //a console.log(' i am cool')
     serverleft = 90;
   } else if(data["t_p_g"] == "1 minute") {
     serverleft = 60
   } else if(data["t_p_g"] == "2 minutes") {
-    console.log('im here')
+    //a console.log('im here')
     serverleft = 120
   } else if(data["t_p_g"] == "3 minutes") {
     serverleft = 180
@@ -222,10 +222,10 @@ socket.on('start-game-notify', function(data){
               // player.playVideo();
               document.getElementsByClassName("demo")[0].style.display = 'none'
   }, 4000)
-            console.log('before sound played')
+            //a console.log('before sound played')
             var start_sound = new Audio('static/gamestartnotif.mp3');
             start_sound.play();
-            console.log('sound able to be played')
+            //a console.log('sound able to be played')
               timeleft = serverleft
             setTimeout(function() {
                 player.unMute();
@@ -252,7 +252,7 @@ socket.on('start-game-notify', function(data){
                     // } catch {
                   clearInterval(downloadTimer);
 
-                  // console.log('makeaguessran')
+                  // //a console.log('makeaguessran')
                   // player.mute();
                   // if(guessmade == false) {
                   //   ranoutoftime = true;
@@ -268,10 +268,10 @@ socket.on('start-game-notify', function(data){
                   //   })                    
                   // }
                   // // waitmessage = serverleft +5;
-                  // // console.log(waitmessage)
+                  // // //a console.log(waitmessage)
                   // if(is_host == 1 && inguessingstage == 0) {
                   //   setTimeout(function() {
-                  //     console.log("SENDING THIS MESSAGE!")
+                  //     //a console.log("SENDING THIS MESSAGE!")
                   //     socket.emit('force-guess', {
 
                   //     })
@@ -289,10 +289,10 @@ socket.on('start-game-notify', function(data){
                 timeleft -= 1;
               }, 1000);
             }, 4000)
-  // console.log(data["room_contents"])
+  // //a console.log(data["room_contents"])
   // room_contents = data["room_contents"]
   // user_length = room_contents.length;
-  // console.log(user_length)
+  // //a console.log(user_length)
   // player_info = data["player_info"]
   // leaderboardcount(user_length)
   // iteration = 0
@@ -301,32 +301,32 @@ socket.on('start-game-notify', function(data){
     room_contents = data["room_contents"]
     // user_length = room_contents.length;
     user_length = Object.keys(room_contents.sockets).length
-    // console.log(user_length)
+    // //a console.log(user_length)
     player_info = data["player_info"]
-    // console.log(room_contents)
-    // console.log('LEADERBOARD COUNT: ' + String(user_length))
-    // console.log(room_contents.sockets)
-    // console.log(Object.keys(room_contents.sockets).length)
+    // //a console.log(room_contents)
+    // //a console.log('LEADERBOARD COUNT: ' + String(user_length))
+    // //a console.log(room_contents.sockets)
+    // //a console.log(Object.keys(room_contents.sockets).length)
     leaderboardcount(user_length)
     iteration = 0
       var items = Object.keys(player_info).map(function(key) {
-    // console.log(key)
-    // console.log(transmit_json[key][2])
+    // //a console.log(key)
+    // //a console.log(transmit_json[key][2])
     return [key, player_info[key][0], player_info[key][1], player_info[key][2]];
   });
   items.sort(function(first, second) {
     return second[2] - first[2];
   });
-  console.log('MATCHED ITEMS PLAYER INFO')
+  //a console.log('MATCHED ITEMS PLAYER INFO')
   pre_pinfoobj = items
   const pinfoobj = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
-  console.log(pinfoobj)
+  //a console.log(pinfoobj)
   for(let ione = 0; ione < pinfoobj.length; ione++) {
       document.getElementsByClassName("user-name-ll")[ione].innerHTML = pinfoobj[ione][1];
       document.getElementsByClassName("user-name-score")[ione].innerHTML = pinfoobj[ione][2]; 
       document.getElementsByClassName("li-circles")[ione].style.backgroundColor = pinfoobj[ione][3];
-      console.log("COLORS HELP")
+      //a console.log("COLORS HELP")
       gamenotified = 1;   
   }
   if(pre_pinfoobj.length > 10) {
@@ -338,19 +338,19 @@ socket.on('start-game-notify', function(data){
     // for (var key in player_info) {
     //   key_name = key
     //   key_value = player_info[key];
-    //   console.log(key_name, key_value)
+    //   //a console.log(key_name, key_value)
     //   document.getElementsByClassName("user-name-ll")[iteration].innerHTML = key_value[0];
     //   document.getElementsByClassName("user-name-score")[iteration].innerHTML = key_value[1];
-    //   // console.log()
-    //   console.log("iteration of dict.. 18")
+    //   // //a console.log()
+    //   //a console.log("iteration of dict.. 18")
     //   iteration += 1
     //   gamenotified = 1;
     //   // your code here...
     // }
   // }
-  console.log(player_info)
+  //a console.log(player_info)
   for(let i=3; i>=0; i--) {
-    console.log('runnin this')
+    //a console.log('runnin this')
     // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
     if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
       document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
@@ -365,11 +365,11 @@ socket.on('start-game-notify', function(data){
       return; 
     }
   }
-  console.log(document.getElementsByClassName("user-name-ll2")[3].innerHTML)
-  console.log(document.getElementsByClassName("user-name-ll2")[2].innerHTML)
-  console.log(document.getElementsByClassName("user-name-ll2")[1].innerHTML)
-  console.log(document.getElementsByClassName("user-name-ll2")[0].innerHTML)
-  console.log('switching process intiateed')
+  //a console.log(document.getElementsByClassName("user-name-ll2")[3].innerHTML)
+  //a console.log(document.getElementsByClassName("user-name-ll2")[2].innerHTML)
+  //a console.log(document.getElementsByClassName("user-name-ll2")[1].innerHTML)
+  //a console.log(document.getElementsByClassName("user-name-ll2")[0].innerHTML)
+  //a console.log('switching process intiateed')
   document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
@@ -388,17 +388,11 @@ socket.on('finished-guessing', function(data){
                   document.getElementById("main-button2").style.display = "none";
                   document.getElementById("future-c").style.display = "block";
   document.getElementById('eigth-card').style.display = 'none';
-  console.log('message recieved IN FINISHED GUESSINGGGGGG')
   transmit_json = data['transmit_json']
-  console.log(transmit_json)
   guess_coord_list = []
-  // document.getElementById("waiting-for-all").style.display = "none";
-
   document.getElementById("future-cclose-button-id").style.display = "block";
-  // if(is_host == 1) {
     document.getElementById("skip-button-id").style.display = "none";
     document.getElementById("original-c").style.display = "none";
-  // }
           if(round_present == round_total) {
                 player.mute();
                 loadpodium();
@@ -411,8 +405,8 @@ socket.on('finished-guessing', function(data){
           }
   current_i = 0
   var items = Object.keys(transmit_json).map(function(key) {
-    console.log(key)
-    console.log(transmit_json[key][2])
+    //a console.log(key)
+    //a console.log(transmit_json[key][2])
     return [key, transmit_json[key][0], transmit_json[key][2], transmit_json[key][3], transmit_json[key][4], transmit_json[key][5]];
   });
   pre_new_obj2 = items
@@ -420,7 +414,7 @@ socket.on('finished-guessing', function(data){
     return second[1] - first[1];
   });
   const new_obj = items.slice(0, 10);
-  console.log(new_obj)
+  //a console.log(new_obj)
   for (var p = 9; p--;) {
     document.getElementsByClassName("br-tag")[p].style.display = "none";
   }
@@ -436,7 +430,7 @@ socket.on('finished-guessing', function(data){
   for(let obj_i = 0; obj_i < obj_length; obj_i++) {
     document.getElementsByClassName("br-tag")[obj_i].style.display = "block";
     document.getElementsByClassName("coolbob29")[obj_i].style.display = "block";
-    console.log(String(new_obj[obj_i][1]))
+    //a console.log(String(new_obj[obj_i][1]))
     if(String(new_obj[obj_i][1] == 'null')) {
     }
     if(String(new_obj[obj_i][1]) != "0" && String(new_obj[obj_i][1]) != 'null') { 
@@ -460,16 +454,16 @@ socket.on('finished-guessing', function(data){
     document.getElementsByClassName("upvote-downvote")[obj_i].style.display = "block";
     document.getElementsByClassName("user-name-ll")[obj_i].innerHTML = String(new_obj[obj_i][2])
     document.getElementsByClassName("user-name-score")[obj_i].innerHTML = String(new_obj[obj_i][4])
-    console.log('My Socket Id: ' + socket.id)
+    //a console.log('My Socket Id: ' + socket.id)
     if(socket.id == String(new_obj[obj_i][5])) {
-      console.log(' i am the host... ')
+      //a console.log(' i am the host... ')
       document.getElementById("guess-button-id-host").style.display = 'block';
       document.getElementById("future-c").style.display = 'block';
-      console.log('yes is host')
+      //a console.log('yes is host')
     }
   }
   if(pointed_right == 0) {
-    console.log('testing')
+    //a console.log('testing')
     if(String(transmit_json[socket.id][0]) != "0" && String(transmit_json[socket.id][0]) != 'null') {
       document.getElementById("first-coolbob29").innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(transmit_json[socket.id][3])+"mi)</span>"
       document.getElementById("first-upvote-downvote").innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(transmit_json[socket.id][0])
@@ -481,21 +475,31 @@ socket.on('finished-guessing', function(data){
   } 
   $("#seventh-card").slideDown(700);
   document.getElementById("id01").style.display = 'block';
+  if(streamer == 1) {
+    document.getElementById("mapid").style.filter = ""
+    document.getElementById("map-prompter").innerHTML = guess_text
+    if(distance_between < 11) {
+      confetti.start(2000);
+      document.getElementById("confetti-canvas").style.zIndex = 10000000000
+      var sounds = new Audio('static/cheering.wav');
+      sounds.play();
+    }
+  }
   noguesscount = 0;
   realguesscount=0;
   var items = Object.keys(transmit_json).map(function(key) {
-    console.log(key)
-    console.log(transmit_json[key][2])
+    //a console.log(key)
+    //a console.log(transmit_json[key][2])
     return [key, transmit_json[key][0], transmit_json[key][2], transmit_json[key][3], transmit_json[key][4], transmit_json[key][5]];
   });
   items.sort(function(first, second) {
     return second[4] - first[4];
   });
-  console.log('MATCHED ITEMS-2')
+  //a console.log('MATCHED ITEMS-2')
   pre_new_obj2 = items
   const new_obj2 = items.slice(0, 10);
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
-  console.log(new_obj2)
+  //a console.log(new_obj2)
   onleaderboard = 0;
   for(let obj_i = 0; obj_i < new_obj2.length; obj_i++) {
     document.getElementsByClassName("user-name-ll")[obj_i].innerHTML = String(new_obj2[obj_i][2])
@@ -519,7 +523,7 @@ socket.on('finished-guessing', function(data){
   } else {
     document.getElementById("new-back-btn-lb").style.display = "none";     
   }
-  console.log(new_obj2.length)
+  //a console.log(new_obj2.length)
   obj2_length = new_obj2.length
   leaderboardcount(obj2_length)
   map.invalidateSize();
@@ -535,16 +539,16 @@ socket.on('finished-guessing', function(data){
     prefix: 'fa'
   });
   for (var key in transmit_json) {
-    // console.log('KEY IN:')
-    // console.log(transmit_json[key])
+    // //a console.log('KEY IN:')
+    // //a console.log(transmit_json[key])
     temp_color = transmit_json[key][7]
     realguesscount+=1
     key_id = key
     score_coord_info = transmit_json[key];
-    console.log(key_id, score_coord_info)
+    //a console.log(key_id, score_coord_info)
     guess_coord_list.push(score_coord_info[1])
-    console.log(score_coord_info[1])
-    console.log([globallat, globallon])
+    //a console.log(score_coord_info[1])
+    //a console.log([globallat, globallon])
 
     current_i += 1
 
@@ -570,37 +574,37 @@ socket.on('finished-guessing', function(data){
       }
       var polyline_new = L.polyline([random_lat_lon, score_coord_info[1]], {color: 'black', dashArray: '5,10'}).addTo(map);
       markerArray.push(polyline_new)
-        console.log(guess_coord_list)
+        //a console.log(guess_coord_list)
           try {
                       map.removeLayer(marker)
-                      console.log('THIS WORKEDD YAYYY!!')
+                      //a console.log('THIS WORKEDD YAYYY!!')
           } catch {
-            console.log('catched occured!!!@!@!')
+            //a console.log('catched occured!!!@!@!')
           }
               feature__group = new L.featureGroup(markerArray);
-              console.log(feature__group)
+              //a console.log(feature__group)
     map.flyToBounds(feature__group.getBounds().pad(1));
-    console.log('i iterated...')
+    //a console.log('i iterated...')
         temporary_lst.push([score_coord_info[2], score_coord_info[1], score_coord_info[3], temp_color])
     } else {
           noguesscount++
-          console.log('else initiated!!')
+          //a console.log('else initiated!!')
           // marker1 = L.marker([random_lat_lon[0], random_lat_lon[1]], {icon: greenMarker})
           // markerArray.push(marker1);
           var group = L.featureGroup(markerArray).addTo(map);
           try {
                       map.removeLayer(marker)
-                      console.log('THIS WORKEDD YAYYY!!')
+                      //a console.log('THIS WORKEDD YAYYY!!')
           } catch {
-            console.log('catched occured!!!@!@!')
+            //a console.log('catched occured!!!@!@!')
           }
     }
     feature__group = new L.featureGroup(markerArray);
-    console.log(feature__group)
+    //a console.log(feature__group)
     map.fitBounds(L.featureGroup(markerArray).getBounds().pad(1));
-    console.log('i iterated... 321')
+    //a console.log('i iterated... 321')
     if(realguesscount == noguesscount) {
-      console.log('set the zoom')
+      //a console.log('set the zoom')
       map.setZoom(5);
     }
     } 
@@ -623,7 +627,7 @@ socket.on('finished-guessing', function(data){
     for(let i=3; i>=0; i--) {
     // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
     if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
-      console.log('is none')
+      //a console.log('is none')
       document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Over <i class='far fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
       // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
       document.getElementsByClassName("li-class2")[i].style.display = "block"
@@ -631,7 +635,7 @@ socket.on('finished-guessing', function(data){
       return; 
     }
   }
-  console.log('switching process intiateed')
+  //a console.log('switching process intiateed')
   document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
@@ -655,7 +659,7 @@ function leaderboardcount(num_of_lines) {
 
     // document.getElementsByClassName("li-class")[i].style.display = "block";
   for(let i=0;i<num_of_lines;i++) {
-    console.log(i)
+    //a console.log(i)
     document.getElementsByClassName("li-class")[i].style.display = "block";
   }
   document.getElementsByClassName("li-class")[num_of_lines-1].style.borderBottom = "none"
@@ -679,12 +683,12 @@ function copyToClip() {
 var is_asdfasdfasdf;
 var is_host = 0;
 function begingame() {
-    console.log(socket.id)
-    console.log('Round Present:')
-    console.log(round_present+1)
+    //a console.log(socket.id)
+    //a console.log('Round Present:')
+    //a console.log(round_present+1)
     is_host = 1;
     is_asdfasdfasdf = 1;
-    console.log('EMITTED BEIGN GAME')
+    //a console.log('EMITTED BEIGN GAME')
     socket.emit('begin_game', {
       user_socket_id: socket.id,
       // player_limit: document.getElementById("form-number-2").value,
@@ -697,21 +701,21 @@ function begingame() {
 function loadpodium() {
   player.mute();
   podium_json = transmit_json
-  console.log('Podium Json:')
-  console.log(podium_json)
+  //a console.log('Podium Json:')
+  //a console.log(podium_json)
   var items = Object.keys(transmit_json).map(function(key) {
-    console.log(key)
-    console.log(transmit_json[key][2])
+    //a console.log(key)
+    //a console.log(transmit_json[key][2])
     return [key, transmit_json[key][0], transmit_json[key][2], transmit_json[key][3], transmit_json[key][4], transmit_json[key][5]];
   });
   items.sort(function(first, second) {
     return second[4] - first[4];
   });
-  console.log('PODIUM ITEMS')
+  //a console.log('PODIUM ITEMS')
   const pod_obj = items
-  console.log(pod_obj)
+  //a console.log(pod_obj)
   // const new_obj = items.slice(0, Object.keys(transmit_json).length);
-  // console.log(new_obj)
+  // //a console.log(new_obj)
   document.getElementsByTagName("nav")[0].style.position = "fixed";
   document.getElementsByTagName("nav")[0].style.width = "100vw";
   coolsound = new Audio("static/gameOver.mp3")
@@ -739,14 +743,14 @@ function loadpodium() {
         document.getElementsByClassName("third-place")[0].style.display = "block"
         document.getElementsByClassName("podium-num-third")[0].innerHTML = pod_obj[obj_p][4]
       } else {
-        console.log('else bud')
+        //a console.log('else bud')
       }
     } catch {
 
     }
   }
   sum = sum_of_scores
-  console.log(sum_of_scores)
+  //a console.log(sum_of_scores)
   function find_suffix(i) {
       var j = i % 10,
           k = i % 100;
@@ -762,12 +766,12 @@ function loadpodium() {
       return i + "th";
   }
   for(var count=0; count<100;count++) {
-    console.log(count)
+    //a console.log(count)
     if(String(document.getElementsByClassName("user-name-ll")[count].innerHTML) == myusername) {
       place = count+1
       document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
       place = find_suffix(place)
-      console.log('THE PLACE: ' + String(place))
+      //a console.log('THE PLACE: ' + String(place))
       document.getElementById('place-number').innerHTML = place
       break;
     }
@@ -786,7 +790,7 @@ function playagainfunc() {
   }
 }
 function playagain() {
-    console.log('HEY WORLD!')
+    //a console.log('HEY WORLD!')
     roommenu();
     document.getElementById("rejoin-room").innerHTML = "Rejoin Room"
     document.getElementById("rejoin-room-code").innerHTML = "Join using the <b>previous</b> game code."
@@ -797,15 +801,15 @@ function playagain() {
   host_or_not_socket_id: socket.id
   })
 }
-// setTimeout(function(){ socket.emit('server-ping'); console.log('sent on client') }, 5000);
+// setTimeout(function(){ socket.emit('server-ping'); //a console.log('sent on client') }, 5000);
 function foo() {
 
     // your function code here
-    socket.emit('server-ping'); console.log('sent on client')
+    socket.emit('server-ping'); //a console.log('sent on client')
     setTimeout(foo, 9000);
 }
 // socket.on('i-am-host', function(data){
-//   console.log(' I AM HOST IS TRUE ')
+//   //a console.log(' I AM HOST IS TRUE ')
 //   document.getElementById("guess-button-id-host").style.display = 'block';
 // });
 // foo();
@@ -813,11 +817,11 @@ function foo() {
 socket.on('check_host_verify', function(data){
   document.getElementById("second-card").style.display = "none";
   emitted_reload = 0;
-  console.log(data)
-    console.log('IM DA HOST!!')
+  //a console.log(data)
+    //a console.log('IM DA HOST!!')
     document.getElementById("sixth-card").style.display = "none";
     initiateconnect(Math.floor(Math.random()*90000) + 10000);
-  console.log('Host Notification Reached Client')
+  //a console.log('Host Notification Reached Client')
 })
 
 socket.on('room-dont-exist', function(data){
@@ -840,7 +844,7 @@ socket.on('profanity', function(data){
     document.getElementById("sixth-card").style.display = "none";
 })
 socket.on('room-full', function(data){
-  // console.log('room full')
+  // //a console.log('room full')
   alert("The room you tried to join is full. :( ")
   // exist_error_check = 1;
   // location.reload();
@@ -856,16 +860,16 @@ var mydict = [];
 socket.on('update-guess', function(data){
   if(data['intentional_exit'] != true) {
   // mydict = {}
-  // console.log(allowUpdate)
+  // //a console.log(allowUpdate)
   if(data["socket_id"] != socket.id) {
-    console.log('Im not the guesser :)')
+    //a console.log('Im not the guesser :)')
     for(let num=0; num<10; num++) {
-      console.log('num: ' + String(num))
-      console.log(document.getElementsByClassName("user-name-ll")[num].innerHTML)
-      console.log(data["nickname"])
+      //a console.log('num: ' + String(num))
+      //a console.log(document.getElementsByClassName("user-name-ll")[num].innerHTML)
+      //a console.log(data["nickname"])
       if(document.getElementsByClassName("li-class")[num].style.display == 'block' && String(document.getElementsByClassName("user-name-ll")[num].innerHTML) == String(data["nickname"])) {
-        console.log('is block!!')
-          console.log('THEY ARE THE SAME U NOOB')
+        //a console.log('is block!!')
+          //a console.log('THEY ARE THE SAME U NOOB')
           mydict.push(num)
           document.getElementsByClassName("tooltip-text")[num].innerHTML = "I'm <b>"+ String(parseInt(data["distance"])) + "mi's</b> out. <span style='margin-left: 5px;'>👈</span>";
           if(isMobile) {
@@ -880,7 +884,7 @@ socket.on('update-guess', function(data){
   for(let i=3; i>=0; i--) {
     // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
     if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
-      console.log('is none')
+      //a console.log('is none')
       document.getElementsByClassName("user-name-ll2")[i].innerHTML = "<b>" + String(data["nickname"]) + "</b> <span style='color: #5bc0de;'>guessed</span>"
       // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
       document.getElementsByClassName("li-class2")[i].style.display = "block"
@@ -888,11 +892,11 @@ socket.on('update-guess', function(data){
       return; 
     }
   }
-  console.log('switching process intiateed')
-  console.log(document.getElementsByClassName("user-name-ll2")[3].innerHTML)
-  console.log(document.getElementsByClassName("user-name-ll2")[2].innerHTML)
-  console.log(document.getElementsByClassName("user-name-ll2")[1].innerHTML)
-  console.log(document.getElementsByClassName("user-name-ll2")[0].innerHTML)
+  //a console.log('switching process intiateed')
+  //a console.log(document.getElementsByClassName("user-name-ll2")[3].innerHTML)
+  //a console.log(document.getElementsByClassName("user-name-ll2")[2].innerHTML)
+  //a console.log(document.getElementsByClassName("user-name-ll2")[1].innerHTML)
+  //a console.log(document.getElementsByClassName("user-name-ll2")[0].innerHTML)
   document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
@@ -920,7 +924,7 @@ function skipfunc2() {
   // skipfunc()
 }
 socket.on('room-duplicate', function(data){
-  // console.log('room full')
+  // //a console.log('room full')
   alert("Someone is already using the username you inputted. Try again with something different, or join a random server with your desired username.")
   // exist_error_check = 1;
     // document.getElementById("first-card").style.display = "none";
@@ -955,13 +959,13 @@ function loadsecondmap() {
       markerColor: 'green',
       prefix: 'fa'
     });
-  console.log(playerguesses)
+  //a console.log(playerguesses)
   for([key,value] of Object.entries(myguesses)) {
     // if(myguesses[String(key)] != undefined) {
-      console.log(key)
-      console.log(value)
-      console.log('=')
-      console.log(JSON.parse("[" + String(key) + "]"))
+      //a console.log(key)
+      //a console.log(value)
+      //a console.log('=')
+      //a console.log(JSON.parse("[" + String(key) + "]"))
       endGreenMarker = L.marker(JSON.parse("[" + String(key) + "]"), {icon: greenmarkerIcon}).on('click', showMarkers).addTo(mymap);
     // }
   }
@@ -973,11 +977,11 @@ function showMarkers(e) {
   try {
   mymap.removeLayer(opened_markers_and_lines)
   }catch(err){
-    console.log(err)
+    //a console.log(err)
   }
   opened_markers_and_lines = []
   templatlon = [e.latlng]
-  console.log(templatlon)
+  //a console.log(templatlon)
   normal_lat_lon = [templatlon[0]["lat"],templatlon[0]["lng"]]
   templatlon = String(templatlon[0]["lat"]) + "," + String(templatlon[0]["lng"])
   guessmade = playerguesses[String(templatlon)]
