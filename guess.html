@@ -2020,7 +2020,7 @@ var gray_scale = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}
 function invalidateSizeFunc(userinput) {
   document.getElementById('id01').style.display = "block";
         if (map == undefined) {
-      map = L.map('mapid', {minZoom: 1, layers: [gray_scale, osm_scale]}).setView(coordinates, zoom_level);
+      map = L.map('mapid', {minZoom: 1, layers: [gray_scale]}).setView(coordinates, zoom_level);
         var differentLayers = {
           "<b>1.</b> Native Languages": osm_scale,
           "<b>2. </b>All English": gray_scale
