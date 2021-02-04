@@ -478,7 +478,7 @@ socket.on('finished-guessing', function(data){
   if(streamer == 1) {
     document.getElementById("mapid").style.filter = ""
     document.getElementById("map-prompter").innerHTML = guess_text
-    if(distance_between < 11) {
+    if(distance_between < 11 && round_present != round_total) {
       confetti.start(2000);
       document.getElementById("confetti-canvas").style.zIndex = 10000000000
       var sounds = new Audio('static/cheering.wav');
