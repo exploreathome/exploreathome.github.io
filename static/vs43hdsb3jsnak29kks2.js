@@ -658,6 +658,9 @@ function leaderboardcount(num_of_lines) {
     // document.getElementsByClassName("li-class")[10].style.display = "none";
 
     // document.getElementsByClassName("li-class")[i].style.display = "block";
+  if(num_of_lines > 10) {
+    num_of_lines = 10
+  }
   for(let i=0;i<num_of_lines;i++) {
     //a console.log(i)
     document.getElementsByClassName("li-class")[i].style.display = "block";
