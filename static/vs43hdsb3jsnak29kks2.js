@@ -455,11 +455,12 @@ socket.on('finished-guessing', function(data){
     document.getElementsByClassName("user-name-ll")[obj_i].innerHTML = String(new_obj[obj_i][2])
     document.getElementsByClassName("user-name-score")[obj_i].innerHTML = String(new_obj[obj_i][4])
     //a console.log('My Socket Id: ' + socket.id)
-    if(socket.id == String(new_obj[obj_i][5])) {
-      //a console.log(' i am the host... ')
+  }
+  for(var xy=0; xy<items.length;xy++) {
+    if(socket.id == String(items[xy][5])) {
       document.getElementById("guess-button-id-host").style.display = 'block';
       document.getElementById("future-c").style.display = 'block';
-      //a console.log('yes is host')
+      break;
     }
   }
   if(pointed_right == 0) {
