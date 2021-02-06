@@ -742,10 +742,10 @@ function loadpodium() {
     try {
       selected_username = String(pod_obj[obj_p][2])
       if(myusername != String(pod_obj[obj_p][2])) {
-        document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0'><div class='scoreboard__title'>" + selected_username + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
+        document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0' style='overflow: hidden;'><div class='scoreboard__title'>" + selected_username + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
       } else {
         document.getElementById('place-number').innerHTML = find_suffix(obj_p +1)
-        document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0'><div class='scoreboard__title'> <i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + selected_username + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
+        document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0' style='overflow: hidden;'><div class='scoreboard__title'> <i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + selected_username + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
       }     
       sum_of_scores += parseInt(pod_obj[obj_p][4])
       if(obj_p == 0) {
