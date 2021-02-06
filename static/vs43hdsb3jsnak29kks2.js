@@ -724,29 +724,9 @@ function loadpodium() {
   coolsound = new Audio("static/gameOver.mp3")
   coolsound.play();
   sum_of_scores = 0;
-  function find_suffix(i) {
-      var j = i % 10,
-          k = i % 100;
-      if (j == 1 && k != 11) {
-          return i + "st";
-      }
-      if (j == 2 && k != 12) {
-          return i + "nd";
-      }
-      if (j == 3 && k != 13) {
-          return i + "rd";
-      }
-      return i + "th";
-  }
   for(let obj_p = 0; obj_p < pod_obj.length; obj_p++) {
     try {
-      selected_username = String(pod_obj[obj_p][2])
-      if(myusername != String(pod_obj[obj_p][2])) {
-        document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0' style='overflow: hidden;'><div class='scoreboard__title'>" + selected_username + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
-      } else {
-        document.getElementById('place-number').innerHTML = find_suffix(obj_p +1)
-        document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0' style='overflow: hidden;'><div class='scoreboard__title'> <i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + selected_username + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
-      }     
+      document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0'><div class='scoreboard__title'>" + String(pod_obj[obj_p][2]) + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
       sum_of_scores += parseInt(pod_obj[obj_p][4])
       if(obj_p == 0) {
         document.getElementsByClassName("podium-name-first")[0].innerHTML = "<i class='fas fa-medal' style='color: #ebc137;'></i> " + String(pod_obj[obj_p][2])
@@ -770,6 +750,33 @@ function loadpodium() {
       }
     } catch {
 
+    }
+  }
+  sum = sum_of_scores
+  //a console.log(sum_of_scores)
+  function find_suffix(i) {
+      var j = i % 10,
+          k = i % 100;
+      if (j == 1 && k != 11) {
+          return i + "st";
+      }
+      if (j == 2 && k != 12) {
+          return i + "nd";
+      }
+      if (j == 3 && k != 13) {
+          return i + "rd";
+      }
+      return i + "th";
+  }
+  for(var count=0; count<100;count++) {
+    //a console.log(count)
+    if(String(document.getElementsByClassName("scoreboard__title")[count].innerHTML) == myusername) {
+      place = count+1
+      document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
+      place = find_suffix(place)
+      //a console.log('THE PLACE: ' + String(place))
+      document.getElementById('place-number').innerHTML = place
+      break;
     }
   }
   document.getElementById("vid-bac").style.display = "none";
