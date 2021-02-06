@@ -456,11 +456,13 @@ socket.on('finished-guessing', function(data){
     document.getElementsByClassName("user-name-score")[obj_i].innerHTML = String(new_obj[obj_i][4])
     //a console.log('My Socket Id: ' + socket.id)
   }
-  for(var xy=0; xy<items.length;xy++) {
-    if(socket.id == String(items[xy][5])) {
-      document.getElementById("guess-button-id-host").style.display = 'block';
-      document.getElementById("future-c").style.display = 'block';
-      break;
+  if(is_host == 1) {
+    for(var xy=0; xy<items.length;xy++) {
+      if(socket.id == String(items[xy][5])) {
+        document.getElementById("guess-button-id-host").style.display = 'block';
+        document.getElementById("future-c").style.display = 'block';
+        break;
+      }
     }
   }
   if(pointed_right == 0) {
