@@ -30,7 +30,7 @@ function initiateconnect(random_room_id) {
     return;
   }
   if(socket.connected != true) {
-    document.getElementById("sharelink").innerHTML = "One second! <i class='fas fa-spinner fa-spin' style='margin-left: 5px;'></i>"
+    document.getElementById("sharelink").innerHTML = "One second! <i class='fa fa-spinner fa-spin' style='margin-left: 5px;'></i>"
     setTimeout(function() {
       alert("We just restarted our game-servers when you joined. Reload the page and everything will be okay. Sorry for the inconvinience.")
       location.reload();
@@ -80,6 +80,10 @@ function joinroom(room_id, username, userid) {
       alert("You forgot to enter a username!")
       return;
     }
+    if(username.length > 10) {
+      alert("Username too long!")
+      return;
+    }
     //a console.log(room_id)
     //a console.log(username)
     //a console.log(userid)
@@ -122,7 +126,7 @@ socket.on('user-join', function(data){
     room_join_sound.play();
   }
   // //a console.log(document.getElementById("usernameList").innerHTML)
-  // //a console.log('fart')
+  // //a console.log('fat')
     // //a console.log('detectedchat')
     // feedback.innerHTML = '';
     // output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
@@ -353,7 +357,7 @@ socket.on('start-game-notify', function(data){
     //a console.log('runnin this')
     // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
     if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
-      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
+      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Started <i class='fa fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
       // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
       document.getElementsByClassName("li-class2")[i].style.display = "block"
       document.getElementById("new-back-btn10").style.display = 'block'
@@ -373,7 +377,7 @@ socket.on('start-game-notify', function(data){
   document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
-  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
+  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Started <i class='fa fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
 });
 var firsttime = 0;
 var playerguesses = {}
@@ -439,7 +443,7 @@ socket.on('finished-guessing', function(data){
         document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
       } else {
         pointed_right = 1;
-        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='fa fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
       }
     } else {
       document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
@@ -468,7 +472,7 @@ socket.on('finished-guessing', function(data){
   if(pointed_right == 0) {
     //a console.log('testing')
     if(String(transmit_json[socket.id][0]) != "0" && String(transmit_json[socket.id][0]) != 'null') {
-      document.getElementById("first-coolbob29").innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(transmit_json[socket.id][3])+"mi)</span>"
+      document.getElementById("first-coolbob29").innerHTML = "<i class='fa fa-hand-point-right' style='margin-right: 5px;'></i>" + String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(transmit_json[socket.id][3])+"mi)</span>"
       document.getElementById("first-upvote-downvote").innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(transmit_json[socket.id][0])
     } else {
     document.getElementById("first-coolbob29").innerHTML = String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
@@ -631,7 +635,7 @@ socket.on('finished-guessing', function(data){
     // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
     if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
       //a console.log('is none')
-      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Over <i class='far fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
+      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Over <i class='fa fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
       // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
       document.getElementsByClassName("li-class2")[i].style.display = "block"
       document.getElementById("new-back-btn10").style.display = 'block'
@@ -642,7 +646,7 @@ socket.on('finished-guessing', function(data){
   document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
-  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Over <i class='far fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
+  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Over <i class='fa fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
     setTimeout(function(){ map.invalidateSize()}, 500);
 });
 let num_of_players = 0
@@ -686,14 +690,14 @@ function copyToClip() {
   document.execCommand("copy");
   document.getElementById("copyLink").innerHTML = "Copied! <i class='fa fa-check' aria-hidden='true' style='margin-left: 10px; font-size: 20px;''></i>"
 }
-var is_asdfasdfasdf;
+var is_asdfadfadf;
 var is_host = 0;
 function begingame() {
     //a console.log(socket.id)
     //a console.log('Round Present:')
     //a console.log(round_present+1)
     is_host = 1;
-    is_asdfasdfasdf = 1;
+    is_asdfadfadf = 1;
     //a console.log('EMITTED BEIGN GAME')
     socket.emit('begin_game', {
       user_socket_id: socket.id,
@@ -732,7 +736,7 @@ function loadpodium() {
       document.getElementById("scoreboard__items").innerHTML = document.getElementById("scoreboard__items").innerHTML + "  <li class='scoreboard__item' data-count='0'><div class='scoreboard__title'>" + String(pod_obj[obj_p][2]) + "</div><div class='scoreboard__status'><div class='js-oneup'></div></div><div class='scoreboard__numbers'><span class='js-number'>" + String(pod_obj[obj_p][4]) + "</span></div><div class='scoreboard__bar js-bar'><div class='scoreboard__bar-bar'></div></div></li>"
       sum_of_scores += parseInt(pod_obj[obj_p][4])
       if(obj_p == 0) {
-        document.getElementsByClassName("podium-name-first")[0].innerHTML = "<i class='fas fa-medal' style='color: #ebc137;'></i> " + String(pod_obj[obj_p][2])
+        document.getElementsByClassName("podium-name-first")[0].innerHTML = "<i class='fa fa-medal' style='color: #ebc137;'></i> " + String(pod_obj[obj_p][2])
         // document.getElementsByClassName("podium-num-first")[0].innerHTML = document.getElementsByClassName("user-name-score")[0].innerHTML | pod_obj[obj_p][4]
         document.getElementsByClassName("podium-num-first")[0].innerHTML = pod_obj[obj_p][4]
         // animateValue("podium-num-first", 0, pod_obj[obj_p][4], 2000, 0);
@@ -775,7 +779,7 @@ function loadpodium() {
     //a console.log(count)
     if(String(document.getElementsByClassName("scoreboard__title")[count].innerHTML) == myusername) {
       place = count+1
-      document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
+      document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='fa fa-hand-point-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
       place = find_suffix(place)
       //a console.log('THE PLACE: ' + String(place))
       document.getElementById('place-number').innerHTML = place
