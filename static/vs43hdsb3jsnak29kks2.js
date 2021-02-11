@@ -635,7 +635,7 @@ socket.on('finished-guessing', function(data){
     // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
     if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
       //a console.log('is none')
-      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Over <i class='fa fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
+      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Over <i class='fa fa-clock-o' style='color: #d9534f; margin-left: 2px;'></i> "
       // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
       document.getElementsByClassName("li-class2")[i].style.display = "block"
       document.getElementById("new-back-btn10").style.display = 'block'
@@ -646,7 +646,7 @@ socket.on('finished-guessing', function(data){
   document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
   document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
   document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
-  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Over <i class='fa fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
+  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Over <i class='fa fa-clock-o' style='color: #d9534f; margin-left: 2px;'></i> "
     setTimeout(function(){ map.invalidateSize()}, 500);
 });
 let num_of_players = 0
