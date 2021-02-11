@@ -443,7 +443,7 @@ socket.on('finished-guessing', function(data){
         document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
       } else {
         pointed_right = 1;
-        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='fa fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='fa fa-hand-o-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
       }
     } else {
       document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
@@ -472,7 +472,7 @@ socket.on('finished-guessing', function(data){
   if(pointed_right == 0) {
     //a console.log('testing')
     if(String(transmit_json[socket.id][0]) != "0" && String(transmit_json[socket.id][0]) != 'null') {
-      document.getElementById("first-coolbob29").innerHTML = "<i class='fa fa-hand-point-right' style='margin-right: 5px;'></i>" + String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(transmit_json[socket.id][3])+"mi)</span>"
+      document.getElementById("first-coolbob29").innerHTML = "<i class='fa fa-hand-o-right' style='margin-right: 5px;'></i>" + String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(transmit_json[socket.id][3])+"mi)</span>"
       document.getElementById("first-upvote-downvote").innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(transmit_json[socket.id][0])
     } else {
     document.getElementById("first-coolbob29").innerHTML = String(transmit_json[socket.id][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
@@ -779,7 +779,7 @@ function loadpodium() {
     //a console.log(count)
     if(String(document.getElementsByClassName("scoreboard__title")[count].innerHTML) == myusername) {
       place = count+1
-      document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='fa fa-hand-point-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
+      document.getElementsByClassName("scoreboard__title")[count].innerHTML = "<i class='fa fa-hand-o-right' style='margin-right: 5px;'></i> " + String(document.getElementsByClassName("scoreboard__title")[count].innerHTML)
       place = find_suffix(place)
       //a console.log('THE PLACE: ' + String(place))
       document.getElementById('place-number').innerHTML = place
