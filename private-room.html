@@ -996,7 +996,7 @@ select {
 </a></p>
 <p id="new-back-btn6" style="z-index: 1;" title="Adjust Volume"><a style="cursor: pointer;"><i class="fa fa-volume-up" aria-hidden="true"></i></a></p>
 <p id="new-back-btn5" style="z-index: 1;" title="Adjust Volume"><input type="range" min="0" max="100" class="volumeSlider" id="volumeEditor" oninput="player.setVolume(this.value)"></p>
-<p id="new-back-btn7" style="z-index: 1;" title="Video Speed"><i class="fa fa-clock" aria-hidden="true"></i></p>
+<p id="new-back-btn7" style="z-index: 1;" title="Video Speed"><i class="fa fa-clock-o" aria-hidden="true"></i></p>
 <p id="new-back-btn8" style="z-index: 1; cursor: pointer;" title="Video Speed"><input style="cursor: pointer;" value="1" type="range" min="10" max="200" step="10" class="volumeSlider" id="speedSlider" oninput="this.nextElementSibling.value = String(this.value/parseFloat(100)); if(this.value == 200) {document.getElementById('output-id').innerHTML = '2.0'} if(this.value == 100) {document.getElementById('output-id').innerHTML = '1.0'} if(this.value == 0) {document.getElementById('output-id').innerHTML = '0.0'} player.setPlaybackRate(this.value/100)"><output style="width: 15px; float: right; margin-right: 10px;" id="output-id">1.0</output><span style="margin-left: 5px;">x</span></p>
 <p id="new-back-btn-mobile" style="z-index: 1;" title="Maximize Leaderboard" onclick="$('#new-back-btn9').slideDown(200); $('#wrap-lb').slideDown(200); document.getElementById('new-back-btn-mobile').style.display = 'none'"><a style="cursor: pointer;"><i class="fa fa-eye" aria-hidden="true"></i></a></p>
 
@@ -1231,7 +1231,7 @@ select {
 
     <div id="new-back-btn-end" class="w3-animate-zoom">
       <div class="scoreboard" style="">
-        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Game Podium <i class="fa fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="changepage();">Play Again <i class="fa fa-redo-alt" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
+        <span><h3 style="font-family: 'Montserrat';" id="gamepodiumtext">Game Podium <i class="fa fa-medal"></i></h3><h3 class="btn button-primary button-hover" style="float: right; margin-top: -40px; font-family: 'Montserrat';" onclick="changepage();">Play Again <i class="fa fa-repeat" aria-hidden="true" style="margin-left: 5px;"></i></h3></span>
   <div class="scoreboard__podiums">
     <div class="scoreboard__podium js-podium second-place" data-height="200px" style="display: none;">
       <div class="scoreboard__podium-base scoreboard__podium-base--second">
@@ -1267,11 +1267,11 @@ select {
 <!-- <div class="sharethis-inline-share-buttons"></div> -->
 <!-- ShareThis END -->
     <div id="social" class="second-social">
-      <a class="facebookBtn smGlobalBtn2" href="https://www.facebook.com/sharer/sharer.php?u=https://virtualvacation.us/multiplayer" ><i class="fab fa-facebook"></i></a>
-      <a class="twitterBtn smGlobalBtn2" href="https://twitter.com/intent/tweet?url=https://virtualvacation.us/multiplayer&text=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!" ><i class="fab fa-twitter"></i></a>
-      <!-- <a class="googleplusBtn smGlobalBtn2" href="#" ><i class="fab fa-twitter"></i></a> -->
-      <a id="linkedin-id" class="linkedinBtn smGlobalBtn2" href="https://www.linkedin.com/shareArticle?mini=true&url=https://virtualvacation.us/multiplayer&title=&summary=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!&source=" ><i class="fab fa-linkedin-in"></i></a>
-      <a class="pinterestBtn smGlobalBtn2" href="https://pinterest.com/pin/create/button/?url=https://virtualvacation.us/multiplayer&media=&description=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!" ><i class="fab fa-pinterest"></i></a>
+      <a class="facebookBtn smGlobalBtn2" href="https://www.facebook.com/sharer/sharer.php?u=https://virtualvacation.us/multiplayer" ><i class="fa fa-facebook"></i></a>
+      <a class="twitterBtn smGlobalBtn2" href="https://twitter.com/intent/tweet?url=https://virtualvacation.us/multiplayer&text=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!" ><i class="fa fa-twitter"></i></a>
+      <!-- <a class="googleplusBtn smGlobalBtn2" href="#" ><i class="fa fa-twitter"></i></a> -->
+      <a id="linkedin-id" class="linkedinBtn smGlobalBtn2" href="https://www.linkedin.com/shareArticle?mini=true&url=https://virtualvacation.us/multiplayer&title=&summary=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!&source=" ><i class="fa fa-linkedin"></i></a>
+      <a class="pinterestBtn smGlobalBtn2" href="https://pinterest.com/pin/create/button/?url=https://virtualvacation.us/multiplayer&media=&description=Play City Guesser Multiplayer with me. You have to guess the location from the shown video!" ><i class="fa fa-pinterest"></i></a>
       <a id="mail-id" class="tumblrBtn smGlobalBtn2" href="mailto:" ><i class="fa fa-envelope"></i></a>
       <!-- <a class="rssBtn smGlobalBtn" href="#" ></a> -->
     </div>
@@ -2547,7 +2547,7 @@ var potential_id = "";
     }
   }
   if(queryString == "rejoin") {
-    document.getElementById("second-card-secondary").innerHTML = "Play Again <i class='fa fa-redo'></i>"
+    document.getElementById("second-card-secondary").innerHTML = "Play Again <i class='fa fa-repeat'></i>"
     document.getElementById("rejoin-room-code").innerHTML = "Ask the host to start a <b>new</b> game and give you the <b>code</b>."
     document.getElementById("create-rooms-leave").style.display = "none";
     document.getElementById("second-card").style.display = "block";  
@@ -2939,7 +2939,7 @@ queryWithout = "TseEGOmBL_o"
         // document.getElementById("diff").style.display = "block";
         history.pushState(null, null, location.href);
         random_vid_id = "nocheating"
-        guess_text = "Intermission... <i class='fa fa-clock fa-spin'></i>"
+        guess_text = "Intermission... <i class='fa fa-clock-o fa-spin'></i>"
         // player.seekTo(50, true)
         //a console.log('we good')
     window.onpopstate = function () {
