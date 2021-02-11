@@ -1,5 +1,5 @@
 // var socket = io.connect('http://localhost:4000');
-var socket = io.connect('https://secure-players.herokuapp.com/');
+var socket = io.connect('https://testapp149.herokuapp.com/');
 var unit = "mi";
 // var hostornot = false;
 window.addEventListener("focus", () => socket.connect());
