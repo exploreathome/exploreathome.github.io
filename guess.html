@@ -2227,7 +2227,7 @@ function makeaguess() {
 
     var group = L.featureGroup(markerArray).addTo(map);
     map.fitBounds(group.getBounds(), {padding: [1000, 1000]});
-    map.fitBounds(group.getBounds().pad(0.5));
+    // map.fitBounds(group.getBounds().pad(0.5));
     var latlngs = Array();
 
     //Get latlng from first marker
