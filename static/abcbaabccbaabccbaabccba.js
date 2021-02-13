@@ -451,7 +451,7 @@ var opened_markers_and_lines = []
 var mymap;
 function loadsecondmap() {
   mymap = L.map('secondary-map-container').setView([51.505, -0.09], 1);
-  var maplayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  var maplayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   });
   maplayer.addTo(mymap);
   document.getElementById("secondary-map-container").style.display = "block";
