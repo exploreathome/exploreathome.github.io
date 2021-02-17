@@ -902,24 +902,20 @@ Hi
 }
 .back-btn {
   position: fixed;
-  top: 0.4%;
-  left: 0.5%;
+  top: 5px;
+  left: 5px;
+  background: #1f344c;
   color: white;
   font-weight: bold;
-  text-shadow:
-        0.13em 0 rgba(1, 96, 116, 1),
-        0 0.13em rgba(1, 96, 116, 1),
-        -0.13em 0 rgba(1, 96, 116, 1),
-        0 -0.13em rgba(1, 96, 116, 1);
-/*  text-shadow: -2px -2px 0 rgba(1, 96, 116, 1),
-               2px -2px 0 rgba(1, 96, 116, 1),
-               -2px 2px 0 rgba(1, 96, 116, 1),
-               2px 2px 0 rgba(1, 96, 116, 1),
-               -3px 0 0 rgba(1, 96, 116, 1),
-               3px 0 0 rgba(1, 96, 116, 1),
-               0 -3px 0 rgba(1, 96, 116, 1),
-               0 3px 0 rgba(1, 96, 116, 1);*/
-  text-transform: uppercase;
+  border-radius: 5px;
+  font-size: 17px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.back-btn:hover {
+  filter: brightness(2);
 }
 @keyframes live-animation {
   0% {
@@ -948,26 +944,15 @@ Hi
 }
 
 @media screen and (max-width: 676px) {
-  .back-btn {
+  .back-btn2 {
     position: fixed;
     top: 0;
-    left: 1.2%;
-    font-size: 10px;
-    text-shadow:
-        0.13em 0 rgba(1, 96, 116, 1),
-        0 0.13em rgba(1, 96, 116, 1),
-        -0.13em 0 rgba(1, 96, 116, 1),
-        0 -0.13em rgba(1, 96, 116, 1);
-    }
-    .back-btn2 {
-  position: fixed;
-  top: 0;
-  right: 1.2%;
-  color: white;
-  font-weight: bold;
-  text-shadow: 0 1px 0 black;
-  text-transform: uppercase;
-}
+    right: 1.2%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 0 black;
+    text-transform: uppercase;
+  }
 }
 </style>
     <!-- <input type="hidden" id="refresh" value="no"> -->
