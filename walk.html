@@ -1004,6 +1004,7 @@ Hi
   padding-bottom: 1px;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 .back-btn:hover {
   filter: brightness(2);
@@ -1086,7 +1087,7 @@ Hi
                 <a href="#" id="nav-cta">Book now</a>
             </nav>
         </div> -->
-      <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.back();" style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
+      <p class="back-btn" style="z-index: 900000000000000000000000000" onclick="player.mute(); $('#vid-bac').slideUp('fast');"><i class="fa fa-arrow-left"></i></p>
       <p id="hamburger" onclick="openmenu()"><i class="fa fa-bars" aria-hidden="true" id="times-red"></i></p>
       <div id="more-cities">
           <div id="more-cities-header"><span style="margin-left: 5px;">More Cities ✨</span><span style="float: right;" onclick="hidesidebar()"><i class="fa fa-times" aria-hidden="true" id="times-red"></i></span></div>
@@ -1460,7 +1461,8 @@ queryWithout = "TseEGOmBL_o"
         player.loadVideoById({'videoId': input_id, 'startSeconds': 30, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
         
         var duration = player.getDuration();
-        document.getElementById('vid-bac').style.display = "block";
+        // document.getElementById('vid-bac').style.display = "block";
+        player.mute(); $('#vid-bac').slideDown('fast');
         player.unMute();
         history.pushState(null, null, location.href);
         // player.seekTo(50, true)
