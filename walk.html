@@ -176,7 +176,7 @@ li {
   <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-globe" aria-hidden="true"></i>
 </span></a>
     <span>
-    <a onclick="randomizer()" id="randomize-id"><span id="del-on-mobile" style="cursor: pointer;"> Random <i class="fa fa-random" aria-hidden="true" id="random-emoji"></i></span></a><a href="https://twitter.com/paul_mcb" id="randomize-id" style="margin-left: 8.5px;"><span id="del-on-mobile" style="cursor: pointer;"> Twitter <i class="fa fa-twitter" aria-hidden="true" id="random-emoji"></i></span></a>
+    <a onclick="randomizer()" id="randomize-id"><span id="del-on-mobile" style="cursor: pointer;"> Random <i class="fa fa-random" aria-hidden="true" id="random-emoji"></i></span></a><a href="https://twitter.com/paul_mcb" id="randomize-id" style="margin-left: 8.5px;"></a>
     </span>
 
 <!--   <div class="dropdown">
@@ -301,11 +301,13 @@ img {
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   min-height: 40vh;
 }
 .card:hover .card__image {
   filter: contrast(100%);
+}
+.card:hover {
+  transform: scale(1.005);
 }
 .card__content {
   display: flex;
@@ -320,7 +322,6 @@ img {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   filter: contrast(70%);
-  overflow: hidden;
   position: relative;
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
 }
@@ -411,7 +412,7 @@ a:hover {
 
 <ul class="cards">
   <li class="cards__item" onclick="loadVideoWithId('hN6jS0I3zmk')">
-      <a onclick="loadVideoWithId('hN6jS0I3zmk')" style="text-decoration: none;">
+      <a class="loadVideoLink" onclick="loadVideoWithId('hN6jS0I3zmk')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/berlin.jpeg"></div>
@@ -424,7 +425,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-      <a onclick="loadVideoWithId('w4VwhxaaY8o')" style="text-decoration: none;">
+      <a class="loadVideoLink" onclick="loadVideoWithId('w4VwhxaaY8o')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/rome.jpeg"></div>
@@ -437,7 +438,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('N1cI697GXt0')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('N1cI697GXt0')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/sanfrancisco.jpeg"></div>
@@ -450,7 +451,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('CxXjIv7rDig')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('CxXjIv7rDig')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/moscow.jpeg"></div>
@@ -463,7 +464,7 @@ a:hover {
   </a>
   </li>
     <li class="cards__item">
-    <a onclick="loadVideoWithId('e6CHrwAQDiM')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('e6CHrwAQDiM')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/barcelona.jpeg"></div>
@@ -476,7 +477,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('qztRJrWt-Es')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('qztRJrWt-Es')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/beijing.jpeg"></div>
@@ -489,7 +490,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('GxI1q6a0r9Y')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('GxI1q6a0r9Y')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/damascus.jpeg"></div>
@@ -502,7 +503,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('BOa0zQBRs_M')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('BOa0zQBRs_M')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/newyork.jpeg"></div>
@@ -515,20 +516,20 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('wEwsbI1Zj5w')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('h_nTvenH1Gs')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/freetown.jpeg"></div>
       <div class="card__content">
-        <div class="card__title">Freetown 🇸🇱</div>
-        <p class="card__text">As the capital of Sierra Leonne, Freetown is the biggest and most populated city.</p>
+        <div class="card__title">Barcelona 🇪🇸</div>
+        <p class="card__text">Filled with interesting monuments, Barcelona is the capital of the Catalonia region.</p>
         <button class="btn btn--block card__btn">Begin Walking</button>
       </div>
     </div>
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('u5BIx6tOzxs')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('u5BIx6tOzxs')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/chicago.jpeg"></div>
@@ -541,7 +542,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('5i4Y4pZCVJM')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('5i4Y4pZCVJM')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/seoul.jpeg"></div>
@@ -554,7 +555,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('0fL2r6FbEzs')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('0fL2r6FbEzs')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/pyongyang.jpeg"></div>
@@ -567,7 +568,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('4xgbnavlloM')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('4xgbnavlloM')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/hawaii.jpeg"></div>
@@ -580,7 +581,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('AWMpvQhFKzA')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('AWMpvQhFKzA')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/paris.jpeg"></div>
@@ -593,7 +594,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('zd6BYcjNMYw')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('zd6BYcjNMYw')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/goldengatebridge.jpeg"></div>
@@ -606,7 +607,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('sScS7mkVIkc')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('sScS7mkVIkc')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/venice.jpeg"></div>
@@ -619,7 +620,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('Et7O5-CzJZg')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('Et7O5-CzJZg')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/tokyo.jpeg"></div>
@@ -632,7 +633,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('1lUlOZ03Hfk')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('NDkqUqADqWc')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/tehran.jpeg"></div>
@@ -645,7 +646,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('Mdz4f-Ml_8g')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('Mdz4f-Ml_8g')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/osaka.jpeg"></div>
@@ -658,7 +659,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('sXPjAjir0jw')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('sXPjAjir0jw')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/montreal.jpeg"></div>
@@ -671,7 +672,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('4jnyy3G3WIA')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('4jnyy3G3WIA')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/toronto.jpeg"></div>
@@ -684,7 +685,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('i6V7jc6bXP0')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('i6V7jc6bXP0')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/reykjavik.jpeg"></div>
@@ -698,7 +699,7 @@ a:hover {
   </li>
 
 <li class="cards__item">
-    <a onclick="loadVideoWithId('ekvwB-pMzV4')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('ekvwB-pMzV4')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/naples.jpeg"></div>
@@ -711,7 +712,7 @@ a:hover {
   </a>
   </li>
 <!--   <li class="cards__item">
-    <a onclick="loadVideoWithId('ekvwB-pMzV4')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('ekvwB-pMzV4')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/naples.jpeg"></div>
@@ -724,7 +725,7 @@ a:hover {
   </a>
   </li> -->
   <li class="cards__item">
-    <a onclick="loadVideoWithId('9hDEJK-zzUk')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('9hDEJK-zzUk')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/louvre.jpeg"></div>
@@ -737,7 +738,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('44rTTLjZZz4')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('44rTTLjZZz4')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/tajmahal.jpeg"></div>
@@ -750,7 +751,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('kSPoo89zVtc')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('kSPoo89zVtc')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/mumbai.jpeg"></div>
@@ -763,7 +764,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('7ktBHyUIX6U')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('7ktBHyUIX6U')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/nigeria.jpeg"></div>
@@ -776,7 +777,7 @@ a:hover {
   </a>
   </li>
   <li class="cards__item">
-    <a onclick="loadVideoWithId('5bnfGEe5huA')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('BgMKsDwIDgQ')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/london.jpeg"></div>
@@ -789,7 +790,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('Fhg8tvyJbAo')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('Fhg8tvyJbAo')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/losangeles.jpeg"></div>
@@ -802,7 +803,7 @@ a:hover {
   </a>
   </li>
 <li class="cards__item">
-    <a onclick="loadVideoWithId('DxP8fc2XYb4')" style="text-decoration: none;">
+    <a class="loadVideoLink" onclick="loadVideoWithId('DxP8fc2XYb4')" style="text-decoration: none;">
 
     <div class="card">
       <div class="card__image card__image--1 lazyload" data-bgset="static/bangkok.jpeg"></div>
@@ -815,7 +816,7 @@ a:hover {
   </a>
   </li>
 </ul>
-<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;"><i class="fa fa-users" aria-hidden="true"></i> You've reached the end. Choose a new category: <i class="fa fa-users" aria-hidden="true"></i></h2>
+
 <!-- ShareThis BEGIN -->
 <div class="sharethis-inline-share-buttons" style="margin-bottom: 1%;"></div>
 <!-- ShareThis END -->
@@ -1005,6 +1006,54 @@ Hi
 .back-btn:hover {
   filter: brightness(2);
 }
+#more-cities {
+  display: none;
+  margin: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  background: #fcfcfc;
+  z-index: 100;
+  border-radius: 9px;
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);
+  max-height: 95vh;
+  overflow: scroll;
+}
+#more-cities::-webkit-scrollbar {
+    display: none;
+}
+#more-cities-header {
+  width: 100%;
+  padding: 5px;
+  background: #1f344c;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+#more-cities-card {
+  margin: 10px;
+  cursor: pointer;
+}
+#more-cities-card:hover {
+  filter: brightness(0.75)
+}
+#times-red:hover {
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+#hamburger {
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  top: 5px;
+  right: 10px;
+  z-index: 100;
+  text-shadow: 0 1.5px 0 black;
+
+}
 </style>
     <div class="video-background" id="vid-bac" style="z-index: 100000000;">
       <!-- <div class="container" style="z-index: 900000000000000000000000000;">
@@ -1031,7 +1080,12 @@ Hi
             </nav>
         </div> -->
       <p class="back-btn" style="z-index: 900000000000000000000000000"><a onclick="history.back();" style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a></p>
-  <div class="video-foreground">
+      <p id="hamburger" onclick="openmenu()"><i class="fa fa-bars" aria-hidden="true" id="times-red"></i></p>
+      <div id="more-cities">
+          <div id="more-cities-header"><span style="margin-left: 5px;">More Cities ✨</span><span style="float: right;" onclick="hidesidebar()"><i class="fa fa-times" aria-hidden="true" id="times-red"></i></span></div>
+          <span id="city-cards"></span>
+      </div>
+  <div class="video-foreground" onclick="console.log('hi')">
 <!--     <iframe id="player" src="https://www.youtube.com/embed/ShbC5yVqOdI?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allowfullscreen allow=autoplay></iframe> -->
 
     <div id="player"></div>
@@ -1063,15 +1117,6 @@ Hi
   }
 }
 </style>
-<div id="fourth-part">
-  <center>
-<b>Hey<span id="only-one"> Explorer</span></b>! 👋 Check out the gamified version of walking tours. <b>City Guesser!</b> <a style="margin: 7px; height: 20px; padding: 5px; padding-left: 7px; padding-right: 7px; background-color: #ff4742; color: white; font-family: 'Nunito', sans-serif;
- border-radius: 5px; cursor: pointer;" href='https://virtualvacation.us/guess'>Let's Play!</a>
-<span style="float: right; margin-right: 32px; font-size: 18px; cursor: pointer;" onclick="document.getElementById('fourth-part').style.display = 'none'; localStorage.setItem('xed-out', 'abcd')">&times;</span>
-
-</center>
-</div>
-</div>
 </body>
 <style>
 .container{
@@ -1404,6 +1449,7 @@ queryWithout = "TseEGOmBL_o"
         // console.log(secs)
         // input_id = input_id.substring(0,11);
         console.log(input_id)
+        secondary_input_id = input_id
         player.loadVideoById({'videoId': input_id, 'startSeconds': 30, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
         
         var duration = player.getDuration();
@@ -1416,13 +1462,37 @@ queryWithout = "TseEGOmBL_o"
         // location.reload();
         console.log('went')
     };
+      // document.getElementsByClassName("cards")[0].style.display = 'none';
+      // document.getElementsByClassName("header")[0].style.display = 'none';
+      $('#more-cities').hide('fast'); 
         // window.history.pushState('', null, './');
         //   $(window).on('popstate', function() {
         //    location.reload(true);
         // });
         // history.pushState(null, null, 'https://twitter.com/hello');
       }
-
+function hidesidebar() {
+  $('#more-cities').hide('fast');
+}
+function openmenu() {
+  $('#more-cities').show('fast');  
+  if(document.getElementById("city-cards").innerHTML.length==0) { 
+    console.log('runs')
+    for(var i=0;i<30;i++) {
+      number = i
+      temponclick = document.getElementsByClassName("loadVideoLink")[number].onclick
+      tempvidid = String(document.getElementsByClassName("loadVideoLink")[number].onclick).substr(43,44).substr(0,11)
+      // input_replacement = 'loadVideoWithId(''+String(tempvidid)+'')'
+      if(tempvidid != secondary_input_id) {
+      // imageurl = document.getElementsByClassName("card__image")[number].style.backgroundImage
+      cityname = document.getElementsByClassName("card__title")[number].innerHTML
+      // document.getElementById("city-cards").innerHTML = document.getElementById("city-cards").innerHTML + "<div class='card' id='more-cities-card'><img src='" + imageurl + "' class='card-img-top'><div class='card-body' style='padding: 5px;'>"+cityname+"</div></div>"
+      loadvideo = "loadVideoWithId('"+tempvidid+"');"
+      document.getElementById("city-cards").innerHTML = document.getElementById("city-cards").innerHTML + "<div class='card' id='more-cities-card' onclick="+loadvideo+"><div class='card-body' style='padding: 5px;'>"+cityname+"</div></div>"
+      }
+    }
+  }
+}
 $(window).load(function(){
 
     $('.lazyload').each(function() {
