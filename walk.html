@@ -1255,147 +1255,6 @@ Hi
 /* Hero end*/
 </style>
 <script type="text/javascript">
-function isIpadPro() {
-    var ratio = window.devicePixelRatio || 1;
-    var screen = {
-        width : window.screen.width * ratio,
-        height : window.screen.height * ratio
-    };
-    return (screen.width === 2048 && screen.height === 2732) || (screen.width === 2732 && screen.height === 2048) || (screen.width === 1536 && screen.height === 2048) || (screen.width === 2048 && screen.height === 1536);
-}
-if (isIpadPro()) {
-  // document.getElementById("cards")
-  document.getElementsByClassName('cards__item')[0].style.width = "50%"
-  document.getElementsByClassName('cards__item')[1].style.width = "50%"
-  document.getElementsByClassName('cards__item')[2].style.width = "50%"
-  document.getElementsByClassName('cards__item')[3].style.width = "50%"
-  document.getElementsByClassName('cards__item')[4].style.width = "50%"
-  document.getElementsByClassName('cards__item')[5].style.width = "50%"
-  document.getElementsByClassName('cards__item')[6].style.width = "50%"
-  document.getElementsByClassName('cards__item')[7].style.width = "50%"
-  document.getElementsByClassName('cards__item')[8].style.width = "50%"
-  document.getElementsByClassName('cards__item')[9].style.width = "50%"
-  document.getElementsByClassName('cards__item')[10].style.width = "50%"
-  document.getElementsByClassName('cards__item')[11].style.width = "50%"
-  document.getElementsByClassName('cards__item')[12].style.width = "50%"
-  document.getElementsByClassName('cards__item')[13].style.width = "50%"
-  document.getElementsByClassName('cards__item')[14].style.width = "50%"
-  document.getElementsByClassName('cards__item')[15].style.width = "50%"
-  document.getElementsByClassName('cards__item')[16].style.width = "50%"
-  document.getElementsByClassName('cards__item')[17].style.width = "50%"
-  document.getElementsByClassName('cards__item')[18].style.width = "50%"
-  document.getElementsByClassName('cards__item')[19].style.width = "50%"
-  document.getElementsByClassName('cards__item')[20].style.width = "50%"
-  document.getElementsByClassName('cards__item')[21].style.width = "50%"
-  document.getElementsByClassName('cards__item')[21].style.width = "50%"
-  document.getElementsByClassName('cards__item')[23].style.width = "50%"
-  document.getElementsByClassName('cards__item')[24].style.width = "50%"
-  document.getElementsByClassName('cards__item')[25].style.width = "50%"
-  document.getElementsByClassName('cards__item')[26].style.width = "50%"
-  document.getElementsByClassName('cards__item')[27].style.width = "50%"
-  document.getElementsByClassName('cards__item')[28].style.width = "50%"
-  document.getElementsByClassName('cards__item')[29].style.width = "50%"
-  // document.getElementsByClassName('cards__item')[30].style.width = "50%"
-
-  // document.getElementsByClassName('card__image')[0].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[1].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[2].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[3].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[4].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[5].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[6].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[7].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[8].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[9].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[10].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[11].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[12].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[13].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[14].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[15].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[16].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[17].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[18].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[19].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[20].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[21].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[21].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[23].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[24].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[25].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[26].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[27].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[28].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[29].style.paddingTop = "100%"
-  // document.getElementsByClassName('card__image')[30].style.paddingTop = "100%"
-}
-// if (navigator.userAgent.match(/iPad/i))
-// {
-//   document.getElementsByClassName('cards__item')[0].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[1].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[2].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[3].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[4].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[5].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[6].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[7].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[8].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[9].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[10].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[11].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[12].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[13].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[14].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[15].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[16].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[17].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[18].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[19].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[20].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[21].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[21].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[23].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[24].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[25].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[26].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[27].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[28].style.width = "50%"
-//   document.getElementsByClassName('cards__item')[29].style.width = "50%"
-//   // document.getElementsByClassName('cards__item')[30].style.width = "50%"
-
-//   document.getElementsByClassName('card__image')[0].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[1].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[2].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[3].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[4].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[5].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[6].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[7].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[8].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[9].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[10].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[11].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[12].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[13].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[14].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[15].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[16].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[17].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[18].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[19].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[20].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[21].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[21].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[23].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[24].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[25].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[26].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[27].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[28].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[29].style.paddingTop = "100%"
-//   document.getElementsByClassName('card__image')[30].style.paddingTop = "100%"
-// }
-// Do something for iPad only.
 function randomizer() {
       var location_lst = ["rsdRc4eS_yA", "N9S4DycnXiA", "eZe4Q_58UTU", "wa12902YOnc", "2uQ58Xwx1V4", "QpepXSfYEBk", "axqSGXU5qIw", "co6L9jw_Wno", "HACqXE2hw50", "E07rTPgIvn0", "aZ-31-p3saU", "xEangf-PZ4Q", "_TRnsRHFsws", "mlS89Cd176M", "sXPjAjir0jw", "4MGnF2i0dLc", "-TpzsS1Ld9k", "IXby_PTXBvI", "e-mtLuMAUDs", "bMZSyRngr4o", "Sd9BcwNEEQw", "JB0A8Me8EKk", "4-cwk3DZP3w", "yh6L1IrhB6U", "bMIgcHbqTZY", "qztRJrWt-Es", "XZVBoSteNYA", "9puDiItvJKE", "9puDiItvJKE", "9puDiItvJKE", "OzquNT_xjio", "FxRyNuaSeCg", "FxRyNuaSeCg", "AHuXzPMZLR0", "DuP0tzCubWQ", "DuP0tzCubWQ", "i6V7jc6bXP0", "i6V7jc6bXP0", "i6V7jc6bXP0", "DuP0tzCubWQ", "DuP0tzCubWQ", "7JsOhtl_zG4", "3raVUTPAd-w", "3raVUTPAd-w", "GxI1q6a0r9Y", "GxI1q6a0r9Y", "m-IA0KJ8xF8", "GxI1q6a0r9Y", "C796Mh7kMM8", "1QiqPKZeAyc", "Ky9uxm6JgBY", "uhR4wZNi048", "CxXjIv7rDig", "PBLFHJhc6ZY", "E2sSvVCRI4s", "rvoQ9fLXf-Y", "HizG46xbyrw", "E2sSvVCRI4s", "E2sSvVCRI4s", "h56ype66dcw", "xhfY2U11-GI", "TFTJN4XIsQQ", "OzquNT_xjio", "qztRJrWt-Es", "djJ4N-Y7hZc", "djJ4N-Y7hZc", "djJ4N-Y7hZc", "63ARQhtaUPs"];
       const randomLocation = location_lst[Math.floor(Math.random() * location_lst.length)];
@@ -1456,7 +1315,6 @@ queryWithout = "TseEGOmBL_o"
         // var secs = input_id.slice(input_id.length - 6)
         // console.log(secs)
         // input_id = input_id.substring(0,11);
-        console.log(input_id)
         secondary_input_id = input_id
         player.loadVideoById({'videoId': input_id, 'startSeconds': 30, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
         
@@ -1473,7 +1331,6 @@ queryWithout = "TseEGOmBL_o"
     };
       // document.getElementsByClassName("cards")[0].style.display = 'none';
       // document.getElementsByClassName("header")[0].style.display = 'none';
-      $('#more-cities').hide('fast'); 
         // window.history.pushState('', null, './');
         //   $(window).on('popstate', function() {
         //    location.reload(true);
@@ -1488,14 +1345,9 @@ function openmenu() {
   if(document.getElementById("city-cards").innerHTML.length==0) { 
     console.log('runs')
     for(var i=0;i<30;i++) {
-      number = i
-      temponclick = document.getElementsByClassName("loadVideoLink")[number].onclick
-      tempvidid = String(document.getElementsByClassName("loadVideoLink")[number].onclick).substr(43,44).substr(0,11)
-      // input_replacement = 'loadVideoWithId(''+String(tempvidid)+'')'
+      tempvidid = String(document.getElementsByClassName("loadVideoLink")[i].onclick).substr(43,44).substr(0,11)
       if(tempvidid != secondary_input_id) {
-      // imageurl = document.getElementsByClassName("card__image")[number].style.backgroundImage
-      cityname = document.getElementsByClassName("card__title")[number].innerHTML
-      // document.getElementById("city-cards").innerHTML = document.getElementById("city-cards").innerHTML + "<div class='card' id='more-cities-card'><img src='" + imageurl + "' class='card-img-top'><div class='card-body' style='padding: 5px;'>"+cityname+"</div></div>"
+      cityname = document.getElementsByClassName("card__title")[i].innerHTML
       loadvideo = "loadVideoWithId('"+tempvidid+"');"
       document.getElementById("city-cards").innerHTML = document.getElementById("city-cards").innerHTML + "<div class='card' id='more-cities-card' onclick="+loadvideo+"><div class='card-body' style='padding: 5px;'>"+cityname+"</div></div>"
       }
