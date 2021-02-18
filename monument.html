@@ -1435,7 +1435,7 @@ function openmenu() {
   $('#more-cities').show('fast');  
   if(document.getElementById("city-cards").innerHTML.length==0) { 
     console.log('runs')
-    for(var i=0;i<30;i++) {
+    for(var i=0;i<35;i++) {
       tempvidid = String(document.getElementsByClassName("cards__item")[i].onclick).substr(43,44).substr(0,24)
       // if(tempvidid != secondary_input_id) {
       cityname = document.getElementsByClassName("card__title")[i].innerHTML
