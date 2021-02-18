@@ -1346,11 +1346,11 @@ function openmenu() {
     console.log('runs')
     for(var i=0;i<30;i++) {
       tempvidid = String(document.getElementsByClassName("loadVideoLink")[i].onclick).substr(43,44).substr(0,11)
-      if(tempvidid != secondary_input_id) {
+      // if(tempvidid != secondary_input_id) {
       cityname = document.getElementsByClassName("card__title")[i].innerHTML
       loadvideo = "loadVideoWithId('"+tempvidid+"');"
       document.getElementById("city-cards").innerHTML = document.getElementById("city-cards").innerHTML + "<div class='card' id='more-cities-card' onclick="+loadvideo+"><div class='card-body' style='padding: 5px;'>"+cityname+"</div></div>"
-      }
+      // }
     }
   }
 }
