@@ -1347,7 +1347,8 @@ function openmenu() {
   if(document.getElementById("city-cards").innerHTML.length==0) { 
     console.log('runs')
     for(var i=0;i<30;i++) {
-      tempvidid = String(document.getElementsByClassName("loadVideoLink")[i].onclick).substr(43,44).substr(0,11)
+      tempvidid = String(document.getElementsByClassName("loadVideoLink")[i].onclick).substr(43,43).substr(0,22)
+      console.log(tempvidid)
       // if(tempvidid != secondary_input_id) {
       cityname = document.getElementsByClassName("card__title")[i].innerHTML
       loadvideo = "loadVideoWithId('"+tempvidid+"');"
