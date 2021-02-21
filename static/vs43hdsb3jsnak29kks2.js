@@ -335,45 +335,6 @@ socket.on('start-game-notify', function(data){
   } else {
     document.getElementById("li-class-and-others").style.display = "none";
   }
-    // for (var key in player_info) {
-    //   key_name = key
-    //   key_value = player_info[key];
-    //   //a console.log(key_name, key_value)
-    //   document.getElementsByClassName("user-name-ll")[iteration].innerHTML = key_value[0];
-    //   document.getElementsByClassName("user-name-score")[iteration].innerHTML = key_value[1];
-    //   // //a console.log()
-    //   //a console.log("iteration of dict.. 18")
-    //   iteration += 1
-    //   gamenotified = 1;
-    //   // your code here...
-    // }
-  // }
-  //a console.log(player_info)
-  for(let i=3; i>=0; i--) {
-    //a console.log('runnin this')
-    // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
-    if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
-      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
-      // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
-      document.getElementsByClassName("li-class2")[i].style.display = "block"
-      document.getElementById("new-back-btn10").style.display = 'block'
-        // for(let y=3; y>=0; y--) {
-    // if(document.getElementsByClassName("li-class2")[y-1].style.display != "block") {
-      // document.getElementsByClassName("li-class2")[y].style.borderBottom = "none";     
-    // }
-  // }
-      return; 
-    }
-  }
-  //a console.log(document.getElementsByClassName("user-name-ll2")[3].innerHTML)
-  //a console.log(document.getElementsByClassName("user-name-ll2")[2].innerHTML)
-  //a console.log(document.getElementsByClassName("user-name-ll2")[1].innerHTML)
-  //a console.log(document.getElementsByClassName("user-name-ll2")[0].innerHTML)
-  //a console.log('switching process intiateed')
-  document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
-  document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
-  document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
-  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Started <i class='fas fa-check' style='color: #5cb85c; margin-left: 2px;'></i>"
 });
 var firsttime = 0;
 var playerguesses = {}
@@ -627,22 +588,7 @@ socket.on('finished-guessing', function(data){
     document.getElementById("tenth-card").style.display = "block";
     localStorage.setItem("pro-tip1", "abc")
   }
-    for(let i=3; i>=0; i--) {
-    // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
-    if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
-      //a console.log('is none')
-      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "Round Over <i class='far fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
-      // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
-      document.getElementsByClassName("li-class2")[i].style.display = "block"
-      document.getElementById("new-back-btn10").style.display = 'block'
-      return; 
-    }
-  }
   //a console.log('switching process intiateed')
-  document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
-  document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
-  document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
-  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "Round Over <i class='far fa-clock' style='color: #d9534f; margin-left: 2px;'></i> "
     setTimeout(function(){ map.invalidateSize()}, 500);
 });
 let num_of_players = 0
@@ -703,6 +649,7 @@ function begingame() {
       host_round: round_present+1,
       user_random: "hello world"
     });
+    document.getElementById("guess-button-id-host").style.display = "none";
 }
 function loadpodium() {
   player.mute();
@@ -887,26 +834,6 @@ socket.on('update-guess', function(data){
       }
     }
   }
-  for(let i=3; i>=0; i--) {
-    // document.getElementsByClassName("li-class2")[i].style.borderBottom = "thin solid rgba(255, 255, 255, 0.6)"
-    if(document.getElementsByClassName("li-class2")[i].style.display == "none") {
-      //a console.log('is none')
-      document.getElementsByClassName("user-name-ll2")[i].innerHTML = "<b>" + String(data["nickname"]) + "</b> <span style='color: #5bc0de;'>guessed</span>"
-      // document.getElementsByClassName("li-class2")[i].style.borderBottom = "none"
-      document.getElementsByClassName("li-class2")[i].style.display = "block"
-      document.getElementById("new-back-btn10").style.display = 'block'
-      return; 
-    }
-  }
-  //a console.log('switching process intiateed')
-  //a console.log(document.getElementsByClassName("user-name-ll2")[3].innerHTML)
-  //a console.log(document.getElementsByClassName("user-name-ll2")[2].innerHTML)
-  //a console.log(document.getElementsByClassName("user-name-ll2")[1].innerHTML)
-  //a console.log(document.getElementsByClassName("user-name-ll2")[0].innerHTML)
-  document.getElementsByClassName("user-name-ll2")[3].innerHTML = document.getElementsByClassName("user-name-ll2")[2].innerHTML
-  document.getElementsByClassName("user-name-ll2")[2].innerHTML = document.getElementsByClassName("user-name-ll2")[1].innerHTML
-  document.getElementsByClassName("user-name-ll2")[1].innerHTML = document.getElementsByClassName("user-name-ll2")[0].innerHTML
-  document.getElementsByClassName("user-name-ll2")[0].innerHTML = "<b>" + String(data["nickname"]) + "</b> <span style='color: #5bc0de;'>guessed</span>"
 }
 })
 function skipfunc() {
