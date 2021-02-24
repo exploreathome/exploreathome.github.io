@@ -887,6 +887,7 @@ socket.on('room-duplicate', function(data){
 })
 socket.on('one-person', function(data){
   alert("There is no one in your server except you. Invite a friend into the game to continue.")
+  document.getElementById("guess-button-id-host").style.display = "block";
 })
 
 var opened_markers_and_lines = []
