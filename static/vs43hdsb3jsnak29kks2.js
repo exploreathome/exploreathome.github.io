@@ -981,7 +981,6 @@ function showMarkers(e) {
 
   if (localStorage.getItem("unit") !== null) {
     current_unit = localStorage.getItem("unit")
-    console.log(current_unit)
     if(current_unit != "mi") {
       document.getElementById("kilometres1").selected = true;
       document.getElementById("kilometres2").selected = true;
