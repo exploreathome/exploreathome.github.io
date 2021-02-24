@@ -3092,7 +3092,10 @@ function makeaguess() {
   } else if (distance_between < 25 && streamer == 0) {
     var ding = new Audio('static/correct.mp3');
     ding.play();
-  } 
+  } else {
+    player_guessed_aud = new Audio('static/playerGuessed.mp3')
+    player_guessed_aud.play();
+  }
 
     var redmarkerIcon = L.ExtraMarkers.icon({
       icon: 'fa-times',
