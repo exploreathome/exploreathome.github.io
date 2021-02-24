@@ -13,6 +13,7 @@ var audio_play = new Audio();
 // var socket = io.connect('http://localhost:5000');
 var socket = io.connect("https://testapp148.herokuapp.com/");
 var hostornot = false;
+var unit = "mi";
 // var socket = io.connect('http://testapp149.herokuapp.com/');
 window.addEventListener("focus", () => socket.connect());
 
@@ -23,10 +24,6 @@ function initiateconnect(random_room_id) {
   currentusername = document.getElementById("inputUsername").value;
   if(currentusername.length == 0) {
     alert("You forgot to enter a username!")
-    return;
-  }
-  if(currentusername.length >= 14) {
-    alert("Too many letters!")
     return;
   }
   if(socket.connected != true) {
@@ -50,10 +47,6 @@ function initiateconnect(random_room_id) {
   // //a console.log('-')
   // //a console.log(currentusername)
   myusername = currentusername;
-  if(currentusername == undefined) {
-    currentusername = things[Math.floor(Math.random()*things.length)];
-    //a console.log('hey hey hey')
-  }
   //a console.log(timelimit)
   random_room_id = random_room_id
   if(emitted_reload == 0) {
@@ -70,6 +63,13 @@ function initiateconnect(random_room_id) {
   }
   document.getElementById("linkInput").value = "https://virtualvacation.us/private-room?" + random_room_id
   document.getElementById("custom-code").innerHTML = String(random_room_id)
+    if(document.getElementById("form-number-unit").value == "Miles") {
+      unit = "mi"
+      localStorage.setItem("unit", "mi")
+    } else {
+      unit = "km"
+      localStorage.setItem("unit", "km")
+    }
   player.playVideo();
   audio_play.play();
 }
@@ -396,11 +396,16 @@ socket.on('finished-guessing', function(data){
     }
     if(String(new_obj[obj_i][1]) != "0" && String(new_obj[obj_i][1]) != 'null') { 
       document.getElementsByClassName("upvote-downvote")[obj_i].innerHTML = "<i class='fa fa-caret-up' aria-hidden='true' style='margin-right: 4px;'></i>" + String(new_obj[obj_i][1])
+      if(unit!="km") {
+        distaway = String(new_obj[obj_i][3]) + "mi"
+      } else {
+        distaway = String(parseInt((parseInt(new_obj[obj_i][3])*1.609).toFixed(1))) + "km"
+      }
       if(String(new_obj[obj_i][2]) != currentusername) {
-        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+distaway+")</span>"
       } else {
         pointed_right = 1;
-        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+String(new_obj[obj_i][3])+"mi)</span>"
+        document.getElementsByClassName("coolbob29")[obj_i].innerHTML = "<i class='far fa-hand-point-right' style='margin-right: 5px;'></i>" + String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>("+distaway+")</span>"
       }
     } else {
       document.getElementsByClassName("coolbob29")[obj_i].innerHTML = String(new_obj[obj_i][2]) + " <span style='font-size: 14px; color: lightgrey;'>(No Guess)</span>"
@@ -527,10 +532,17 @@ socket.on('finished-guessing', function(data){
       markerArray.push(marker1);
     }
     if(score_coord_info[1] != "away") {
-    current_marker_push = L.marker(score_coord_info[1], {icon: yellowMarker}).bindPopup("<b>" + String(score_coord_info[2]) + "'s guess.</b><br>" + String(score_coord_info[3]) + "mi" + " <span style='font-size: 10.5px;'>(" + String(parseInt(parseInt(score_coord_info[3])*1.609)) + "km)</span>", {
-  sticky: true,
-  autoClose: false
-  })
+    if(unit == "mi") {
+      current_marker_push = L.marker(score_coord_info[1], {icon: yellowMarker}).bindPopup("<b>" + String(score_coord_info[2]) + "'s guess.</b><br>" + String(score_coord_info[3]) + "mi" + " <span style='font-size: 10.5px;'>(" + String(parseInt(parseInt(score_coord_info[3])*1.609)) + "km)</span>", {
+        sticky: true,
+        autoClose: false
+      })
+    } else {
+      current_marker_push = L.marker(score_coord_info[1], {icon: yellowMarker}).bindPopup("<b>" + String(score_coord_info[2]) + "'s guess.</b><br>" + String((parseInt(score_coord_info[3])*1.609).toFixed(1)) + "km", {
+        sticky: true,
+        autoClose: false
+      })     
+    }
     markerArray.push(current_marker_push);
     var group = L.featureGroup(markerArray).addTo(map);
       if(obj2_length < 3) {
@@ -824,7 +836,11 @@ socket.on('update-guess', function(data){
         //a console.log('is block!!')
           //a console.log('THEY ARE THE SAME U NOOB')
           mydict.push(num)
-          document.getElementsByClassName("tooltip-text")[num].innerHTML = "I'm <b>"+ String(parseInt(data["distance"])) + "mi's</b> out. <span style='margin-left: 5px;'>👈</span>";
+          if(unit != "km") {
+            document.getElementsByClassName("tooltip-text")[num].innerHTML = "I'm <b>"+ String(parseInt(data["distance"])) + "mi's</b> out. <span style='margin-left: 5px;'>👈</span>";
+          } else {
+            document.getElementsByClassName("tooltip-text")[num].innerHTML = "I'm <b>"+ String((parseInt(data["distance"])*1.609).toFixed(1)) + "km</b> out. <span style='margin-left: 5px;'>👈</span>"
+          }
           if(isMobile) {
            document.getElementsByClassName("tooltip-text")[num].innerHTML = "✅";           
           }
@@ -925,7 +941,11 @@ function showMarkers(e) {
         markerColor: String(guessmade[i][3]),
         prefix: 'fa'
       });
-      endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + guessmade[i][2] + "mi" + " <span style='font-size: 11px;'>(" + String(parseInt(parseInt(guessmade[i][2])*1.609)) + "km)</span>")
+      if(unit == "mi") {
+        endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + guessmade[i][2] + "mi" + " <span style='font-size: 11px;'>(" + String(parseInt(parseInt(guessmade[i][2])*1.609)) + "km)</span>")
+      } else {
+         endPlayerMarker = L.marker(guessmade[i][1], {icon: yellowMarker}).bindPopup("<b>" + guessmade[i][0] + "'s guess.</b><br>" + String((parseInt(guessmade[i][2])*1.609).toFixed(1)) + "km")       
+      }
       opened_markers_and_lines.push(endPlayerMarker);   
       endPolyline = L.polyline([normal_lat_lon, guessmade[i][1]], {color: 'black', dashArray: '5,10'})
       opened_markers_and_lines.push(endPolyline);
@@ -938,9 +958,15 @@ function showMarkers(e) {
       prefix: 'fa'
     });
   // L.marker([globallat, globallon], {icon: redmarkerIcon})
+  if(unit == "mi") {
   yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String(endGuess[1]) + "mi" + " <span style='font-size: 11px;'>(" + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "km)</span>", {
     sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
   })
+  }else{
+  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "mi", {
+    sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
+  })    
+  }
   opened_markers_and_lines.push(yourmarker);
       endPolyline = L.polyline([normal_lat_lon, endGuess[0]], {color: 'black', dashArray: '5,10'})
       opened_markers_and_lines.push(endPolyline);
@@ -952,3 +978,13 @@ function showMarkers(e) {
 
 
 }
+
+  if (localStorage.getItem("unit") !== null) {
+    current_unit = localStorage.getItem("units")
+    if(current_unit != "mi") {
+      document.getElementById("kilometres1").selected = true;
+      document.getElementById("kilometres2").selected = true;
+      document.getElementById("miles1").selected = false;
+      document.getElementById("miles2").selected = false;
+    }
+  }
