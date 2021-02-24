@@ -963,7 +963,7 @@ function showMarkers(e) {
     sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
   })
   }else{
-  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "mi", {
+  yourmarker = L.marker(endGuess[0], {icon: redmarkerIcon}).bindPopup("<b> Your guess!</b> <br> " + String((parseInt(endGuess[1])*1.609).toFixed(1)) + "km", {
     sticky: true // If true, the tooltip will follow the mouse instead of being fixed at the feature center.
   })    
   }
