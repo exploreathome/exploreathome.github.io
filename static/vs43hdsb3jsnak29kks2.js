@@ -93,7 +93,7 @@ function joinroom(room_id, username, userid) {
       username: String(username),
       userid: String(userid)
     });
-    if(document.getElementById("form-number-1").value = "Kilometres") {
+    if(document.getElementById("form-number-1").value == "Kilometres") {
       unit = "km"
       localStorage.setItem("unit", "km")
     } else {
