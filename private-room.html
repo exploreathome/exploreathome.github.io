@@ -3021,35 +3021,6 @@ function intoBounds() {
 
 }
 
-function continueGame() {
-  loadVideoWithId(stored_input_id)
-  document.getElementById("id01").style.display = "none";
-  document.getElementById("main-button").style.display = "block";
-  document.getElementById("main-button").onclick = "invalidateSizeFunc('hi')";
-
-  document.getElementById('original-c').style.display = "block";
-  document.getElementById('future-c').style.display = "none";
-
-  document.getElementById('map-prompter').innerHTML = "Click Map To Guess <i class='fas fa-map-marker-alt' aria-hidden='true' style='margin-left: 5px;'></i>"
-  document.getElementById("x-out").style.display = "block";
-  document.getElementById("player").style.opacity = "1";
-    // map.removeLayer(markers);
-    // markerArray.clearLayers();
-    map.setView([42.35, -71.08], 2);
-    for(i=0;i<markerArray.length;i++) {
-    map.removeLayer(markerArray[i]);
-    }
-    map.removeLayer(marker)  
-    
-  // if (timeLimit == 1) {
-  //   clearInterval(continuedecrement);
-  //   timeChallengeSubmission()
-  // }
-  // if (deviceChecker == false) {
-  // document.getElementById("new-back-btn3").style.display = "block";
-  // document.getElementById("new-back-btn4").style.display = "none";
-  // }
-} 
 function score_grader(val) {
     ex = parseInt(Math.round(14.46 * (11.52 - Math.log(val))))
     return ex * 5
