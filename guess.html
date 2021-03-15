@@ -2116,38 +2116,11 @@ function showIt() {
 }
 
 
-// function disableScroll() { 
-//     // Get the current page scroll position 
-//     scrollTop = window.pageYOffset || document.documentElement.scrollTop; 
-//     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
-  
-//         // if any scroll is attempted, set this to the previous value 
-//         window.onscroll = function() { 
-//             window.scrollTo(scrollLeft, scrollTop); 
-//         }; 
-// } 
-  
-// function enableScroll() { 
-//     window.onscroll = function() {}; 
-// } 
-
-function removebtn() {
-  document.getElementById('id01').style.display='none'
-  document.getElementById('main-button').style.display='block'
-  document.getElementById('main-button').onclick = "showIt"
-  // Currently making fix because map not saving after x'ing it out
-}
-
 function removebtnkeepmap() {
   document.getElementById('id01').style.display='none'
   document.getElementById('main-button').style.display='none'
   document.getElementById('main-button').onclick = "showIt"
   document.getElementById('main-button2').style.display='block'
-  // if(deviceChecker == false) {
-  //   player.playVideo();
-  //   document.getElementById("new-back-btn4").style.display = "none";
-  //   document.getElementById("new-back-btn3").style.display = "block";
-  // }
 }
 
 function distance_func(lat1, lon1, lat2, lon2, unit) {
