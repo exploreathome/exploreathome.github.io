@@ -1889,7 +1889,7 @@ function makeaguess() {
         document.getElementById("modal_text").innerHTML = guess_text
     }
   } else {
-    if (distance_between <= 3) {
+    if (distance_between <= 1) {
       var ding = new Audio('static/correct.mp3');
       ding.play();
     }
