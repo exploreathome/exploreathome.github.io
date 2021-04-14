@@ -1858,10 +1858,10 @@ function makeaguess() {
         //console.log('disb')
   });
   if(country == true) {
-    if (distance_between < 500) {
+    if (distance_between < 25) {
       var ding = new Audio('static/correct.mp3');
       ding.play();
-    } else {
+    } else if(distance_between > 500) {
         var ding = new Audio('static/questionwrong.mp3')
         ding.play();
     }
