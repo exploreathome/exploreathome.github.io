@@ -134,7 +134,20 @@ p {
   display: none;
 }
 
+#moremaps {
+  text-align: center;
+  padding: 15px 30px;
+  border: 2px solid black;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 1s;
+  width: 215px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
 
+#moremaps:hover #doublearrow {
+  margin-left: 5px;
+}
 </style>
 
 
@@ -568,6 +581,14 @@ a:hover {
   </li>
 <!-- </div> -->
 </ul>
+
+<center>
+<a href="https://virtualvacation.us/guess/maps">
+<div id="moremaps">
+  See All Maps <i class="fa fa-angle-double-right" aria-hidden="true" id="doublearrow"></i>
+</div>
+</a>
+</center>
 <style>
 .col,.notification-box {
     /*border:1px solid #000000;*/
