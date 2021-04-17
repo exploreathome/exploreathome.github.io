@@ -37,7 +37,6 @@
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
 </head>
 <body id="confetti">
 <style>
@@ -403,26 +402,6 @@ h5 {
           <li class="nav-item active" id="homeitem">
             <a class="nav-link" href="https://virtualvacation.us/guess">Home <i class="fa fa-home" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
           </li>
-          <!-- <span> -->
-          <!-- <span id="authentication-prompt"> -->
-<!--           <span id="authentication-prompt">
-          <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="#myModal" data-toggle="modal">Log In <i class="fa fa-sign-in" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
-          </li>
-          </span>
-          <span id="authentication-prompt2">
-          <li class="nav-item active" id="homeitem">
-            <a class="nav-link" href="#myModal2" data-toggle="modal">Sign Up <i class="fa fa-user-plus" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
-          </li>
-          </span> -->
-          <!-- </span> -->
-          <!-- <span id="logout-prompt"> -->
-<!--           <div id="authentication-prompt3" style="cursor: pointer;">
-          <li class="nav-item active" id="homeitem logout-prompt">
-            <a class="nav-link" onclick="signout()">Log Out <i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 5px;"></i><span class="sr-only">(current)</span></a>
-          </li>
-          </div> -->
-          <!-- </span> -->
         </ul>
       </div>
     </nav>
@@ -500,18 +479,6 @@ h5 {
 <div id="main-hr2">
 <hr style="margin-top: -1px;">
   <div id="c-streak" style="justify-content: center;">
-    <!-- <div id="c-streak-img"> -->
-
-      <!-- <img src="static/usaguess.png" class="guess-img"> -->
-    <!-- </div> -->
-    <!-- <div id="c-streak-text"> -->
-
-
-    <!-- </div> -->
-<!--     <div class="w3-card-4 cardw32" style="border-radius: 10px;" id="country-card">
-    <header class="w3-container w3-light-grey">
-      <h5>Country Streak</h5>
-    </header> -->
     <div class="w3-container" style="margin-top: 8px;">
       <center>
       <div class="box-container">
@@ -561,19 +528,12 @@ h5 {
             <div class="scoring-box-description">Correct Guesses</div>
             <div class="scoring-box-value cg2" id="cg2">00</div>
           </div>
-<!--           <div class="scoring-box-element">
-            <div class="scoring-box-description">Videos Played</div>
-            <div class="scoring-box-value vp2" id="vp2">00</div>
-          </div> -->
         </div>
         <p class="easteregg-en"></p>
         <p class="box-lists">
           <a id="sharelink-incard" href="http://twitter.com/share?text=Playing the City Guesser Radius Streak mode! virtualvacation.us/streaks" class="card-tag" style="background-color: #00acee; margin-right: 10px; cursor: pointer;">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
           <a id="sharelink-incard" href="https://www.reddit.com/submit" class="card-tag" style="background-color: #FF5700; cursor: pointer;"><i class="fa fa-reddit" aria-hidden="true"></i></a>
           <a id="sharelink-incard" href="https://www.facebook.com/sharer/sharer.php?u=https://virtualvacation.us/streaks" class="card-tag" style="background-color: #3b5998; margin-left: 10px; cursor: pointer;"><i class="fa fa-facebook-official" aria-hidden="true"></i> </a>
-
-
-
         </p>
       </section>
       <footer class="box-lower-footer w3-light-grey">
@@ -1177,9 +1137,6 @@ if (localStorage.getItem("accuracy_button") !== null) {
   display: none;
 }
 #f-c {
-  display: none;
-}
-#secondary-button {
   display: none;
 }
 
@@ -2145,88 +2102,8 @@ function makeaguess() {
       shadowSize: [41, 41]
     });
     marker = L.marker([official_video_location[0], official_video_location[1]], {icon: correct_loction_marker}).bindTooltip("Exact Location <i class='fa fa-map-marker' aria-hidden='true'></i>").addTo(map);
-    // var correct_loction_marker = new L.Icon({
-    //   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-    //   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    //   iconSize: [25, 41],
-    //   iconAnchor: [12, 41],
-    //   popupAnchor: [1, -34],
-    //   shadowSize: [41, 41]
-    // });
-    // marker = L.marker([official_video_location[0], official_video_location[1]], {icon: correct_loction_marker}).bindTooltip("Exact Location <i class='fa fa-map-marker' aria-hidden='true'></i>").addTo(map);
-  // submitted_country_code = html
-
-  //console.log(potential_coords)
-  // if (typeof lastname !== "undefined") {
-    //console.log('NOT NULL!')
   }, 500)
   } 
-  // else {
-      // if (potential_coords == correct_coords) {
-      //   document.getElementById("spinner").style.display = "none";
-      //   document.getElementById("map-prompter").innerHTML = "You got it right! 🎉 <b>+1</b>"
-      //   var sounds = new Audio('static/correct.mp3');
-      //   sounds.play();
-      //   confetti.start(1800)
-      //         document.getElementById("confetti-canvas").style.zIndex = "900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-      //   country_str = parseInt(localStorage.getItem("sovereignt-streak"));
-      //   country_str += 1
-      //   document.getElementById("actualscore").innerHTML = country_str;
-      //   localStorage.setItem("sovereignt-streak", country_str)
-      //   document.getElementById('original-c').style.display = "none";
-      //   document.getElementById('future-c').style.display = "block";
-      //   localStorage.setItem("country_correct_guesses", parseInt(localStorage.getItem("country_correct_guesses")) + 1);
-      //       cur_ls = parseInt(localStorage.getItem("sovereignt-streak"))
-      //       if(cur_ls > parseInt(localStorage.getItem("sovereignt-streak-hs"))) {
-      //         localStorage.setItem("sovereignt-streak-hs", cur_ls)
-      //       }
-      // } 
-      // else {
-      //   document.getElementById("spinner").style.display = "none";
-      //   greenhighlight.setStyle({
-      //   weight: 4,
-      //   color: '#cc0000',
-      //   fillColor: '#cc0000',
-      //   fillOpacity: '0.2',
-      //   dashArray: '',
-      //   fillOpacity: 0.7
-      //   });
-      //   for (var i=0 ; i < countries.features.length ; i++) {
-      //     //console.log('SECONDARY ITERATED...')
-      //     if(correct_coords.includes(countries.features[i].properties.iso_a2)) {
-      //       correct_object = countries.features[i]
-      //       //console.log(correct_object)
-      //       var sounds = new Audio('static/wrong.mp3');
-      //       sounds.play();
-      //       L.geoJSON(countries.features[i], {
-      //           style: function (feature) {
-      //               return {weight: 4,
-      //                       color: '#56830b',
-      //                       fillColor: '#56830b',
-      //                       fillOpacity: '0.2',
-      //                       dashArray: '',
-      //                       fillOpacity: 0.7};
-      //           }
-      //       }).bindPopup(function (layer) {
-      //           // return layer.feature.properties.description;
-      //       }).addTo(map);
-      //       document.getElementById("map-prompter").innerHTML = "<b>Oops!</b> Your streak ends at <b>" + String(localStorage.getItem("sovereignt-streak") + "</b>. <i class='fa fa-hourglass-end' aria-hidden='true'></i>");
-      //       document.getElementById("original-c").style.display = "none";
-      //       document.getElementById("future-c").style.display = "none";
-      //       document.getElementById("present-z").style.display = "block";
-      //       localStorage.setItem("sovereignt-streak", 0);
-      //       country_str = 0;
-      //       break;
-      //     }
-      //   }
-      // }
-  // }
-  // localStorage.setItem("current_video", "null")
-  // localStorage.setItem("current_seconds", "null")
-  // localStorage.setItem("current_number", "null")
-  // ofsecs = "null";
-  // ofid = "null";
-  // ofnumber = "null";
 
 function shrinkupper() {
   //console.log('shrink called')
@@ -2249,7 +2126,6 @@ function shrinkupper() {
         <center>
       <p class="forward-mybtn" id="main-button" style="z-index: 900000000000000000000000000" onclick=""><a id="start-guessing-btn" style="cursor: pointer;" onclick="invalidateSizeFunc('check'); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
       <p class="forward-mybtn" id="main-button2" style="z-index: 900000000000000000000000000" onclick=""><a style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'; document.getElementById('main-button2').style.display = 'none'; map.invalidateSize(); if(1 == 2 && deviceChecker == false) { player.pauseVideo(); document.getElementById('new-back-btn4').style.display = 'block'; document.getElementById('new-back-btn3').style.display = 'none';}" class="btn btn-primary" data-toggle="modal" data-target="#myModal">START GUESSING <i class="fa fa-map-marker"></i></a></p>
-      <p class="forward-mybtn" id="secondary-button" style="z-index: 900000000000000000000000000" onclick="document.getElementById('id01').style.display='block'"><a style="cursor: pointer;" onclick="invalidateSizeFunc('check')" class="btn btn-primary" data-toggle="modal" data-target="#myModal">NEXT ROUND <i class="fa fa-map-marker"></i></a></p>
       <!-- The Modal -->
   <div id="id01" class="w3-modal" style="position: fixed; z-index: 2;">
  <div class="w3-modal-content w3-card-4 w3-animate-zoom">
