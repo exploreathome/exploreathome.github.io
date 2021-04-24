@@ -11,7 +11,7 @@ var audio_play = new Audio();
 // var group;
 // Make connection
 // var socket = io.connect('http://localhost:5000');
-var socket = io.connect("https://secure-players.herokuapp.com/");
+var socket = io.connect("https://testapp153.herokuapp.com/");
 var hostornot = false;
 var unit = "mi";
 // var socket = io.connect('http://testapp149.herokuapp.com/');
