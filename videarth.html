@@ -551,6 +551,9 @@ function showmap() {
   $("#imageData").slideDown();
   $("#map").slideDown()
   player.pauseVideo();
+  setTimeout(function() {
+    map.invalidateSize();
+  }, 500)
 }
 function savevideo() {
   if(document.getElementById("saveVideoHeart").innerHTML != '<i class="fa fa-heart" aria-hidden="true" title="Save Video" style="height: 100%; margin-left: 13px; margin-right: 13px; color: #ff4d4d;" id="saveVideo"></i>') {
