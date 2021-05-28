@@ -394,7 +394,6 @@ queryWithout = "njX2bu-_Vw4"
 
       var done = false;
       function onPlayerStateChange(event) {
-        navigator.mediaSession.metadata = new MediaMetadata({});
         
         if (event.data === 0) {
           document.getElementById("player").style.opacity = "0";
@@ -402,7 +401,7 @@ queryWithout = "njX2bu-_Vw4"
           document.getElementById("player").style.opacity = "1";
         }
         document.getElementById("blueSpinner").style.display = "none";
-        
+        navigator.mediaSession.metadata = new MediaMetadata({});
       }
   var map = L.map('map').setView([42.35, 2.08], 3);
   var myRenderer = L.canvas({ padding: 0.5 });
