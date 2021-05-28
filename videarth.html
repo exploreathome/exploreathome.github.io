@@ -553,6 +553,10 @@ function showmap() {
   setTimeout(function() {
     map.invalidateSize();
   }, 500)
+  if(window.matchMedia("only screen and (max-width: 800px)").matches) {
+    // document.getElementById("UIcontainer").style.display = "none";
+    $("#UIcontainer").slideUp(200);
+  }
 }
 function savevideo() {
   if(document.getElementById("saveVideoHeart").innerHTML != '<i class="fa fa-heart" aria-hidden="true" title="Save Video" style="height: 100%; margin-left: 13px; margin-right: 13px; color: #ff4d4d;" id="saveVideo"></i>') {
