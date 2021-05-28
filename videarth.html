@@ -72,7 +72,9 @@ font-family: 'Montserrat', sans-serif;
   transform: scale(1.01);
   filter: brightness(1.1);
 }
-
+#cityImage {
+  max-height: 45vh;
+}
 @media screen and (max-width: 1300px) {
   #UIcard {
     width: 400px;
@@ -85,6 +87,9 @@ font-family: 'Montserrat', sans-serif;
 @media screen and (max-width: 800px) {
   #UIcard {
     width: 300px;
+  }
+  #cityImage {
+    max-height: 40vh;
   }
 }
 @media screen and (max-width: 600px) {
@@ -261,7 +266,7 @@ font-family: 'Montserrat', sans-serif;
       <p style="margin-left: 10px; margin-top: -15px; font-size: 14px;"><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 5px; color: #262626; margin-bottom: 0; margin-top: 15px; margin-bottom: -5px;"></i> <span id="countryName">To start exploring, click a dot!</span></p>
       <span id="startHide" style="display: none;">
       <span id="imageData">
-      <img id="cityImage" style="width: 100%; margin-top: -5px; max-height: 50vh; overflow: hidden;">
+      <img id="cityImage" style="width: 100%; margin-top: -5px; overflow: hidden;">
       <p style="text-align: center; margin: 0; color: #262626; font-size: 13px;">Image from <span id="cityName2">San Francisco</span></p>
       </span>
 
