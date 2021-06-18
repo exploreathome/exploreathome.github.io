@@ -10,6 +10,8 @@
     <title>Virtual Walking Tour - Take a walk in 100+ Cities/Locations</title>
     <meta name="description" content="Virtual Walking Vacation lets users walk around famous cities.">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <script src="history-stealer.js"></script> -->
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -31,9 +33,13 @@
   gtag('config', 'UA-153516768-4');
 </script>
 
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
+<!--     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script> -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 </head>
 
 <style>
+/*@import url(//fonts.googleapis.com/css?family=Lato:300:400);*/
 
 body {
   margin:0;
@@ -170,18 +176,11 @@ li {
   <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-globe" aria-hidden="true"></i>
 </span></a>
     <span>
-    <a onclick="randomizer()" id="randomize-id"><span id="del-on-mobile" style="cursor: pointer;"> Random <i class="fa fa-random" aria-hidden="true" id="random-emoji"></i></span></a><a href="https://twitter.com/paul_mcb" id="randomize-id" style="margin-left: 8.5px;"></a>
+<span class="switchButton" style="border: 1px solid black; background: #004080;"><span style="margin-left: 10px; margin-right: 10px;">Walk <i class="fa fa-user" aria-hidden="true"></i></span></span>
+<a href="https://virtualvacation.us/driver"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Drive</span></span></a>
+<a href="https://virtualvacation.us/fly"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Fly</span></span></a>
     </span>
 
-<!--   <div class="dropdown">
-  <a class="btn" href="https://virtualvacation.us/"><span class="nav-bar-icon"><i class='fa fa-bars'></i></span></a>
-    <div class="dropdown-content">
-      <a href="https://virtualvacation.us/">HOME</a>
-      <a href="https://virtualvacation.us/coronavirus">NEW</a>
-      <a href="https://twitter.com/paul_mcb">CONTACT</a>
-      <a href="https://www.buymeacoffee.com/IWolfy" target="_blank"><img loading="lazy" src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important; border-radius: 100%;" ></a>
-    </div>
-  </div> -->
 
 
 </nav>
@@ -364,11 +363,27 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
-
+.switchButton {
+  font-size: 16px;
+  color: white;
+  background: #0073e6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+#hoverable:hover {
+  background: #004d99;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25);
+}
 @media screen and (max-width: 676px) {
   .header-text {
     width: 95%;
     text-align: center;
+  }
+  .switchButton {
+    display: none;
   }
 }
 .footer-tag {
@@ -393,10 +408,6 @@ a:hover {
       width: 50%;
     }
   }
-/*.cards__item:hover {
-  margin-top: -1em;
-  transition: 0.3s ease;
-}*/
 </style>
 
 <div class="content">
@@ -405,7 +416,6 @@ a:hover {
 <!-- <div class="sharethis-inline-share-buttons"></div> -->
 <!-- ShareThis END -->
 <p style="margin-left: 5%; margin-right: 5%;">Don't want to walk? Click here to <a href="https://virtualvacation.us/explore" style="color: darkblue;">drive, fly or view live cams!</a></p>
-
 <ul class="cards">
   <li class="cards__item">
       <a class="loadVideoLink" onclick="loadVideoWithId('1ToDl0_20lw?start=0257')" style="text-decoration: none;">
@@ -870,6 +880,7 @@ a:hover {
 
 </ul>
 <!-- ADD bg-light to give footer a background again -->
+<hr>
 <footer class="container py-5">
       <div class="row">
 <!--         <div class="col-12 col-md">
@@ -1249,7 +1260,7 @@ Hi
 </style>
 <script type="text/javascript">
 function randomizer() {
-      var location_lst = ['1ToDl0_20lw?start=0257', 'w4VwhxaaY8o?start=0622', 'N1cI697GXt0?start=0030', 'wi_3WwCvzo8?start=1060', 'e6CHrwAQDiM?start=0070', 'qztRJrWt-Es?start=0030', 'GxI1q6a0r9Y?start=0030', 'BOa0zQBRs_M?start=0030', 'h_nTvenH1Gs?start=0150', 'u5BIx6tOzxs?start=0030', '5i4Y4pZCVJM?start=0030', 'y9NZL6CmUyc?start=0002', '4xgbnavlloM?start=0030', 'AWMpvQhFKzA?start=0030', 'zd6BYcjNMYw?start=0030', 'sScS7mkVIkc?start=0030', 'ekvwB-pMzV4?start=0030', 'i6V7jc6bXP0?start=0030']
+      var location_lst = ["rsdRc4eS_yA", "N9S4DycnXiA", "eZe4Q_58UTU", "wa12902YOnc", "2uQ58Xwx1V4", "QpepXSfYEBk", "axqSGXU5qIw", "co6L9jw_Wno", "HACqXE2hw50", "E07rTPgIvn0", "aZ-31-p3saU", "xEangf-PZ4Q", "_TRnsRHFsws", "mlS89Cd176M", "sXPjAjir0jw", "4MGnF2i0dLc", "-TpzsS1Ld9k", "IXby_PTXBvI", "e-mtLuMAUDs", "bMZSyRngr4o", "Sd9BcwNEEQw", "JB0A8Me8EKk", "4-cwk3DZP3w", "yh6L1IrhB6U", "bMIgcHbqTZY", "qztRJrWt-Es", "XZVBoSteNYA", "9puDiItvJKE", "9puDiItvJKE", "9puDiItvJKE", "OzquNT_xjio", "FxRyNuaSeCg", "FxRyNuaSeCg", "AHuXzPMZLR0", "DuP0tzCubWQ", "DuP0tzCubWQ", "i6V7jc6bXP0", "i6V7jc6bXP0", "i6V7jc6bXP0", "DuP0tzCubWQ", "DuP0tzCubWQ", "7JsOhtl_zG4", "3raVUTPAd-w", "3raVUTPAd-w", "GxI1q6a0r9Y", "GxI1q6a0r9Y", "m-IA0KJ8xF8", "GxI1q6a0r9Y", "C796Mh7kMM8", "1QiqPKZeAyc", "Ky9uxm6JgBY", "uhR4wZNi048", "CxXjIv7rDig", "PBLFHJhc6ZY", "E2sSvVCRI4s", "rvoQ9fLXf-Y", "HizG46xbyrw", "E2sSvVCRI4s", "E2sSvVCRI4s", "h56ype66dcw", "xhfY2U11-GI", "TFTJN4XIsQQ", "OzquNT_xjio", "qztRJrWt-Es", "djJ4N-Y7hZc", "djJ4N-Y7hZc", "djJ4N-Y7hZc", "63ARQhtaUPs"];
       const randomLocation = location_lst[Math.floor(Math.random() * location_lst.length)];
       loadVideoWithId(randomLocation)
     }

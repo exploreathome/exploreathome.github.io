@@ -11,6 +11,9 @@
     <title>Live Camera/Footage - Experience the World In Real Time.</title>
     <meta name="description" content="Experience the world in real time by viewing live footage/cameras of different places around the world..">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <script src="history-stealer.js"></script> -->
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="jquery.lazy.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
@@ -175,11 +178,14 @@ p {
 
 
 <body>
-<nav id="only-navbar" class="navbar navbar-custom" style="background-color: #fefefe; color: black;">
+<nav id="only-navbar" class="navbar navbar-custom fixed-top" style="background-color: #fefefe; color: black;">
   <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-globe" aria-hidden="true"></i>
 </span></a>
-    <a onclick="randomizer()" id="randomize-id" style="cursor: pointer;"><span id="del-on-mobile"> Random <i class="fa fa-random" aria-hidden="true" id="random-emoji"></i></span></a>
-
+    <span>
+<a href="https://virtualvacation.us/walk"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Walk</span></span></a>
+<a href="https://virtualvacation.us/driver"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Drive</span></span></a>
+<a href="https://virtualvacation.us/fly"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Fly</span></span></a>
+    </span>
 <!--   <div class="dropdown">
   <a class="btn" href="https://virtualvacation.us/"><span class="nav-bar-icon"><i class='fa fa-bars'></i></span></a>
     <div class="dropdown-content">
@@ -355,10 +361,27 @@ img {
   margin-bottom: 1.25rem;
 }
 
+.switchButton {
+  font-size: 16px;
+  color: white;
+  background: #0073e6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+#hoverable:hover {
+  background: #004d99;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25);
+}
 @media screen and (max-width: 676px) {
   .header-text {
     width: 95%;
     text-align: center;
+  }
+  .switchButton {
+    display: none;
   }
 }
 .footer-tag {
@@ -400,7 +423,7 @@ a:hover {
 
 <ul class="cards">
 
-  <li class="cards__item" onclick="loadVideoWithId('X9KAdlrI8KE')" style="cursor: pointer;">
+  <li class="cards__item" onclick="loadVideoWithId('m6wk49_EtPc')" style="cursor: pointer;">
     <div class="card">
       <div class="card__image lazyload" data-bgset="static/amsterdampic.jpeg"></div>
       <div class="card__content">
@@ -524,7 +547,7 @@ a:hover {
   </li>
   <li class="cards__item" onclick="loadVideoWithId('L9HyLjRVN8E')" style="cursor: pointer;">
     <div class="card">
-      <div class="card__image lazyload" data-bgset="static/barcelona.jpeg"></div>
+      <div class="card__image lazyload" data-bgset="static/barcelona-vertical.jpeg"></div>
       <div class="card__content">
         <div class="card__title">Barcelona 🇪🇸</div>
         <p class="card__text">Barcelona is one of the largest cities within Spain! It's also famous for it's football team!</p>
@@ -705,7 +728,7 @@ a:hover {
       <div class="card__image lazyload" data-bgset="static/santamonica.jpeg"></div>
       <div class="card__content">
         <div class="card__title">Santa Monica 🇺🇸</div>
-        <p class="card__text">The Santa Monica Pier is a large pier that includes an amusement park, great views and food.</p>
+        <p class="card__text">The Santa Monica Peer is a large pier that includes an amusement park, great views and food.</p>
         <a class="btn btn--block card__btn">View LIVE</a>
       </div>
     </div>
@@ -783,11 +806,6 @@ a:hover {
 <hr>
 <footer class="container py-5">
       <div class="row">
-<!--         <div class="col-12 col-md">
-          <i class="fa fa-street-view" aria-hidden="true" style="font-size: 35px;"></i>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-          <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-        </div> -->
                 <div class="col-6 col-md">
           <h5 style="font-weight: bold;">Inspired By <i class="fa fa-camera" aria-hidden="true"></i></h5>
           <ul class="list-unstyled text-small">
@@ -800,10 +818,10 @@ a:hover {
         <div class="col-6 col-md">
           <h5 style="font-weight: bold;">New Releases <i class="fa fa-street-view" aria-hidden="true"></i></h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="https://virtualvacation.us/explore">Easy Expedition <i class="fa fa-globe" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/guess">City Guesser <i class="fa fa-globe" aria-hidden="true"></i></a></li>
             <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
             <li><a class="text-muted" href="https://virtualvacation.us/walk">Walking Tour <i class="fa fa-users" aria-hidden="true"></i></a></li>
-            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Footage Tour <i class="fa fa-camera" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Cameras <i class="fa fa-camera" aria-hidden="true"></i></a></li>
           </ul>
         </div>
         <div class="col-6 col-md">
@@ -815,15 +833,6 @@ a:hover {
             <li><a class="text-muted" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvirtualvacation.us%2Fguess&title=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">LinkedIn <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
           </ul>
         </div>
-<!--         <div class="col-6 col-md">
-          <h5 style="font-weight: bold;">Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Business</a></li>
-            <li><a class="text-muted" href="#">Education</a></li>
-            <li><a class="text-muted" href="#">Government</a></li>
-            <li><a class="text-muted" href="#">Gaming</a></li>
-          </ul>
-        </div> -->
 <div class="col-6 col-md">
           <h5 style="font-weight: bold;">About <i class="fa fa-info" aria-hidden="true"></i></h5>
           <ul class="list-unstyled text-small">
