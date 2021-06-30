@@ -1,0 +1,1155 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <title>Virtual Window - Explore window views from different cities</title>
+    <meta name="description" content="Virtual Window lets you look out of windows from hundreds of cities.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.lazy.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <meta property="og:title" content="Virtual Window - Explore window views from different cities" />
+    <meta property="og:description" content="Virtual Window lets you look out of windows from hundreds of cities." />
+    <meta property="og:image" content="https://virtualvacation.us/static/beachimagelogo.png" />
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153516768-4');
+</script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+body {
+  margin:0;
+  transition-duration: 0.1s;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wasf {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .wasf {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+@media (max-width: 400px) {
+  #randomize-id {
+    display: none;
+  }
+}
+.btn-circle {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 17.5px;
+  padding-bottom: 200px;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  z-index: 9000;
+}
+#openButton {
+  border: 1px solid white; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 300px; color: white; border-radius: 10px; filter: brightness(1.5); background: rgba(0,0,0,0.25); cursor: pointer; margin-top: 10px;
+}
+#openButton:hover {
+  transition-duration: 0.2s;
+  margin-top: 20px;
+  background: rgba(0,0,0,0.5);
+}
+</style>
+
+
+<script>
+
+function randomVideo() {
+  if(localStorage.getItem("windowCurrentNumber") === null) {
+    current_num = Math.floor(Math.random() * 35) + 1
+    localStorage.setItem("windowCurrentNumber", current_num)
+  } else {
+    current_num = localStorage.getItem("windowCurrentNumber");
+    current_num = parseInt(current_num)+1
+    localStorage.setItem("windowCurrentNumber", current_num)
+  }
+  if(current_num > 100) {
+    localStorage.setItem("windowCurrentNumber", 0)
+    current_num = 0
+  }
+  loadVideoWithId(locations[current_num][1])
+  document.getElementById("locationtext").innerHTML = locations[current_num][0] + ' <i class="fa fa-map-marker" aria-hidden="true"></i>'
+}
+
+
+</script>
+
+
+
+
+<body>
+<nav id="only-navbar" class="navbar navbar-custom" style="background-color: #fefefe; color: black; padding-bottom: 0; display: none;">
+  <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-globe" aria-hidden="true"></i>
+</span></a>
+    <span>
+<span class="switchButton" style="background: #004080;"><span style="margin-left: 10px; margin-right: 10px;">Drive <i class="fa fa-car" aria-hidden="true"></i></span></span>
+<a href="https://virtualvacation.us/walk"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Walk</span></span></a>
+<a href="https://virtualvacation.us/fly"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Fly</span></span></a>
+    </span>
+<!--   <div class="dropdown">
+  <a class="btn" href="https://virtualvacation.us/"><span class="nav-bar-icon"><i class='fa fa-bars'></i></span></a>
+    <div class="dropdown-content">
+      <a href="https://virtualvacation.us/">HOME</a>
+      <a href="https://virtualvacation.us/coronavirus">NEW</a>
+      <a href="https://twitter.com/paul_mcb">CONTACT</a>
+      <a href="https://www.buymeacoffee.com/IWolfy" target="_blank"><img loading="lazy" src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important; border-radius: 100%;" ></a>
+    </div>
+  </div> -->
+
+
+</nav>
+
+<div class="header" style="background-image: url('static/window.jpg');       background-repeat: no-repeat;
+    background-size: cover; background-position: top 200px;">
+<a href="https://virtualvacation.us"><div class="btn btn-default btn-circle"><span style="margin-right: 2.4px; margin-bottom: -5px;"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+</div></a>
+
+<div class="inner-header" style="padding-top: 16vh;">
+<h1>Virtual Window</h1>
+<p style="color: #fcfcfc; margin-top: -10px;">from <a href="https://virtualvacation.us/">virtualvacation.us</a></p>
+<div style="width: 100%;">
+  <center>
+<div style="" id="openButton" onclick="randomVideo()">Open a Random Window</div>
+</center>
+</div>
+</div>
+
+<!--wasf Container-->
+<div>
+<svg class="wasf" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
+<!--wasf end-->
+
+</div>
+<!--Header ends-->
+
+<!--Content starts-->
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  background-color: #fff;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.btn {
+  background-color: white;
+  border: 1px solid #cccccc;
+  color: #696969;
+  padding: 0.5rem;
+  /*text-transform: lowercase;*/
+}
+.btn--block {
+  display: block;
+  width: 100%;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cards__item {
+  display: flex;
+  padding: 1rem;
+}
+@media (min-width: 40rem) {
+  .cards__item {
+    width: 50%;
+  }
+}
+@media (min-width: 56rem) {
+  .cards__item {
+    width: 20%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+.card:hover .card__image {
+  filter: contrast(100%);
+}
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+.card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  height: 70%;
+}
+.card__image::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+@media (min-width: 40rem) {
+  .card__image::before {
+    padding-top: 75.6%;
+  }
+}
+.card__image--home {
+  background-image: url(static/homeicon.jpg);
+}
+.card__image--flowers {
+  background-image: url(static/livecamicon.jpg);
+}
+.card__image--river  {
+  background-image: url(static/monumenticon.jpg);
+}
+.card__image--record {
+  background-image: url(static/aircrafticon.jpg);
+}
+.card__image--fence {
+  background-image: url(static/walkingicon.jpg);
+}
+
+.card__image--walker  {
+  background-image: url(static/walkingicon.jpg);
+}
+
+.card__title {
+  color: #696969;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.card__text {
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.switchButton {
+  font-size: 16px;
+  color: white;
+  background: #0073e6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+#hoverable:hover {
+  background: #004d99;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+@media screen and (max-width: 676px) {
+  .header-text {
+    width: 95%;
+    text-align: center;
+  }
+  .switchButton {
+    display: none;
+  }
+}
+.footer-tag {
+  bottom: 0;
+  background-color: #cccccc;
+  width: 100%;
+  height: 5vh;
+  vertical-align: middle;
+  /*padding-top: 1%;*/
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+/*@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .cards__item {
+      width: 50%;
+    }
+  }*/
+/*.cards__item:hover {
+  margin-top: -1em;
+  transition: 0.3s ease;
+}*/
+.card__image--fence {
+  background-image: url(static/walking.jpg);
+}
+.card:hover {
+  transform: scale(1.02);
+}
+#oneCity {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: #f2f2f2;
+  filter: brightness(1.2);
+  display: block;
+  color: black;
+  display: inline-block;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 17px;
+  margin-top: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+#oneCity:hover {
+  box-shadow: 0 0 3px 3px rgba(0, 122, 204, 0.5);
+  transition-duration: 0.1s;
+  /*margin-top: -0.5rem;*/
+}
+</style>
+<div class="content">
+
+<h1 style="font-size: 18px; margin-top: 3.5%; margin-left: 5%; margin-right: 5%;">View Featured Windows</h1>
+<p style="margin-left: 5%; margin-right: 5%;">We've featured some of your favorite windows below. It doesn't stop at just windows. Walk, drive, and fly <a style="color: darkblue;" href="https://virtualvacation.us"> here. </a></p>
+<ul class="cards">
+
+  
+<li class="cards__item" onclick="locationName = 'New York'; loadVideoWithId('9KBx0keOg5s?start=000060')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/timessquare_live.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">New York 🇺🇸</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="locationName = 'Moscow, Russia'; loadVideoWithId('MLaJiqll4Ic?start=000030')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/kremlin.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Moscow 🇷🇺</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="locationName = 'Stockholm, Sweden';loadVideoWithId('xDHGMlYSRME?start=000020')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/stockholm.jpg"></div>
+      <div class="card__content">
+        <div class="card__title">Stockholm 🇸🇪</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="locationName = 'San Antonio, Texas';loadVideoWithId('c0GlCjZbVzk?start=000126'); test = Array.prototype.slice.call( document.getElementsByClassName('show'), 0 )
+        console.log(test.indexOf(event.currentTarget))" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/sanantonio.jpg"></div>
+      <div class="card__content">
+        <div class="card__title">San Antonio 🇺🇸</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="locationName = 'Berlin, Germany';loadVideoWithId('TFExUL9nkfo?start=000032')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/berlin.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Berlin 🇩🇪</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Seoul, South Korea';loadVideoWithId('jAbUstSH9qA?start=000011')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/seoul.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Seoul 🇰🇷</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Atlanta, Georgia';loadVideoWithId('UZn1MrjL4pE?start=000017')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/atlanta.jpg"></div>
+      <div class="card__content">
+        <div class="card__title">Atlanta 🇺🇸</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Amsterdam, Netherlands';loadVideoWithId('S8DH9QqVvqo?start=000020')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/amsterdam_canal.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Amsterdam 🇳🇱</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Shanghai, China';loadVideoWithId('cR3MEbdyFwU?start=000060')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/shanghai_blue.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Shanghai 🇨🇳</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Vancouver, Canada';loadVideoWithId('9x_qosfdo9Q?start=000060')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/vancouver.jpg"></div>
+      <div class="card__content">
+        <div class="card__title">Vancouver 🇨🇦</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Seattle, Washingon';loadVideoWithId('fz5H7ObqXj4?start=000060')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/seattle.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Seattle 🇺🇸</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Austin, Texas';loadVideoWithId('L-uaL3rNyPI?start=000002')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/austin.jpg"></div>
+      <div class="card__content">
+        <div class="card__title">Austin 🇺🇸</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'London, United Kingdom';loadVideoWithId('jSQHDY5D7Tc?start=000151')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/london.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">London 🇬🇧</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Honolulu, Hawaii';loadVideoWithId('8u6DXanmX_8?start=000060')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/hawaii.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Honolulu 🇺🇸</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="locationName = 'Toronto, Canada';loadVideoWithId('4r7l8dseu6Y?start=000300  ')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/toronto_canada.jpeg"></div>
+      <div class="card__content">
+        <div class="card__title">Toronto 🇨🇦</div>
+        <a class="btn btn--block card__btn">Open Window</a>
+      </div>
+    </div>
+  </li>
+  <!-- </div> -->
+</ul>
+<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;">More Windows/Spots</h2>
+<div style="text-align: left; padding-left: 1rem; padding-right: 1rem;" id="oneCities">
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('9KBx0keOg5s?start=000060');">New York City <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('UZn1MrjL4pE?start=000017');">Atlanta <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('FiVoaD1tdVw?start=000021');">Los Angeles <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ILBDMisz5K8?start=000009');">Tokyo Haneda <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('M9cJMXmQ_ZU?start=000019');">Downtown Los Angeles <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('Ll1xRGhd3YU?start=000141');">Seoul <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('4lYfSW5Pr-U?start=000009');">Seoul Bus Station <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('fz5H7ObqXj4?start=000060');">Seattle <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('BE1A-kb0X2o?start=000049');">Paris <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('jSQHDY5D7Tc?start=000151');">London Picadilly <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ZpoyRpZ70m4?start=003781');">Seattle Pier 66 <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('O2WBotXOIZs?start=000060');">Eglinton, Toronto <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('xDHGMlYSRME?start=000020');">Stockholm Old Town <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <!-- <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('WGHYQG0KgiQ?start=000060');">Copacabana Rio de Janeiro <i class="fa fa-map-marker" aria-hidden="true"></i></span> -->
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('O7XsXDUp9Ko?start=000059');">Sanya, China <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('qVi2Otx28Kc?start=000010');">Manhattan, New York <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('6cmEWXJuBTk?start=000054');">Tokyo Suburbs <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('Ls1UZ_8dG44?start=000018');">Paris Eiffel Tower View <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('PB6qyS63_e8?start=000004');">Amsterdam Cafe <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('uVwb9psE_9o?start=000060');">Seoul, Hyehwa <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('L0yOgsmElpg?start=000060');">Jericho Beach Vancouver <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('W01X3Keb8ls?start=000020');">Mediterranean Coast in Spain <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('9x_qosfdo9Q?start=000060');">Vanier Park Vancouver <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('5hjAf57y1P4?start=000840');">Quebec, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('S8DH9QqVvqo?start=000020');">Canal in Amsterdam <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('cR3MEbdyFwU?start=000060');">Shanghai Highrise <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('8u6DXanmX_8?start=000060');">Honolulu Hawaii Condo <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('jJ2uuHcHCjA?start=000060');">Waikiki Hawaii Sheraton <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('c0GlCjZbVzk?start=000126');">San Antonio, Texas <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('OUqayGBZLFo?start=000300');">Seoul Station <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('vkubhSE3Bo8?start=000012');">Southeast Asia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('4r7l8dseu6Y?start=000300');">Toronto Balcony <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('sdvV0mAVkYk?start=000300');">Rural Brazil <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('u4if6ANRJsU?start=000010');">Portland, Maine <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('KTmVPmatH5w?start=000030');">Guanajuanto, Mexico <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('A2_yg19Pu7Y?start=000060');">Black Sea, Bulgaria <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('DDU-rZs-Ic4?start=000010');">International Space Station <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('xq264cPR6kA?start=000012');">Hillside View, Los Angeles <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('wDdbd_Jgn9Q?start=000010');">Tokyo, Japan <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('KqtE5cW0CfI?start=000010');">Denver, Colorado <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('JuPBKqDXj2w?start=000001');">Rural Town, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('pxnIOtDmO74?start=000030');">Montreal, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('-mPQZAEBLpg?start=000001');">Suburban Conneticut <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('nFqtN2ri6fA?start=000057');">Panama City, Florida <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('PZ3MKh-p4jc?start=000057');">Washington DC <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('bZrQtdlLkjs?start=000523');">Washington DC Dulles Airport <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('7nGn9LcdhDo?start=000001');">Rehoboth Boardwalk <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ZPyFCvPgKZU?start=000025');">Downtown Los Angeles <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('21hLwXtO7N8?start=000025');">Los Angeles Apartment <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('Jli2_XKSbgw?start=000025');">San Francisco Mission St <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('6B8H06joIiA?start=000000');">New Mexico <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('qjgAILG8CTI?start=000102');">Antioch, California <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ZJv1NBzDy9E?start=000025');">Twin Peaks <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('-HzFxgt92bk?start=000040');">Santa Fe, New Mexico <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('PB6qyS63_e8?start=000909');">Rainy Amsterdam Cafe <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('l179yYKhdeQ?start=001227');">Moscow, Russia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('xtSEMLkfc_U?start=000163');">Moscow Apartment View <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('wsdXEzqrmXQ?start=000039');">Singapore Apartment <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('anjyEPRywzI?start=000240');">Reno Downtown <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('EZZ6IPG4AEI?start=000011');">Roadside Seoul, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('4EnU3pQxXoI?start=000056');">Busan, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('jAbUstSH9qA?start=000011');">Seoul, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('dtpWj2vZD2s?start=000020');">Han River, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('sL4RPcTuc7Y?start=026400');">Seoul, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('mE3IXrQB_Sw?start=000010');">Rural Brazil <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('JgZ4iaCgTYQ?start=000047');">Surfers Paradise, Australia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ADBv7xXz7RY?start=000015');">Rural Highway, United States <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('GzsbIdzvImY?start=000060');">Farm Trail, Belgium <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ri8EmDZlMDM?start=000029');">Streetside Berlin, Germany <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('TFExUL9nkfo?start=000032');">Restaurant in Berlin <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('ntGy5Hl_Rd0?start=003761');">New York City, United States <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('SDah-p3WAag?start=000100');">Hong Kong Highrise Apartment <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('kAM7wnaF6KM?start=000030');">Downtown Los Angeles at Night <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('be3Q6GrYdnU?start=000015');">Banff, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('LpCQRFuL2cM?start=001411');">Morning in Belgrade, Serbia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('1rSuOmbT7Pc?start=000060');">Naseko, Japan <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('FggDQadJ4nw?start=000168');">Little India London, UK <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('F7GKLtPEM-s?start=000013');">Mall in Milan, Italy <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('mnoevFwCzmk?start=000321');">Barcelona, Spain <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('lHWGI5LX7Js?start=000000');">Montreal, Quebec, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('bwJ-TNu0hGM?start=000000');">Roadside in Montreal <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('Y1aCXF-7SNo?start=000000');">Toronto, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('baMdsY4ouL0?start=000000');">Snow in Montreal, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('xZ1SfsVyrIw?start=000000');">Busy Traffic Montreal, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('oem5-_YaY1E?start=000056');">Nightime Traffic in NYC <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('zmHU_n4oHCU?start=000000');">Daytime Traffic in LA <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('jMr7eHowS0c?start=000035');">Roadisde in Hanoi, Vietnam <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('e_WBuBqS9h8?start=000027');">Del Mar, California <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('cDNETgwyQSI?start=000946');">Elevated Highway, Florida <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('L-uaL3rNyPI?start=000002');">Rainy Austin, Texas <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('YzLYa7ziHFs?start=000000');">San Antonio, Texas <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('HtGTMkaIhBc?start=000018');">Dallas, Texas <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('rtEQ3mi0vBQ?start=000016');">Cape Cod, Massachusates <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('m0B4k4XN2sU?start=000000');">Rainy Providence, Rhode Island <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('MZHUArPDBzg?start=000012');">Night in Seoul, South Korea <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('L50QfXIItZM?start=000013');">Mexico City, Mexico <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('5DcQA-fT6HA?start=000658');">Highway near Harrisburg, Pennsylvania <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('FhxR_a2AAUA?start=000040');">Highway near Salem, Oregon <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('qfFyM3b8J2Y?start=000043');">Osthafen Berlin, Germany <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('QfegINP4BwY?start=000028');">Brandenberg, Germany <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('wErQWEYzxM0?start=000060');">Treptow, Germany <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('omxX-0PjXkY?start=000686');">Suburbs of Milwaukee, Wisconsin <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('mQj2Qx3zxnE?start=000012');">Night in Moscow, Russia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('MLaJiqll4Ic?start=000030');">Moscow, Russia River <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('2UxVcjHNR58?start=000016');">Moscow, Russia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('Ina7KMV2OEI?start=000025');">San Francisco Highway <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('voIXaF_6NTE?start=000020');">Winter Apartment Moscow, Russia <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('v35eG0E0Rzw?start=000005');">Phoenix, Arizona <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('NpTLbHu8m08?start=000001');">Dubai Burj Khalifa <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('yr2vLq0B-vs?start=000029');;">San Francisco <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('4Yg9QUiPAHg?start=000010');">Golden Gate Bridge <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('he-VxB01QKw?start=000004');">Kracow, Poland <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('tyBpKdxfbEA?start=000060');">Point Atkinson Vancouver <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('qjLzFSFfOpA?start=000001');">Sukhumvit Bangkok <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+    <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('5hjAf57y1P4?start=000840');">Quebec, Canada <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('Ntm9BDWtqS8?start=000060');">Ternopil City, Ukraine <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('8AZ24XEbV_8?start=001020');">London, United Kingdom <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+  <span id="oneCity" class="oneCity1" onclick="locationName = findCount(this); loadVideoWithId('XGzTSUKlTjI?start=000005');">Tainan City, Taiwan <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+</div>
+<p></p>
+<hr>
+<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;">Give others the gift of virtual travel at home.</h2>
+<!-- ShareThis BEGIN -->
+<div class="sharethis-inline-share-buttons" style="margin-bottom: 1%;"></div>
+<!-- ShareThis END -->
+<ul class="cards">
+  <!-- <div id="i-am-lazy-2"> -->
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--home"></div>
+      <div class="card__content">
+        <div class="card__title">Go Back <i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+        <p class="card__text">Click the button below to head to the homepage. After that, you'll be prompted to view more modes of travelling. We currently support, walking, driving, flying and live video. Choose wisely! The choice is yours!</p>
+        <a href="https://virtualvacation.us" class="btn btn--block card__btn">Watch in Realtime</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/monument'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--river"></div>
+      <div class="card__content">
+        <div class="card__title">Monument Explorer <i class="fa fa-bank" aria-hidden="true"></i></div>
+        <p class="card__text">Monument Explorer lets you experience the wonders of monuments around the world. For example, take a walk across the Golden Gate Bridge. Or even experience a 1,070 foot skyscraper building!</p>
+        <a href="https://virtualvacation.us/monument" class="btn btn--block card__btn">Begin Driving</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/walk'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--walker"></div>
+      <div class="card__content">
+        <div class="card__title">Walking Tour <i class="fa fa-user" aria-hidden="true"></i></div>
+        <p class="card__text">Take a stroll in over 50 cities around the worold! As you watch, admire and celebrate the differences of each culture. While taking in the sceneary, be reminded of how each nations culture and leadership affects the well being of the people. </p>
+        <a href="https://virtualvacation.us/walk" class="btn btn--block card__btn">Begin Walking</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/fly'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--record"></div>
+      <div class="card__content">
+        <div class="card__title">Airplane Flight <i class="fa fa-plane" aria-hidden="true"></i></div>
+        <p class="card__text">View the city of your choice from above and enjoy a magnificent sightseeing adventure. As you watch, think of the differences in culture, wealth, and prosperity in each country you view from above. </p>
+        <a href="https://virtualvacation.us/fly" class="btn btn--block card__btn">Begin Flying</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/livecam'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--flowers"></div>
+      <div class="card__content">
+        <div class="card__title">LIVE Footage and Camera <i class="fa fa-camera" aria-hidden="true"></i></div>
+        <p class="card__text">Click the box to Go Drive footage from around the world. While viewing, you'll be able to see the true face and culture of people around the world. Have fun and admire the scenery!</p>
+        <a href="https://virtualvacation.us/livecam" class="btn btn--block card__btn">Go Back</a>
+      </div>
+    </div>
+  </li>
+<!-- </div> -->
+</ul>
+<hr>
+<footer class="container py-5">
+      <div class="row">
+                <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Inspired By <i class="fa fa-camera" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://www.geoguessr.com/">GeoGuessr</a></li>
+            <li><a class="text-muted" href="https://www.w3schools.com/w3css/w3css_cards.asp">W3 CSS Cards</a></li>
+            <li><a class="text-muted" href="https://codepen.io/mirandalwashburn/pen/MWawdxr">Modern Travel Cards</a></li>
+            <li><a class="text-muted" href="http://pursued.nemesys.hu/">Pursued Maps</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">New Releases <i class="fa fa-street-view" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://virtualvacation.us/guess">City Guesser <i class="fa fa-globe" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/walk">Walking Tour <i class="fa fa-users" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Cameras <i class="fa fa-camera" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Share Us <i class="fa fa-share-square-o" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&text=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvirtualvacation.us%2Fguess">Facebook <i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&media=https%3A%2F%2Fvirtualvacation.us%2Fstatic%2Funsplash1.jpg&description=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Pinterest <i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvirtualvacation.us%2Fguess&title=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">LinkedIn <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+<div class="col-6 col-md">
+          <h5 style="font-weight: bold;">About <i class="fa fa-info" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">About</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Our Mission</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Privacy</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+              <small style="color: #8c8c8c;">virtualvacation.us &copy; 2021</small>
+              <small style="color: #8c8c8c;"><br>Explore At Home</small>
+    </footer>
+</div>
+<!--Content ends-->
+<!-- <footer>
+Hi
+</footer> -->
+<style>
+* {
+  box-sizing: border-box;
+}
+.video-background {
+  background: #000;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /*z-index: -99;*/
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: 0.5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: 0.2rem;
+  }
+  .video-foreground, .video-background iframe {
+    transform: scale(1.1);
+  }
+}
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
+}
+.back-btn {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  background: rgba(31, 52, 76, 0.7);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 17px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  border: 1px solid white;
+}
+.back-btn:hover {
+  background: rgba(31, 52, 76, 1);
+}
+#more-cities {
+  display: none;
+  margin: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  background: #fcfcfc;
+  z-index: 100;
+  border-radius: 9px;
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);
+  max-height: 95vh;
+  overflow: scroll;
+}
+#more-cities::-webkit-scrollbar {
+    display: none;
+}
+#more-cities-header {
+  width: 100%;
+  padding: 5px;
+  background: #1f344c;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+#more-cities-card {
+  margin: 10px;
+  cursor: pointer;
+}
+#more-cities-card:hover {
+  filter: brightness(0.75)
+}
+#times-red:hover {
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+#hamburger {
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  top: 5px;
+  right: 10px;
+  z-index: 100;
+  text-shadow: 0 1.5px 0 black;
+
+}
+@media screen and (max-width: 900px) {
+  #hamburger {
+    display: none;
+  }
+}
+#vid-bac {
+  transition-duration: 0.3s;
+  font-family: 'Montserrat', sans-serif;
+}
+.container{
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+</style>
+    <!-- <input type="hidden" id="refresh" value="no"> -->
+    <div class="video-background" id="vid-bac" style="z-index: 100000000;">
+      <!-- <div class="container" style="z-index: 900000000000000000000000000;">
+            <nav class="nav">
+                <a href="index.html" class="logo">TOURS.</a>
+                <ul class="nav-list">
+                    <li>
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Dates</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Testimonials</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <a href="#" id="nav-cta">Book now</a>
+            </nav>
+        </div> -->
+        <span>
+          <div id="hideThis">
+      <div class="back-btn" style="z-index: 9000; display: inline-block;" onclick="$('#vid-bac').slideUp(200); player.mute(); player.pauseVideo();"><i class="fa fa-arrow-left"></i></a></div>
+      <div style="position: fixed; top: 6px; left: 51px; color: white; z-index: 9000; font-size: 17px;    text-shadow:
+        0.7px 0 black,
+        0 0.7px black,
+        -0.7px 0 black,
+        0 -0.7px black;" id="locationtext"><i class="fa fa-map-marker" aria-hidden="true"></i> San Francisco, Califonia</div>
+      <center style="width: 100%; position: fixed; bottom: 7px; z-index: 9000;">
+    <div style="text-shadow:
+        0.5px 0 black,
+        0 0.5px black,
+        -0.5px 0 black,
+        0 -0.5px black;" id="openButton" onclick="randomVideo()">Open a Random Window</div>
+</center>
+        </div>
+            <p id="hamburger" onclick="openmenu()"><i class="fa fa-bars" aria-hidden="true" id="times-red"></i></p>
+
+          </span>
+
+      <div id="more-cities">
+          <div id="more-cities-header"><span style="margin-left: 5px;">Featured ✨</span><span style="float: right;" onclick="hidesidebar()"><i class="fa fa-times" aria-hidden="true" id="times-red"></i></span></div>
+          <div id="city-cards" style="padding-right: 20px;">
+            
+            <div class='card' id='more-cities-card' onclick="locationName = 'New York'; loadVideoWithId('9KBx0keOg5s?start=000060')"><div class='card-body' style='padding: 5px;'>New York 🇺🇸</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Moscow, Russia'; loadVideoWithId('MLaJiqll4Ic?start=000030')"><div class='card-body' style='padding: 5px;'>Moscow 🇷🇺</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Stockholm, Sweden'; loadVideoWithId('xDHGMlYSRME?start=000020')"><div class='card-body' style='padding: 5px;'>Stockholm 🇸🇪</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'San Antonio, Texas'; loadVideoWithId('c0GlCjZbVzk?start=000126')"><div class='card-body' style='padding: 5px;'>San Antonio 🇺🇸</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Berlin, Germany'; loadVideoWithId('TFExUL9nkfo?start=000032')"><div class='card-body' style='padding: 5px;'>Berlin 🇩🇪</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Seoul, South Korea'; loadVideoWithId('jAbUstSH9qA?start=000011')"><div class='card-body' style='padding: 5px;'>Seoul 🇰🇷</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Atlanta, Georgia'; loadVideoWithId('UZn1MrjL4pE?start=000017')"><div class='card-body' style='padding: 5px;'>Atlanta 🇺🇸</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Amsterdam, Netherlands'; loadVideoWithId('S8DH9QqVvqo?start=000020')"><div class='card-body' style='padding: 5px;'>Amsterdam 🇳🇱</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Shanghai, China'; loadVideoWithId('cR3MEbdyFwU?start=000060')"><div class='card-body' style='padding: 5px;'>Shanghai 🇨🇳</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Vancouver, Canada'; loadVideoWithId('9x_qosfdo9Q?start=000060')"><div class='card-body' style='padding: 5px;'>Vancouver 🇨🇦</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Seattle, Washington'; loadVideoWithId('fz5H7ObqXj4?start=000060')"><div class='card-body' style='padding: 5px;'>Seattle 🇺🇸</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Austin, Texas'; loadVideoWithId('L-uaL3rNyPI?start=000002')"><div class='card-body' style='padding: 5px;'>Austin 🇺🇸</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'London, United Kingdom'; loadVideoWithId('jSQHDY5D7Tc?start=000151')"><div class='card-body' style='padding: 5px;'>London 🇬🇧</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Honolulu, Hawaii'; loadVideoWithId('8u6DXanmX_8?start=000060')"><div class='card-body' style='padding: 5px;'>Honolulu 🇺🇸</div></div>
+            <div class='card' id='more-cities-card' onclick="locationName = 'Toronto, Canada'; loadVideoWithId('4r7l8dseu6Y?start=000300')"><div class='card-body' style='padding: 5px;'>Toronto 🇨🇦</div></div>
+
+          </div>
+      </div>
+  <div class="video-foreground">
+    <div id="player"></div>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: '-Pg819il8lY',
+          playerVars: {
+            playsinline: 1,
+            modestbranding: 1,
+            rel: 0,
+            start: 40,
+            controls: 0,
+            modestbranding: 1,
+            showinfo: 0,
+            loop: 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        player.mute();
+        player.stopVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PAUSED) {
+            player.playVideo();
+        }
+        if (event.data === 0) {
+          loadVideoWithId(secondary_input_id)
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+      var locationName = "";
+      function loadVideoWithId(input_id) {
+        secondary_input_id = input_id
+        var secs = input_id.slice(input_id.length - 6)
+        input_id = input_id.substring(0,11);
+        player.loadVideoById({'videoId': input_id, 'startSeconds': secs, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
+        var duration = player.getDuration();
+        // document.getElementById('vid-bac').style.display = "block";
+        $('#vid-bac').slideDown(200);
+        player.unMute();
+        history.pushState(null, null, location.href);
+        // player.seekTo(50, true)
+    window.onpopstate = function () {
+        history.go(0);
+        // location.reload();
+        console.log('went')
+    };
+var testVar = null;
+console.log(locationName)
+if(typeof locationName != 'number' && locationName != "") {
+  document.getElementById("locationtext").innerHTML = locationName + ' <i class="fa fa-map-marker" aria-hidden="true"></i>';
+} else if(locationName != "") {
+        console.log('heyhey')
+        document.getElementById("locationtext").innerHTML = locations[locationName][0] + ' <i class="fa fa-map-marker" aria-hidden="true"></i>';
+      }
+if(!window.matchMedia("only screen and (max-width: 1000px)").matches) {
+  $("#vid-bac").mousemove(function() {
+      clearTimeout(testVar);
+      $("#hideThis").slideDown(200);
+      testVar = setTimeout(function () {
+          $("#hideThis").slideUp(200);
+      }, 3000);
+      console.log('test')
+  });
+      }
+    }
+
+function findCount(number) {
+  return [...number.parentElement.children]
+  .indexOf(number);
+}
+function hidesidebar() {
+  $('#more-cities').hide('fast');
+}
+function openmenu() {
+  $('#more-cities').show('fast');  
+}
+// var emptyLst = []
+// for(var i=0;i<document.getElementsByClassName("oneCity1").length;i++) {
+//   emptyLst.push(["['" + document.getElementsByClassName("oneCity1")[i].innerHTML.slice(0, -52) + "'", "'" +  String(document.getElementsByClassName("oneCity1")[i].onclick).substr(75).slice(0,-5) + "']"])
+// }
+// document.getElementsByClassName("content")[0].innerHTML = emptyLst.toString()
+var locations = [['New York City','9KBx0keOg5s?start=000060'],['Atlanta','UZn1MrjL4pE?start=000017'],['Los Angeles','FiVoaD1tdVw?start=000021'],['Tokyo Haneda','ILBDMisz5K8?start=000009'],['Downtown Los Angeles','M9cJMXmQ_ZU?start=000019'],['Seoul','Ll1xRGhd3YU?start=000141'],['Seoul Bus Station','4lYfSW5Pr-U?start=000009'],['Seattle','fz5H7ObqXj4?start=000060'],['Paris','BE1A-kb0X2o?start=000049'],['London Picadilly','jSQHDY5D7Tc?start=000151'],['Seattle Pier 66','ZpoyRpZ70m4?start=003781'],['Eglinton, Toronto','O2WBotXOIZs?start=000060'],['Stockholm Old Town','xDHGMlYSRME?start=000020'],['Sanya, China','O7XsXDUp9Ko?start=000059'],['Manhattan, New York','qVi2Otx28Kc?start=000010'],['Tokyo Suburbs','6cmEWXJuBTk?start=000054'],['Paris Eiffel Tower View','Ls1UZ_8dG44?start=000018'],['Amsterdam Cafe','PB6qyS63_e8?start=000004'],['Seoul, Hyehwa','uVwb9psE_9o?start=000060'],['Jericho Beach Vancouver','L0yOgsmElpg?start=000060'],['Mediterranean Coast in Spain','W01X3Keb8ls?start=000020'],['Vanier Park Vancouver','9x_qosfdo9Q?start=000060'],['Quebec, Canada','5hjAf57y1P4?start=000840'],['Canal in Amsterdam','S8DH9QqVvqo?start=000020'],['Shanghai Highrise','cR3MEbdyFwU?start=000060'],['Honolulu Hawaii Condo','8u6DXanmX_8?start=000060'],['Waikiki Hawaii Sheraton','jJ2uuHcHCjA?start=000060'],['San Antonio, Texas','c0GlCjZbVzk?start=000126'],['Seoul Station','OUqayGBZLFo?start=000300'],['Southeast Asia','vkubhSE3Bo8?start=000012'],['Toronto Balcony','4r7l8dseu6Y?start=000300'],['Rural Brazil','sdvV0mAVkYk?start=000300'],['Portland, Maine','u4if6ANRJsU?start=000010'],['Guanajuanto, Mexico','KTmVPmatH5w?start=000030'],['Black Sea, Bulgaria','A2_yg19Pu7Y?start=000060'],['International Space Station','DDU-rZs-Ic4?start=000010'],['Hillside View, Los Angeles','xq264cPR6kA?start=000012'],['Tokyo, Japan','wDdbd_Jgn9Q?start=000010'],['Denver, Colorado','KqtE5cW0CfI?start=000010'],['Rural Town, South Korea','JuPBKqDXj2w?start=000001'],['Montreal, Canada','pxnIOtDmO74?start=000030'],['Suburban Conneticut','-mPQZAEBLpg?start=000001'],['Panama City, Florida','nFqtN2ri6fA?start=000057'],['Washington DC','PZ3MKh-p4jc?start=000057'],['Washington DC Dulles Airport','bZrQtdlLkjs?start=000523'],['Rehoboth Boardwalk','7nGn9LcdhDo?start=000001'],['Downtown Los Angeles','ZPyFCvPgKZU?start=000025'],['Los Angeles Apartment','21hLwXtO7N8?start=000025'],['San Francisco Mission St','Jli2_XKSbgw?start=000025'],['New Mexico','6B8H06joIiA?start=000000'],['Antioch, California','qjgAILG8CTI?start=000102'],['Twin Peaks','ZJv1NBzDy9E?start=000025'],['Santa Fe, New Mexico','-HzFxgt92bk?start=000040'],['Rainy Amsterdam Cafe','PB6qyS63_e8?start=000909'],['Moscow, Russia','l179yYKhdeQ?start=001227'],['Moscow Apartment View','xtSEMLkfc_U?start=000163'],['Singapore Apartment','wsdXEzqrmXQ?start=000039'],['Reno Downtown','anjyEPRywzI?start=000240'],['Roadside Seoul, South Korea','EZZ6IPG4AEI?start=000011'],['Busan, South Korea','4EnU3pQxXoI?start=000056'],['Seoul, South Korea','jAbUstSH9qA?start=000011'],['Han River, South Korea','dtpWj2vZD2s?start=000020'],['Seoul, South Korea','sL4RPcTuc7Y?start=026400'],['Rural Brazil','mE3IXrQB_Sw?start=000010'],['Surfers Paradise, Australia','JgZ4iaCgTYQ?start=000047'],['Rural Highway, United States','ADBv7xXz7RY?start=000015'],['Farm Trail, Belgium','GzsbIdzvImY?start=000060'],['Streetside Berlin, Germany','ri8EmDZlMDM?start=000029'],['Restaurant in Berlin','TFExUL9nkfo?start=000032'],['New York City, United States','ntGy5Hl_Rd0?start=003761'],['Hong Kong Highrise Apartment','SDah-p3WAag?start=000100'],['Downtown Los Angeles at Night','kAM7wnaF6KM?start=000030'],['Banff, Canada','be3Q6GrYdnU?start=000015'],['Morning in Belgrade, Serbia','LpCQRFuL2cM?start=001411'],['Naseko, Japan','1rSuOmbT7Pc?start=000060'],['Little India London, UK','FggDQadJ4nw?start=000168'],['Mall in Milan, Italy','F7GKLtPEM-s?start=000013'],['Barcelona, Spain','mnoevFwCzmk?start=000321'],['Montreal, Quebec, Canada','lHWGI5LX7Js?start=000000'],['Roadside in Montreal','bwJ-TNu0hGM?start=000000'],['Toronto, Canada','Y1aCXF-7SNo?start=000000'],['Snow in Montreal, Canada','baMdsY4ouL0?start=000000'],['Busy Traffic Montreal, Canada','xZ1SfsVyrIw?start=000000'],['Nightime Traffic in NYC','oem5-_YaY1E?start=000056'],['Daytime Traffic in LA','zmHU_n4oHCU?start=000000'],['Roadisde in Hanoi, Vietnam','jMr7eHowS0c?start=000035'],['Del Mar, California','e_WBuBqS9h8?start=000027'],['Elevated Highway, Florida','cDNETgwyQSI?start=000946'],['Rainy Austin, Texas','L-uaL3rNyPI?start=000002'],['San Antonio, Texas','YzLYa7ziHFs?start=000000'],['Dallas, Texas','HtGTMkaIhBc?start=000018'],['Cape Cod, Massachusates','rtEQ3mi0vBQ?start=000016'],['Rainy Providence, Rhode Island','m0B4k4XN2sU?start=000000'],['Night in Seoul, South Korea','MZHUArPDBzg?start=000012'],['Mexico City, Mexico','L50QfXIItZM?start=000013'],['Highway near Harrisburg, Pennsylvania','5DcQA-fT6HA?start=000658'],['Highway near Salem, Oregon','FhxR_a2AAUA?start=000040'],['Osthafen Berlin, Germany','qfFyM3b8J2Y?start=000043'],['Brandenberg, Germany','QfegINP4BwY?start=000028'],['Treptow, Germany','wErQWEYzxM0?start=000060'],['Suburbs of Milwaukee, Wisconsin','omxX-0PjXkY?start=000686'],['Night in Moscow, Russia','mQj2Qx3zxnE?start=000012'],['Moscow, Russia River','MLaJiqll4Ic?start=000030'],['Moscow, Russia','2UxVcjHNR58?start=000016'],['San Francisco Highway','Ina7KMV2OEI?start=000025'],['Winter Apartment Moscow, Russia','voIXaF_6NTE?start=000020'],['Phoenix, Arizona','v35eG0E0Rzw?start=000005'],['Dubai Burj Khalifa','NpTLbHu8m08?start=000001'],['San Francisco','yr2vLq0B-vs?start=000029'],['Golden Gate Bridge','4Yg9QUiPAHg?start=000010'],['Kracow, Poland','he-VxB01QKw?start=000004'],['Point Atkinson Vancouver','tyBpKdxfbEA?start=000060'],['Sukhumvit Bangkok','qjLzFSFfOpA?start=000001'],['Quebec, Canada','5hjAf57y1P4?start=000840'],['Ternopil City, Ukraine','Ntm9BDWtqS8?start=000060'],['London, United Kingdom','8AZ24XEbV_8?start=001020'],['Tainan City, Taiwan','XGzTSUKlTjI?start=000005']]
+</script>
+<script src="https://afarkas.github.io/lazysizes/plugins/bgset/ls.bgset.min.js"></script>
+  <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js"></script>
+
+</html>
