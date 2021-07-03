@@ -1089,9 +1089,6 @@ Hi
       //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PAUSED) {
-            player.playVideo();
-        }
         if (event.data === 0) {
           loadVideoWithId(secondary_input_id)
         }
