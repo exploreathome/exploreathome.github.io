@@ -1,0 +1,1207 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <title>Virtual Road Trip - Virtually Drive Between Cities</title>
+    <meta name="description" content="Virtual Road Trip lets you experience road trips and cities from home.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.lazy.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <meta property="og:title" content="Virtual Road Trip - Virtually Drive Between Cities" />
+    <meta property="og:description" content="Virtual Road Trip lets you experience road trips and cities from home." />
+    <meta property="og:image" content="https://virtualvacation.us/static/roadtrip.png" />
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5efe4a1ed9c6890012469011&product=sticky-share-buttons' async='async'></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153516768-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153516768-4');
+</script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+body {
+  margin:0;
+  transition-duration: 0.1s;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wasf {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .wasf {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+@media (max-width: 400px) {
+  #randomize-id {
+    display: none;
+  }
+}
+.backButton {
+  width: 35px;font-size: 15px;
+  border-radius: 17.5px;
+position: fixed;top: 5px;
+  left: 5px;cursor: pointer;
+  z-index: 9000;  height: 35px;text-align: center;
+}
+#openButton {
+  border: 1px solid white; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 300px; color: white; border-radius: 10px; filter: brightness(1.5); background: rgba(0,0,0,0.25); cursor: pointer; margin-top: 10px;
+}
+#openButton:hover {
+  transition-duration: 0.2s;
+  margin-top: 20px;
+  background: rgba(0,0,0,0.5);
+}
+#tripInfo {
+  display: block;
+  animation-duration: 0.3s;
+  position: absolute; top: 0; left: 0;  background: rgba(1, 2, 1, 0.6); padding: 5px; border-bottom-right-radius: 5px; color: white;
+}
+</style>
+
+
+<script>
+
+function randomVideo() {
+  rannum = Math.floor(Math.random() * 22) + 1
+  seconds = locationDict[rannum]["waypoints"]
+  seconds = seconds[seconds.length-1][0]
+  seconds = Math.floor(Math.random() * seconds) + 1
+  console.log(seconds)
+  loadVideoWithId(rannum, seconds)
+}
+
+
+</script>
+
+
+
+
+<body>
+<nav id="only-navbar" class="navbar navbar-custom" style="background-color: #fefefe; color: black; padding-bottom: 0; display: none;">
+  <a class="navbar-brand" href="https://virtualvacation.us/"><span style="text-decoration: none; color: inherit; letter-spacing: 1px;">Virtual Vacation <i class="fa fa-globe" aria-hidden="true"></i>
+</span></a>
+    <span>
+<span class="switchButton" style="background: #004080;"><span style="margin-left: 10px; margin-right: 10px;">Drive <i class="fa fa-car" aria-hidden="true"></i></span></span>
+<a href="https://virtualvacation.us/walk"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Walk</span></span></a>
+<a href="https://virtualvacation.us/fly"><span class="switchButton" id="hoverable"><span style="margin-left: 10px; margin-right: 10px;">Fly</span></span></a>
+    </span>
+
+</nav>
+
+<div class="header" style="background-image: url('static/road_trip.jpg');       background-repeat: no-repeat;
+    background-size: cover; background-position: top 200px;">
+<a href="https://virtualvacation.us"><div class="btn btn-default backButton"><span style="margin-right: 2.4px; margin-bottom: -5px;"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+</div></a>
+
+<div class="inner-header" style="padding-top: 16vh;">
+<h1>Virtual Road Trip</h1>
+<p style="color: #fcfcfc; margin-top: -10px;">by <a href="https://virtualvacation.us/">virtualvacation.us</a></p>
+<div style="width: 100%;">
+  <center>
+<div style="" id="openButton" onclick="randomVideo()">Open a Random Drive <i class="fa fa-random" aria-hidden="true"></i>
+</div>
+</center>
+</div>
+</div>
+
+<!--wasf Container-->
+<div>
+<svg class="wasf" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
+
+</div>
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  background-color: #fff;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.btn {
+  background-color: white;
+  border: 1px solid #cccccc;
+  color: #696969;
+  padding: 0.5rem;
+  /*text-transform: lowercase;*/
+}
+.btn--block {
+  display: block;
+  width: 100%;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cards__item {
+  display: flex;
+  padding: 1rem;
+}
+@media (min-width: 40rem) {
+  .cards__item {
+    width: 50%;
+  }
+}
+@media (min-width: 56rem) {
+  .cards__item {
+    width: 20%;
+  }
+}
+@media (max-width: 650px) {
+  .cards__item {
+    width: 50%;
+  }
+  .card__image {
+    height: 35%;
+  }
+}
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+.card:hover .card__image {
+  filter: contrast(100%);
+}
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+.card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  height: 70%;
+}
+.card__image::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+@media (min-width: 40rem) {
+  .card__image::before {
+    padding-top: 75.6%;
+  }
+}
+.card__image--home {
+  background-image: url(static/homeicon.jpg);
+}
+.card__image--flowers {
+  background-image: url(static/livecamicon.jpg);
+}
+.card__image--river  {
+  background-image: url(static/monumenticon.jpg);
+}
+.card__image--record {
+  background-image: url(static/aircrafticon.jpg);
+}
+.card__image--fence {
+  background-image: url(static/walkingicon.jpg);
+}
+
+.card__image--walker  {
+  background-image: url(static/walkingicon.jpg);
+}
+
+.card__title {
+  color: #696969;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.card__text {
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.switchButton {
+  font-size: 16px;
+  color: white;
+  background: #0073e6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+#hoverable:hover {
+  background: #004d99;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+@media screen and (max-width: 676px) {
+  .header-text {
+    width: 95%;
+    text-align: center;
+  }
+  .switchButton {
+    display: none;
+  }
+}
+.card__btn {
+  padding-bottom: 10px;
+}
+.footer-tag {
+  bottom: 0;
+  background-color: #cccccc;
+  width: 100%;
+  height: 5vh;
+  vertical-align: middle;
+  /*padding-top: 1%;*/
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+/*@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .cards__item {
+      width: 50%;
+    }
+  }*/
+/*.cards__item:hover {
+  margin-top: -1em;
+  transition: 0.3s ease;
+}*/
+.card__image--fence {
+  background-image: url(static/walking.jpg);
+}
+.card:hover {
+  transform: scale(1.01);
+}
+#oneCity {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: #f2f2f2;
+  filter: brightness(1.2);
+  display: block;
+  color: black;
+  display: inline-block;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 17px;
+  margin-top: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+#oneCity:hover {
+  box-shadow: 0 0 3px 3px rgba(0, 122, 204, 0.5);
+  transition-duration: 0.1s;
+  /*margin-top: -0.5rem;*/
+}
+</style>
+<div class="content">
+
+<h1 style="font-size: 18px; margin-top: 3.5%; margin-left: 5%; margin-right: 5%;">View Featured Routes</h1>
+<p style="margin-left: 5%; margin-right: 5%;">Virtual Road Trip lets you experience road trips through highways, interstates, and cities from around the globe.</p>
+<ul class="cards">
+
+  
+<li class="cards__item" onclick="loadVideoWithId('1', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/sanfrancisco.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 47 minutes</div></div>
+      <div class="card__content">
+        <div class="card__title">San Jose<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>San Francisco</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('2', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/ny.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 2 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">Philadelphia<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>New York City</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('3', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/brooklyn.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 4 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">New York City<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Boston</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('4', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/chicago_ball.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 2 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">Chicago<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Indianapolis</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('5', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/berlin.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Hamburg<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Berlin</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('6', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/frenchflag.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Meaux<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Epernay</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('7', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/paris.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Paris<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Meaux</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="loadVideoWithId('8', false)" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/chicago_ball.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Chicago<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Milwaukee</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('10, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/keywest.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Key West<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Tavernir</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('11, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/cinque.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 2 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">Genova<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Portofino</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('12, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/sanfrancisco.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 2 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">San Francisco<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Santa Cruz</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('13, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/miami_v.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Miami<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Ft Lauderdale</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('14, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/saratosa.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">St Petersburg<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Saratosa</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('15, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/lisbon.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Porto<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Lisbon</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('16, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/london.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 5 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">Glascow<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>London</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('17, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/istanbul.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 4 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">Istanbul<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Izmir</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('19, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/ankara.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 2 hours</div></div>
+      <div class="card__content">
+        <div class="card__title">Istanbul<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Ankara</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('20, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/amsterdam.jpeg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 43 minutes</div></div>
+      <div class="card__content">
+        <div class="card__title">Amsterdam<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Waardenburg</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('21, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/copenhagen.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 20 minutes</div></div>
+      <div class="card__content">
+        <div class="card__title">Copenhagen<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Birkerrod</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item" onclick="loadVideoWithId('22, false')" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image lazyload" data-bgset="static/brisbane.jpg"><div id="tripInfo"><i class="fa fa-clock-o" aria-hidden="true"></i> 1 hour</div></div>
+      <div class="card__content">
+        <div class="card__title">Brisbane<br><i class="fa fa-caret-down" aria-hidden="true"></i>
+<br>Gold Coast</div>
+        <a class="btn btn--block card__btn">View Drive</a>
+      </div>
+    </div>
+  </li>
+  <!-- </div> -->
+</ul>
+<hr>
+<h2 style="font-size: 18px; margin-top: 1%; margin-left: 5%; margin-right: 5%;">Let others take roadtrips from home.</h2>
+<!-- ShareThis BEGIN -->
+<div class="sharethis-inline-share-buttons" style="margin-bottom: 1%;"></div>
+<!-- ShareThis END -->
+<ul class="cards">
+  <!-- <div id="i-am-lazy-2"> -->
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--home"></div>
+      <div class="card__content">
+        <div class="card__title">Go Back <i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+        <p class="card__text">Click the button below to head to the homepage. After that, you'll be prompted to view more modes of travelling. We currently support, walking, driving, flying and live video. Choose wisely! The choice is yours!</p>
+        <a href="https://virtualvacation.us" class="btn btn--block card__btn">Go Back</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/monument'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--river"></div>
+      <div class="card__content">
+        <div class="card__title">Monument Explorer <i class="fa fa-bank" aria-hidden="true"></i></div>
+        <p class="card__text">Monument Explorer lets you experience the wonders of monuments around the world. For example, take a walk across the Golden Gate Bridge. Or even experience a 1,070 foot skyscraper building!</p>
+        <a href="https://virtualvacation.us/monument" class="btn btn--block card__btn">Begin Watching</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/walk'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--walker"></div>
+      <div class="card__content">
+        <div class="card__title">Walking Tour <i class="fa fa-user" aria-hidden="true"></i></div>
+        <p class="card__text">Take a stroll in over 50 cities around the worold! As you watch, admire and celebrate the differences of each culture. While taking in the sceneary, be reminded of how each nations culture and leadership affects the well being of the people. </p>
+        <a href="https://virtualvacation.us/walk" class="btn btn--block card__btn">Begin Walking</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/fly'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--record"></div>
+      <div class="card__content">
+        <div class="card__title">Airplane Flight <i class="fa fa-plane" aria-hidden="true"></i></div>
+        <p class="card__text">View the city of your choice from above and enjoy a magnificent sightseeing adventure. As you watch, think of the differences in culture, wealth, and prosperity in each country you view from above. </p>
+        <a href="https://virtualvacation.us/fly" class="btn btn--block card__btn">Begin Flying</a>
+      </div>
+    </div>
+  </li>
+<li class="cards__item" onclick="window.location = 'https://virtualvacation.us/livecam'" style="cursor: pointer;">
+    <div class="card">
+      <div class="card__image card__image--flowers"></div>
+      <div class="card__content">
+        <div class="card__title">LIVE Footage and Camera <i class="fa fa-camera" aria-hidden="true"></i></div>
+        <p class="card__text">Click the box to Go Drive footage from around the world. While viewing, you'll be able to see the true face and culture of people around the world. Have fun and admire the scenery!</p>
+        <a href="https://virtualvacation.us/livecam" class="btn btn--block card__btn">Watch in Realtime</a>
+      </div>
+    </div>
+  </li>
+<!-- </div> -->
+</ul>
+<hr>
+<footer class="container py-5">
+      <div class="row">
+                <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Inspired By <i class="fa fa-camera" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://www.geoguessr.com/">GeoGuessr</a></li>
+            <li><a class="text-muted" href="https://www.w3schools.com/w3css/w3css_cards.asp">W3 CSS Cards</a></li>
+            <li><a class="text-muted" href="https://codepen.io/mirandalwashburn/pen/MWawdxr">Modern Travel Cards</a></li>
+            <li><a class="text-muted" href="http://pursued.nemesys.hu/">Pursued Maps</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">New Releases <i class="fa fa-street-view" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://virtualvacation.us/guess">City Guesser <i class="fa fa-globe" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/driver">Driving Tour <i class="fa fa-car" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/walk">Walking Tour <i class="fa fa-users" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/livecam">LIVE Cameras <i class="fa fa-camera" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 style="font-weight: bold;">Share Us <i class="fa fa-share-square-o" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&text=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvirtualvacation.us%2Fguess">Facebook <i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fvirtualvacation.us%2Fguess&media=https%3A%2F%2Fvirtualvacation.us%2Fstatic%2Funsplash1.jpg&description=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">Pinterest <i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a class="text-muted" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvirtualvacation.us%2Fguess&title=This%20guessing%20game%20pops%20you%20into%20the%20ambience%20of%20a%20random%20city%20and%20you%20have%20to%20guess%20where%20you%20are%20at.%20You'll%20be%20able%20to%20see%20cars%20driving%20around%20you%20and%20people%20walking.%20Can%20you%20get%20100%25%3F">LinkedIn <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+<div class="col-6 col-md">
+          <h5 style="font-weight: bold;">About <i class="fa fa-info" aria-hidden="true"></i></h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">About</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Our Mission</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Privacy</a></li>
+            <li><a class="text-muted" href="https://virtualvacation.us/our-mission">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+              <small style="color: #8c8c8c;">virtualvacation.us &copy; 2021</small>
+              <small style="color: #8c8c8c;"><br>Explore At Home</small>
+    </footer>
+</div>
+<!--Content ends-->
+<!-- <footer>
+Hi
+</footer> -->
+<style>
+* {
+  box-sizing: border-box;
+}
+.video-background {
+  background: #000;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /*z-index: -99;*/
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: 0.5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: 0.2rem;
+  }
+  .video-foreground, .video-background iframe {
+    transform: scale(1.1);
+  }
+}
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
+}
+.back-btn {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  background: rgba(31, 52, 76, 0.7);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 17px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  border: 1px solid white;
+}
+.back-btn:hover {
+  background: rgba(31, 52, 76, 1);
+}
+#more-cities {
+  display: none;
+  margin: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  background: #fcfcfc;
+  z-index: 1000000;
+  border-radius: 9px;
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.25);
+  max-height: 95vh;
+  overflow: scroll;
+}
+#more-cities::-webkit-scrollbar {
+    display: none;
+}
+#more-cities-header {
+  width: 100%;
+  padding: 5px;
+  background: #1f344c;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+#more-cities-card {
+  margin: 10px;
+  cursor: pointer;
+}
+#more-cities-card:hover {
+  filter: brightness(0.75)
+}
+#times-red:hover {
+  filter: brightness(0.5);
+  cursor: pointer;
+}
+#hamburger {
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  top: 5px;
+  right: 10px;
+  z-index: 100;
+  text-shadow: 0 1.5px 0 black;
+
+}
+@media screen and (max-width: 900px) {
+  #hamburger {
+    display: none;
+  }
+}
+#vid-bac {
+  transition-duration: 0.3s;
+  font-family: 'Montserrat', sans-serif;
+}
+.container{
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+#more-cities-card:first-child {
+    box-shadow: 0 0 3px 3px rgba(0, 100, 204, 0.5);
+}
+</style>
+    <div class="video-background" id="vid-bac" style="z-index: 100000000;">
+        <span>
+          <div id="hideThis">
+      <div class="back-btn" style="z-index: 9000; display: inline-block;" onclick="$('#vid-bac').slideUp(200); player.mute(); player.pauseVideo();"><i class="fa fa-arrow-left"></i></a></div>
+      <div style="position: fixed; top: 6px; left: 51px; color: white; z-index: 9000; font-size: 17px;    text-shadow:
+        0.7px 0 black,
+        0 0.7px black,
+        -0.7px 0 black,
+        0 -0.7px black;" id="locationtext"><i class="fa fa-map-marker" aria-hidden="true"></i> San Francisco, Califonia</div>
+      <center style="width: 100%; position: fixed; bottom: 7px; z-index: 9000;">
+    <div style="text-shadow:
+        0.5px 0 black,
+        0 0.5px black,
+        -0.5px 0 black,
+        0 -0.5px black;" id="openButton" onclick="randomVideo()">Open a Random Drive</div>
+</center>
+        </div>
+            <p id="hamburger" onclick="openmenu()"><i class="fa fa-bars" aria-hidden="true" id="times-red"></i></p>
+
+          </span>
+
+      <div id="more-cities">
+          <div id="more-cities-header"><span style="margin-left: 5px;">Route Waypoints <i class="fa fa-road" aria-hidden="true"></i></span><span style="float: right;" onclick="hidesidebar()"><i class="fa fa-times" aria-hidden="true" id="times-red"></i></span></div>
+                      <div style="font-size: 15.5px; text-align: center; margin-bottom: -5px; margin-top: 5px;"><span style="font-weight: bold;">Depart from:</span> <span id="departCity"></span></div>
+
+          <div id="city-cards" style="padding-right: 20px;">
+
+          </div>
+                      <div style="font-size: 15.5px; text-align: center; margin-top: -5px; margin-bottom: 5px;"><span style="font-weight: bold;">Arrive in:</span> <span id="arriveCity"></span></div>
+
+      </div>
+  <div class="video-foreground">
+    <div id="player"></div>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+function clickCard(number) {
+  number = [...number.parentElement.children].indexOf(number);
+  console.log(number)
+  for(var i=0;i<document.getElementsByClassName("cardClick").length;i++) {
+    document.getElementsByClassName("cardClick")[i].style.boxShadow = '0 0 0px 0px rgba(0, 100, 204, 0.5)'
+  }
+    document.getElementsByClassName("cardClick")[number].style.boxShadow = '0 0 3px 3px rgba(0, 100, 204, 0.5)'
+}
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: '-Pg819il8lY',
+          playerVars: {
+            playsinline: 1,
+            modestbranding: 1,
+            rel: 0,
+            start: 40,
+            controls: 0,
+            modestbranding: 1,
+            showinfo: 0,
+            loop: 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        player.mute();
+        player.stopVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data === 0) {
+          loadVideoWithId(secondary_input_id)
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+      var locationName = "";
+      function loadVideoWithId(input_id, israndom) {
+        videoCode = locationDict[input_id]["id"]
+        leave = locationDict[input_id]["leave"]
+        destination = locationDict[input_id]["destination"]
+        waypoints = locationDict[input_id]["waypoints"]
+        if(israndom == false) {
+          startSecs = waypoints[0][0]
+        } else {
+          console.log('hey')
+          startSecs = israndom
+        }
+        player.loadVideoById({'videoId': videoCode, 'startSeconds': startSecs, 'playsinline': 1, 'controls': 0, 'showinfo': 0});
+        time = parseInt(Math.floor(waypoints[0][0] / 60));
+        var duration = player.getDuration();
+        // document.getElementById('vid-bac').style.display = "block";
+        $('#vid-bac').slideDown(200);
+        player.unMute();
+        history.pushState(null, null, location.href);
+        // player.seekTo(50, true)
+        document.getElementById("locationtext").innerHTML = leave + '<i class="fa fa-arrow-right" aria-hidden="true" style="margin-left: 5px; margin-right: 5px; font-size: 14px;"></i>' + destination
+        document.getElementById("departCity").innerHTML = leave
+        document.getElementById("arriveCity").innerHTML = destination
+        document.getElementById("city-cards").innerHTML = ""
+          for(var i=0; i<waypoints.length;i++) {
+            seekNumber = waypoints[i][0]
+            waypointName = waypoints[i][1]
+            loadvideo = "player.seekTo(" + String(seekNumber) + "); clickCard(this);" 
+            document.getElementById('city-cards').innerHTML = document.getElementById('city-cards').innerHTML + "<div class='card cardClick' id='more-cities-card' onclick='" + loadvideo + "'><div class='card-body' style='padding: 5px;'>" + waypointName + " 📍 <span style='float: right; font-size: 13px; margin-top: 2px; color: #949494;'>" + String(parseInt(Math.floor(waypoints[i][0] / 60))) + "m</span></div></div>"
+          }
+        $("#more-cities").slideUp();
+        $("#more-cities").slideDown();
+    window.onpopstate = function () {
+        history.go(0);
+        // location.reload();
+        console.log('went')
+    };
+
+var hideControlsOnIdle = null;
+console.log(locationName)
+if(typeof locationName != 'number' && locationName != "") {
+  document.getElementById("locationtext").innerHTML = locationName + ' <i class="fa fa-map-marker" aria-hidden="true"></i>';
+} else if(locationName != "") {
+        console.log('heyhey')
+        document.getElementById("locationtext").innerHTML = locations[locationName][0] + ' <i class="fa fa-map-marker" aria-hidden="true"></i>';
+      }
+if(!window.matchMedia("only screen and (max-width: 999px)").matches) {
+  $("#vid-bac").mousemove(function() {
+      clearTimeout(hideControlsOnIdle);
+      $("#hideThis").slideDown(200);
+      hideControlsOnIdle = setTimeout(function () {
+          $("#hideThis").slideUp(200);
+      }, 3000);
+  });
+      }
+    }
+
+function findCount(number) {
+  return [...number.parentElement.children]
+  .indexOf(number);
+}
+function hidesidebar() {
+  $('#more-cities').hide('fast');
+}
+function openmenu() {
+  $('#more-cities').show('fast');  
+}
+
+locationDict = {
+  "1": {
+    "id": "GLE8zEXqiv8",
+    "leave": "San Jose",
+    "destination": "San Francisco",
+    "waypoints": [[25, "Interstate 280"], [1075, "Portola Valley"], [1395, "Edgewood Rd"], [1940, "Millbrae Avenue"], [2406, "Junipero Serra Blvd"], [2805, "Chase Center"], [2842, "Sixth Street"]]
+  },
+  "2": {
+    "id": "AiyrIeM2GCE",
+    "leave": "Philadelphia",
+    "destination": "New York City",
+    "waypoints": [[452, "Downtown Philadelphia"], [659, "13th Street Marriot"], [951, "Interstate 676"], [1076, "New Jersey"], [2121, "Toll Booth NY North"], [3595, "Exit 7A"], [4680, "New Brunswick"], [6865, "Toll before Tunnel"], [7055, "Madison Sq Garden Exit"], [7290, "Downtown NYC"], [7582, "West 34th & 12 Ave"]]
+  },
+  "3": {
+    "id": "8k65G6RoHjU",
+    "leave": "New York City",
+    "destination": "Boston",
+    "waypoints": [[55, "River Rd"], [556, "Route 5"], [868, "George Washington Bridge"], [1136, "Enter I95 North"], [1367, "W 179 Street"], [5760, "Saw Mill Rd"], [8724, "Reenter I95 North"], [11343, "Cranston"], [13646, "Randolph Milton"], [14385, "Freeport St Dorchester"], [14629, "Enter Boston"], [14691, "Tunnel"], [15041, "Downtown Boston"]]
+  },
+  "4": {
+    "id": "kkwYe1-Je60",
+    "leave": "Chicago",
+    "destination": "Indianapolis",
+    "waypoints": [[253, "I65 South Cline Ave"], [3457, "Wolcott Remington"], [4765, "Delphi Lafayette"], [3457, "Lebbanon Crawfordsville"], [7342, "Exit 123"], [7833, "Exit 112 Dayton"], [7842, "Dr. Martin Luther King Street"]]
+  },
+  "5": {
+    "id": "zXRH56v9jss",
+    "leave": "Hamburg, Germany",
+    "destination": "Berlin, Germany",
+    "waypoints": [[132, "Alster Lake"], [310, "Station"], [528, "Enter A24"], [737, "A24 to Berlin"], [1288, "Wittenburger Land"], [1437, "Berlin Neustadt-Glewe"], [2016, "Fehrbellin"], [2486, "Tunnel"], [2723, "Exit A24"], [2884, "Berlin"], [3234, "Siegessaule"], [3425, "Brandenburg Gate"]]    
+  },
+  "6": {
+    "id": "0vflZeEoKvY",
+    "leave": "Meaux, France",
+    "destination": "Epernay, France",
+    "waypoints": [[25, "Roundabout"], [195, "Enter A140 Autorute"], [336, "Enter A4 Autoroute"], [2022, "Aire de Tardenois Sud"], [2531, "Exit A4 Autoroute"], [2765, "Village 1"], [3040, "Village 2"], [3422, "D3 Epernay"], [3895, "Mardeuil"], [4120, "City of Epernay"]]    
+  },
+  "7": {
+    "id": "NgEVTJepFiA",
+    "leave": "Paris, France",
+    "destination": "Meaux Suburbs, France",
+    "waypoints": [[40, "Seine River"], [107, "St. Germain"], [709, "Botanical Garden"], [882, "Gare D'Austerlitz Train Station"], [960, "Bridge (Charles de Gaulle)"], [1560, "A4 Autoroute"], [2403, "A4 E50"], [2667, "Exit A4 Enter A140"], [2914, "Entering Meaux"], [2955, "Neighborhood"]]    
+  },
+  "8": {
+    "id": "zXRH56v9jss",
+    "leave": "Chicago",
+    "destination": "Milwaukee",
+    "waypoints": [[5, "Downtown Chicago"], [261, "Franklin"], [559, "Madison St"], [622, "I90 I94 West"], [882, "Addison Street"], [1073, "I94 West Milwaukee"], [1919, "Toll"], [2393, "Rockland Road"], [3083, "Rosecrans Road"], [3386, "Kenosha"], [3762, "Mount Pleasant"], [4484, "Oak Creek"], [4913, "Mitchel and Becher Street"], [5023,  "Plankton Avenue"], [5045, "Michigan Street"], [5171, "Wells Street"]]    
+  },
+  "11": {
+    "id": "l72z2l_1h9A",
+    "leave": "San Francisco, CA",
+    "destination": "Santa Cruz, CA",
+    "waypoints": [[60, "Maston St"], [145, "Leavenworth St"], [273, "Polk St"], [1219, "22nd Avenue"], [1561, "El Camino Del Mar"], [1601, "Coastal Ocean View"], [2027, "Quintara St"], [2209, "Ocean Beach"], [2553, "Westmoor Ave"], [4035, "Scenic Beach View"], [5254, "Ocean Views"], [6886, "Scott Creek"], [7667, "Western Drive"], [8020, "Union Street"], [8170, "SC Boardwalk"]]    
+  },
+  "10": {
+    "id": "KDrVpkbwcbg",
+    "leave": "Key West, FL",
+    "destination": "Tavernier, FL",
+    "waypoints": [[20, "Merge onto Hwy 1"], [725, "Kemp Channel"], [1038, "Torch Key Channel"], [1460, "Bridge"], [2372, "Pigeon Key"], [2998, "Key Colony"], [3943, "Long Key State Park"], [4424, "Sunset Dr"], [5233, "Theatre of The Seas"]]    
+  },
+  "11": {
+    "id": "7NSGFFb_YJs",
+    "leave": "Genova, Italy",
+    "destination": "Portofino, Italy",
+    "waypoints": [[36, "Autostrade"], [415, "Roundabout #1"], [1595, "Musei e Parchi di Nervi"], [2512, "Pol Municipal"], [3327, "Camogli City"], [3902, "Scenic View"], [5020, "Tight Roads"], [5498, "Scenic Costal View"], [5782, "A12 Rapallo"], [6593, "Marina di Bardi"], [7232, "Tunnel"], [7297, "Skyline View"]]    
+  },
+  "12": {
+    "id": "l72z2l_1h9A",
+    "leave": "San Francisco, CA",
+    "destination": "Santa Cruz, CA",
+    "waypoints": [[60, "Maston St"], [145, "Leavenworth St"], [273, "Polk St"], [1219, "22nd Avenue"], [1561, "El Camino Del Mar"], [1601, "Coastal Ocean View"], [2027, "Quintara St"], [2209, "Ocean Beach"], [2553, "Westmoor Ave"], [4035, "Scenic Beach View"], [5254, "Ocean Views"], [6886, "Scott Creek"], [7667, "Western Drive"], [8020, "Union Street"], [8170, "SC Boardwalk"]]    
+  },
+  "13": {
+    "id": "xj7abSp07w0",
+    "leave": "Miami, FL",
+    "destination": "Ford Lauderdale, FL",
+    "waypoints": [[52, "SW 15th Avenue"], [100, "SW 12th Avenue"], [281, "Downtown Miami"], [520, "Palm Island"], [635, "Business District"], [651, "SE 5th Street"], [860, "Chopin Plaza"], [1045, "Interstate 395"], [2209, "Ocean Beach"], [2237, "Docked Yachts"], [2987, "96th Street"], [3620, "A1A North"], [4480, "Balboa Street"], [5021, "Welcome Park"], [5232, "Eisenhower Blvd"], [5685, "Bayshore Drive"]]    
+  },
+  "14": {
+    "id": "Mur_1O3ckyA",
+    "leave": "St Petersburg, FL",
+    "destination": "Saratosa, FL",
+    "waypoints": [[35, "4th Avenue S"], [60, "3rd Avenue NE"], [193, "Florida Orchestra Way"], [384, "Central Avenue"], [442, "Interstate 175"], [688, "I175 South"], [840, "Sunshine Skyway"], [1023, "Toll"], [1340, "Sunshine Skyway Bridge"], [1559, "South Skyway Fishing Pier"], [2452, "30th Avenue E"], [3255, "Florida Blvd"], [3870, "Blvd of The Arts"], [4154, "Orange Avenue"], [4380, "Lemon Avenue"], [4464, "Lemon & 1st Street"]]    
+  },
+  "15": {
+    "id": "XOG72crHTeY",
+    "leave": "Porto, Portugal",
+    "destination": "Lisbon, Portugal",
+    "waypoints": [[50, "Starting Point"], [154, "Capela S Jose"], [459, "A1 to Lisbon"], [1004, "Toll"], [1977, "Area de Servico"], [2619, "A8 Lisbon"], [2956, "Cameras"], [4530, "Lisbon Outskirts"], [4836, "Entering Lisbon"], [5377, "Clube Vale de Leao"]]    
+  },
+  "16": {
+    "id": "9TXjRpoGEso",
+    "leave": "Glascow, United Kingdom",
+    "destination": "London, United Kingdom",
+    "waypoints": [[337, "Exit Bus Station"], [394, "M8 to Springburn"], [564, "Carlisle & Edinburgh"], [10791, "Lancaster University"], [13155, "City of Preston"], [15375, "City of Salford"], [16683, "City of Manchester"], [18300, "Christie Hospital"]]    
+  },
+  "17": {
+    "id": "6jPjHn_hAyc",
+    "leave": "Istanbul, Turkey",
+    "destination": "Izmir, Turkey",
+    "waypoints": [[25, "Starting Point"], [343, "Bridge"], [1290, "Orthangazi Tunnel"], [3389, "Izmir Balikesir"], [7190, "Windmill Farm"], [9659, "E881 towards Ahisar"], [12660, "Ulucak Kemaipasa"], [13663, "Torbali Aydan"]]    
+  },
+  "18": {
+    "id": "6jPjHn_hAyc",
+    "leave": "Istanbul, Turkey",
+    "destination": "Izmir, Turkey",
+    "waypoints": [[25, "Starting Point"], [343, "Bridge"], [1290, "Orthangazi Tunnel"], [3389, "Izmir Balikesir"], [7190, "Windmill Farm"], [9659, "E881 towards Ahisar"], [12660, "Ulucak Kemaipasa"], [13663, "Torbali Aydan"]]    
+  },
+  "19": {
+    "id": "PBUmWT7ViWU",
+    "leave": "Istanbul, Turkey",
+    "destination": "Ankara, Turkey",
+    "waypoints": [[6, "Starting Point"], [889, "E80"], [4458, "Dilaver"], [6529, "33 Overpass"], [7695, "Sehir Merkezi"], [7920, "Entering Ankara"], [8040, "Ankara"]]    
+  },
+  "20": {
+    "id": "H4YRRZJZocA",
+    "leave": "Amsterdam, Netherlands",
+    "destination": "Waardenburg, Netherlands",
+    "waypoints": [[14, "Starting Point"], [108, "Tram"], [271, "Hotel"], [543, "Continue on E19"], [568, "A2 E35"], [1579, "Tunnel"], [2610, "Waardenburg"]]    
+  },
+  "21": {
+    "id": "zdgmUGmK8kc",
+    "leave": "Copenhagen, Denmark",
+    "destination": "Birkerod, Denmark",
+    "waypoints": [[13, "Starting Point"], [80, "Mellemvangen St"], [229, "2 Morkhoj Exit"], [448, "8 Vaerlese Exit"], [1093, "Stationsvej St"], [1271, "Underpass"]]    
+  },
+  "22": {
+    "id": "pQ2mHF9bKHI",
+    "leave": "Brisbane, Australia",
+    "destination": "Gold Coast, Australia",
+    "waypoints": [[30, "Starting Point"], [173, "Intersectiion"], [382, "Gas Station"], [763, "City North Quay"], [801, "Enter Motorway"], [2221, "Continue on M1"], [3960, "Nerang Exit"], [4130, "Exit 77"], [4205, "Quambone Street"]]    
+  },
+}
+</script>
+<script src="https://afarkas.github.io/lazysizes/plugins/bgset/ls.bgset.min.js"></script>
+  <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js"></script>
+
+</html>
