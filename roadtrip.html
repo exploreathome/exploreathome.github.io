@@ -1026,8 +1026,10 @@ function clickCard(number) {
             loadvideo = "player.seekTo(" + String(seekNumber) + "); clickCard(this);" 
             document.getElementById('city-cards').innerHTML = document.getElementById('city-cards').innerHTML + "<div class='card cardClick' id='more-cities-card' onclick='" + loadvideo + "'><div class='card-body' style='padding: 5px;'>" + waypointName + " 📍 <span style='float: right; font-size: 13px; margin-top: 2px; color: #949494;'>" + String(parseInt(Math.floor(waypoints[i][0] / 60))) + "m</span></div></div>"
           }
-        $("#more-cities").slideUp();
-        $("#more-cities").slideDown();
+        if(checkMobile) {
+          $("#more-cities").slideUp();
+          $("#more-cities").slideDown();
+        }
     window.onpopstate = function () {
         history.go(0);
         // location.reload();
@@ -1052,7 +1054,7 @@ if(!window.matchMedia("only screen and (max-width: 999px)").matches) {
   });
       }
     }
-
+var checkMobile = !window.matchMedia("only screen and (max-width: 999px)").matches
 function findCount(number) {
   return [...number.parentElement.children]
   .indexOf(number);
