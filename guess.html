@@ -39,7 +39,21 @@
 
   gtag('config', 'UA-153516768-4');
 </script>
+<script>
+	window.aiptag = window.aiptag || {cmd: []};
+	aiptag.cmd.display = aiptag.cmd.display || [];
 
+	//CMP tool settings
+	aiptag.cmp = {
+		show: true,
+		position: "centered",  //centered, bottom
+		button: true,
+		buttonText: "Privacy settings",
+		buttonPosition: "bottom-left" //bottom-left, bottom-right, top-left, top-right
+	}
+
+	</script>
+	<script async src="//api.adinplay.com/libs/aiptag/pub/TPK/virtualvacation.us/tag.min.js"></script>
 </head>
 
 <style>
@@ -2053,20 +2067,6 @@ function timeChallengeSubmission() {
 }
 
 var deviceChecker = window.matchMedia("only screen and (max-width: 800px)").matches;
-		<script>
-	window.aiptag = window.aiptag || {cmd: []};
-	aiptag.cmd.display = aiptag.cmd.display || [];
-
-	//CMP tool settings
-	aiptag.cmp = {
-		show: true,
-		position: "centered",  //centered, bottom
-		button: true,
-		buttonText: "Privacy settings",
-		buttonPosition: "bottom-left" //bottom-left, bottom-right, top-left, top-right
-	}
-
-	</script>
-	<script async src="//api.adinplay.com/libs/aiptag/pub/TPK/virtualvacation.us/tag.min.js"></script>
+		
 </script>
 </html>
